@@ -1,13 +1,13 @@
+ClipClip(){
+	Clipboard=%clipboard%
+	t(clipboard)
+}
 WinHideActive(){
 	t:=WinGetActiveTitle()
 	;msgbox Aborted trying to hide %t%
 	t("Minimizing " t " instead of hiding")
 	WinMinimize A
 	;WinHide A
-}
-ClipClipx(){
-	Clipboard=%clipboard%
-	t(clipboard)
 }
 /*
 WinHideActiveConfirmed(){
@@ -1831,7 +1831,7 @@ DoKeepass(Long){
 	IfWinActive Open Database ahk_exe KeePass.exe,,GDI
 		return
 	t("Keepass")
-	rd:="%userprofile%\scoop\apps\keepass\current\"
+	rd:="C:\Users\Paul\scoop\apps\keepass\current\"
 	FileGetVersion v1,%rd%KeePass.exe
 	FileGetVersion v2,C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe
 	if (v1<>v2)
@@ -2366,7 +2366,7 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 SetGlobalVariables(){
 	global SciTEPath
 	SciTEPath=%PAULDIR%\SCITE\SCITE.EXE
-	SciTEPath:=FirstValidPath("%userprofile%\scoop\apps\notepadplusplus\current\notepad++.exe", psPath.Dropbox "PortableApps\Notepad++Portable\App\Notepad++\notepad++.exe", "C:\Program Files (x86)\Notepad++\notepad++.exe")
+	SciTEPath:=FirstValidPath("C:\Users\Paul\scoop\apps\notepadplusplus\current\notepad++.exe", psPath.Dropbox "PortableApps\Notepad++Portable\App\Notepad++\notepad++.exe", "C:\Program Files (x86)\Notepad++\notepad++.exe")
 }
 GoSub(name){
 	if name=Joy11_Joy14
@@ -2571,7 +2571,7 @@ LoadGroups(){
 	g_1_ProgramGroups("MinorWindows","ahk_exe SnippingTool.exe")
 	g_1_ProgramGroups("MinorWindows","AHK_PS_Temp_ahk_class IEFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("MinorWindows","AutoHotkey_ ahk_class #32770 ahk_exe AutoHotkey.exe")
-	g_1_ProgramGroups("MinorWindows","%userprofile%\scoop\shims\lazygit.exe ahk_class ConsoleWindowClass ahk_exe lazygit.exe")
+	g_1_ProgramGroups("MinorWindows","C:\Users\Paul\scoop\shims\lazygit.exe ahk_class ConsoleWindowClass ahk_exe lazygit.exe")
 	g_1_ProgramGroups("MinorWindows","Calculator ahk_class CalcFrame")
 	g_1_ProgramGroups("MinorWindows","ClipmasterOutput.txt")
 	g_1_ProgramGroups("MinorWindows","Download complete ahk_class #32770")
@@ -2936,7 +2936,6 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("EscapePlusHeadshotIfActive","Remote Desktop Connection ahk_class #32770","connect to the remote computer for one of these reasons")
 	g_2_AutomaticBehaviors("EscapeToAltN","Microsoft Visual Studio ahk_group VisualStudio","Do you want to configure this solution to download and restore missing NuGet packages during build")
 	g_2_AutomaticBehaviors("GMail_BSI","paul@bsifargo.com - Business Software")
-	g_2_AutomaticBehaviors("HideIfExist","%userprofile%\scoop\shims\ ahk_class ConsoleWindowClass ahk_exe emacs.exe")
 	g_2_AutomaticBehaviors("HideIfExist","ahk_class VSSplash ahk_exe devenv.exe")
 	;g_2_AutomaticBehaviors("CloseIfExist","RemoteApp ahk_class TscShellContainerClass ahk_exe mstsc.exe")
 	g_2_AutomaticBehaviors("HideIfExist","PopupMessageWindow ahk_class SunAwtFrame ahk_exe datagrip64.exe")
@@ -3306,7 +3305,7 @@ RunKindle(){
 	IfWinActive Paul's Kindle ahk_class Qt5QWindowIcon ahk_exe Kindle.exe
 		max()
 	else
-		run "%userprofile%\AppData\Local\Amazon\Kindle\application\Kindle.exe"
+		run "C:\Users\Paul\AppData\Local\Amazon\Kindle\application\Kindle.exe"
 }
 FolderCheckOpen(){
 	loop C:\Sync\DOWNLOADS\UTILITIES\MACRO\AutoHotkey\paul\*,1,1
@@ -3350,7 +3349,7 @@ RegSets(){
 	SetRegView %start%
 }
 SteamEXE(){
-	return % FirstValidPath("%userprofile%\scoop\apps\steam\current\steam.exe", "C:\Program Files (x86)\Steam\steam.exe")
+	return % FirstValidPath("C:\Users\Paul\scoop\apps\steam\current\steam.exe", "C:\Program Files (x86)\Steam\steam.exe")
 }
 
 GetActiveExplorerPath() {
