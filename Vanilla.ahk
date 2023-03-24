@@ -1,13 +1,13 @@
-ClipClip(){
-	Clipboard=%clipboard%
-	t(clipboard)
-}
 WinHideActive(){
 	t:=WinGetActiveTitle()
 	;msgbox Aborted trying to hide %t%
 	t("Minimizing " t " instead of hiding")
 	WinMinimize A
 	;WinHide A
+}
+ClipClipx(){
+	Clipboard=%clipboard%
+	t(clipboard)
 }
 /*
 WinHideActiveConfirmed(){
