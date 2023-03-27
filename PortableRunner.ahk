@@ -1,3 +1,3 @@
 #Requires AutoHotkey v1.1.34.03
-#R::RunFlowLauncher()
+#include Portable.ahk
 #include Vanilla.ahk
