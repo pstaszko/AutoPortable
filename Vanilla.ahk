@@ -302,6 +302,7 @@ MQTT_Sub(){
 		WinGetClass mqtt_c, A
 		WinGet mqtt_exe, ProcessName, % output
 		StringLower mqtt_exe,mqtt_exe
+		;t(mqtt_exe " " output)
 		MqttPub("ActiveWindow/EXE", mqtt_exe)
 		MqttPub("ActiveWindow/Class", mqtt_c)
 		mqtt_h:=WinGetActiveHwnd()
@@ -317,6 +318,7 @@ MQTT_Sub(){
 MQTT_WindowPublish:
 	mqtt_h:=WinGetActiveHwnd()
 	WinGetTitle mqtt_t, A
+	;mqtt_t:=RegExReplace(mqtt_t, "[^\x00-\x7F]+","")
 	MqttPub("ActiveWindow/WindowTitle", mqtt_t)
 	MqttPub("ActiveWindow/WindowHwnd", mqtt_h)
 	fqn=%mqtt_t% ahk_id %mqtt_h%
@@ -987,12 +989,12 @@ logContextStop(context){
 	Log4Net_Contexts[context]=0
 }
 StartOrShowBackgroundPowerShell(){
-	WinShow BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe powershell.exe
-	WinActivate BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe powershell.exe
-	IfWinNotActive BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe powershell.exe
+	WinShow BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
+	WinActivate BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
+	IfWinNotActive BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
 	{
 		t("Starting new background powershell hidden")
-		run C:\Program Files\PowerShell\7\pwsh.exe -command "$Host.UI.RawUI.WindowTitle = 'BackgroundPowerShell';MonitorBackgroundPowerShellCommands",,hide
+		run C:\Program Files\PowerShell\7\pwsh.exe -command "$Host.UI.RawUI.WindowTitle = 'BackgroundPowerShell';MonitorBackgroundPowerShellCommands" ;,,hide
 	}
 }
 GetCred(Title,byref UserName,byref Password){
@@ -1846,9 +1848,22 @@ DoKeepass(Long){
 	}
 	kpdir:=MyTrim(kpdir,"""")
 	pathx:=firstvalidpath(kpdir "\KeePass.exe")
-	CopyIfDifferent("C:\dev\UIauto\KeePassMaster\bin\KeePassMaster.dll",rd "KeePassMaster.dll")
-	CopyIfDifferent("C:\dev\UIauto\KeePassMaster\bin\KeePassMasterInterface.dll",rd "KeePassMasterInterface.dll")
-	CopyIfDifferent("C:\dev\UIauto\KeePassMaster\bin\Newtonsoft.Json.dll",rd "Newtonsoft.Json.dll")
+	rd:=rd "Plugins\"
+	old:=false
+	old:=true
+
+	if old {
+		CopyIfDifferent("C:\dev\UIauto\KeePassMaster\bin\KeePassMaster.dll",rd "KeePassMaster.dll")
+		CopyIfDifferent("C:\dev\UIauto\KeePassMaster\bin\KeePassMasterInterface.dll",rd "KeePassMasterInterface.dll")
+		CopyIfDifferent("C:\dev\UIauto\KeePassMaster\bin\Newtonsoft.Json.dll",rd "Newtonsoft.Json.dll")
+	} else {
+		CopyIfDifferent("C:\Dev\FlowPass\FlowPassKP\bin\Debug\FlowPassKP.dll",rd "FlowPassKP.dll")
+		CopyIfDifferent("C:\Dev\FlowPass\FlowPassKP\bin\Debug\FSharp.Core.dll",rd "FSharp.Core.dll")
+		CopyIfDifferent("C:\Dev\FlowPass\FlowPassKP\bin\Debug\FSharp.Data.dll",rd "FSharp.Data.dll")
+		CopyIfDifferent("C:\Dev\FlowPass\FlowPassKP\bin\Debug\KeePass.XmlSerializers.dll",rd "KeePass.XmlSerializers.dll")
+		CopyIfDifferent("C:\Dev\FlowPass\FlowPassKP\bin\Debug\KeePassMasterInterface.dll",rd "KeePassMasterInterface.dll")
+		CopyIfDifferent("C:\Dev\FlowPass\FlowPassKP\bin\Debug\Newtonsoft.Json.dll",rd "Newtonsoft.Json.dll")
+	}
 	t("Going long")
 	key=1
 	if key
@@ -2590,6 +2605,7 @@ LoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("Emacs","GNU Emacs ahk_class Emacs ahk_exe emacs.exe")
+	g_1_ProgramGroups("Emacs","GNU Emacs ahk_class Emacs ahk_exe runemacs.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
 	g_1_ProgramGroups("MinorWindows","results.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","Revision Graph - TortoiseGit ahk_class #32770 ahk_exe TortoiseGitProc.exe")
@@ -2672,7 +2688,7 @@ LoadGroups(){
 	g_1_ProgramGroups("PowerGUI","ahk_exe ScriptEditor.exe")
 	g_1_ProgramGroups("PowerGUI_FindAndReplace","Find & Replace ahk_exe ScriptEditor.exe")
 	g_1_ProgramGroups("PowerGUI_FindAndReplace","Find/Replace ahk_exe ScriptEditor.exe")
-	g_1_ProgramGroups("PowerShell","ahk_class ConsoleWindowClass ahk_exe powershell.exe","","","PS: BackgroundPowerShell")
+	g_1_ProgramGroups("PowerShell","ahk_class ConsoleWindowClass ahk_exe pwsh.exe","","","PS: BackgroundPowerShell")
 	g_1_ProgramGroups("PowerShell","PS ahk_group ConEmu")
 	g_1_ProgramGroups("PowerShellCore","ahk_class ConsoleWindowClass ahk_exe pwsh.exe","","","PS: BackgroundPowerShell")
 	g_1_ProgramGroups("PowerShellEditor","ahk_exe powershell_ise.exe")
@@ -2729,6 +2745,7 @@ LoadGroups(){
 	g_1_ProgramGroups("VBFile",".cls ( ahk_exe devenv.exe")
 	g_1_ProgramGroups("VBFile",".bas ( ahk_exe devenv.exe")
 	g_1_ProgramGroups("VBFile",".vb ( ahk_exe devenv.exe")
+	g_1_ProgramGroups("Everything","ahk_class EVERYTHING ahk_exe Everything.exe")
 	g_1_ProgramGroups("VisualStudio","ahk_exe DevEnv.exe")
 	g_1_ProgramGroups("VisualStudio","ahk_exe devenv.exe")
 	g_1_ProgramGroups("VisualStudio","ahk_exe vbexpress.exe")
@@ -2788,7 +2805,7 @@ LoadGroups(){
 	g_1_ProgramGroups_End("MinorWindows","ahk_group SourceGear")
 	g_1_ProgramGroups_End("Outlook","ahk_exe Outlook.exe","","","ahk_group OutlookEmail") ;the exclude isn't working on 2-10-15
 	g_1_ProgramGroups_End("PaulAtOtakuDB","paul@otakudb.com - Otakudb.com Mail ahk_group Browsers")
-	g_1_ProgramGroups_End("PowerShellOrPWSH_Exe","ahk_exe powershell.exe")
+	g_1_ProgramGroups_End("PowerShellOrPWSH_Exe","ahk_exe powershell.exe") ;ok
 	g_1_ProgramGroups_End("PowerShellOrPWSH_Exe","ahk_exe pwsh.exe")
 	g_1_ProgramGroups_End("PowerShellWindow","ahk_group PowerShell")
 	g_1_ProgramGroups_End("PowerShellWindow","ahk_group PowerShellCore")
@@ -2936,7 +2953,7 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("EscapePlusHeadshotIfActive","Remote Desktop Connection ahk_class #32770","connect to the remote computer for one of these reasons")
 	g_2_AutomaticBehaviors("EscapeToAltN","Microsoft Visual Studio ahk_group VisualStudio","Do you want to configure this solution to download and restore missing NuGet packages during build")
 	g_2_AutomaticBehaviors("GMail_BSI","paul@bsifargo.com - Business Software")
-	g_2_AutomaticBehaviors("HideIfExist","ahk_class VSSplash ahk_exe devenv.exe")
+	;g_2_AutomaticBehaviors("HideIfExist","xC:\apps\emacs\bin\emacs.exe ahk_class ConsoleWindowClass ahk_exe emacs.exe")
 	;g_2_AutomaticBehaviors("CloseIfExist","RemoteApp ahk_class TscShellContainerClass ahk_exe mstsc.exe")
 	g_2_AutomaticBehaviors("HideIfExist","PopupMessageWindow ahk_class SunAwtFrame ahk_exe datagrip64.exe")
 	g_2_AutomaticBehaviors("HideIfExist","ahk_class VisualStudioGlowWindow ahk_exe devenv.exe")
@@ -2948,6 +2965,7 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("MaximizeRightIfNew","ahk_class AcrobatSDIWindow ahk_exe AcroRd32.exe")
 	g_2_AutomaticBehaviors("MaxToWindow","ahk_group Browsers")
 	g_2_AutomaticBehaviors("MButton","ahk_group Krita")
+	g_2_AutomaticBehaviors("MButton","ahk_group Emacs")
 	g_2_AutomaticBehaviors("MButton","ahk_group Minecraft")
 	g_2_AutomaticBehaviors("NeverStraddle","ahk_class #32770")
 	g_2_AutomaticBehaviors("NeverStraddle","Notepad ahk_class Notepad ahk_exe notepad.exe")
@@ -2970,6 +2988,10 @@ LoadGroups(){
 	g_2_ProgramGroups_End("WatchCricketBeta","PS: Cricket Watch Beta ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("WatchCricketGamma","PS: Cricket Watch Gamma ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("WatchCricketProd","PS: Cricket Watch Prod ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
+	g_2_ProgramGroups_End("ActiveFile","ahk_group AHKtextEditor")
+	g_2_ProgramGroups_End("ActiveFile","ahk_group Obsidian")
+	g_2_ProgramGroups_End("ActiveFile","ahk_group Everything")
+	g_2_ProgramGroups_End("ActiveFile","ahk_group VisualStudio")
 	g_2_ProgramGroups_End("WatchCricketTest","PS: Cricket Watch Test ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("TextEditor","ahk_group DataGrip")
 	g_2_ProgramGroups_End("TextEditor","ahk_group VSCode")
@@ -3016,6 +3038,7 @@ LoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltN","Unsaved Changes ahk_exe paintdotnet.exe")
 	g_4_KeyBehaviors("ControlWtoAltN","Windows PowerShell ISE - Warning ahk_class #32770 ahk_exe powershell_ise.exe")
 	g_4_KeyBehaviors("ControlWtoControlF4","Windows PowerShell ISE ahk_exe powershell_ise.exe")
+	g_4_KeyBehaviors("DefaultFileOpener","ahk_group Everything")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class CabinetWClass")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class ExploreWClass")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class WorkerW")
