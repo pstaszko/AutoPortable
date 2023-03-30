@@ -327,6 +327,7 @@ Bonkxx(){
 }
 ;F11::bonkxx()
 MqttPub(topic, message, host="localhost"){
+	;AlertCallStack("pub")
 	static mqtt_history := {}
 	z:=mqtt_history[topic]
 	if(z <> message)
