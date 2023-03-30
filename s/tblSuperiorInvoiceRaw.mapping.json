@@ -1,0 +1,100 @@
+{
+  "Columns": [
+    {
+      "TargetColumnName": "[Customer No.]",
+      "SourceColumnName": "Customer No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 0,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Customer PO No.]",
+      "SourceColumnName": "Customer PO No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 1,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[SCP Invoice No.]",
+      "SourceColumnName": "SCP Invoice No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 2,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Your Reference]",
+      "SourceColumnName": "Your Reference",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 3,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[SCP Order No.]",
+      "SourceColumnName": "SCP Order No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 4,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Posting Date]",
+      "SourceColumnName": "Posting Date",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 5,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Order Date]",
+      "SourceColumnName": "Order Date",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 6,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Invoice Due Date]",
+      "SourceColumnName": "Invoice Due Date",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 7,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Invoice Amount]",
+      "SourceColumnName": "Invoice Amount",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 8,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipping Method]",
+      "SourceColumnName": "Shipping Method",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 9,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "subsidiary_id",
+      "SourceColumnName": "subsidiary_id",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 10,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "import_file",
+      "SourceColumnName": "import_file",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 11,
+      "DefaultValue": null
+    }
+  ]
+}

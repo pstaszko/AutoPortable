@@ -1,0 +1,7 @@
+{
+  "BeforeSQLAll": "",
+  "FinalSQL": "",
+  "UseSubsidiary": "true",
+  "FirstColumn": "Order Date",
+  "DateTimeFormat": "yyyy-MM-dd HH:mm:ss"
+}

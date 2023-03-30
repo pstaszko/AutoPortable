@@ -1,0 +1,140 @@
+{
+  "Columns": [
+    {
+      "TargetColumnName": "[Order Date]",
+      "SourceColumnName": "Order Date",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 0,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Order Number]",
+      "SourceColumnName": "Order Number",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 1,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Customer PO]",
+      "SourceColumnName": "Customer PO",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 2,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Created By]",
+      "SourceColumnName": "Created By",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 3,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Store ID]",
+      "SourceColumnName": "Store ID",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 4,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipping Address]",
+      "SourceColumnName": "Shipping Address",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 5,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Tracking Number]",
+      "SourceColumnName": "Tracking Number",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 6,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Qty Ordered]",
+      "SourceColumnName": "Qty Ordered",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 7,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Qty Shipped]",
+      "SourceColumnName": "Qty Shipped",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 8,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipping Cost]",
+      "SourceColumnName": "Shipping Cost",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 9,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipping Method]",
+      "SourceColumnName": "Shipping Method",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 10,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Payment Method]",
+      "SourceColumnName": "Payment Method",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 11,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "Status",
+      "SourceColumnName": "Status",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 12,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Amount Order]",
+      "SourceColumnName": "Amount Order",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 13,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Payment Status]",
+      "SourceColumnName": "Payment Status",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 14,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "subsidiary_id",
+      "SourceColumnName": "subsidiary_id",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 15,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "import_file",
+      "SourceColumnName": "import_file",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 16,
+      "DefaultValue": null
+    }
+  ]
+}

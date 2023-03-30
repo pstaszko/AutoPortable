@@ -1,0 +1,228 @@
+{
+  "Columns": [
+    {
+      "TargetColumnName": "[Customer No.]",
+      "SourceColumnName": "Sell to Customer",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 0,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to Code]",
+      "SourceColumnName": "Ship to Code",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 1,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Customer PO No.]",
+      "SourceColumnName": "External Document No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 2,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Your Reference]",
+      "SourceColumnName": "Your Reference",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 3,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[SCP Order No.]",
+      "SourceColumnName": "Order No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 4,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[WA No.]",
+      "SourceColumnName": "WA No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 5,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Order Qty.]",
+      "SourceColumnName": "Type",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 6,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Qty. Shipped]",
+      "SourceColumnName": "Mfg. No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 7,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Order Amount]",
+      "SourceColumnName": "UPC",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 8,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "Status",
+      "SourceColumnName": "SCP Item No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 9,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[SCP Invoice No.]",
+      "SourceColumnName": "Cross Reference No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 10,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Invoiced Amount]",
+      "SourceColumnName": "Description",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 11,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Remaining Balance]",
+      "SourceColumnName": "Product Class Code",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 12,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Order Date]",
+      "SourceColumnName": "Phone ID Make",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 13,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipment Date]",
+      "SourceColumnName": "Phone ID Model",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 14,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipping Agent Code]",
+      "SourceColumnName": "Order Qty.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 15,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Shipping Method Code]",
+      "SourceColumnName": "Qty. Shipped",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 16,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Master Tracking No.]",
+      "SourceColumnName": "Open Qty.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 17,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to Name]",
+      "SourceColumnName": "Unit Price",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 18,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to Name 2]",
+      "SourceColumnName": "Amount",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 19,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to Address]",
+      "SourceColumnName": "Invoice No.",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 20,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to City]",
+      "SourceColumnName": "Qty. Invoiced",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 21,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to State]",
+      "SourceColumnName": "Invoiced Amount",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 22,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Ship to ZIP Code]",
+      "SourceColumnName": "Remaining Balance",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 23,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Production Status]",
+      "SourceColumnName": "Order Date",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 24,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "[Tracking Status]",
+      "SourceColumnName": "Shipment Date",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 25,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "subsidiary_id",
+      "SourceColumnName": "Shipping Agent Code",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 26,
+      "DefaultValue": null
+    },
+    {
+      "TargetColumnName": "import_file",
+      "SourceColumnName": "Shipment Method Code",
+      "IsKey": false,
+      "DateTimeFormat": "",
+      "SourceColumnIndex": 27,
+      "DefaultValue": null
+    }
+  ]
+}
