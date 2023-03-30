@@ -1,3 +1,52 @@
+RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
+	startingTitleMatchMode:=A_TitleMatchMode
+	If Regex
+		SetTitleMatchMode("regex") ;swapped
+	Winactivate %ROSCtitle% ahk_class %class%
+	WinGetActiveTitle x
+	WinGetClass c, A
+	hit=0
+	If Regex
+	{
+		IfWinActive %ROSCtitle% ahk_class %class%
+			Hit=1
+	} else {
+		If Instr(x,ROSCtitle) and Instr(c,Class)
+			Hit=1
+	}
+	If Hit
+	{
+		tDebug("Hit")
+		WinMaximize A
+	} else {
+		tDebug("No Hit")
+		IfWinExist %ROSCtitle% ahk_class %class%
+			TempTooltip("1 Failed to show: " . ROSCtitle,2000)
+		else {
+			TempTooltip(ROSCtitle,1500)
+			If FileExist(cmdLine) {
+				tDebug("FileExist(cmdLine)")
+				RunFailover(cmdLine)
+			} else {
+				tDebug("FileExist false " cmdLine)
+				StringReplace cmdLine,cmdLine,Program Files,Program Files (x86)
+				If FileExist(cmdLine)
+				{
+					tDebug("If FileExist(cmdLine) #2")
+					RunFailover(cmdLine)
+				} else {
+					tDebug("If FileExist(cmdLine) #3")
+					StringReplace cmdLine,cmdLine,Program Files (x86),Program Files
+					RunFailover(cmdLine)
+				}
+			}
+			SetTitleMatchMode(startingTitleMatchMode)
+			return true
+		}
+	}
+	SetTitleMatchMode(startingTitleMatchMode)
+	return false
+}
 ClipClip(){
 	Clipboard=%clipboard%
 	t(clipboard)
@@ -1065,8 +1114,15 @@ RunDesktopRDP(File){
 	WinActivate i)^%File%\b ahk_exe mstsc.exe
 	IfWinNotActive i)^%File%\b ahk_exe mstsc.exe
 	{
-		x:=FirstValidPath("%userprofile%\Desktop\" File ".RDP","%userprofile%\Desktop\RDP\" File ".RDP")
-		run % x
+		a:=userprofile "\Desktop\" File ".RDP"
+		b:=userprofile "\Desktop\RDP\" File ".RDP"
+		x:=FirstValidPath(a,b)
+		IfExist % x
+			run % x
+		else
+			msgbox missing %a% and %b%
+	} else {
+		;t("a")
 	}
 }
 GetModifiers(){
