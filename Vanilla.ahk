@@ -1421,7 +1421,7 @@ WinActivateByExe(exe){
 }
 WinActivateTitle(title){
 	DetectHiddenWindows off
-	winactivate %title%
+	WinActivate %title%
 	IfWinActive %title%
 		return "true"
 	else
@@ -1496,7 +1496,7 @@ WinGetTitle(winSpec){
 	return % t
 }
 ActivateFromHwnd(hwnd){
-	winactivate ahk_id %hwnd%
+	WinActivate ahk_id %hwnd%
 }
 RestoreFromHwnd(hwnd){
 	winRestore ahk_id %hwnd%
@@ -1636,7 +1636,7 @@ g(message,title="AHK Message",MessageType="Standard Message"){
 }
 
 MaxFn(){
-	winmaximize A
+	WinMaximize A
 }
 Close(){
 	WinClose A
@@ -2526,7 +2526,7 @@ LoadGroups(){
 	g_1_ProgramGroups("Browsers","ahk_exe Safari.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","Firefox ahk_Group Firefox",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","Google Chrome ahk_class Chrome_XPFrame",,,"ahk_class 32770")
-	g_1_ProgramGroups("Browsers","Internet Explorer ahk_class IEFrame",,,"ahk_class 32770")
+	g_1_ProgramGroups("Browsers","ahk_class Qt5152QWindowIcon ahk_exe qutebrowser.exe")
 	g_1_ProgramGroups("Browsers","Iron ahk_class Chrome_WidgetWin_0")
 	g_1_ProgramGroups("ChaosControl","Chaos Control ahk_class Qt5QWindowOwnDCIcon ahk_exe ChaosControl.exe")
 	g_1_ProgramGroups("MicrosoftSignInWindow","Sign in to your ahk_exe devenv.exe")

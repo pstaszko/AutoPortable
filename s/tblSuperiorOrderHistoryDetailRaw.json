@@ -1,7 +1,7 @@
 {
-  "BeforeSQLAll": "truncate table tblSuperiorOrderHistoryDetailRaw",
+  //"BeforeSQLAll": "truncate table tblSuperiorOrderHistoryDetailRaw",
   "FinalSQL": "",
+  "SkipScrub": "true",
   "UseSubsidiary": "true",
   "FirstColumn": "Sell to Customer",
-  "DateTimeFormat": "M/d/yyyy h:mm tt"
-}
+  "DateTimeFormat

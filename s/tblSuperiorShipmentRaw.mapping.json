@@ -4,7 +4,7 @@
       "TargetColumnName": "[Posting Date]",
       "SourceColumnName": "Posting Date",
       "IsKey": false,
-      "DateTimeFormat": "yyyy-MM-dd HH:mm:ss",
+      "DateTimeFormat": "",
       "SourceColumnIndex": 0,
       "DefaultValue": null
     },
@@ -43,7 +43,7 @@
     {
       "TargetColumnName": "[SCP Item No.]",
       "SourceColumnName": "SCP Item No.",
-      "IsKey": false,
+      "IsKey": true,
       "DateTimeFormat": "",
       "SourceColumnIndex": 5,
       "DefaultValue": null
@@ -171,7 +171,7 @@
     {
       "TargetColumnName": "[Your Reference]",
       "SourceColumnName": "Your Reference",
-      "IsKey": false,
+      "IsKey": true,
       "DateTimeFormat": "",
       "SourceColumnIndex": 21,
       "DefaultValue": null

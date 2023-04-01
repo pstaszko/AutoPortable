@@ -19,7 +19,7 @@
     {
       "TargetColumnName": "[SCP Invoice No.]",
       "SourceColumnName": "SCP Invoice No.",
-      "IsKey": false,
+      "IsKey": true,
       "DateTimeFormat": "",
       "SourceColumnIndex": 2,
       "DefaultValue": null

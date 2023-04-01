@@ -1,7 +1,7 @@
 {
   "BeforeSQLAll": "",
   "FinalSQL": "",
+  "SkipScrub": "true",
   "UseSubsidiary": "true",
   "FirstColumn": "Posting Date",
-  "DateTimeFormat": "yyyy-MM-dd HH:mm:ss"
-}
+  "DateTime

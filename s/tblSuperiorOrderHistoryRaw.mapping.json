@@ -27,7 +27,7 @@
     {
       "TargetColumnName": "[Your Reference]",
       "SourceColumnName": "Your Reference",
-      "IsKey": false,
+      "IsKey": true,
       "DateTimeFormat": "",
       "SourceColumnIndex": 3,
       "DefaultValue": null

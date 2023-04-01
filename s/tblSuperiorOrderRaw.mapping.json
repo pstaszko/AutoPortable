@@ -11,7 +11,7 @@
     {
       "TargetColumnName": "[Order Number]",
       "SourceColumnName": "Order Number",
-      "IsKey": false,
+      "IsKey": true,
       "DateTimeFormat": "",
       "SourceColumnIndex": 1,
       "DefaultValue": null
