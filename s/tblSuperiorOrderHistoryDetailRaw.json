@@ -4,4 +4,5 @@
   "SkipScrub": "true",
   "UseSubsidiary": "true",
   "FirstColumn": "Sell to Customer",
-  "DateTimeFormat
+  "DateTimeFormat": "M/d/yyyy h:mm tt"
+}

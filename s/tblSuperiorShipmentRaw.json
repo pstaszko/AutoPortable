@@ -4,4 +4,5 @@
   "SkipScrub": "true",
   "UseSubsidiary": "true",
   "FirstColumn": "Posting Date",
-  "DateTime
+  "DateTimeFormat": "MM/dd/yyyy"
+}
