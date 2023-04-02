@@ -884,7 +884,7 @@ SubmitFSharpFunction(functionName,params*){
 	return resultFile
 }
 RunMatrixOS(forcePython = false, hide = false){
-	SubmitFSharpFunction("MatrixOS.StartOrShowNoArgs")
+	SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
 }
 
 CurrentEXE(){
@@ -1612,7 +1612,6 @@ GetMousePosition(mode){
 	ret=%mode%,%x%,%y%
 	return % ret
 }
-
 Growl(message,title="",MessageType="Standard Message"){
 	if RegExMatch(message,"^[0| ]+$")
 		return
@@ -1634,14 +1633,12 @@ Growl(message,title="",MessageType="Standard Message"){
 g(message,title="AHK Message",MessageType="Standard Message"){
 	Growl(message,title,MessageType)
 }
-
 MaxFn(){
 	WinMaximize A
 }
 Close(){
 	WinClose A
 }
-
 SetTitleMatchMode(mode){
 	Requires(mode)
 	SetTitleMatchMode %mode%
