@@ -3,6 +3,7 @@
   "FinalSQL": "",
   "SkipScrub": "true",
   "UseSubsidiary": "true",
+  "RemoveCommasBetweenQuotes": "true",
   "FirstColumn": "Posting Date",
   "DateTimeFormat": "MM/dd/yyyy"
 }

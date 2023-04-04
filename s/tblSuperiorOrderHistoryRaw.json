@@ -4,5 +4,6 @@
   "SkipScrub": "true",
   "UseSubsidiary": "true",
   "FirstColumn": "Customer No.",
+  "RemoveCommasBetweenQuotes": "true",
   "DateTimeFormat": "M/d/yyyy h:mm:ss tt"
 }
