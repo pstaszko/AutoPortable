@@ -4,6 +4,8 @@
   "SkipScrub": "true",
   "UseSubsidiary": "true",
   "RemoveCommasBetweenQuotes": "true",
+  "TextRegexReplaceFrom": "\\r\\n",
+  "TextRegexReplaceTo": " ",
   "FirstColumn": "Order Date",
   "DateTimeFormat": "yyyy-MM-dd HH:mm:ss"
 }
