@@ -4,7 +4,7 @@
   "SkipScrub": "true",
   "UseSubsidiary": "true",
   "FirstColumn": "Customer No.",
-  "TextRegexReplaceFrom": "\\r\\n",
+  "TextRegexReplaceFrom": "\\r(?!\\n)",
   "TextRegexReplaceTo": " ",
   "RemoveCommasBetweenQuotes": "true",
   "DateTimeFormat": "M/d/yyyy h:mm:ss tt"
