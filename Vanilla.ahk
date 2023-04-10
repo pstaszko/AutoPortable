@@ -3008,8 +3008,6 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("EscapePlusHeadshotIfActive","Remote Desktop Connection ahk_class #32770","connect to the remote computer for one of these reasons")
 	g_2_AutomaticBehaviors("EscapeToAltN","Microsoft Visual Studio ahk_group VisualStudio","Do you want to configure this solution to download and restore missing NuGet packages during build")
 	g_2_AutomaticBehaviors("GMail_BSI","paul@bsifargo.com - Business Software")
-	;g_2_AutomaticBehaviors("HideIfExist","xC:\apps\emacs\bin\emacs.exe ahk_class ConsoleWindowClass ahk_exe emacs.exe")
-	;g_2_AutomaticBehaviors("CloseIfExist","RemoteApp ahk_class TscShellContainerClass ahk_exe mstsc.exe")
 	g_2_AutomaticBehaviors("HideIfExist","PopupMessageWindow ahk_class SunAwtFrame ahk_exe datagrip64.exe")
 	g_2_AutomaticBehaviors("HideIfExist","ahk_class VisualStudioGlowWindow ahk_exe devenv.exe")
 	g_2_AutomaticBehaviors("HideIfExist","CiceroUIWndFrame ahk_class CiceroUIWndFrame ahk_exe devenv.exe")
@@ -3223,7 +3221,6 @@ LoadGroups(){
 	g_4_KeyBehaviors("XButton1DoesEscape_WinForm","Get Latest Version")
 	g_4_KeyBehaviors("XButton2DoesEnter_WinForm","Get Latest Version")
 	;Op: Stop
-	;Op: Stop
 	GroupAdd ActivateIfExist, ahk_group ActivateAndAltNfExist
 	GroupAdd AltNifActive, ahk_group ActivateAndAltNfExist
 	GroupAdd ActivateIfExist, ahk_group ActivateAndAltF4IfExist
@@ -3233,27 +3230,7 @@ LoadGroups(){
 	;***************************************************************************************************************
 	;/GROUPS********************************************************************************************************
 	;***************************************************************************************************************
-	/*
-	m=
-	For key, value in MyGroups
-	{
-		;MsgBox %key% = %value%
-		m=%m%Group: %key%`n
-		for k,v in value
-		{
-			b=
-			for k1,v1 in v
-				if (k1 and v1)
-					b=%b%Property: %k1% = %v1%`n
-			m=%m%Window:%k% `n-------------`n%b%`n
-		}
-		;m.shout
-	}
-	Clipboard:=m
-	*/
-
 	prof.Log("Done prepping groups")
-	;/PROGRAM GROUPS
 	}
 }
 IsScrollLock(){
@@ -3379,14 +3356,6 @@ ActivateConsole(num, title){
 }
 
 #if
-RunKindle(){
-	WinShow Paul's Kindle ahk_class Qt5QWindowIcon ahk_exe Kindle.exe
-	WinActivate Paul's Kindle ahk_class Qt5QWindowIcon ahk_exe Kindle.exe
-	IfWinActive Paul's Kindle ahk_class Qt5QWindowIcon ahk_exe Kindle.exe
-		max()
-	else
-		run "C:\Users\Paul\AppData\Local\Amazon\Kindle\application\Kindle.exe"
-}
 FolderCheckOpen(){
 	loop C:\Sync\DOWNLOADS\UTILITIES\MACRO\AutoHotkey\paul\*,1,1
 	{

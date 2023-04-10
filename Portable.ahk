@@ -8,7 +8,6 @@
 		SubmitFSharpFunction("ActiveFile")
 	} else {
 		t("Emacs.ActivateOrStart")
-		;RunOrSwitchClass("C:\apps\emacs\bin\runemacs.exe c:\users\paul\.emacs", ".*GNU Emacs.*", "Emacs")
 		SubmitFSharpFunction("Emacs.ActivateOrStartEmacs")
 	}
 return
