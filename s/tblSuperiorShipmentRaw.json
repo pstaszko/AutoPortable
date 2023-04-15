@@ -1,9 +1,11 @@
 {
   "BeforeSQLAll": "",
   "FinalSQL": "",
-  "SkipScrub": "true",
+  "SkipScrub": "false",
   "UseSubsidiary": "true",
   "RemoveCommasBetweenQuotes": "true",
+  "TextRegexReplaceFrom": "\".*?\"",
+  "TextRegexReplaceTo": "",
   "FirstColumn": "Posting Date",
   "DateTimeFormat": "MM/dd/yyyy"
 }
