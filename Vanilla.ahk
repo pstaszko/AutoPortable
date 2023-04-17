@@ -1,3 +1,83 @@
+GetBits(){
+	envget progVar,ProgramFiles(x86)
+	if progVar
+		return 64
+	else
+		return 32
+}
+OpenMainScript(OpenOrSwitchAHK){ ;;tracze
+	Global
+	t("Opening script")
+	Hit=0
+	WinShow SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+	WinActivate SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+	IfWinActive SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+		return
+	If OpenOrSwitchAHK
+	{
+		Loop %PAULDIR%\*.ahk, 1
+		{
+			Match=0
+			IfWinExist %A_LoopFileName% - SciTE
+			{
+				Match=1
+			}
+			IfWinExist %A_LoopFileName% * SciTE
+			{
+				Match=1
+			}
+			if a_loopfilename.contains("bin.")
+			{
+				match=0
+			}
+			t=
+			IfWinExist SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+				t=SciTE4AutoHotkey
+			If Match
+			{
+				;window(A_LoopFileName)
+				WinActivate %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump
+				WinMaximize %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump
+				Hit=1
+				IfWinActive ahk_class SciTEWindow ahk_exe SCITE.EXE,,SciTE - Jump
+				{
+					Max()
+				}
+				Return
+			}
+		}
+	}
+	If not Hit
+	{
+		If OpenOrSwitchAHK
+		{
+			t("starting new ahk")
+			SciTE4AHKPath:="C:\DEV\PAUL\SciTE4AutoHotkey\SciTE.exe"
+			bits:=GetBits()
+			if (bits<>32)
+			{
+				SciTE4AHKPath.Replace("\scite\","\scite4AutoHotkey\")
+			}
+			Run %SciTE4AHKPath% %scripts%
+;			%pauldir%
+			Return
+		}
+	}
+	WinActivate Untitled ahk_class SciTEWindow
+	IfWinNotActive Untitled ahk_class SciTEWindow
+	{
+		t("run scite")
+		Run %SciTEPath%
+		WinActivate Untitled ahk_class SciTEWindow
+	}
+	WinWaitActive Untitled ahk_class SciTEWindow,,5
+	If not Errorlevel
+	{
+		if OpenOrSwitchAHK
+			Max()
+	}
+}
+#H::OpenMainScript(True)
 RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
 	startingTitleMatchMode:=A_TitleMatchMode
 	If Regex
