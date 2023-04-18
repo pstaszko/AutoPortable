@@ -1,3 +1,14 @@
+LoadGlobalVars(){
+	GLOBAL PaulDir:="c:\dev\Paul\"
+	GLOBAL log4net:=true
+	GLOBAL MyPath:=new psPath()
+	;GLOBAL PsPath:=new psPath()
+	GLOBAL dev:="c:\dev\"
+	GLOBAL kpError:="C:\Users\Paul\AppData\Local\kp\kperror.txt"
+	GLOBAL kpResp:="C:\Users\Paul\AppData\Local\kp\kpresp.json"
+	GLOBAL kpReq:="C:\Users\Paul\AppData\Local\kp\kpreq.txt"
+	GLOBAL globalVariables:=Object()
+}
 GetBits(){
 	envget progVar,ProgramFiles(x86)
 	if progVar
@@ -77,7 +88,6 @@ OpenMainScript(OpenOrSwitchAHK){ ;;tracze
 			Max()
 	}
 }
-#H::OpenMainScript(True)
 RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
 	startingTitleMatchMode:=A_TitleMatchMode
 	If Regex
