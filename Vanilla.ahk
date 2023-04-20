@@ -1,3 +1,58 @@
+Max(msg="",depth=0){
+	if depth > 5
+		return
+	if msg
+		t("Maximize " msg)
+	AssertNotSciteFindWindow()
+	IfWinActive ahk_exe autohotkey.exe
+		return
+	IfWinActive Find in Files ahk_class #32770
+		ListLines
+	Max(msg, depth + 1)
+}
+Calling(fn, arg1="", arg2=""){
+	announce:=false
+	if(fn = "WinMaximize") ;ok
+		announce:=true
+	if(announce){
+		t("Calling " fn ", " arg1 ", " arg2)
+	}
+}
+MaxFunction(ForceSingleMonitor=0,ForceToRight=0,ForceToLeft=0){
+	global
+	;t("Max " A_ScriptFullPath)
+	WinGet hwin,ID,A
+	IfWinActive ahk_group NoMax
+		return
+	if IsDesktop()
+		return false
+
+	AssertNotSciteFindWindow()
+	IfWinActive Find in Files ahk_class #32770
+		ListLines
+	IfWinActive ahk_group NoMax
+		return
+	;logHere("Maximize")
+	IfWinActive ahk_id %hwin%
+	{
+		WinMaxFromHwnd(hwin)
+		;logHere("maximize " hwin)
+	}else{
+		;logHere("skipped maximize " hwin)
+	}
+}
+MaxFn(){
+	Calling("WinMaximize", "A")
+	WinMaximize A ;ok
+}
+WinMaxFromHwnd(hwnd){
+	MaximizeFromHwnd(hwnd)
+}
+MaximizeFromHwnd(hwnd){
+	Calling("WinMaximize", "DetectHiddenWindows off", "ahk_id " hwnd)
+	DetectHiddenWindows off
+	WinMaximize ahk_id %hwnd% ;ok
+}
 LoadGlobalVars(){
 	GLOBAL PaulDir:="c:\dev\Paul\"
 	GLOBAL log4net:=true
@@ -48,7 +103,7 @@ OpenMainScript(OpenOrSwitchAHK){ ;;tracze
 			{
 				;window(A_LoopFileName)
 				WinActivate %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump
-				WinMaximize %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump
+				WinMaximize %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump ;ok
 				Hit=1
 				IfWinActive ahk_class SciTEWindow ahk_exe SCITE.EXE,,SciTE - Jump
 				{
@@ -107,7 +162,7 @@ RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
 	If Hit
 	{
 		tDebug("Hit")
-		WinMaximize A
+		Max()
 	} else {
 		tDebug("No Hit")
 		IfWinExist %ROSCtitle% ahk_class %class%
@@ -403,21 +458,7 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
 	return % x
 }
-Bonkxx(){
-	WinGetActiveTitle, t
-	WinGet, isMax, MinMax, % t
-	if (isMax != 0)
-		WinRestore, % t
-	WinGetPos, wx, wy, ww, wh, % t
-	newX := 960 - round(ww/2,0)
-	newY := 540 - round(wh/2,0)
-	WinMove, % t,, % newX, % newY, % ww, % wh
-	if (isMax == 1)
-		WinMaximize, % t
-}
-;F11::bonkxx()
 MqttPub(topic, message, host="localhost"){
-	;AlertCallStack("pub")
 	static mqtt_history := {}
 	z:=mqtt_history[topic]
 	if(z <> message)
@@ -1490,9 +1531,6 @@ WinExistsFull(winSpec,DetectHiddenWindows,TitleMatchMode){
 WinHideFromHwnd(hwnd){
 	WinHide ahk_id %hwnd%
 }
-WinMaxFromHwnd(hwnd){
-	WinMaximize ahk_id %hwnd%
-}
 WinMoveFromHwnd(hwnd,x,y){
 	winmove ahk_id %hwnd%,,x,y
 }
@@ -1613,10 +1651,6 @@ MinimizeFromHwnd(hwnd){
 	DetectHiddenWindows off
 	WinMinimize ahk_id %hwnd%
 }
-MaximizeFromHwnd(hwnd){
-	DetectHiddenWindows off
-	WinMaximize ahk_id %hwnd%
-}
 WinGetPositionFromHwnd(hwnd){
 	WinGetPos X, Y, Width, Height, ahk_id %hwnd%
 	ret=%X%|%Y%|%Width%|%Height%
@@ -1722,9 +1756,6 @@ Growl(message,title="",MessageType="Standard Message"){
 }
 g(message,title="AHK Message",MessageType="Standard Message"){
 	Growl(message,title,MessageType)
-}
-MaxFn(){
-	WinMaximize A
 }
 Close(){
 	WinClose A
@@ -2241,29 +2272,6 @@ IsDesktop(){
 		return true
 	return false
 }
-MaxFunction(ForceSingleMonitor=0,ForceToRight=0,ForceToLeft=0){
-	global
-	;t("Max " A_ScriptFullPath)
-	WinGet hwin,ID,A
-	IfWinActive ahk_group NoMax
-		return
-	if IsDesktop()
-		return false
-
-	AssertNotSciteFindWindow()
-	IfWinActive Find in Files ahk_class #32770
-		ListLines
-	IfWinActive ahk_group NoMax
-		return
-	;logHere("Maximize")
-	IfWinActive ahk_id %hwin%
-	{
-		WinMaximize ahk_id %hwin%
-		logHere("maximize " hwin)
-	}else{
-		logHere("skipped maximize " hwin)
-	}
-}
 GetProcessName(winspec){
 	winget x,processname,%winspec%
 	return %x%
@@ -2285,24 +2293,6 @@ AssertNotSciteFindWindow(){
 		{
 			AlertCallStack("Why is this happening, maximizing this stupid window?")
 		}
-}
-Max(msg=""){
-	if msg
-		t("Maximize " msg)
-	AssertNotSciteFindWindow()
-	IfWinActive ahk_exe autohotkey.exe
-		return
-	IfWinActive Find in Files ahk_class #32770
-		ListLines
-	if IsDualMonitorRDP=1
-	{
-		IfWinActive ahk_group MaxToWindow
-		{
-			MaxFunction(1)
-			return
-		}
-	}
-	WinMaximize A
 }
 ForticlientAutoDisconnecter(){
 	IfWinActive FortiClient ahk_class Chrome_WidgetWin_1 ahk_exe FortiClient.exe
@@ -2748,8 +2738,8 @@ LoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Paul.ini ahk_class SciTEWindow ahk_exe SCITE.EXE")
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
-	g_1_ProgramGroups("Emacs","GNU Emacs ahk_class Emacs ahk_exe emacs.exe")
-	g_1_ProgramGroups("Emacs","GNU Emacs ahk_class Emacs ahk_exe runemacs.exe")
+	g_1_ProgramGroups("Emacs","Emacs ahk_class Emacs ahk_exe emacs.exe")
+	g_1_ProgramGroups("Emacs","Emacs ahk_class Emacs ahk_exe runemacs.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
 	g_1_ProgramGroups("MinorWindows","results.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","Revision Graph - TortoiseGit ahk_class #32770 ahk_exe TortoiseGitProc.exe")
@@ -3128,6 +3118,7 @@ LoadGroups(){
 	g_2_ProgramGroups_End("vsHide","ahk_group CyberSentryComputerReadout")
 	g_2_ProgramGroups_End("vsHide","ahk_group VSCode")
 	g_2_ProgramGroups_End("WatchCricketAlpha","PS: Cricket Watch Alpha ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
+	g_2_ProgramGroups_End("MinToBack","ahk_group Browsers")
 	g_2_ProgramGroups_End("WatchCricketBeta","PS: Cricket Watch Beta ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("WatchCricketGamma","PS: Cricket Watch Gamma ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("WatchCricketProd","PS: Cricket Watch Prod ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
