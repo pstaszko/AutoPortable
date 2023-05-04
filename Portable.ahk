@@ -2,6 +2,10 @@
 #R::RunFlowLauncher()
 #H::OpenMainScript(True)
 #.::
+	t("Emacs.ActivateOrStart")
+	SubmitFSharpFunction("Emacs.ActivateOrStartEmacs")
+return
+#,::
 	LoadGroups()
 	IfWinActive ahk_group ActiveFile
 	{
