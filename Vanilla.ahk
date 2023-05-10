@@ -1042,14 +1042,6 @@ GetCommandLineParametersForPID(pid){
     }
 	return % ""
 }
-SuperPowerHide(){
-	gosub("Tops_K") ;;gosub HideWindows
-	gosub("Teck_Esc") ;;CloseWindowsExplorerWindows(0,2)
-	WinHide ahk_group F12HideWindow
-	WinHide ahk_group FortiClient
-	WinHide ahk_group SuperPowerHide
-	WinClose ahk_group SuperPowerClose
-}
 logParamsAndStack(){
 }
 logParams(){
@@ -2523,7 +2515,8 @@ GoSub(name){
 	If Islabel(name)
 		gosub %name%
 }
-PSKill(exe,async=0){
+PSKill(exe, async=0){
+	global
 	if async
 		Run %pauldir%\pskill.exe %exe%,,hide
 	else
@@ -2579,6 +2572,7 @@ LoadGroups(){
 	;***************************************************************************************************************
 	;Op: Distinct
 	;Op: Sort
+
 	;g_1_ProgramGroups("Browsers","'Nyxt - ahk_class RAIL_WINDOW ahk_exe mstsc.exe")
 	;g_1_ProgramGroups("RDPWarning","ahk_class #32770 ahk_exe mstsc.exe","could harm your local or remote computer")
 	;g_1_ProgramGroups("VSCode","VSCodium ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
@@ -2618,8 +2612,11 @@ LoadGroups(){
 	g_1_ProgramGroups("Browsers","ahk_exe Safari.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","Firefox ahk_Group Firefox",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","Google Chrome ahk_class Chrome_XPFrame",,,"ahk_class 32770")
+	g_1_ProgramGroups("Browsers","ahk_class Qt5152QWindowIcon ahk_exe qutebrowser.exe")
 	g_1_ProgramGroups("Browsers","Iron ahk_class Chrome_WidgetWin_0")
 	g_1_ProgramGroups("ChaosControl","Chaos Control ahk_class Qt5QWindowOwnDCIcon ahk_exe ChaosControl.exe")
+	g_1_ProgramGroups("MicrosoftSignInWindow","Sign in to your ahk_exe devenv.exe")
+	g_1_ProgramGroups("MicrosoftSignInWindow","Accounts ahk_class NUIDialog")
 	g_1_ProgramGroups("Chrome","ahk_exe chrome.exe")
 	g_1_ProgramGroups("Chrome_AWS","Route 53 Management Console ahk_exe chrome.exe")
 	g_1_ProgramGroups("Chrome_ConnectWise","ConnectWise ahk_exe chrome.exe")
@@ -2697,8 +2694,8 @@ LoadGroups(){
 	g_1_ProgramGroups("LuaMacrosEditor","functions.lua ahk_class Notepad++ ahk_exe Notepad++.exe")
 	g_1_ProgramGroups("LuaMacrosEditor","x.lua ahk_class Notepad++ ahk_exe Notepad++.exe")
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe cmd.exe")
-	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe VsDebugConsole.exe")
+	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("Maxthon","ahk_class Second Life ahk_exe SecondLifeViewer.exe")
 	g_1_ProgramGroups("Maxthon","ahk_exe Maxthon.exe")
 	g_1_ProgramGroups("MButton","ahk_exe DSPGAME.exe")
@@ -2715,6 +2712,7 @@ LoadGroups(){
 	g_1_ProgramGroups("Minecraft","Minecraft 1 ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Tekkit ahk_exe javaw.exe")
 	g_1_ProgramGroups("MinecraftServer","Minecraft server ahk_class SunAwtFrame ahk_exe javaw.exe")
+	g_1_ProgramGroups("Obsidian","ahk_exe obsidian.exe")
 	g_1_ProgramGroups("MinorWindows","- Appointment")
 	g_1_ProgramGroups("MinorWindows","- Meeting   ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("MinorWindows","- Meeting Occurrence   ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
@@ -2755,6 +2753,8 @@ LoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Paul.ini ahk_class SciTEWindow ahk_exe SCITE.EXE")
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
+	g_1_ProgramGroups("Emacs","Emacs ahk_class Emacs ahk_exe emacs.exe")
+	g_1_ProgramGroups("Emacs","Emacs ahk_class Emacs ahk_exe runemacs.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
 	g_1_ProgramGroups("MinorWindows","results.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","Revision Graph - TortoiseGit ahk_class #32770 ahk_exe TortoiseGitProc.exe")
@@ -2847,6 +2847,7 @@ LoadGroups(){
 	g_1_ProgramGroups("PowershellTerminal","Administrator: Windows PowerShell ahk_class CASCADIA_HOSTING_WINDOW_CLASS ahk_exe WindowsTerminal.exe")
 	g_1_ProgramGroups("PowershellTerminal","ahk_class VirtualConsoleClass ahk_exe ConEmu64.exe")
 	g_1_ProgramGroups("PowershellTerminal","Windows Terminal ahk_class CASCADIA_HOSTING_WINDOW_CLASS ahk_exe WindowsTerminal.exe")
+	g_1_ProgramGroups("SystemInformer","ahk_class MainWindowClassName ahk_exe SystemInformer.exe")
 	g_1_ProgramGroups("ProcessHacker","Process Hacker ahk_class MainWindowClassName ahk_exe ProcessHacker.exe")
 	g_1_ProgramGroups("Rambox","Rambox ahk_exe Rambox.exe")
 	g_1_ProgramGroups("RemoteDesktop","- Microsoft Virtual PC 2007")
@@ -2881,7 +2882,6 @@ LoadGroups(){
 	g_1_ProgramGroups("SuperPowerClose","ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("SuperPowerClose","ahk_exe RelexForms.exe")
 	g_1_ProgramGroups("SuperPowerHide","Oculus ahk_exe OculusClient.exe")
-	g_1_ProgramGroups("SystemInformer","ahk_class MainWindowClassName ahk_exe SystemInformer.exe")
 	g_1_ProgramGroups("TeamViewer","TeamViewer ahk_class #32770")
 	g_1_ProgramGroups("TightVNC","TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe")
 	g_1_ProgramGroups("TypeSQLLogins","Connect ahk_exe devenv.exe","","","|") ;;DB Profile
@@ -2890,8 +2890,9 @@ LoadGroups(){
 	g_1_ProgramGroups("TypeSQLLogins","SQL Server Login ahk_class #32770 ahk_exe MSACCESS.EXE")
 	g_1_ProgramGroups("UIauto","UIauto ahk_exe devenv.exe")
 	g_1_ProgramGroups("UnMonitoredWindows","ahk_exe growl.exe")
-	g_1_ProgramGroups("VBFile",".bas ( ahk_exe devenv.exe")
+	g_1_ProgramGroups("VideoGame","ahk_exe SpaceEngineers.exe")
 	g_1_ProgramGroups("VBFile",".cls ( ahk_exe devenv.exe")
+	g_1_ProgramGroups("VBFile",".bas ( ahk_exe devenv.exe")
 	g_1_ProgramGroups("VBFile",".vb ( ahk_exe devenv.exe")
 	g_1_ProgramGroups("VideoGame","ahk_exe SpaceEngineers.exe")
 	g_1_ProgramGroups("VisualStudio","ahk_exe DevEnv.exe")
@@ -2902,8 +2903,9 @@ LoadGroups(){
 	g_1_ProgramGroups("VisualStudio_Schemas","Schemas ahk_exe devenv.exe")
 	g_1_ProgramGroups("VisualStudio_WithAdministrator","(Administrator) ahk_group VisualStudio")
 	g_1_ProgramGroups("VisualStudioSQL","bsSQL ahk_Group VisualStudio")
-	g_1_ProgramGroups("VSCode","ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
 	g_1_ProgramGroups("VSCode","Visual Studio Code ahk_class Chrome_WidgetWin_1 ahk_exe Code.exe")
+	g_1_ProgramGroups("VSCode","ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
+	;g_1_ProgramGroups("VSCode","VSCodium ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
 	g_1_ProgramGroups("WinampMain","Winamp ahk_class Winamp v1.x")
 	g_1_ProgramGroups("WinampSecondary","Winamp Library ahk_class Winamp Gen")
 	g_1_ProgramGroups("WinampSecondary","Winamp Playlist Editor ahk_class Winamp PE")
@@ -2977,8 +2979,8 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","Microsoft Outlook ahk_exe outlook.exe","It's possible the file is already open, or you don't have permission to open it.")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","Microsoft Visual Studio ahk_exe devenv.exe","The debugger cannot unwind to this frame.")
 	g_2_AutomaticBehaviors("ActivateAndAltFIfExist","Performance Wizard -- Page 1 of 3 ahk_exe devenv.exe")
-	g_2_AutomaticBehaviors("ActivateAndAltNIfExist","Microsoft Visual Studio ahk_class #32770 ahk_group VisualStudio","Microsoft Visual Studio has detected that an operation is blocking user input")
 	g_2_AutomaticBehaviors("ActivateAndAltNIfExist","Microsoft Visual Studio ahk_class #32770 ahk_group VisualStudio","The source control provider associated with this solution could not be found")
+	g_2_AutomaticBehaviors("ActivateAndAltNIfExist","Microsoft Visual Studio ahk_class #32770 ahk_group VisualStudio","Microsoft Visual Studio has detected that an operation is blocking user input")
 	g_2_AutomaticBehaviors("ActivateAndAltYIfExist_Fast","Rename ahk_class #32770 ahk_exe Explorer.EXE","Yes")
 	g_2_AutomaticBehaviors("ActivateAndEnter","Microsoft Office Outlook ahk_class #32770","Send the response now.")
 	g_2_AutomaticBehaviors("ActivateAndEscapeIfExist","(PortableApps.com Launcher) ahk_class #32770","Portable did not close properly last time it was run")
@@ -3096,8 +3098,8 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("MaximizeRightIfNew","Adobe Reader ahk_class AcrobatSDIWindow")
 	g_2_AutomaticBehaviors("MaximizeRightIfNew","ahk_class AcrobatSDIWindow ahk_exe AcroRd32.exe")
 	g_2_AutomaticBehaviors("MaxToWindow","ahk_group Browsers")
-	g_2_AutomaticBehaviors("MButton","ahk_group Emacs")
 	g_2_AutomaticBehaviors("MButton","ahk_group Krita")
+	g_2_AutomaticBehaviors("MButton","ahk_group Emacs")
 	g_2_AutomaticBehaviors("MButton","ahk_group Minecraft")
 	g_2_AutomaticBehaviors("NeverStraddle","ahk_class #32770")
 	g_2_AutomaticBehaviors("NeverStraddle","Notepad ahk_class Notepad ahk_exe notepad.exe")
@@ -3108,6 +3110,7 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("NoMax","Run ahk_class #32770 ahk_exe explorer.exe")
 	g_2_AutomaticBehaviors("NoMax","Windows Security ahk_class #32770")
 	g_2_ProgramGroups_End("ActiveFile","ahk_group AHKtextEditor")
+	g_2_ProgramGroups_End("ActiveFile","ahk_group Emacs")
 	g_2_ProgramGroups_End("ActiveFile","ahk_group Everything")
 	g_2_ProgramGroups_End("ActiveFile","ahk_group Obsidian")
 	g_2_ProgramGroups_End("ActiveFile","ahk_group VisualStudio")
@@ -3120,6 +3123,10 @@ LoadGroups(){
 	g_2_ProgramGroups_End("DeployCricketProd","PS: Deploy Prod ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("DeployCricketTest","PS: Deploy Test ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("MinToBack","ahk_group Browsers")
+	g_2_ProgramGroups_End("OperableText","ahk_class Emacs ahk_exe emacs.exe")
+	g_2_ProgramGroups_End("OperableText","ahk_group AHKTextEditor")
+	g_2_ProgramGroups_End("OperableText","ahk_group DotnetIDE")
+	g_2_ProgramGroups_End("OperableText","ahk_group Emacs")
 	g_2_ProgramGroups_End("PowerShellAll","ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("TextEditor","ahk_group AHKTextEditor")
 	g_2_ProgramGroups_End("TextEditor","ahk_group DataGrip")
