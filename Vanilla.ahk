@@ -2577,8 +2577,8 @@ LoadGroups(){
 	;***************************************************************************************************************
 	;GROUPS********************************************************************************************************
 	;***************************************************************************************************************
-	;Oxp: Distinct
-	;Oxp: Sort
+	;Op: Distinct
+	;Op: Sort
 	g_1_ProgramGroups("AbortRecursiveDive","Attach to Process ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","File Modification Detected ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","been modified outside")
