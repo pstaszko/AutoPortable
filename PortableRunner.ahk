@@ -3,5 +3,5 @@
 LoadGlobalVars()
 LoadGroups()
 return
-#include C:\Dev\AutoPortable\Vanilla.ahk
-#include C:\Dev\AutoPortable\Portable.ahk
+#include Vanilla.ahk
+#include Portable.ahk
