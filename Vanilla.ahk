@@ -1,3 +1,53 @@
+CloseWindowsExplorerWindows(forceIE,level=1){
+	global
+	WinGet id,id,A
+	;t:=WinGetActiveTitle()
+	;exe:=CurrentEXE()
+
+	_CloseWindowsExplorerWindows(forceIE,level)
+
+	;logHere("id " id)
+	WinActivate ahk_id %id%
+	IfWinNotActive ahk_id %id%
+	{
+		loop 10
+		{
+			sleep 100
+			WinActivate ahk_id %id%
+			IfWinActive ahk_id %id%
+				return
+		}
+	}else{
+		;tt:=WinGetActiveTitle()
+		;exee:=CurrentEXE()
+		;t("hit it. was " t " is now " tt " - " exe " - now - " exee)
+	}
+}
+_CloseWindowsExplorerWindows(forceIE,level=1){
+	global
+	If NoClose
+		return
+	DetectHiddenWindows On
+	DetectHiddenWindows Off
+	WinHide Terminal server connection
+	CloseMinorWindows()
+	if level=2
+	{
+		HideWindows()
+		CloseMinorWindows()
+		GroupClose MinorWindowsLevel2,a
+		_CloseWindowsExplorerWindows(0,1)
+		;CloseWindowsExplorerWindows(0,2) ;recursive loop
+		HideMajorWindows()
+	}
+	if forceIE
+		WinClose ahk_class IEFrame
+	GroupClose MSIE, A
+
+	DetectHiddenWindows On
+	WinClose Terminal Services Manager
+	WinHide Windows Task Manager
+}
 RunSpellChecker(){
 	t("Checking spelling...")
 	RunWait "C:\DEV\PAUL\spell2.vbs"
