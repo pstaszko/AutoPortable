@@ -1,3 +1,50 @@
+HideWindows(){
+	DetectHiddenWindows off
+	WinActivate ahk_class Shell_TrayWnd ahk_exe explorer.exe
+	WindowsHidden:=0
+	x:=Array()
+	x.Insert("Chrome_Hiders")
+	;x.Insert("F1HideWindow")
+	x.Insert("NetBeans")
+	;x.Insert("F12HideWindow")
+	watch1:=new StopWatch()
+	z:=0
+	for i,v in x
+	{
+		tDebug("Hiding " v,0)
+		WinHide ahk_group %v%
+	}
+	; WinShow ahk_group NeverHide
+	p:=watch1.peek
+	;Growl(WindowsHidden " windows hidden`n" p " total MS`n" Round(p / WindowsHidden) " MS/window")
+	;Growl(p " total MS")
+}
+ShowWindows(){
+	DetectHiddenWindows off
+	t("Showing")
+	restored:=0
+	x:=Array()
+	x.Insert("Chrome_Hiders")
+	x.Insert("F1HideWindow")
+	x.Insert("F12HideWindow")
+	trueI=0
+	watch1:=new StopWatch()
+	for i,v in x
+		WinShow ahk_group %v%
+	z:=restored = 1 ? "" : "s"
+	totalMS:=watch1.peek
+	;t("Done")
+
+rate:=Round(totalMS / trueI)
+	msg=
+(
+Done restoring %restored% real window%z%
+%totalMS% total MS
+%rate% MS/window
+)
+	;Growl(msg)
+
+}
 HideWindows:
 	SetTitleMatchMode 2
 	GroupAdd vsHide, Microsoft Visual Studio ahk_exe devenv.exe
