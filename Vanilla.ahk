@@ -1,3 +1,24 @@
+HideWindows:
+	SetTitleMatchMode 2
+	GroupAdd vsHide, Microsoft Visual Studio ahk_exe devenv.exe
+	WinHide ahk_group vsHide
+	WinHide ahk_group SQLManagementStudio
+	WinHide ahk_group Slack
+	WinHide ahk_group AHKtextEditor
+return
+UnhideWindows:
+	GroupAdd vsHide, Microsoft Visual Studio ahk_exe devenv.exe
+	WinShow ahk_group vsHide
+	WinShow ahk_group SQLManagementStudio
+	WinShow ahk_group Slack
+	WinShow ahk_group AHKtextEditor
+	SetWinDelay 0
+	GroupAdd unhder,Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe
+	GroupAdd unhder,Microsoft Visual Studio ahk_exe devenv.exe ahk_class #32770
+	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Creating toolbox items
+	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Preparing Solution...
+	WinHide Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe,Opening the file...
+return
 CloseMinorWindows(){
 	GroupClose MinorWindows,a
 	SetTitleMatchMode("3")
