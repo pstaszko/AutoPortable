@@ -1,3 +1,29 @@
+GetModiferString(){
+	global
+	FileRead altkey,c:\temp\trash\altkey
+	FileRead shiftkey,c:\temp\trash\shiftkey
+	FileRead winkey,c:\temp\trash\winkey
+	FileRead controlkey,c:\temp\trash\controlkey
+	values=
+(
+%shiftkey%+
+%winkey%#
+%controlkey%^
+%altKey%!
+)
+	sort values, r
+	symbols=
+	loop parse, values,`n
+	{
+		t:=trim(A_LoopField)
+		if t
+			symbols:=SubStr(t,0) "`r`n" symbols
+	}
+	symbols:=RegExReplace(symbols,"[\r\n\s]")
+	x:=(-1 * StrLen(str)) + 1
+	z:=substr(symbols, x)
+	return % z
+}
 Max(msg="",depth=0){
 	if depth > 5
 		return
