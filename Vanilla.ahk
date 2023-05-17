@@ -1,3 +1,14 @@
+RunSpellChecker(){
+	t("Checking spelling...")
+	RunWait "C:\DEV\PAUL\spell2.vbs"
+	ret:=ErrorLevel
+	if ret=10
+		t("Updated")
+	else if ret=20
+		t("All clear")
+	else
+		throw "spell2 did not return valid exit code"
+}
 CheckModifiers(str){
 	m:=GetModiferString()
 	result:=SubStr(m,-1 * StrLen(str)+1) = str
