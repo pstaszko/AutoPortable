@@ -1,3 +1,9 @@
+CloseMinorWindows(){
+	GroupClose MinorWindows,a
+	SetTitleMatchMode("3")
+	WinClose Library ahk_class MozillaWindowClass ahk_exe firefox.exe
+	WinClose smtp4dev ahk_exe smtp4dev.exe
+}
 CloseWindowsExplorerWindows(forceIE,level=1){
 	global
 	WinGet id,id,A
