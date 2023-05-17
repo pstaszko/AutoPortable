@@ -1,3 +1,6 @@
+HideMajorWindows(){
+	WinHide Cisco WebEx Connect ahk_exe connect.exe
+}
 HideWindows(){
 	DetectHiddenWindows off
 	WinActivate ahk_class Shell_TrayWnd ahk_exe explorer.exe
