@@ -1,3 +1,60 @@
+CheckModifiers(str){
+	m:=GetModiferString()
+	result:=SubStr(m,-1 * StrLen(str)+1) = str
+	return result
+}
+RunLocate32(){
+	boop:=RunOrSwitchClass(PaulDir "\Util\locate32_x64\locate32.exe","Locate","#32770")
+	WinWaitActive Locate ahk_exe locate32.exe,,4
+	If ErrorLevel
+		return
+}
+ScratchFileAdd(){
+	global
+	StringReplace sfPath, ScratchFile, ",,All
+	FormatTime RightNow
+	FileAppend , %sfPath%
+	FileAppend `n****************************************************`nPasted: %RightNow%`n%clipboard%, %sfPath%
+	IfExist % sfPath
+		T("Appended:`n" . SubStr(clipboard, 1, 100))
+	else
+		msgbox Scratch file was not created!
+}
+SpyOrSpellCheck(){
+	if(CheckModifiers("!^+")){
+		RunSpellChecker()
+	}else{
+		fancy=1
+		if fancy{
+			WinActivate AHK Window Info ahk_class AutoHotkeyGUI ahk_exe WindowSpy.exe
+			IfWinNotActive AHK Window Info ahk_class AutoHotkeyGUI ahk_exe WindowSpy.exe
+				run %pauldir%\Window Spy\WindowSpy.exe
+		}else{
+			WinActivate Active Window Info ahk_class AutoHotkeyGUI ahk_exe AU3_Spy.exe
+			run %pauldir%\AU3_Spy.exe
+		}
+	}
+}
+WinControlEscape(){
+	If (A_PriorHotkey <> "Esc" or A_TimeSincePriorHotkey > 750)
+		CloseWindowsExplorerWindows(0,2)
+	else
+		CloseWindowsExplorerWindows(0)
+	KeyWait esc
+}
+RunConfigurator(){
+	WinActivate MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
+	IfWinNotActive MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
+		RunOrSwitch("C:\DEV\Releases\MyConfigurator\Current\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
+}
+RunClipMaster(){
+	KeyWait c, T.3
+	If errorlevel
+		RunOrSwitch("C:\Dev\Releases\ClipMaster\Current\ClipMaster.exe","ClipMaster")
+	else
+		ClipMaster.RunNew()
+	KeyWait c
+}
 Max(msg="",depth=0){
 	if depth > 5
 		return
