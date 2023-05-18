@@ -50,4 +50,4 @@ loop
 	}
 	sleep 100
 }
-#include C:\Dev\UIauto\FSSClass\AHK\mine.ahk
+#include mine.ahk
