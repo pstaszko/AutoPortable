@@ -50,4 +50,4 @@ loop
 	}
 	sleep 100
 }
-#include mine.ahk
+#include %A_ScriptDir%\mine.ahk
