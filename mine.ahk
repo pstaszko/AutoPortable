@@ -1,5 +1,5 @@
-#include Vanilla.ahk
-#include FSharp.ahk
+#include %A_ScriptDir%\Vanilla.ahk
+#include %A_ScriptDir%\FSharp.ahk
 MakeGroupName(txt){
 	txt:=StrReplace(txt, ".", "_")
 	txt:=StrReplace(txt, "-", "_")

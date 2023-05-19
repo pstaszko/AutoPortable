@@ -41,4 +41,4 @@ ret(file, text){
 	FileDelete %file%
 	FileAppend %text%, %file%
 }
-#include C:\Dev\AutoPortable\Vanilla.ahk
+#include %A_ScriptDir%\Vanilla.ahk

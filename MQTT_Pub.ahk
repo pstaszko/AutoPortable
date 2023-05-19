@@ -4,5 +4,5 @@
 #Persistent
 DetectHiddenWindows On
 SetTimer("MQTT_WindowPublish", 1)
-#include Vanilla.ahk
+#include %A_ScriptDir%\Vanilla.ahk
 !^#U::ExitApp

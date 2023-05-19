@@ -4,5 +4,5 @@ SetWorkingDir %A_ScriptDir%
 LoadGlobalVars()
 LoadGroups()
 return
-#include Vanilla.ahk
-#include Portable.ahk
+#include %A_ScriptDir%\Vanilla.ahk
+#include %A_ScriptDir%\Portable.ahk

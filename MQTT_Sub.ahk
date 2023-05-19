@@ -4,5 +4,5 @@
 #Persistent
 DetectHiddenWindows On
 MQTT_Sub()
-#include Vanilla.ahk
+#include %A_ScriptDir%\Vanilla.ahk
 !^#U::ExitApp
