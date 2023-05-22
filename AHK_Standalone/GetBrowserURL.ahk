@@ -1,9 +1,11 @@
 #InstallKeybdHook
+#SingleInstance force
 file=%1%
 clipboard:=""
 success:=false
 tooltip Starting
 loop 5 {
+	tooltip Starting2
 	IfWinNotActive ahk_exe firefox.exe
 		IfWinNotActive ahk_exe chrome.exe
 		{
@@ -14,7 +16,9 @@ loop 5 {
 	send !d{esc 3}!d^c
 	;SendRaw !d{esc 3}!d^x
 	;SendInput !d{esc 3}!d^x
+	tooltip Starting3
 	ClipWait 1
+	tooltip Starting4
 	if not errorlevel
 	{
 		Esc()
