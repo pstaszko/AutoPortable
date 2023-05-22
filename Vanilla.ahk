@@ -149,7 +149,7 @@ RunLocate32(){
 }
 ScratchFileAdd(){
 	global
-	StringReplace sfPath, ScratchFile, ",,All
+	StringReplace sfPath, ScratchFile, "`"",,All
 	FormatTime RightNow
 	FileAppend , %sfPath%
 	FileAppend `n****************************************************`nPasted: %RightNow%`n%clipboard%, %sfPath%
@@ -3241,7 +3241,7 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("AltYifActive","Microsoft Excel ahk_class #32770","may contain features that are not compatible with CSV (Comma delimited).  Do you want to keep the workbook in this format?")
 	g_2_AutomaticBehaviors("AltYifActive","Microsoft Excel ahk_class #32770","may contain features that are not compatible with Text (Tab delimited).  Do you want to keep the workbook in this format?")
 	g_2_AutomaticBehaviors("AltYifActive","Microsoft Office Access ahk_class #32770","Microsoft Office Access must close the")
-	g_2_AutomaticBehaviors("AltYifActive","Microsoft Office Outlook ahk_class #32770","An attachment to this message may be currently open in another program. If you continue`")
+	g_2_AutomaticBehaviors("AltYifActive","Microsoft Office Outlook ahk_class #32770","An attachment to this message may be currently open in another program. If you continue")
 	g_2_AutomaticBehaviors("AltYifActive","Microsoft SQL Server Management Studio","This database does not have one or more of the support objects required to use database diagramming.")
 	g_2_AutomaticBehaviors("AltYifActive","Microsoft Visual Studio ahk_group VisualStudio","This command compares the disk version of a file to the server version")
 	g_2_AutomaticBehaviors("AltYIfActive","PowerGUI Script Editor ahk_class #32770 ahk_exe ScriptEditor.exe","has been changed outside PowerGUI Script Editor")
