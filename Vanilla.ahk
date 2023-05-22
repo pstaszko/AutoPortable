@@ -50,6 +50,7 @@ Done restoring %restored% real window%z%
 }
 HideWindows:
 	SetTitleMatchMode 2
+msgbox hide
 	GroupAdd vsHide, Microsoft Visual Studio ahk_exe devenv.exe
 	WinHide ahk_group vsHide
 	WinHide ahk_group SQLManagementStudio
