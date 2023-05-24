@@ -3,6 +3,7 @@
 SetWorkingDir %A_ScriptDir%
 LoadGlobalVars()
 LoadGroups()
+aaaa=5566
 return
 #include %A_ScriptDir%\Vanilla.ahk
 #include %A_ScriptDir%\Portable.ahk

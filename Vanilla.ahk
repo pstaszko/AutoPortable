@@ -2752,6 +2752,7 @@ BlastTeamViewer(){
 }
 LoadGroups(){
 	global
+	aaa = 44
 	SetGlobalVariables()
 	if 1 ;Groups
 	{
