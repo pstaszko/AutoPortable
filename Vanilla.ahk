@@ -3324,6 +3324,7 @@ LoadGroups(){
 	g_2_ProgramGroups_End("WatchCricketTest","PS: Cricket Watch Test ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_3_OneOffProgramGroups("OneOff_StupidSecurityWarning","Open File - Security Warning ahk_class #32770","The publisher could not be verified.  Are you sure you want to run this software?")
 	g_4_KeyBehaviors("AltUpDown","ahk_group SciTE")
+	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe NewColossus_x64vk.exe")
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe bmgame.exe")
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe bmstartapp.exe")
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_group RemoteDesktop")
