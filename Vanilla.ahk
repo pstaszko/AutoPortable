@@ -3544,7 +3544,7 @@ GetTempFile(extension="txt",dir="",prefix="AHK_PS_Temp_"){
 	}
 }
 GetPublishedFSSConsole(){
-	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
+	return "C:\DEV\Releases\FSSConsole\Current\FSSConsole.exe"
 }
 RunFSSC(args="", startHidden=""){
 	h=
