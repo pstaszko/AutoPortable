@@ -2791,6 +2791,7 @@ LoadGroups(){
 	g_1_ProgramGroups("BeyondCompare","ahk_exe BCompare.exe")
 	g_1_ProgramGroups("BeyondCompare_VScompare","vctmp ahk_exe BCompare.exe")
 	g_1_ProgramGroups("Brave","ahk_class Chrome_WidgetWin_1 ahk_exe brave.exe")
+	g_1_ProgramGroups("Browsers","Log in to your PayPal account ahk_class Chrome_WidgetWin_1 ahk_exe Heroic.exe")
 	g_1_ProgramGroups("Browsers","ahk_class Chrome_WidgetWin_1 ahk_exe brave.exe")
 	g_1_ProgramGroups("Browsers","ahk_class OperaWindowClass ahk_exe Opera.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_class Qt5152QWindowIcon ahk_exe qutebrowser.exe")
