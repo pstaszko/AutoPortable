@@ -3152,7 +3152,7 @@ LoadGroups(){
 	g_1_ProgramGroups_End("WCRISignin","WCRI Sign In ahk_group Browsers")
 	g_1_ProgramGroups_End("WindowsTaskManager","ahk_group ProcessHacker")
 	msgbox % "load " A_ScriptName
-	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","ahk_class #32770 ahk_exe TortoiseGitMerge.exe");"The diffing engine aborted because of an error")
+	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","ahk_class #32770 ahk_exe TortoiseGitMerge.exe","The diffing engine aborted because of an error")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","ahk_class #32770 ahk_exe MSACCESS.EXE","The changes you requested to the table were not successful because they would create duplicate values in the index, primary key, or relationship")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Broadcast Request ahk_class #32770 ahk_exe tstbench.exe")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Magnifier ahk_class Screen Magnifier Window ahk_exe Magnify.exe")
