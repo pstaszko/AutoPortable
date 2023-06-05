@@ -2777,6 +2777,7 @@ LoadGroups(){
 	;g_2_AutomaticBehaviors("AltNplusHeadshotifActive","ahk_class #32770","Do you want to save changes to the layout of view")
 	;g_2_AutomaticBehaviors("CloseIfExist","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe")
 	;g_2_AutomaticBehaviors("CloseIfExist","RemoteApp ahk_class TscShellContainerClass ahk_exe mstsc.exe")
+	;msgbox % "load " A_ScriptName
 	g_1_ProgramGroups("AbortRecursiveDive","Attach to Process ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","File Modification Detected ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","been modified outside")
@@ -3151,14 +3152,13 @@ LoadGroups(){
 	g_1_ProgramGroups_End("WCRISignin","WCRI Log In ahk_group Browsers")
 	g_1_ProgramGroups_End("WCRISignin","WCRI Sign In ahk_group Browsers")
 	g_1_ProgramGroups_End("WindowsTaskManager","ahk_group ProcessHacker")
-	;msgbox % "load " A_ScriptName
-	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","ahk_class #32770 ahk_exe TortoiseGitMerge.exe","The diffing engine aborted because of an error")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","ahk_class #32770 ahk_exe MSACCESS.EXE","The changes you requested to the table were not successful because they would create duplicate values in the index, primary key, or relationship")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Broadcast Request ahk_class #32770 ahk_exe tstbench.exe")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Magnifier ahk_class Screen Magnifier Window ahk_exe Magnify.exe")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Microsoft Visual Studio ahk_exe devenv.exe","JavaScript Memory Analysis is not supported on versions of Windows prior to Windows 8.")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Server Notes.txt - Notepad ahk_class Notepad ahk_exe NOTEPAD.EXE")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Starting the emulator.  Please be patient. ahk_class SunAwtDialog ahk_exe javaw.exe")
+	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","ahk_class #32770 ahk_exe TortoiseGitMerge.exe","The diffing engine aborted because of an error")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","Edit and Continue ahk_group VisualStudio","Changes are not allowed in the following cases:")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","Edit and Continue ahk_group VisualStudio","Changes to 64-bit applications are not allowed.")
 	g_2_AutomaticBehaviors("ActivateAndAltF4IfExist_Fast","Microsoft Outlook ahk_exe outlook.exe","It's possible the file is already open, or you don't have permission to open it.")
