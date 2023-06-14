@@ -3366,6 +3366,8 @@ LoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltN","Unsaved Changes ahk_exe paintdotnet.exe")
 	g_4_KeyBehaviors("ControlWtoAltN","Windows PowerShell ISE - Warning ahk_class #32770 ahk_exe powershell_ise.exe")
 	g_4_KeyBehaviors("ControlWtoControlF4","Windows PowerShell ISE ahk_exe powershell_ise.exe")
+	g_4_KeyBehaviors("ControlWtoControlF4","ahk_exe webstorm64.exe")
+	g_4_KeyBehaviors("ControlWtoControlF4","ahk_class SunAwtFrame ahk_exe webstorm64.exe")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class CabinetWClass")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class ExploreWClass")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class WorkerW")
