@@ -935,8 +935,8 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 }
 WinGetActiveHwnd(){
 	DetectHiddenWindows on
-	winget variableID, id, A
-	return variableID
+	winget hwnd, id, A
+	return hwnd
 }
 Requires(var){
 	if !var
