@@ -2950,6 +2950,7 @@ LoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
+	g_1_ProgramGroups("MinorWindows","AHKparserResults.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","results.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","Revision Graph - TortoiseGit ahk_class #32770 ahk_exe TortoiseGitProc.exe")
 	g_1_ProgramGroups("MinorWindows","scratch.txt ahk_class SciTEWindow ahk_exe SCITE.EXE")
