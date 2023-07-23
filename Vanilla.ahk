@@ -1607,6 +1607,9 @@ Click(x, y){
 	coordmode mouse, relative
 	click %x%, %y%
 }
+RightClickHere(){
+	click right
+}
 RightClick(x, y){
 	coordmode mouse, relative
 	click right, %x%, %y%
@@ -2755,7 +2758,9 @@ BlastTeamViewer(){
 LoadGroups(){
 	global
 	aaa = 44
+	msgbox bonkx
 	SetGlobalVariables()
+	msgbox bonk
 	if 1 ;Groups
 	{
 	;***************************************************************************************************************
@@ -2807,10 +2812,6 @@ LoadGroups(){
 	g_1_ProgramGroups("Browsers","Iron ahk_class Chrome_WidgetWin_0")
 	g_1_ProgramGroups("Browsers","Log in to your PayPal account ahk_class Chrome_WidgetWin_1 ahk_exe Heroic.exe")
 	g_1_ProgramGroups("ChaosControl","Chaos Control ahk_class Qt5QWindowOwnDCIcon ahk_exe ChaosControl.exe")
-	g_1_ProgramGroups("Minecraft","Create ahk_class GLFW30 ahk_exe javaw.exe")
-	g_1_ProgramGroups("Minecraft","Create: Above and Beyond ahk_class GLFW30 ahk_exe javaw.exe")
-	g_1_ProgramGroups("Minecraft","Minecraft ahk_exe javaw.exe")
-	g_1_ProgramGroups("Chrome","ahk_exe chrome.exe")
 	g_1_ProgramGroups("Chrome","ahk_exe chrome.exe")
 	g_1_ProgramGroups("Chrome_AWS","Route 53 Management Console ahk_exe chrome.exe")
 	g_1_ProgramGroups("Chrome_ConnectWise","ConnectWise ahk_exe chrome.exe")
@@ -2892,6 +2893,7 @@ LoadGroups(){
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe VsDebugConsole.exe")
 	g_1_ProgramGroups("Maxthon","ahk_class Second Life ahk_exe SecondLifeViewer.exe")
 	g_1_ProgramGroups("Maxthon","ahk_exe Maxthon.exe")
+	g_1_ProgramGroups("NPP","ahk_exe notepad++.exe")
 	g_1_ProgramGroups("MButton","ahk_exe DSPGAME.exe")
 	g_1_ProgramGroups("MButton","ahk_exe farcry5.exe")
 	g_1_ProgramGroups("MButton","ahk_exe NMS.exe") ;no man's sky
@@ -2901,9 +2903,12 @@ LoadGroups(){
 	g_1_ProgramGroups("MeterFirmwareDoc","Meter FW Func Spec ahk_group browsers") ;;work
 	g_1_ProgramGroups("MicrosoftSignInWindow","Accounts ahk_class NUIDialog")
 	g_1_ProgramGroups("MicrosoftSignInWindow","Sign in to your ahk_exe devenv.exe")
+	g_1_ProgramGroups("Minecraft","Create ahk_class GLFW30 ahk_exe javaw.exe")
+	g_1_ProgramGroups("Minecraft","Create: Above and Beyond ahk_class GLFW30 ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","FTB Ultimate ahk_class SunAwtFrame ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Minecraft 1 ahk_class GLFW30 ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Minecraft 1 ahk_exe javaw.exe")
+	g_1_ProgramGroups("Minecraft","Minecraft ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Tekkit ahk_exe javaw.exe")
 	g_1_ProgramGroups("MinecraftServer","Minecraft server ahk_class SunAwtFrame ahk_exe javaw.exe")
 	g_1_ProgramGroups("MinorWindows","- Appointment")
@@ -2947,7 +2952,7 @@ LoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
-	g_1_ProgramGroups("MinorWindows","results.txt - SciTE ahk_class SciTEWindow")
+	g_1_ProgramGroups("MinorWindows","AHKparserResults.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","Revision Graph - TortoiseGit ahk_class #32770 ahk_exe TortoiseGitProc.exe")
 	g_1_ProgramGroups("MinorWindows","scratch.txt ahk_class SciTEWindow ahk_exe SCITE.EXE")
 	g_1_ProgramGroups("MinorWindows","Sumatra")
@@ -3289,8 +3294,8 @@ LoadGroups(){
 	g_2_AutomaticBehaviors("MaximizeRightIfNew","Adobe Reader ahk_class AcrobatSDIWindow")
 	g_2_AutomaticBehaviors("MaximizeRightIfNew","ahk_class AcrobatSDIWindow ahk_exe AcroRd32.exe")
 	g_2_AutomaticBehaviors("MaxToWindow","ahk_group Browsers")
-	g_2_AutomaticBehaviors("MButton","ahk_group Emacs")
 	g_2_AutomaticBehaviors("MButton","ahk_exe BattleBit.exe")
+	g_2_AutomaticBehaviors("MButton","ahk_group Emacs")
 	g_2_AutomaticBehaviors("MButton","ahk_group Krita")
 	g_2_AutomaticBehaviors("MButton","ahk_group Minecraft")
 	g_2_AutomaticBehaviors("NeverStraddle","ahk_class #32770")
@@ -3315,11 +3320,6 @@ LoadGroups(){
 	g_2_ProgramGroups_End("DeployCricketProd","PS: Deploy Prod ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("DeployCricketTest","PS: Deploy Test ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("MinToBack","ahk_group Browsers")
-	g_2_ProgramGroups_End("OperableText","ahk_group VSCode")
-	g_2_ProgramGroups_End("OperableText","ahk_class Emacs ahk_exe emacs.exe")
-	g_2_ProgramGroups_End("OperableText","ahk_group AHKTextEditor")
-	g_2_ProgramGroups_End("OperableText","ahk_group DotnetIDE")
-	g_2_ProgramGroups_End("OperableText","ahk_group Emacs")
 	g_2_ProgramGroups_End("PowerShellAll","ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("TextEditor","ahk_group AHKTextEditor")
 	g_2_ProgramGroups_End("TextEditor","ahk_group DataGrip")
@@ -3342,8 +3342,6 @@ LoadGroups(){
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_group RemoteDesktop")
 	g_4_KeyBehaviors("BasicMiddleClick","BATMAN: ARKHAM")
 	g_4_KeyBehaviors("BasicMiddleClick","Dead Island")
-	g_4_KeyBehaviors("ControlQtoAltF4","ahk_group VSCode")
-	g_4_KeyBehaviors("ControlQtoAltF4","Picker ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class ApplicationFrameWindow ahk_exe ApplicationFrameHost.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class OEcl ahk_exe MSACCESS.EXE") ;field Selector
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class rctrl_renwnd32") ;Outlook Email
@@ -3351,6 +3349,8 @@ LoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_group JsonView")
 	g_4_KeyBehaviors("ControlWtoAltF4","File Download ahk_class #32770")
 	g_4_KeyBehaviors("ControlWtoAltF4","Find in All Tabs ahk_exe firefox.exe")
+	g_4_KeyBehaviors("AltControlF4Kill","ahk_group NPP")
+	msgbox fug
 	g_4_KeyBehaviors("ControlWtoAltF4","Picker ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","Query Designer")
 	g_4_KeyBehaviors("ControlWtoAltN","ahk_class #32770 ahk_exe MSACCESS.EXE","Do you want to save changes to the design of")
@@ -3371,9 +3371,9 @@ LoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltN","SciTE ahk_class #32770")
 	g_4_KeyBehaviors("ControlWtoAltN","Unsaved Changes ahk_exe paintdotnet.exe")
 	g_4_KeyBehaviors("ControlWtoAltN","Windows PowerShell ISE - Warning ahk_class #32770 ahk_exe powershell_ise.exe")
-	g_4_KeyBehaviors("ControlWtoControlF4","Windows PowerShell ISE ahk_exe powershell_ise.exe")
-	g_4_KeyBehaviors("ControlWtoControlF4","ahk_exe webstorm64.exe")
 	g_4_KeyBehaviors("ControlWtoControlF4","ahk_class SunAwtFrame ahk_exe webstorm64.exe")
+	g_4_KeyBehaviors("ControlWtoControlF4","ahk_exe webstorm64.exe")
+	g_4_KeyBehaviors("ControlWtoControlF4","Windows PowerShell ISE ahk_exe powershell_ise.exe")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class CabinetWClass")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class ExploreWClass")
 	g_4_KeyBehaviors("DefaultFileOpener","ahk_class WorkerW")
@@ -3485,6 +3485,13 @@ LoadGroups(){
 	g_4_KeyBehaviors("FixSpacebar","Outlook ahk_class #32770 ahk_exe OUTLOOK.EXE")
 	g_4_KeyBehaviors("NoControlShiftI","ahk_group Obsidian")
 	g_4_KeyBehaviors("NoControlShiftI","ahk_group VisualStudio")
+	g_4_KeyBehaviors("OperableText","ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
+	g_4_KeyBehaviors("OperableText","ahk_class Emacs ahk_exe emacs.exe")
+	g_4_KeyBehaviors("OperableText","ahk_exe VSCodium.exe")
+	g_4_KeyBehaviors("OperableText","ahk_group AHKTextEditor")
+	g_4_KeyBehaviors("OperableText","ahk_group DotnetIDE")
+	g_4_KeyBehaviors("OperableText","ahk_group Emacs")
+	g_4_KeyBehaviors("OperableText","ahk_group VSCode")
 	g_4_KeyBehaviors("Shifted","ahk_class VirtualConsoleClass ahk_exe ConEmu64.exe")
 	g_4_KeyBehaviors("Shifted","ahk_group TextEditor")
 	g_4_KeyBehaviors("SQLEditor","ahk_group SQLManagementStudio")
