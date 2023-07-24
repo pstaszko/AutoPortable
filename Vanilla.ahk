@@ -3486,7 +3486,7 @@ LoadGroups(){
 	g_4_KeyBehaviors("FixSpacebar","Outlook ahk_class #32770 ahk_exe OUTLOOK.EXE")
 	g_4_KeyBehaviors("NoControlShiftI","ahk_group Obsidian")
 	g_4_KeyBehaviors("NoControlShiftI","ahk_group VisualStudio")
-	msgbox % A_ScriptFullPath
+	;msgbox % A_ScriptFullPath
 	g_4_KeyBehaviors("OperableText","ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
 	g_4_KeyBehaviors("OperableText","ahk_class Emacs ahk_exe emacs.exe")
 	g_4_KeyBehaviors("OperableText","ahk_exe VSCodium.exe")
