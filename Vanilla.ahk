@@ -3489,6 +3489,7 @@ LoadGroups(){
 	g_4_KeyBehaviors("OperableText","ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
 	g_4_KeyBehaviors("OperableText","ahk_class Emacs ahk_exe emacs.exe")
 	g_4_KeyBehaviors("OperableText","ahk_exe VSCodium.exe")
+	msgbox hi
 	g_4_KeyBehaviors("OperableText","ahk_group AHKTextEditor")
 	g_4_KeyBehaviors("OperableText","ahk_group DotnetIDE")
 	g_4_KeyBehaviors("OperableText","ahk_group Emacs")
