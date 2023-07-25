@@ -2,7 +2,7 @@
 #Requires AutoHotkey v1.1.34.03
 SetWorkingDir %A_ScriptDir%
 LoadGlobalVars()
-LoadGroups()
+NewLoadGroups()
 aaaa=5566
 return
 #include %A_ScriptDir%\Vanilla.ahk

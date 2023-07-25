@@ -2755,7 +2755,7 @@ BlastTeamViewer(){
 	pskill("tv_w32")
 	gosub("Tops_T_Tops_V") ; run teamviewer.exe
 }
-xLoadGroups(){
+NewLoadGroups(){
 	global
 	
 	msgbox % A_ScriptFullPath
