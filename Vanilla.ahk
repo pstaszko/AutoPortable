@@ -2758,6 +2758,7 @@ BlastTeamViewer(){
 NewLoadGroups(){
 	global
 	
+	msgbox hi
 	msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
