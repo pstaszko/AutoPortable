@@ -2755,7 +2755,7 @@ BlastTeamViewer(){
 	pskill("tv_w32")
 	gosub("Tops_T_Tops_V") ; run teamviewer.exe
 }
-LoadGroups(){
+xLoadGroups(){
 	global
 	
 	msgbox % A_ScriptFullPath
@@ -2770,22 +2770,6 @@ LoadGroups(){
 	;***************************************************************************************************************
 	;Op: Distinct
 	;Op: Sort
-
-	;g_1_ProgramGroups("Browsers","'Nyxt - ahk_class RAIL_WINDOW ahk_exe mstsc.exe")
-	;g_1_ProgramGroups("RDPWarning","ahk_class #32770 ahk_exe mstsc.exe","could harm your local or remote computer")
-	;g_1_ProgramGroups("VSCode","VSCodium ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
-	;g_2_AutomaticBehaviors("ActivateAndAltF4IfExist","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe")
-	;g_2_AutomaticBehaviors("ActivateAndEscapeIfExist","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe","This computer can't connect to the remote computer")
-	;g_2_AutomaticBehaviors("ActivateAndEscapeIfExist","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe","Your Remote Desktop Services session has ended")
-	;g_2_AutomaticBehaviors("ActivateIfExist_Fast","RemoteApp ahk_class TscShellContainerClass ahk_exe mstsc.exe")
-	;g_2_AutomaticBehaviors("ActivateIfExist_Slow","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe","Another user connected to the remote computer, so your connection was lost")
-	;g_2_AutomaticBehaviors("ActivateIfExist_Slow","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe","could harm your local or remote")
-	;g_2_AutomaticBehaviors("ActivateIfExist_Slow","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe","Your Remote Desktop session has ended")
-	;g_2_AutomaticBehaviors("ActivateIfExist_Slow","Remote Desktop Connection ahk_class #32770","connect to the remote computer for one of these reasons")
-	;g_2_AutomaticBehaviors("ActivateIfExist_Slow","Windows Security ahk_class #32770 ahk_exe mstsc.exe")
-	;g_2_AutomaticBehaviors("AltNplusHeadshotifActive","ahk_class #32770","Do you want to save changes to the layout of view")
-	;g_2_AutomaticBehaviors("CloseIfExist","Remote Desktop Connection ahk_class #32770 ahk_exe mstsc.exe")
-	;g_2_AutomaticBehaviors("CloseIfExist","RemoteApp ahk_class TscShellContainerClass ahk_exe mstsc.exe")
 	;msgbox % "load " A_ScriptName
 	g_1_ProgramGroups("AbortRecursiveDive","Attach to Process ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","File Modification Detected ahk_class #32770 ahk_exe devenv.exe")
