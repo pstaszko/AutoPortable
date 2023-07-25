@@ -2757,10 +2757,9 @@ BlastTeamViewer(){
 }
 NewLoadGroups(){
 	global
-	
-	msgbox % A_ScriptFullPath
-	msgbox % A_ScriptFullPath
-	msgbox % A_ScriptFullPath
+	;msgbox % A_ScriptFullPath
+	;msgbox % A_ScriptFullPath
+	;msgbox % A_ScriptFullPath
 	aaa = 44
 	SetGlobalVariables()
 	if 1 ;Groups
