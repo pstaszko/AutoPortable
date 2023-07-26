@@ -1017,7 +1017,7 @@ RunBackgroundPowershell(cmd,timeout=5000,tooltip=""){
 		}
 		ElapsedTime := A_TickCount - StartTime
 		if(ElapsedTime > timeout){
-			throw Failed to get response from background powershell
+			throw "Failed to get response from background powershell command: %cmd%"
 			return failed
 		}
 		sleep 50
