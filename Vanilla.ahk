@@ -3339,6 +3339,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_group JsonView")
 	g_4_KeyBehaviors("ControlWtoAltF4","File Download ahk_class #32770")
 	g_4_KeyBehaviors("ControlWtoAltF4","Find in All Tabs ahk_exe firefox.exe")
+	;g_4_KeyBehaviors("AltControlF4Kill","Keep non existing file ahk_exe Notepad++.exe")
 	g_4_KeyBehaviors("AltControlF4Kill","ahk_group NPP")
 
 	g_4_KeyBehaviors("ControlWtoAltF4","Picker ahk_exe MatrixOS.exe")
