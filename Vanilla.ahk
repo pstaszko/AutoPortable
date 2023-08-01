@@ -2771,6 +2771,8 @@ NewLoadGroups(){
 	;***************************************************************************************************************
 	;Op: Distinct
 	;Op: Sort
+
+	;g_4_KeyBehaviors("AltControlF4Kill","Keep non existing file ahk_exe Notepad++.exe")
 	;msgbox % "load " A_ScriptName
 	g_1_ProgramGroups("AbortRecursiveDive","Attach to Process ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","File Modification Detected ahk_class #32770 ahk_exe devenv.exe")
@@ -2880,7 +2882,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe VsDebugConsole.exe")
 	g_1_ProgramGroups("Maxthon","ahk_class Second Life ahk_exe SecondLifeViewer.exe")
 	g_1_ProgramGroups("Maxthon","ahk_exe Maxthon.exe")
-	g_1_ProgramGroups("NPP","ahk_exe notepad++.exe")
 	g_1_ProgramGroups("MButton","ahk_exe DSPGAME.exe")
 	g_1_ProgramGroups("MButton","ahk_exe farcry5.exe")
 	g_1_ProgramGroups("MButton","ahk_exe NMS.exe") ;no man's sky
@@ -2919,6 +2920,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MinorWindows","ahk_exe pushbullet_client.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_exe SnippingTool.exe")
 	g_1_ProgramGroups("MinorWindows","AHK_PS_Temp_ahk_class IEFrame ahk_exe iexplore.exe")
+	g_1_ProgramGroups("MinorWindows","AHKparserResults.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","AutoHotkey_ ahk_class #32770 ahk_exe AutoHotkey.exe")
 	g_1_ProgramGroups("MinorWindows","C:\Users\Paul\scoop\shims\lazygit.exe ahk_class ConsoleWindowClass ahk_exe lazygit.exe")
 	g_1_ProgramGroups("MinorWindows","Calculator ahk_class CalcFrame")
@@ -2939,7 +2941,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
-	g_1_ProgramGroups("MinorWindows","AHKparserResults.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","results.txt - SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("MinorWindows","Revision Graph - TortoiseGit ahk_class #32770 ahk_exe TortoiseGitProc.exe")
 	g_1_ProgramGroups("MinorWindows","scratch.txt ahk_class SciTEWindow ahk_exe SCITE.EXE")
@@ -2997,6 +2998,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("NoResearch","ahk_exe onenote.exe")
 	g_1_ProgramGroups("NoResearch","ahk_exe outlook.exe")
 	g_1_ProgramGroups("NoResearch","ahk_exe winword.exe")
+	g_1_ProgramGroups("NPP","ahk_exe notepad++.exe")
 	g_1_ProgramGroups("Obsidian","ahk_exe obsidian.exe")
 	g_1_ProgramGroups("Office","ahk_exe EXCEL.EXE")
 	g_1_ProgramGroups("Office","ahk_exe MSACCESS.EXE")
@@ -3082,11 +3084,11 @@ NewLoadGroups(){
 	g_1_ProgramGroups("VisualStudio","ahk_exe devenv.exe")
 	g_1_ProgramGroups("VisualStudio","ahk_exe vbexpress.exe")
 	g_1_ProgramGroups("VisualStudio","ahk_exe VWDExpress.exe")
-	g_1_ProgramGroups("VPNFailure","VPN Connection Failure ahk_class #32770 ahk_exe FortiTray.exe", "VPN connection failed.")
 	g_1_ProgramGroups("VisualStudio","ahk_exe WDExpress.exe")
 	g_1_ProgramGroups("VisualStudio_Schemas","Schemas ahk_exe devenv.exe")
 	g_1_ProgramGroups("VisualStudio_WithAdministrator","(Administrator) ahk_group VisualStudio")
 	g_1_ProgramGroups("VisualStudioSQL","bsSQL ahk_Group VisualStudio")
+	g_1_ProgramGroups("VPNFailure","VPN Connection Failure ahk_class #32770 ahk_exe FortiTray.exe", "VPN connection failed.")
 	g_1_ProgramGroups("VSCode","ahk_class Chrome_WidgetWin_1 ahk_exe VSCodium.exe")
 	g_1_ProgramGroups("VSCode","Visual Studio Code ahk_class Chrome_WidgetWin_1 ahk_exe Code.exe")
 	g_1_ProgramGroups("WinampMain","Winamp ahk_class Winamp v1.x")
@@ -3186,8 +3188,8 @@ NewLoadGroups(){
 	g_2_AutomaticBehaviors("ActivateAndEscapeIfExist_Fast","TstBench Window ahk_class #32770","Creating the Java VM required for the communications failed, please make sure that a JAVA JRE is installed and selected correctly or that the KmCache loaded")
 	g_2_AutomaticBehaviors("ActivateAndEscapeIfExist_Fast","TstBench Window ahk_class #32770","Error loading java library with code 126")
 	g_2_AutomaticBehaviors("ActivateIfExist","ahk_group ActivateAndEscapeIfExist")
-	g_2_AutomaticBehaviors("ActivateIfExist","AHKCOMMAND:")
 	g_2_AutomaticBehaviors("ActivateIfExist","ahk_group VPNFailure")
+	g_2_AutomaticBehaviors("ActivateIfExist","AHKCOMMAND:")
 	g_2_AutomaticBehaviors("ActivateIfExist_Fast","Inconsistent Line Endings ahk_class #32770 ahk_exe Ssms.exe")
 	g_2_AutomaticBehaviors("ActivateIfExist_Slow","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","The active solution or project is controlled by a different source control plug-in than the one you have selected")
 	g_2_AutomaticBehaviors("ActivateIfExist_Slow","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","Would you like to build it?")
@@ -3324,6 +3326,7 @@ NewLoadGroups(){
 	g_2_ProgramGroups_End("WatchCricketProd","PS: Cricket Watch Prod ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_2_ProgramGroups_End("WatchCricketTest","PS: Cricket Watch Test ahk_class ConsoleWindowClass ahk_group PowerShellWindow")
 	g_3_OneOffProgramGroups("OneOff_StupidSecurityWarning","Open File - Security Warning ahk_class #32770","The publisher could not be verified.  Are you sure you want to run this software?")
+	g_4_KeyBehaviors("AltControlF4Kill","ahk_group NPP")
 	g_4_KeyBehaviors("AltUpDown","ahk_group SciTE")
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe bmgame.exe")
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe bmstartapp.exe")
@@ -3340,9 +3343,6 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_group JsonView")
 	g_4_KeyBehaviors("ControlWtoAltF4","File Download ahk_class #32770")
 	g_4_KeyBehaviors("ControlWtoAltF4","Find in All Tabs ahk_exe firefox.exe")
-	;g_4_KeyBehaviors("AltControlF4Kill","Keep non existing file ahk_exe Notepad++.exe")
-	g_4_KeyBehaviors("AltControlF4Kill","ahk_group NPP")
-
 	g_4_KeyBehaviors("ControlWtoAltF4","Picker ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","Query Designer")
 	g_4_KeyBehaviors("ControlWtoAltN","ahk_class #32770 ahk_exe MSACCESS.EXE","Do you want to save changes to the design of")
