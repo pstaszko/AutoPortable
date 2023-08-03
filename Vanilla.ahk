@@ -465,7 +465,7 @@ RunFailover(cmd,NoMax=0,AllowRetry=1){
 RunOrSwitch(cmdLine, ROStitle,NoMax=0,Class="",Group="",ForceSingleMonitor=0,ForceToRight=0,ForceToLeft=0,TipTitle=""){
 	global ROSCount
 	global RunOrSwitch_Recursion_Level
-	;msgbox hi
+	;msgbox hi1
 	WinClose Search ahk_class Windows.UI.Core.CoreWindow ahk_exe SearchHost.exe
 	logParams()
 	logHere("Recursion level: " RunOrSwitch_Recursion_Level)
@@ -2758,7 +2758,7 @@ BlastTeamViewer(){
 NewLoadGroups(){
 	global
 
-	msgbox hi
+	;msgbox hi2
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
