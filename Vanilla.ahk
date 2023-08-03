@@ -3125,6 +3125,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups_End("DotnetIDE","ahk_group Rider")
 	g_1_ProgramGroups_End("DotnetIDE","ahk_group VisualStudio")
 	g_1_ProgramGroups_End("FirefoxDevTools", "Developer Tools ahk_group Firefox")
+	g_1_ProgramGroups_End("GmailLoginScreen","Accounts ahk_class NUIDialog ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups_End("GmailLoginScreen","ahk_group Rambox")
 	g_1_ProgramGroups_End("GmailLoginScreen","Gmail ahk_group Browsers")
 	g_1_ProgramGroups_End("GmailLoginScreen","Google Calendar - Sign in ahk_group Browsers")
