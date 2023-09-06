@@ -1407,7 +1407,7 @@ GetMultipleCreds(Title,byref Message){
 			return "Timed out getting creds for " title " loc 2"
 	}
 }
-GetCricketPassword(reloadQuietly=0){
+GetCricketPassword(reloadQuietly=1){
 	global
 	GetCred("WCRICred",u,cricketInMemoryPassword)
 	if cricketInMemoryPassword
