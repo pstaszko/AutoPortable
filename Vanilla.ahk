@@ -3484,6 +3484,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("OperableText","ahk_class Emacs ahk_exe emacs.exe")
 	g_4_KeyBehaviors("OperableText","ahk_exe VSCodium.exe")
 	g_4_KeyBehaviors("OperableText","ahk_group AHKTextEditor")
+	g_4_KeyBehaviors("OperableText","ahk_group DataGrip")
 	g_4_KeyBehaviors("OperableText","ahk_group DotnetIDE")
 	g_4_KeyBehaviors("OperableText","ahk_group Emacs")
 	g_4_KeyBehaviors("OperableText","ahk_group VSCode")
