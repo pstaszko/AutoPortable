@@ -1925,7 +1925,7 @@ GetMousePosition(mode){
 Growl(message,title="",MessageType="Standard Message"){
 	if RegExMatch(message,"^[0| ]+$")
 		return
-	notifScript=C:\DEV\AHK-Notification\Notification.ahk
+	notifScript=C:\Dev\Releases\AHK-Notification\Stable\Notification.ahk
 	IfExist %notifScript%
 	{
 		if (message or title )
