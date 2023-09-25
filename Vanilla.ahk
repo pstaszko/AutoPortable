@@ -1188,7 +1188,6 @@ SubmitFSharpFunction(functionName,params*){
 	for key,val in params
 		v:=v "`r`n"val
 	tmpx:="m:\fss\"
-	;t("hi")
 	f:=WriteToTempFile(v,"txt",tmpx)
 	resultFile:=strReplace(f,".txt",".result")
 	resultFile:=strReplace(resultFile,"\fss\","\fss\working\")
