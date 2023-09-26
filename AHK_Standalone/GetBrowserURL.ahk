@@ -5,13 +5,14 @@ clipboard:=""
 success:=false
 tooltip Starting
 loop 5 {
-	tooltip Starting2
+	tooltip Starting GetBrowserURL %a_index%
 	IfWinNotActive ahk_exe firefox.exe
 		IfWinNotActive ahk_exe chrome.exe
-		{
-			ret(file, "")
-			return
-		}
+			IfWinNotActive ahk_exe brave.exe
+			{
+				ret(file, "")
+				return
+			}
 	;sendplay !d{esc 3}!d^x
 	send !d{esc 3}!d^c
 	;SendRaw !d{esc 3}!d^x
