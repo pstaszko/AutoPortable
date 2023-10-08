@@ -1176,7 +1176,7 @@ HardRestartMatrixOS(){
 	if(ComputerHasMatrixBoards()){
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
 		PSKill("matrixos")
-		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1
+		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName @("lpmini")
 		msgbox Have Matrix Boards been power cycled?
 		RunMatrixOS(false, false)
 	}
