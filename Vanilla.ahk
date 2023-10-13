@@ -1961,7 +1961,7 @@ MinmizeAllButActiveWindow(){
 	WinWaitNotActive ahk_id %id%
 	WinActivate ahk_id %id%
 }
-SetTimerx(timer, interval){
+SetTimer(timer, interval){
 	global TimerLog
 	ThisTimer=%timer%
 
