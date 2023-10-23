@@ -1198,8 +1198,10 @@ SubmitFSharpFunction(functionName,params*){
 	f:=WriteToTempFile(v,"txt",tmpx)
 	resultFile:=strReplace(f,".txt",".result")
 	resultFile:=strReplace(resultFile,"\fss\","\fss\working\")
+	growl("a")
 	if(!IsProcessRunning("FSSConsole.exe"))
 	{
+		growl("b")
 		RunFSSC(tmpx " " f,true)
 		WinWait ahk_exe FSSConsole.exe,,5
 		if ErrorLevel
