@@ -1,3 +1,10 @@
+RunFSSC(args="", startHidden=""){
+	h=
+	if startHidden
+		h:="hide"
+	p:=GetPublishedFSSConsole()
+	run %p% %args%,,%h%
+}
 HideMajorWindows(){
 	WinHide Cisco WebEx Connect ahk_exe connect.exe
 }
@@ -3561,14 +3568,9 @@ GetTempFile(extension="txt",dir="",prefix="AHK_PS_Temp_"){
 	}
 }
 GetPublishedFSSConsole(){
-	return "C:\DEV\Releases\FSSConsole\Current\FSSConsole.exe"
-}
-RunFSSC(args="", startHidden=""){
-	h=
-	if startHidden
-		h:="hide"
-	p:=GetPublishedFSSConsole()
-	run %p% %args%,,%h%
+	;msgbox hi
+	return "C:\DEV\Releases\FSSConsoleCurrent\Current\FSSConsole.exe"
+	;return "C:\DEV\Releases\FSSConsole\Current\FSSConsole.exe"
 }
 Scite_ToggleResultsPane(){
 	SendInput {F8}
