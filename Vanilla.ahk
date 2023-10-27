@@ -260,7 +260,7 @@ LoadGlobalVars(){
 	GLOBAL globalVariables:=Object()
 }
 GetBits(){
-	envget progVar,ProgramFiles(x86)
+	EnvGet progVar,ProgramFiles(x86)
 	if progVar
 		return 64
 	else
