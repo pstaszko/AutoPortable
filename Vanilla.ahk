@@ -174,7 +174,7 @@ RunConfigurator(){
 RunClipMaster(){
 	KeyWait c, T.3
 	If errorlevel
-		RunOrSwitch("C:\Dev\Releases\ClipMaster\Current\ClipMaster.exe","ClipMaster")
+		RunOrSwitch("C:\Dev\Releases\ClipMasterCurrent\Current\ClipMaster.exe","ClipMaster")
 	else
 		ClipMaster.RunNew()
 	KeyWait c
