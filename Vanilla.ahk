@@ -1739,6 +1739,14 @@ WinActivateByExe(exe){
 	SetTitleMatchMode regex
 	WinActivate .*\w+.* ahk_exe %exe%
 }
+WinRestoreTitle(title){
+	DetectHiddenWindows off
+	WinRestore %title%
+	IfWinActive %title%
+		return "true"
+	else
+		return "false"
+}
 WinActivateTitle(title){
 	DetectHiddenWindows off
 	WinActivate %title%
@@ -1749,6 +1757,9 @@ WinActivateTitle(title){
 }
 WinActivatePID(hwnd){
 	return % WinActivateTitle("ahk_pid " hwnd)
+}
+WinRestorePID(hwnd){
+	return % WinRestoreTitle("ahk_pid " hwnd)
 }
 WinShowTitle(title){
 	DetectHiddenWindows on
