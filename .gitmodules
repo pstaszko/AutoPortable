@@ -1,0 +1,3 @@
+[submodule "WebSocket.ahk"]
+	path = WebSocket.ahk
+	url = https://github.com/G33kDude/WebSocket.ahk.git
