@@ -671,6 +671,7 @@ MqttPub(topic, message, host="localhost"){
 	}
 }
 MQTT_Sub(){
+	global mqtt
 	Run %ComSpec%,, Hide, pid
 	WinWait ahk_pid %pid%
 	DllCall("AttachConsole", "UInt", pid)
@@ -689,6 +690,7 @@ MQTT_Sub(){
 		MqttPub("ActiveWindow/Hwnds/" mqtt_h "/exe", mqtt_exe)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", output)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/hwnd", mqtt_h)
+		t("hi")
 	}
 	DllCall("FreeConsole")
 	Process Close, %pid%
