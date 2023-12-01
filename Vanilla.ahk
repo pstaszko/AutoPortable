@@ -702,7 +702,7 @@ MQTT_Sub(){
 		MqttPub("ActiveWindow/Hwnds/" mqtt_h "/exe", mqtt_exe)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", output)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/hwnd", mqtt_h)
-		mqtt.TrySend("asd " a_now)
+		mqtt.TrySend("asd " A_ScriptFullPath)
 		;t("hi")
 	}
 	DllCall("FreeConsole")
@@ -718,6 +718,7 @@ MQTT_WindowPublish:
 	fqn=%mqtt_t% ahk_id %mqtt_h%
 	MqttPub("ActiveWindow/TitleAndId", fqn)
 	MqttPub("ActiveWindow/Hwnds/" mqtt_h "/title", mqtt_t)
+	mqtt.TrySend("zzz " A_ScriptFullPath)
 	sleep 1
 return
 MsgboxLogged(context,msg){
