@@ -656,6 +656,18 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
 	return % x
 }
+ConnectWS:
+	try
+	{
+		ws := new WS("ws://127.0.0.1:1880/ws/ahk")
+		mqtt := new WS("ws://127.0.0.1:1880/ws/mqtt")
+	}
+return
+EnsureConnectedWS:
+	if ws.Closed || mqtt.Closed {
+		gosub ConnectWS
+	}
+return
 MqttPub(topic, message, host="localhost"){
 	static mqtt_history := {}
 	z:=mqtt_history[topic]
