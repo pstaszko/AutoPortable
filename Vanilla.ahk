@@ -1213,7 +1213,8 @@ SubmitFSharpFunction(functionName,params*){
 	return resultFile
 }
 RunMatrixOS(forcePython = false, hide = false){
-	SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
+	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
+	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
 }
 
 CurrentEXE(){
