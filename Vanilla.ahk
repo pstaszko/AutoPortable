@@ -3785,8 +3785,8 @@ class WS extends WebSocket
 	
 	OnMessage(Event)
 	{
-		RunMySendMessageLabel(Event.data)
-		;MsgBox, % "Received Data: " Event.data
+		;RunMySendMessageLabel(Event.data)
+		MsgBox, % "Received Data: " Event.data
 		this.Close()
 	}
 	
