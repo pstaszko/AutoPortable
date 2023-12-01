@@ -667,6 +667,9 @@ EnsureConnectedWS:
 	if ws.Closed || mqtt.Closed {
 		gosub ConnectWS
 	}
+	if mqtt.Closed {
+		gosub ConnectWS
+	}
 return
 MqttPub(topic, message, host="localhost"){
 	static mqtt_history := {}
@@ -3764,3 +3767,42 @@ UnhideWindows:
 	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Preparing Solution...
 	WinHide Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe,Opening the file...
 return
+class WS extends WebSocket
+{
+	TrySend(Message){
+		if this.readyState 
+		{
+			try {
+				this.Send(Message)
+			}
+		}
+	}
+	
+	OnOpen(Event)
+	{
+		this.Closed := false
+	}
+	
+	OnMessage(Event)
+	{
+		RunMySendMessageLabel(Event.data)
+		;MsgBox, % "Received Data: " Event.data
+		this.Close()
+	}
+	
+	OnClose(Event)
+	{
+		this.Closed := true
+		this.Disconnect()
+	}
+	
+	OnError(Event)
+	{
+		MsgBox Websocket Error %A_ScriptFullPath% %event%
+	}
+	
+	__Delete()
+	{
+		;t("__Delete Fired")
+	}
+}
