@@ -6,6 +6,7 @@ DetectHiddenWindows On
 
 gosub ConnectWS
 ;SetTimer("HB", 1000)
+mqtt.TrySend("Starting " A_ScriptFullPath)
 SetTimer("EnsureConnectedWS", 1000)
 
 MQTT_Sub()
