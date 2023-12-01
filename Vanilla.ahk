@@ -3767,6 +3767,14 @@ UnhideWindows:
 	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Preparing Solution...
 	WinHide Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe,Opening the file...
 return
+OnOpen(Event){
+}
+OnClose(Event){
+}
+OnError(Event){
+}
+__Delete(){
+}
 class WS extends WebSocket
 {
 	TrySend(Message){
@@ -3801,8 +3809,7 @@ class WS extends WebSocket
 		MsgBox Websocket Error %A_ScriptFullPath% %event%
 	}
 	
-	__Delete()
-	{
+	__Delete(){
 		;t("__Delete Fired")
 	}
 }
