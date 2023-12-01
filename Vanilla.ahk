@@ -705,7 +705,7 @@ MQTT_Sub(){
 		MqttPub("ActiveWindow/Hwnds/" mqtt_h "/exe", mqtt_exe)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", output)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/hwnd", mqtt_h)
-		mqtt.TrySend("asd " A_ScriptFullPath)
+		;mqtt.TrySend("asd " A_ScriptFullPath)
 		;t("hi")
 	}
 	DllCall("FreeConsole")
