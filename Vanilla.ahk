@@ -1,5 +1,4 @@
 #include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
-;test
 RunFSSC(args="", startHidden=""){
 	h=
 	if startHidden
