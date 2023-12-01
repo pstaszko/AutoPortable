@@ -678,13 +678,15 @@ MqttPub(topic, message, host="localhost"){
 	z:=mqtt_history[topic]
 	if(z <> message)
 	{
-		mqtt.TrySend("NR_" topic "|||" message)
+		mqtt.TrySend(topic "|||" message)
+		/*
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
 		p=c:/dev/mqtt/%topic%.md
 		p:=StrReplace(p,"/","\")
 		SplitPath p, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 		FileCreateDir %OutDir%
 		FileAppend ```````r`n%message%`r`n```````r`n, %p%
+		*/
 		mqtt_history[topic]:=message
 	}
 }
