@@ -6,7 +6,7 @@ DetectHiddenWindows On
 
 gosub ConnectWS
 ;SetTimer("HB", 1000)
-mqtt.TrySend("Starting " A_ScriptFullPath)
+mqtt.TrySend(GetScriptStartupString())
 SetTimer("EnsureConnectedWS", 1000)
 
 SetTimer("MQTT_WindowPublish", 1)

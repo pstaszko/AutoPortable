@@ -672,10 +672,13 @@ EnsureConnectedWS:
 	}
 return
 MqttPub(topic, message, host="localhost"){
+	global mqtt
+	
 	static mqtt_history := {}
 	z:=mqtt_history[topic]
 	if(z <> message)
 	{
+		mqtt.TrySend(topic "," message)
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
 		p=c:/dev/mqtt/%topic%.md
 		p:=StrReplace(p,"/","\")
