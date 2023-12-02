@@ -721,7 +721,7 @@ MQTT_WindowPublish:
 	
 	mqtt_h:=WinGetActiveHwnd()
 	WinGetTitle mqtt_t, A
-	t(mqtt_t)
+	;t(mqtt_t)
 	;mqtt_t:=RegExReplace(mqtt_t, "[^\x00-\x7F]+","")
 	MqttPub("ActiveWindow/WindowTitle", mqtt_t)
 	MqttPub("ActiveWindow/WindowHwnd", mqtt_h)
