@@ -2,6 +2,7 @@
 #NoTrayIcon
 #SingleInstance force
 #Persistent
+#include C:\Dev\Paul\ws.ahk
 DetectHiddenWindows On
 
 gosub ConnectWS
@@ -15,6 +16,6 @@ SetTimer("MQTT_WindowPublish", 1)
 !^#U::ExitApp
 
 HHB:
-	t("hi")
+	;t("hi")
 	mqtt.TrySend(GetScriptStartupString())
 return
