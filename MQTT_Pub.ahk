@@ -15,5 +15,6 @@ SetTimer("MQTT_WindowPublish", 1)
 !^#U::ExitApp
 
 HHB:
+	t("hi")
 	mqtt.TrySend(GetScriptStartupString())
 return
