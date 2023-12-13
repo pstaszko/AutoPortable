@@ -2,7 +2,7 @@
 #NoTrayIcon
 #SingleInstance force
 #Persistent
-#include C:\Dev\Paul\ws.ahk
+#include %A_ScriptDir%\ws.ahk
 DetectHiddenWindows On
 
 gosub ConnectWS
