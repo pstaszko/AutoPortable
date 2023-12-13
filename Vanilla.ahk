@@ -696,12 +696,12 @@ MQTT_Sub(){
 	WinWait ahk_pid %pid%
 	DllCall("AttachConsole", "UInt", pid)
 	WshShell := ComObjCreate("Wscript.Shell")
-	exec := WshShell.Exec("mosquitto_sub.exe -h localhost -t ActiveWindow/WindowTitle")
+	exec := WshShell.Exec("mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
 	loop {
 		output := exec.StdOut.Readline()
 		WinGetClass mqtt_c, A
-		WinGet mqtt_exe, ProcessName, % output
-		t("exe: " mqtt_exe " - " ProcessName " for title: " output)
+		WinGet mqtt_exe, ProcessName, ahk_id %output%
+		t("exe: " mqtt_exe " - " ProcessName " for hwnd: " output)
 		StringLower mqtt_exe,mqtt_exe
 		;t(mqtt_exe " " output)
 		MqttPub("ActiveWindow/EXE", mqtt_exe)
@@ -709,7 +709,7 @@ MQTT_Sub(){
 		mqtt_h:=WinGetActiveHwnd()
 		;t("ActiveWindow/Hwnds/" mqtt_h "/exe" " - " )
 		MqttPub("ActiveWindow/Hwnds/" mqtt_h "/exe", mqtt_exe)
-		MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", output)
+		; MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", output)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/hwnd", mqtt_h)
 		;mqtt.TrySend("asd " A_ScriptFullPath)
 		;t("hi")
