@@ -701,7 +701,8 @@ MQTT_Sub(){
 		output := exec.StdOut.Readline()
 		WinGetClass mqtt_c, A
 		WinGet mqtt_exe, ProcessName, ahk_id %output%
-		t("exe: " mqtt_exe " - " ProcessName " for hwnd: " output)
+		WinGetTitle title, ahk_id %output%
+		;t("exe: " mqtt_exe " - " ProcessName " for hwnd: " output)
 		StringLower mqtt_exe,mqtt_exe
 		;t(mqtt_exe " " output)
 		MqttPub("ActiveWindow/EXE", mqtt_exe)
@@ -709,7 +710,7 @@ MQTT_Sub(){
 		mqtt_h:=WinGetActiveHwnd()
 		;t("ActiveWindow/Hwnds/" mqtt_h "/exe" " - " )
 		MqttPub("ActiveWindow/Hwnds/" mqtt_h "/exe", mqtt_exe)
-		; MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", output)
+		MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", title)
 		MqttPub("ActiveWindow/Exes/" mqtt_exe "/hwnd", mqtt_h)
 		;mqtt.TrySend("asd " A_ScriptFullPath)
 		;t("hi")
