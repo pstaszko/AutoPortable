@@ -701,6 +701,7 @@ MQTT_Sub(){
 		output := exec.StdOut.Readline()
 		WinGetClass mqtt_c, A
 		WinGet mqtt_exe, ProcessName, % output
+		t(mqtt_exe)
 		StringLower mqtt_exe,mqtt_exe
 		;t(mqtt_exe " " output)
 		MqttPub("ActiveWindow/EXE", mqtt_exe)
