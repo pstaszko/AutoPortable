@@ -1,4 +1,5 @@
-#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
+#include %A_ScriptDir%\WebSocket.ahk\WebSocket.ahk
+
 class WS extends WebSocket
 {
 	TrySend(Message){
