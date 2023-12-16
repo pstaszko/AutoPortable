@@ -1214,7 +1214,7 @@ HardRestartMatrixOS(){
 		PSKill("matrixos")
 		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')"
 		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
-		IfMsgBox Yes
+		IfMsgBox Ok
 			RunMatrixOS(false, false)
 	}
 }
