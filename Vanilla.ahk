@@ -673,7 +673,7 @@ EnsureConnectedWS:
 return
 MqttPub(topic, message, host="localhost"){
 	global mqtt
-	
+
 	static mqtt_history := {}
 	z:=mqtt_history[topic]
 	if(z <> message)
@@ -720,7 +720,7 @@ MQTT_Sub(){
 	return
 }
 MQTT_WindowPublish:
-	
+
 	mqtt_h:=WinGetActiveHwnd()
 	WinGetTitle mqtt_t, A
 	;t(mqtt_t)
@@ -3790,5 +3790,5 @@ __Delete(){
 GetScriptStartupString(){
 	Process, Exist
 	scriptId := ErrorLevel
-	return "Starting " A_ScriptFullPath " PID: " scriptId 
+	return "Starting " A_ScriptFullPath " PID: " scriptId
 }
