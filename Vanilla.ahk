@@ -659,7 +659,7 @@ GetReleasedEXE(name, additional=""){
 ConnectWS:
 	try
 	{
-		ws   := new WS("ws://red:1880/ws/ahk")
+		;ws   := new WS("ws://red:1880/ws/ahk")
 		mqtt := new WS("ws://red:1880/ws/mqtt")
 	}
 return
