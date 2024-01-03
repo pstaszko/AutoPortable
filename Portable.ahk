@@ -2,6 +2,7 @@
 #include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 #R::RunFlowLauncher()
 #H::OpenMainScript(True)
+/*
 #.::
 	t("Emacs.ActivateOrStart")
 	SubmitFSharpFunction("Emacs.ActivateOrStartEmacs")
@@ -10,3 +11,4 @@ return
 	t("Emacs.StartNewNoArgs")
 	SubmitFSharpFunction("Emacs.StartNewNoArgs")
 return
+*/
