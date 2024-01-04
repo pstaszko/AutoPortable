@@ -1,4 +1,8 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
+WinActiveRegex(title){
+	SetTitleMatchMode Regex
+	return % WinActive(title)
+}
 RunFSSC(args="", startHidden=""){
 	h=
 	if startHidden
