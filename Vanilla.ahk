@@ -1223,6 +1223,12 @@ HardRestartMatrixOS(){
 	}
 }
 
+URLDownloadToVar(url){
+	hObject:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
+	hObject.Open("GET",url)
+	hObject.Send()
+	return hObject.ResponseText
+}
 HardRestartMatrixOSAutomatic(){
 	if(ComputerHasMatrixBoards()){
 		URLDownloadToVar("http://red:1880/plug2/off")
