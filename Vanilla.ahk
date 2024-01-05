@@ -1223,6 +1223,18 @@ HardRestartMatrixOS(){
 	}
 }
 
+HardRestartMatrixOSAutomatic(){
+	if(ComputerHasMatrixBoards()){
+		URLDownloadToVar("http://red:1880/plug2/off")
+		IfWinNotActive ahk_exe HoloCureLauncher.exe
+		PSKill("matrixos")
+		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')"
+		sleep 2000
+		URLDownloadToVar("http://red:1880/plug2/on")
+		RunMatrixOS(false, false)
+	}
+}
+
 SubmitFSharpFunction(functionName,params*){
 	;logHere(functionName)
 	v:=functionName
