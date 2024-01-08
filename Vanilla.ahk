@@ -21,7 +21,7 @@ class WSx extends WebSocket
 		j := new JSON()
 		data:=Event.data
 		;t(data)
-		msgbox % data
+		;msgbox % data
 		obj:=j.Load(data)
 		
 		Switch obj.command
@@ -32,7 +32,7 @@ class WSx extends WebSocket
 				SendEvent {blind}%text%
 				return
 			case "fn": 
-			msgbox hi
+				;msgbox hi
 				func(obj.text)()
 				return
 			default:
