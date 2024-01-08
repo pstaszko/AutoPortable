@@ -1236,8 +1236,11 @@ HardRestartMatrixOSAutomatic(){
 		PSKill("matrixos")
 		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')"
 		URLDownloadToVar("http://red:1880/plug2/on")
-		sleep 20000
-		RunMatrixOS(false, false)
+		sleep 30000
+		;RunMatrixOS(false, false)
+		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
+		sleep 10000
+		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
 	}
 }
 
