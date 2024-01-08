@@ -33,7 +33,7 @@ class WSx extends WebSocket
 				return
 			case "fn": 
 				;msgbox hi
-				func(obj.text)()
+				func(obj.text).invoke()
 				return
 			default:
 				; Code to execute if none of the cases match
