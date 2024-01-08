@@ -26,10 +26,9 @@ class WSx extends WebSocket
 		;t(data)
 		msgbox % data
 		obj:=j.Load(data)
-		msgbox a
-		func("fuck").invoke()
 		msgbox b
-		func("fuck").()
+		func("HardRestartMatrixOSAutomatic").()
+		msgbox a
 		Switch obj.command
 		{
 			case "sendinput":
