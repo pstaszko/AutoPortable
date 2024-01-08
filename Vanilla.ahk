@@ -1,4 +1,78 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
+class WSx extends WebSocket
+{
+	TrySend(Message){
+		if this.readyState
+		{
+			try {
+				this.Send(Message)
+			}
+		}
+	}
+
+	OnOpen(Event)
+	{
+		this.Closed := false
+	}
+
+	OnMessage(Event)
+	{
+		;RunMySendMessageLabel(Event.data)
+		j := new JSON()
+		data:=Event.data
+		;t(data)
+		msgbox % data
+		obj:=j.Load(data)
+		
+		Switch obj.command
+		{
+			case "sendinput":
+				text = obj.text
+				; Other code specific to this case
+				SendEvent {blind}%text%
+				return
+			case "fn": 
+			msgbox hi
+				func(obj.text)()
+				return
+			default:
+				; Code to execute if none of the cases match
+				return
+		}
+		
+		/*
+		switch obj.command
+		{
+			case "sendinput":
+				text := obj.text
+				;t("SendInput " text)
+				;SendInput % text
+				SendEvent {blind}%text%
+				return
+			case "fn": 
+				func(obj.text)()
+				return
+		}
+		*/
+		this.Close()
+	}
+
+	OnClose(Event)
+	{
+		this.Closed := true
+		this.Disconnect()
+	}
+
+	OnError(Event)
+	{
+		MsgBox Websocket Error %A_ScriptFullPath% %event%
+	}
+
+	__Delete(){
+		;t("__Delete Fired")
+	}
+}
+
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
 	return % WinActive(title)
