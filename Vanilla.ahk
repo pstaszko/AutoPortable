@@ -1,7 +1,4 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
-fuck(){
-	msgbox f
-}
 class WSx extends WebSocket
 {
 	TrySend(Message){
@@ -24,11 +21,13 @@ class WSx extends WebSocket
 		j := new JSON()
 		data:=Event.data
 		;t(data)
-		msgbox % data
+		;msgbox % data
 		obj:=j.Load(data)
+		/*
 		msgbox b
 		func("HardRestartMatrixOSAutomatic").()
 		msgbox a
+		*/
 		Switch obj.command
 		{
 			case "sendinput":
@@ -38,7 +37,7 @@ class WSx extends WebSocket
 				return
 			case "fn": 
 				;msgbox hi
-				func(obj.text).invoke()
+				func(obj.text).()
 				return
 			default:
 				; Code to execute if none of the cases match
