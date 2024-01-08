@@ -21,7 +21,7 @@ class WSx extends WebSocket
 		j := new JSON()
 		data:=Event.data
 		;t(data)
-		;msgbox % data
+		msgbox % data
 		obj:=j.Load(data)
 		
 		Switch obj.command
