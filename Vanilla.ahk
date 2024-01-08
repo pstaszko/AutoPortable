@@ -1239,8 +1239,10 @@ HardRestartMatrixOSAutomatic(){
 		sleep 30000
 		;RunMatrixOS(false, false)
 		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
+		/*
 		sleep 10000
 		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
+		*/
 	}
 }
 
