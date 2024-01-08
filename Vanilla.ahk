@@ -1,4 +1,7 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
+fuck(){
+	msgbox f
+}
 class WSx extends WebSocket
 {
 	TrySend(Message){
@@ -23,7 +26,10 @@ class WSx extends WebSocket
 		;t(data)
 		msgbox % data
 		obj:=j.Load(data)
-		
+		msgbox a
+		func("fuck").invoke()
+		msgbox b
+		func("fuck").()
 		Switch obj.command
 		{
 			case "sendinput":
