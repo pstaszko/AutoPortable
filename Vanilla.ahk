@@ -661,19 +661,22 @@ GetReleasedEXE(name, additional=""){
 	return % x
 }
 ConnectWS:
-	msgbox fuck
 	try
 	{
 		;ws   := new WS("ws://red:1880/ws/ahk")
 		mqtt := new WS("ws://red:1880/ws/mqtt")
 	}
 return
+ConnectWS(){
+	AlertCallStack()
+	gosub ConnectWS
+}
 EnsureConnectedWS:
 	if ws.Closed || mqtt.Closed {
-		gosub ConnectWS
+		ConnectWS()
 	}
 	if mqtt.Closed {
-		gosub ConnectWS
+		ConnectWS()
 	}
 return
 MqttPub(topic, message, host="localhost"){
