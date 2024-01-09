@@ -1,4 +1,5 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
+;return
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
 	return % WinActive(title)
@@ -660,25 +661,6 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
 	return % x
 }
-ConnectWS:
-	try
-	{
-		;ws   := new WS("ws://red:1880/ws/ahk")
-		mqtt := new WS("ws://red:1880/ws/mqtt")
-	}
-return
-ConnectWS(){
-	AlertCallStack()
-	gosub ConnectWS
-}
-EnsureConnectedWS:
-	if ws.Closed || mqtt.Closed {
-		ConnectWS()
-	}
-	if mqtt.Closed {
-		ConnectWS()
-	}
-return
 MqttPub(topic, message, host="localhost"){
 	global mqtt
 
@@ -728,7 +710,7 @@ MQTT_Sub(){
 	return
 }
 MQTT_WindowPublish:
-
+	return
 	mqtt_h:=WinGetActiveHwnd()
 	WinGetTitle mqtt_t, A
 	;t(mqtt_t)
@@ -2798,8 +2780,10 @@ PSKill(exe, async=0){
 RunWait(cmd){
 	runwait %cmd%
 }
+/*
 Stubx:
 return
+*/
 KillOculus2:
 	SetTimer KillOculus2,off
 	RunWait("cmd /c net stop ovrservice")
@@ -3824,3 +3808,24 @@ GetScriptStartupString(){
 	scriptId := ErrorLevel
 	return "Starting " A_ScriptFullPath " PID: " scriptId
 }
+ConnectWS(){
+	AlertCallStack()
+	gosub ConnectWS
+}
+ConnectWS:
+	return
+	try
+	{
+		;ws   := new WS("ws://red:1880/ws/ahk")
+		mqtt := new WS("ws://red:1880/ws/mqtt")
+	}
+return
+EnsureConnectedWS:
+	return
+	if ws.Closed || mqtt.Closed {
+		ConnectWS()
+	}
+	if mqtt.Closed {
+		ConnectWS()
+	}
+return
