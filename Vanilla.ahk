@@ -661,6 +661,7 @@ GetReleasedEXE(name, additional=""){
 	return % x
 }
 ConnectWS:
+	msgbox fuck
 	try
 	{
 		;ws   := new WS("ws://red:1880/ws/ahk")
