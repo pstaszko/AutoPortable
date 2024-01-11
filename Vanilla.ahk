@@ -8,10 +8,9 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			IsVS=2
 		else
 			IsVS=0
-	msgbox % IsVS
 	if (IsVS = 1) {
 		logHere("IsVS")
-		IfWinActive Connect to SQL Server ahk_exe devenv.exe
+		IfWinActive Connect ahk_exe devenv.exe
 		{
 			SendInput !e%server%{tab 2}
 			if User
@@ -49,8 +48,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		}
 	} else if (IsVS = 2){
 		SendInput !s%server%!u
-		if user
-		{
+		if user {
 			SendInput s
 			SendInput !l%user%
 			SendInput !p%password%
@@ -63,8 +61,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		}
 	} else {
 		logHere("Is not VS")
-		if user
-		{
+		if user {
 			logHere("User")
 			SendInput %server%
 			SendInput !a{home}{down}{tab}%user%{tab}%password%
