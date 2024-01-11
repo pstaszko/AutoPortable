@@ -1,5 +1,9 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
+r(msg){
+	FileAppend %msg%`r`n,c:\temp\x.log
+	sleep 1000
+}
 SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 	IfWinActive Connect ahk_exe devenv.exe
 		IsVS=1
@@ -10,17 +14,22 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			IsVS=0
 	if (IsVS = 1) {
 		logHere("IsVS")
-		t("zonk")
+		r("a")
 		ClickAndReturn(230,302)
+		r("b")
 		SendInput {home}+{end}%server%
+		r("c")
 		SendInput {tab}
+		r("d")
 		if User
 		{
+			r("e")
 			SendInput s{enter}
-			sleep 1000
-			t("bonk")
+			r("f")
+			r("g")
+			
 			SendInput {tab}%user%{tab}%password%
-			t("donk " user)
+			r("h " user)
 		}else{
 			SendInput {home}
 		}
