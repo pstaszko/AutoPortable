@@ -19,7 +19,9 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			{
 				SendInput s{enter}
 				sleep 1000
+				t("bonk")
 				SendInput {tab}%user%{tab}%password%
+				t("donk " user)
 			}else{
 				SendInput {home}
 			}
