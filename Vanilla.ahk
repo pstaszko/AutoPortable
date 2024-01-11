@@ -1258,7 +1258,6 @@ RunMatrixOS(forcePython = false, hide = false){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
 	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
 }
-asd
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
 	return ProcessName
