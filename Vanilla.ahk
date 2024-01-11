@@ -1,5 +1,21 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
+stp(lbl){
+	/*
+	tooltip % lbl
+	start:=GetKeyState("capslock")
+	loop 
+	{
+		n := GetKeyState("capslock")
+		sleep 100
+		if (n <> start){
+			SendInput {capslock up}
+			return
+		}
+	}
+	*/
+}
+
 SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 	IfWinActive Connect ahk_exe devenv.exe
 		IsVS=1
@@ -15,17 +31,20 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		ClickAndReturn(250,311)
 		;return
 		SendInput {home}+{end}%server%{tab}
-		
+		stp("a")
 		if User
 		{
-			SendInput s{enter}
+			SendInput {home}s
+			stp("b")
 			SendInput {tab}
-			SendInput %user%
+			SendInput {home}+{end}%user%
+			stp("c")
 			SendInput {tab}
-			SendInput %password%
+			SendInput {home}+{end}%password%
 		}else{
 			SendInput {home}{enter}
 		}
+		SendInput {tab 2}{home}+{end}{del}
 		return
 		/*
 		IfWinActive Connect to SQL Server ahk_exe devenv.exe
