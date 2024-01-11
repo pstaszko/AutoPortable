@@ -24,14 +24,16 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		}else{
 			IfWinActive Add Connection ahk_exe devenv.exe
 			{
-				SendInput !e^a%server%!a
+				ClickAndReturn(237,308)
+				SendInput !e^a%server%
+				SendInput {tab}
 				if User
 				{
-					SendInput s{tab}%user%{tab}%password%!s
+					SendInput s{enter}{tab}%user%{tab}%password%
 				}else{
 					SendInput {home}
 				}
-				SendInput !d{tab}
+				SendInput {tab}
 				return
 			} else {
 				sleep 10
