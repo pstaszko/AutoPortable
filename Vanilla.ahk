@@ -1,6 +1,5 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
-
 ReloadFunction(source,recompile=1,hide=0){
 	global
 	z:=join(", ",source,recompile,hide)
