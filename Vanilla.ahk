@@ -28,8 +28,10 @@ r(msg){
 	FileAppend %msg%`r`n,c:\temp\x.log
 	t(msg)
 	sleep 3000
+	/*
 	IfWinNotActive ahk_exe devenv.exe
 		ReloadScripts(false, false)
+		*/
 }
 SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 	IfWinActive Connect ahk_exe devenv.exe
