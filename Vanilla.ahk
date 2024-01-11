@@ -2,7 +2,8 @@
 ;return
 r(msg){
 	FileAppend %msg%`r`n,c:\temp\x.log
-	sleep 1000
+	t(msg)
+	sleep 3000
 }
 SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 	IfWinActive Connect ahk_exe devenv.exe
