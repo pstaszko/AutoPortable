@@ -1,200 +1,5 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
-ReloadFunction(source,recompile=1,hide=0){
-	global
-	z:=join(", ",source,recompile,hide)
-	logHere(z)
-	;AlertLog4NetConfig()
-	dir:=MyPath.framework("AutoHotCompiler\")
-	if !MyPath
-		AlertCallStack("mypath empty")
-	if !dir
-		msgbox dir is empty!
-
-	exe:="C:\Dev\Releases\AutoHotCompiler\Current\AutoHotCompiler.exe " pauldir "load.ahk"
-
-	if recompile
-	{
-		if hide
-			run %exe% -force,%dir%,min
-		else
-			run %exe% -force,%dir%
-	}
-	else
-		Reload
-}
-ReloadScripts(hideScite, hideCompiler, force=0, sendkeys=1){
-	global
-	winclose AutoHotkey_%computername%.ahk ahk_class #32770 ahk_exe AutoHotkey.exe
-	t("Reload starting")
-	IfWinActive SciTE ahk_class SciTEWindow
-	{
-		SendInput !bs
-		sleep 500
-		sleep 100
-		sleep 100
-	}
-	else
-		if sendkeys
-			SendInput ^+s
-	if hideScite
-		hide()
-	if computername=lappy
-		fileappend hzi,\\blackbird\c$\temp\reload.txt
-	if computername=pstaszko
-		if pstaszko_Reload_Sleep
-			sleep %pstaszko_Reload_Sleep%
-	;msgbox f %force%
-	ReloadFunction("AHKtextEditor_F2",force,hideCompiler)
-}
-r(msg){
-	FileAppend %msg%`r`n,c:\temp\x.log
-	t(msg)
-	sleep 3000
-	
-	IfWinNotActive ahk_exe devenv.exe
-	{
-		run %exePath%
-		ExitApp
-	}
-	/*
-		ReloadScripts(false, false)
-		*/
-}
-SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
-	IfWinActive Connect ahk_exe devenv.exe
-		IsVS=1
-	else
-		IfWinActive SQL Server Login ahk_class #32770 ahk_exe MSACCESS.EXE
-			IsVS=2
-		else
-			IsVS=0
-	if (IsVS = 1) {
-		logHere("IsVS")	
-		;r("a")
-		ClickAndReturn(230,302)
-		r("b")
-		SendInput {home}+{end}%server%
-		r("c")
-		SendInput {tab}
-		r("d")
-		if User
-		{
-			r("e")
-			SendInput s{enter}
-			r("f")
-			r("g")
-			
-			SendInput {tab}%user%{tab}%password%
-			r("h " user)
-		}else{
-			SendInput {home}
-		}
-		SendInput {tab}
-		/*
-		IfWinActive Connect ahk_exe devenv.exe
-		{
-			ClickAndReturn(230,302)
-			SendInput {home}+{end}%server%
-			SendInput {tab}
-			if User
-			{
-				SendInput s{enter}
-				sleep 1000
-				t("bonk")
-				SendInput {tab}%user%{tab}%password%
-				t("donk " user)
-			}else{
-				SendInput {home}
-			}
-			SendInput {tab}
-			
-		}else{
-			IfWinActive Add Connection ahk_exe devenv.exe
-			{
-				ClickAndReturn(230,302)
-				SendInput ^a%server%
-				SendInput {tab}
-				if User
-				{
-					SendInput s{enter}{tab}%user%{tab}%password%
-				}else{
-					SendInput {home}
-				}
-				SendInput {tab}
-				return
-			} else {
-				sleep 10
-				ClickAndReturn(234,373)
-				ClickAndReturn(234,373)
-				ClickAndReturn(234,373)
-				sleep 10
-				SendInput ^a%server%{tab}
-				if User
-					SendInput s{tab}^a%user%{tab}^a%password%
-				else
-					SendInput w
-			}
-		}
-		*/
-	} else if (IsVS = 2){
-		SendInput !s%server%!u
-		if user {
-			SendInput s
-			SendInput !l%user%
-			SendInput !p%password%
-			SendInput !o
-			SendInput !d{down}
-			return
-		}else{
-			msgbox no implemented
-			return
-		}
-	} else {
-		logHere("Is not VS")
-		if user {
-			logHere("User")
-			SendInput %server%
-			SendInput !a{home}{down}{tab}%user%{tab}%password%
-		}else{
-			logHere("Not User")
-			SendInput %server%
-			SendInput !aw
-		}
-	}
-	if(!IsCapsLock() and !NoEnter){
-		logHere("Enter")
-		Enter()
-	}else{
-		logHere("No Enter")
-	}
-}
-SSMSConnect(db,NoEnter=false){ ;;DB Profile
-	logParams()
-	SendInput !s
-	NoEnter:=false
-	GetCred("Cricket SQL User",u,p)
-	if db=1
-		SQLLogin("azsql19",u,p,NoEnter)
-	if db=2
-		SQLLogin("sqla","","",NoEnter)
-	if db=3
-		SQLLogin("azsql19","","",false)
-	if db=4
-		SQLLogin("sqla",u,p,NoEnter)
-	if db=5
-		SQLLogin("localhost","","",NoEnter)
-	if db=6
-		SQLLogin("LocalSQLServer","sa","Cricket6858",NoEnter)
-	if db=7
-		SQLLogin("AZSQLPD19","","",false)
-	if db=8
-		SQLLogin("AZSQLPD19",u,p,NoEnter)
-}
-SSMSConnectNoEnter(db){
-	t(db)
-	SSMSConnect(db,true)
-}
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
 	return % WinActive(title)
@@ -1453,7 +1258,7 @@ RunMatrixOS(forcePython = false, hide = false){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
 	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
 }
-
+asd
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
 	return ProcessName
@@ -2233,6 +2038,115 @@ SetTimer(timer, interval){
 	;log=c:\temp\timerlog-%A_ScriptName%.txt
 	;FileDelete %timerlog%
 	;FileAppend %timerlog%,%log%
+}
+SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
+	IfWinActive Connect ahk_exe devenv.exe
+		IsVS=1
+	else
+		IfWinActive SQL Server Login ahk_class #32770 ahk_exe MSACCESS.EXE
+			IsVS=2
+		else
+			IsVS=0
+	if IsVS = 1
+	{
+		logHere("IsVS")
+		IfWinActive Connect to SQL Server ahk_exe devenv.exe
+		{
+			SendInput !e%server%{tab 2}
+			if User
+			{
+				SendInput {up 5}{down}
+				SendInput !u%user%
+				SendInput !p%password%
+			}else{
+				SendInput {up 5}
+			}
+		}else{
+			IfWinActive Add Connection ahk_exe devenv.exe
+			{
+				SendInput !e^a%server%!a
+				if User
+				{
+					SendInput s{tab}%user%{tab}%password%!s
+				}else{
+					SendInput {home}
+				}
+				SendInput !d{tab}
+				return
+			} else {
+				sleep 10
+				ClickAndReturn(234,373)
+				ClickAndReturn(234,373)
+				ClickAndReturn(234,373)
+				sleep 10
+				SendInput ^a%server%{tab}
+				if User
+					SendInput s{tab}^a%user%{tab}^a%password%
+				else
+					SendInput w
+			}
+		}
+	} else if (IsVS = 2){
+		SendInput !s%server%!u
+		if user
+		{
+			SendInput s
+			SendInput !l%user%
+			SendInput !p%password%
+			SendInput !o
+			SendInput !d{down}
+			return
+		}else{
+			msgbox no implemented
+			return
+		}
+	} else {
+		logHere("Is not VS")
+		if user
+		{
+			logHere("User")
+			SendInput %server%
+			SendInput !a{home}{down}{tab}%user%{tab}%password%
+		}else{
+			logHere("Not User")
+			SendInput %server%
+			SendInput !aw
+		}
+	}
+	if(!IsCapsLock() and !NoEnter)
+	{
+		logHere("Enter")
+		Enter()
+	}else{
+		logHere("No Enter")
+	}
+}
+
+SSMSConnect(db,NoEnter=false){ ;;DB Profile
+	logParams()
+	SendInput !s
+	NoEnter:=false
+	GetCred("Cricket SQL User",u,p)
+	if db=1
+		SQLLogin("azsql19",u,p,NoEnter)
+	if db=2
+		SQLLogin("sqla","","",NoEnter)
+	if db=3
+		SQLLogin("azsql19","","",false)
+	if db=4
+		SQLLogin("sqla",u,p,NoEnter)
+	if db=5
+		SQLLogin("localhost","","",NoEnter)
+	if db=6
+		SQLLogin("LocalSQLServer","sa","Cricket6858",NoEnter)
+	if db=7
+		SQLLogin("AZSQLPD19","","",false)
+	if db=8
+		SQLLogin("AZSQLPD19",u,p,NoEnter)
+}
+SSMSConnectNoEnter(db){
+	t(db)
+	SSMSConnect(db,true)
 }
 TightVNC(name){
 	p:=FirstValidPath("C:\Program Files\TightVNC\tvnviewer.exe", "%userprofile%\scoop\apps\tightvnc\current\tvnviewer.exe")
