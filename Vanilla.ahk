@@ -17,7 +17,9 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			SendInput {tab}
 			if User
 			{
-				SendInput s{enter}{tab}%user%{tab}%password%
+				SendInput s{enter}
+				sleep 1000
+				SendInput {tab}%user%{tab}%password%
 			}else{
 				SendInput {home}
 			}
