@@ -1,5 +1,29 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
+ReloadFunction(source,recompile=1,hide=0){
+	global
+	z:=join(", ",source,recompile,hide)
+	logHere(z)
+	;AlertLog4NetConfig()
+	dir:=MyPath.framework("AutoHotCompiler\")
+	if !MyPath
+		AlertCallStack("mypath empty")
+	if !dir
+		msgbox dir is empty!
+
+	exe:="C:\Dev\Releases\AutoHotCompiler\Current\AutoHotCompiler.exe " pauldir "load.ahk"
+
+	if recompile
+	{
+		if hide
+			run %exe% -force,%dir%,min
+		else
+			run %exe% -force,%dir%
+	}
+	else
+		Reload
+}
+
 ReloadScripts(hideScite, hideCompiler, force=0, sendkeys=1){
 	global
 	winclose AutoHotkey_%computername%.ahk ahk_class #32770 ahk_exe AutoHotkey.exe
