@@ -13,7 +13,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		logHere("IsVS")
 		;ClickAndReturn(230,311)
 		ClickAndReturn(250,311)
-		return
+		;return
 		SendInput {home}+{end}%server%{tab}
 		
 		if User
