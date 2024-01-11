@@ -14,7 +14,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		IfWinActive Connect to SQL Server ahk_exe devenv.exe
 		{
 			SendInput !e%server%{tab 2}
-			if User
+			if User 
 			{
 				SendInput {up 5}{down}
 				SendInput !u%user%
