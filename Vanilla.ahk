@@ -10,6 +10,22 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			IsVS=0
 	if (IsVS = 1) {
 		logHere("IsVS")
+		t("zonk")
+		ClickAndReturn(230,302)
+		SendInput {home}+{end}%server%
+		SendInput {tab}
+		if User
+		{
+			SendInput s{enter}
+			sleep 1000
+			t("bonk")
+			SendInput {tab}%user%{tab}%password%
+			t("donk " user)
+		}else{
+			SendInput {home}
+		}
+		SendInput {tab}
+		/*
 		IfWinActive Connect ahk_exe devenv.exe
 		{
 			ClickAndReturn(230,302)
@@ -54,6 +70,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 					SendInput w
 			}
 		}
+		*/
 	} else if (IsVS = 2){
 		SendInput !s%server%!u
 		if user {
