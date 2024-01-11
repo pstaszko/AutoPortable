@@ -9,7 +9,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		else
 			IsVS=0
 	msgbox % IsVS
-	if IsVS = 1 {
+	if (IsVS = 1) {
 		logHere("IsVS")
 		IfWinActive Connect to SQL Server ahk_exe devenv.exe
 		{
