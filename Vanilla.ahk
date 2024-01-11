@@ -12,20 +12,22 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 		logHere("IsVS")
 		IfWinActive Connect ahk_exe devenv.exe
 		{
-			SendInput !e%server%{tab 2}
+			ClickAndReturn(230,302)
+			SendInput {home}+{end}%server%
+			SendInput {tab}
 			if User
 			{
-				SendInput {up 5}{down}
-				SendInput !u%user%
-				SendInput !p%password%
+				SendInput s{enter}{tab}%user%{tab}%password%
 			}else{
-				SendInput {up 5}
+				SendInput {home}
 			}
+			SendInput {tab}
+			
 		}else{
 			IfWinActive Add Connection ahk_exe devenv.exe
 			{
-				ClickAndReturn(237,308)
-				SendInput !e^a%server%
+				ClickAndReturn(230,302)
+				SendInput ^a%server%
 				SendInput {tab}
 				if User
 				{
