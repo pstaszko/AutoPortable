@@ -1,6 +1,29 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
-
+ReloadScripts(hideScite, hideCompiler, force=0, sendkeys=1){
+	global
+	winclose AutoHotkey_%computername%.ahk ahk_class #32770 ahk_exe AutoHotkey.exe
+	t("Reload starting")
+	IfWinActive SciTE ahk_class SciTEWindow
+	{
+		SendInput !bs
+		sleep 500
+		sleep 100
+		sleep 100
+	}
+	else
+		if sendkeys
+			SendInput ^+s
+	if hideScite
+		hide()
+	if computername=lappy
+		fileappend hzi,\\blackbird\c$\temp\reload.txt
+	if computername=pstaszko
+		if pstaszko_Reload_Sleep
+			sleep %pstaszko_Reload_Sleep%
+	;msgbox f %force%
+	ReloadFunction("AHKtextEditor_F2",force,hideCompiler)
+}
 ReloadFunction(source,recompile=1,hide=0){
 	global
 	z:=join(", ",source,recompile,hide)
