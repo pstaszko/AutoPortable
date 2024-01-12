@@ -3875,7 +3875,7 @@ ConnectWS:
 	}
 return
 EnsureConnectedWS:
-	return
+	;return
 	if ws.Closed || mqtt.Closed {
 		ConnectWS()
 	}
