@@ -874,7 +874,7 @@ MqttPub(topic, message, host="localhost"){
 	}
 }
 MQTT_WindowPublish:
-	return
+	;return
 	mqtt_h:=WinGetActiveHwnd()
 	WinGetTitle mqtt_t, A
 	;t(mqtt_t)
