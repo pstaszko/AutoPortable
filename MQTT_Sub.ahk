@@ -12,8 +12,8 @@ SetTimer("HHB", 1000)
 SetTimer("EnsureConnectedWS", 1000)
 
 MQTT_Sub()
-#include %A_ScriptDir%\Vanilla.ahk
 !^#U::ExitApp
 HHB:
 	mqtt.TrySend(GetScriptStartupString())
 return
+#include %A_ScriptDir%\Vanilla.ahk
