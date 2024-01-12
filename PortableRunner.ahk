@@ -5,5 +5,6 @@ LoadGlobalVars()
 NewLoadGroups()
 aaaa=5566
 return
+!^#U::ExitApp
 #include %A_ScriptDir%\Vanilla.ahk
 #include %A_ScriptDir%\Portable.ahk
