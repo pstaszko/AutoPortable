@@ -873,35 +873,6 @@ MqttPub(topic, message, host="localhost"){
 		mqtt_history[topic]:=message
 	}
 }
-MQTT_Sub(){
-	global mqtt
-	Run %ComSpec%,, Hide, pid
-	WinWait ahk_pid %pid%
-	DllCall("AttachConsole", "UInt", pid)
-	WshShell := ComObjCreate("Wscript.Shell")
-	exec := WshShell.Exec("mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
-	loop {
-		output := exec.StdOut.Readline()
-		WinGetClass mqtt_c, A
-		WinGet mqtt_exe, ProcessName, ahk_id %output%
-		WinGetTitle title, ahk_id %output%
-		;t("exe: " mqtt_exe " - " ProcessName " for hwnd: " output)
-		StringLower mqtt_exe,mqtt_exe
-		;t(mqtt_exe " " output)
-		MqttPub("ActiveWindow/EXE", mqtt_exe)
-		MqttPub("ActiveWindow/Class", mqtt_c)
-		mqtt_h:=WinGetActiveHwnd()
-		;t("ActiveWindow/Hwnds/" mqtt_h "/exe" " - " )
-		MqttPub("ActiveWindow/Hwnds/" mqtt_h "/exe", mqtt_exe)
-		MqttPub("ActiveWindow/Exes/" mqtt_exe "/title", title)
-		MqttPub("ActiveWindow/Exes/" mqtt_exe "/hwnd", mqtt_h)
-		;mqtt.TrySend("asd " A_ScriptFullPath)
-		;t("hi")
-	}
-	DllCall("FreeConsole")
-	Process Close, %pid%
-	return
-}
 MQTT_WindowPublish:
 	return
 	mqtt_h:=WinGetActiveHwnd()
