@@ -12,7 +12,10 @@ SetTimer("HHB", 1000)
 SetTimer("EnsureConnectedWS", 1000)
 
 MQTT_Sub()
+<<<<<<< HEAD
 #include %A_ScriptDir%\Vanilla.ahk
+=======
+>>>>>>> 89373456011ef872953a84c1de1e6f3dca5d34d1
 
 MQTT_Sub(){
 	global mqtt
@@ -48,3 +51,4 @@ MQTT_Sub(){
 HHB:
 	mqtt.TrySend(GetScriptStartupString())
 return
+#include %A_ScriptDir%\Vanilla.ahk
