@@ -854,8 +854,8 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
 	return % x
 }
-
-class WS extends WebSocket
+j
+class WS_MQTT ;extends WebSocket
 {
 	Bonk(){
 		return "bonked"
@@ -906,11 +906,11 @@ MqttPub(topic, message, host="localhost"){
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
 			msgbox m1 %z%
-			mqtt := new WS("ws://red:1880/ws/mqtt")
+			mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
 			if(!mqtt.bonk()){
 				z:=mqtt.bonk()
 				msgbox m2 %z%
-				mqtt := new WS("ws://red:1880/ws/mqtt")
+				mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
 			}
 		}
 		mqtt.TrySend(topic "|||" message)
