@@ -906,7 +906,7 @@ MqttPub(topic, message, host="localhost"){
 		
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
-			;msgbox m1 %z%
+			;msgbox m1111 %z%
 			mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
 			if(!mqtt.bonk()){
 				z:=mqtt.bonk()
