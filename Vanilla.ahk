@@ -3927,7 +3927,7 @@ ConnectWS:
 	try
 	{
 		;ws   := new WS("ws://red:1880/ws/ahk")
-		mqtt := new WS("ws://red:1880/ws/mqtt")
+		mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
 	}
 return
 EnsureConnectedWS:
