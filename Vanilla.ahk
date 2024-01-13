@@ -854,6 +854,48 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
 	return % x
 }
+
+class WS extends WebSocket
+{
+	Bonk(){
+		return "bonked"
+	}
+	TrySend(Message){
+		if this.readyState
+		{
+			try {
+				this.Send(Message)
+			}
+		}
+	}
+
+	OnOpen(Event)
+	{
+		this.Closed := false
+	}
+
+	OnMessage(Event)
+	{
+		;RunMySendMessageLabel(Event.data)
+		MsgBox, % "Received Data: " Event.data
+		this.Close()
+	}
+
+	OnClose(Event)
+	{
+		this.Closed := true
+		this.Disconnect()
+	}
+
+	OnError(Event)
+	{
+		MsgBox Websocket Error %A_ScriptFullPath% %event%
+	}
+
+	__Delete(){
+		;t("__Delete Fired")
+	}
+}
 MqttPub(topic, message, host="localhost"){
 	global mqtt
 
