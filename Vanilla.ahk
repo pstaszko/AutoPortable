@@ -875,7 +875,7 @@ MqttPub(topic, message, host="localhost"){
 }
 MQTT_WindowPublish:
 	;return
-	msgbox hi
+	;msgbox hi
 	mqtt_h:=WinGetActiveHwnd()
 	WinGetTitle mqtt_t, A
 	;t(mqtt_t)
@@ -885,6 +885,7 @@ MQTT_WindowPublish:
 	fqn=%mqtt_t% ahk_id %mqtt_h%
 	MqttPub("ActiveWindow/TitleAndId", fqn)
 	MqttPub("ActiveWindow/Hwnds/" mqtt_h "/title", mqtt_t)
+	msgbox % mqtt.Bonk()
 	;mqtt.TrySend("zzz " A_ScriptFullPath)
 	sleep 1
 return
