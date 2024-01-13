@@ -854,7 +854,7 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
 	return % x
 }
-j
+
 class WS_MQTT ;extends WebSocket
 {
 	Bonk(){
