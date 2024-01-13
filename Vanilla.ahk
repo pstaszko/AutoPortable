@@ -939,7 +939,7 @@ MQTT_WindowPublish:
 	fqn=%mqtt_t% ahk_id %mqtt_h%
 	MqttPub("ActiveWindow/TitleAndId", fqn)
 	MqttPub("ActiveWindow/Hwnds/" mqtt_h "/title", mqtt_t)
-	msgbox % mqtt.Bonk()
+	;mqtt.Bonk()
 	;mqtt.TrySend("zzz " A_ScriptFullPath)
 	sleep 1
 return
