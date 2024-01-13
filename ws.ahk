@@ -1,4 +1,4 @@
-#include %A_ScriptDir%\WebSocket.ahk\WebSocket.ahk
+;#include %A_ScriptDir%\WebSocket.ahk\WebSocket.ahk
 
 class WS extends WebSocket
 {
