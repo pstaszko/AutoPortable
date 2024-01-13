@@ -862,10 +862,12 @@ MqttPub(topic, message, host="localhost"){
 	if(z <> message)
 	{
 		if(!mqtt.bonk()){
-			msgbox m1
+			z:=mqtt.bonk()
+			msgbox m1 %z%
 			mqtt := new WS("ws://red:1880/ws/mqtt")
 			if(!mqtt.bonk()){
-				msgbox m2
+				z:=mqtt.bonk()
+				msgbox m2 %z%
 				mqtt := new WS("ws://red:1880/ws/mqtt")
 			}
 		}
