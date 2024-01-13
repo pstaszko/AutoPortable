@@ -2,6 +2,9 @@
 
 class WS extends WebSocket
 {
+	Bonk(){
+		return "bonked"
+	}
 	TrySend(Message){
 		if this.readyState
 		{
