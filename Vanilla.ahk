@@ -862,7 +862,12 @@ MqttPub(topic, message, host="localhost"){
 	if(z <> message)
 	{
 		if(!mqtt.bonk()){
+			msgbox m1
 			mqtt := new WS("ws://red:1880/ws/mqtt")
+			if(!mqtt.bonk()){
+				msgbox m2
+				mqtt := new WS("ws://red:1880/ws/mqtt")
+			}
 		}
 		mqtt.TrySend(topic "|||" message)
 		/*
