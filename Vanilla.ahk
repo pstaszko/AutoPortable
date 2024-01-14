@@ -855,17 +855,18 @@ GetReleasedEXE(name, additional=""){
 	return % x
 }
 
-class WS_MQTT ;extends WebSocket
+class WS_MQTT extends WebSocket
 {
 	Bonk(){
 		return "bonked"
 	}
 	TrySend(Message){
-		t(message " - " this.readyState)
+		;t(message " - " this.readyState)
+		;t(a " - " this.readyState)
 		if this.readyState
 		{
 			try {
-				t(message)
+				;t(message)
 				this.Send(Message)
 			}
 		}
