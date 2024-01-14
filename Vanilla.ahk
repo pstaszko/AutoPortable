@@ -3922,7 +3922,7 @@ GetScriptStartupString(){
 	return "Starting " A_ScriptFullPath " PID: " scriptId
 }
 ConnectWS(){
-	AlertCallStack()
+	;AlertCallStack()
 	gosub ConnectWS
 }
 ConnectWS:
