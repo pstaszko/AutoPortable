@@ -898,7 +898,7 @@ class WS_MQTT ;extends WebSocket
 }
 MqttPub(topic, message, host="localhost"){
 	global mqtt
-	fileappend MQTTPUB %A_ScriptFullPath% - pub - %topic% / %message%, c:\temp\mqtt.txt
+	fileappend MQTTPUB %A_ScriptFullPath% - pub - %topic% / %message%`r`n, c:\temp\mqtt.txt
 	static mqtt_history := {}
 	z:=mqtt_history[topic]
 	if(z <> message)
