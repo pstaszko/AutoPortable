@@ -864,6 +864,7 @@ class WS_MQTT ;extends WebSocket
 		if this.readyState
 		{
 			try {
+				t(message)
 				this.Send(Message)
 			}
 		}
