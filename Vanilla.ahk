@@ -861,6 +861,7 @@ class WS_MQTT ;extends WebSocket
 		return "bonked"
 	}
 	TrySend(Message){
+		t(message " - " this.readyState)
 		if this.readyState
 		{
 			try {
