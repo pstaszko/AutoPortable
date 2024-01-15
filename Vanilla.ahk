@@ -2536,6 +2536,7 @@ Post8(){
 	return % GetWindowsID() > 3
 }
 Post10(){
+	msgbox % GetWindowsID()
 	return % GetWindowsID() > 4
 }
 ClassUnderMouse(){
