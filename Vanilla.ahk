@@ -45,45 +45,9 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			SendInput {home}{enter}
 		}
 		SendInput {tab 2}{home}+{end}{del}
+		ClickAndReturn(227,476)
+		SendInput o+{tab}
 		return
-		/*
-		IfWinActive Connect to SQL Server ahk_exe devenv.exe
-		{
-			SendInput !e%server%{tab 2}
-			if User 
-			{
-				SendInput {up 5}{down}
-				SendInput !u%user%
-				SendInput !p%password%
-			}else{
-				SendInput {up 5}
-			}
-		}else{
-			IfWinActive Add Connection ahk_exe devenv.exe
-			{
-				SendInput !e^a%server%!a
-				if User
-				{
-					SendInput s{tab}%user%{tab}%password%!s
-				}else{
-					SendInput {home}
-				}
-				SendInput !d{tab}
-				return
-			} else {
-				sleep 10
-				ClickAndReturn(234,373)
-				ClickAndReturn(234,373)
-				ClickAndReturn(234,373)
-				sleep 10
-				SendInput ^a%server%{tab}
-				if User
-					SendInput s{tab}^a%user%{tab}^a%password%
-				else
-					SendInput w
-			}
-		}
-		*/
 	} else if (IsVS = 2){
 		SendInput !s%server%!u
 		if user
@@ -2502,8 +2466,10 @@ GetWindowsID(){
 	if Is10()
 		return % i
 	i+=1
+	/*
 	if Is11()
 		return % i
+	*/
 	i+=1
 	return % i
 }
@@ -2526,9 +2492,11 @@ Is8(){
 Is10(){
 	return % RegExMatch_(A_OSVersion, "i)10\.")
 }
+/*
 Is11(){
 	return % RegExMatch_(A_OSVersion, "i)11\.")
 }
+*/
 PostXP(){
 	return % GetWindowsID() > 0
 }
@@ -2544,6 +2512,10 @@ Post8(){
 Post10(){
 	msgbox % GetWindowsID()
 	return % GetWindowsID() > 4
+}
+Post11(){
+	msgbox % GetWindowsID()
+	return % GetWindowsID() > 5
 }
 ClassUnderMouse(){
 	MouseGetPos OutputVarX, OutputVarY, OutputVarWin, OutputVarControl
