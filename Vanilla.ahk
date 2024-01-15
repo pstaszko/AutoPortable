@@ -45,7 +45,9 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 			SendInput {home}{enter}
 		}
 		SendInput {tab 2}{home}+{end}{del}
-		ClickAndReturn(227,476)
+		sleep 1000
+		ClickAndReturn(227,473)
+		sleep 1000
 		SendInput o+{tab}
 		return
 	} else if (IsVS = 2){
