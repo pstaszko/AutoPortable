@@ -4,7 +4,7 @@ stp(lbl){
 	/*
 	tooltip % lbl
 	start:=GetKeyState("capslock")
-	loop 
+	loop
 	{
 		n := GetKeyState("capslock")
 		sleep 100
@@ -872,7 +872,7 @@ MqttPub(topic, message, host="localhost"){
 	z:=mqtt_history[topic]
 	if(z <> message)
 	{
-		
+
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
 			;msgbox m1111 %z%
@@ -883,7 +883,7 @@ MqttPub(topic, message, host="localhost"){
 				mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
 			}
 		}
-		
+
 		mqtt.TrySend(topic "|||" message)
 		/*
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
@@ -3924,34 +3924,34 @@ EnsureConnectedWS:
 	}
 return
 class WebSocket {
-	
+
 	; The primary HINTERNET handle to the websocket connection
 	; This field should not be set externally.
 	Ptr := 0
-	
+
 	; Whether the websocket is operating in Synchronous or Asynchronous mode.
 	; This field should not be set externally.
 	async := 0
-	
+
 	; The readiness state of the websocket.
 	; This field should not be set externally.
 	readyState := 0
-	
+
 	; The URL this websocket is connected to
 	; This field should not be set externally.
 	url := ""
-	
+
 	; Internal array of HINTERNET handles
 	HINTERNETs := []
-	
+
 	; Internal buffer used to receive incoming data
 	cache := "" ; Access ONLY by ObjGetAddress
 	cacheSize := 8192
-	
+
 	; Internal buffer used to hold data fragments for multi-packet messages
 	recData := ""
 	recDataSize := 0
-	
+
 	; Aborted connection Event
 	EVENT_ABORTED := { status: 1006 ; WEB_SOCKET_ABORTED_CLOSE_STATUS
 		, reason: "The connection was closed without sending or receiving a close frame." }
@@ -3972,7 +3972,7 @@ class WebSocket {
 		, "UInt") ; DWORD
 		return StrGet(hMem), DllCall("Kernel32.dll\LocalFree", "Ptr", hMem, "Ptr")
 	}
-	
+
 	; Internal function used to load the mcode event filter
 	_StatusSyncCallback()
 	{
@@ -4011,52 +4011,52 @@ class WebSocket {
 			}
 		*/
 	}
-	
+
 	; Internal event dispatcher for compatibility with the legacy interface
 	_Event(name, event)
 	{
 		this["On" name](event)
 	}
-	
+
 	; Reconnect
 	reconnect()
 	{
 		this.connect()
 	}
-	
+
 	pRecData[] {
 		get {
 			return ObjGetAddress(this, "recData")
 		}
 	}
-	
+
 	__New(url, events := 0, async := true, headers := "")
 	{
 		this.url := url
-		
+
 		this.HINTERNETs := []
-		
+
 		; Force async to boolean
 		this.async := async := !!async
-		
+
 		; Initialize the Cache
 		ObjSetCapacity(this, "cache", this.cacheSize)
 		this.pCache := ObjGetAddress(this, "cache")
-		
+
 		; Initialize the RecData
 		; this.pRecData := ObjGetAddress(this, "recData")
-		
+
 		; Find the script's built-in window for message targeting
 		dhw := A_DetectHiddenWindows
 		DetectHiddenWindows, On
 		this.hWnd := WinExist("ahk_class AutoHotkey ahk_pid " DllCall("GetCurrentProcessId"))
 		DetectHiddenWindows, %dhw%
-		
+
 		; Parse the url
 		if !RegExMatch(url, "Oi)^((?<SCHEME>wss?)://)?((?<USERNAME>[^:]+):(?<PASSWORD>.+)@)?(?<HOST>[^/:]+)(:(?<PORT>\d+))?(?<PATH>/.*)?$", m)
 			throw Exception("Invalid websocket url")
 		this.m := m
-		
+
 		; Open a new HTTP API instance
 		if !(hSession := DllCall("Winhttp\WinHttpOpen"
 			, "Ptr", 0  ; [in, optional]        LPCWSTR pszAgentW
@@ -4067,7 +4067,7 @@ class WebSocket {
 			, "Ptr")) ; HINTERNET
 			throw Exception("WinHttpOpen failed: " this._LastError())
 		this.HINTERNETs.Push(hSession)
-		
+
 		; Connect the HTTP API to the remote host
 		port := m.PORT ? (m.PORT + 0) : (m.SCHEME = "ws") ? 80 : 443
 		if !(this.hConnect := DllCall("Winhttp\WinHttpConnect"
@@ -4078,7 +4078,7 @@ class WebSocket {
 			, "Ptr")) ; HINTERNET
 			throw Exception("WinHttpConnect failed: " this._LastError())
 		this.HINTERNETs.Push(this.hConnect)
-		
+
 		; Translate headers from array to string
 		if IsObject(headers)
 		{
@@ -4088,35 +4088,35 @@ class WebSocket {
 			headers := LTrim(s, "`r`n")
 		}
 		this.headers := headers
-		
+
 		; Set any event handlers from events parameter
 		for k, v in IsObject(events) ? events : []
 			if (k ~= "i)^(data|message|close|error|open)$")
 				this["on" k] := v
-		
+
 		; Set up a handler for messages from the StatusSyncCallback mcode
 		this.wm_ahkmsg := DllCall("RegisterWindowMessage", "Str", "AHK_WEBSOCKET_STATUSCHANGE_" &this, "UInt")
 		OnMessage(this.wm_ahkmsg, this.WEBSOCKET_STATUSCHANGE.Bind({})) ; TODO: Proper binding
-		
+
 		; Connect on start
 		this.connect()
 	}
-	
+
 	connect() {
 		; Collect pointer to SendMessageW routine for the StatusSyncCallback mcode
 		static pSendMessageW := DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "User32", "Ptr"), "AStr", "SendMessageW", "Ptr")
-		
+
 		; If the HTTP connection is closed, we cannot request a websocket
 		if !this.HINTERNETs.Length()
 			throw Exception("The connection is closed")
-		
+
 		; Shutdown any existing websocket connection
 		this.shutdown()
-		
+
 		; Free any HINTERNET handles from previous websocket connections
 		while (this.HINTERNETs.Length() > 2)
 			DllCall("Winhttp\WinHttpCloseHandle", "Ptr", this.HINTERNETs.Pop())
-		
+
 		; Open an HTTP Request for the target path
 		dwFlags := (this.m.SCHEME = "wss") ? 0x800000 : 0
 		if !(hRequest := DllCall("Winhttp\WinHttpOpenRequest"
@@ -4130,7 +4130,7 @@ class WebSocket {
 			, "Ptr")) ; HINTERNET
 			throw Exception("WinHttpOpenRequest failed: " this._LastError())
 		this.HINTERNETs.Push(hRequest)
-		
+
 		if this.headers
 		{
 			if ! DllCall("Winhttp\WinHttpAddRequestHeaders"
@@ -4141,7 +4141,7 @@ class WebSocket {
 				, "Int") ; BOOL
 				throw Exception("WinHttpAddRequestHeaders failed: " this._LastError())
 		}
-		
+
 		; Make the HTTP Request
 		status := "00000"
 		if (!DllCall("Winhttp\WinHttpSetOption", "Ptr", hRequest, "UInt", 114, "Ptr", 0, "UInt", 0, "Int")
@@ -4150,16 +4150,16 @@ class WebSocket {
 			|| !DllCall("Winhttp\WinHttpQueryHeaders", "Ptr", hRequest, "UInt", 19, "Ptr", 0, "WStr", status, "UInt*", 10, "Ptr", 0, "Int")
 			|| status != "101")
 			throw Exception("Invalid status: " status)
-		
+
 		; Upgrade the HTTP Request to a Websocket connection
 		if !(this.Ptr := DllCall("Winhttp\WinHttpWebSocketCompleteUpgrade", "Ptr", hRequest, "Ptr", 0))
 			throw Exception("WinHttpWebSocketCompleteUpgrade failed: " this._LastError())
-		
+
 		; Close the HTTP Request, save the Websocket connection
 		DllCall("Winhttp\WinHttpCloseHandle", "Ptr", this.HINTERNETs.Pop())
 		this.HINTERNETs.Push(this.Ptr)
 		this.readyState := 1
-		
+
 		; Configure asynchronous callbacks
 		if (this.async)
 		{
@@ -4170,7 +4170,7 @@ class WebSocket {
 			NumPut(this.hWnd     , pCtx + A_PtrSize * 1, "Ptr")
 			NumPut(pSendMessageW , pCtx + A_PtrSize * 2, "Ptr")
 			NumPut(this.wm_ahkmsg, pCtx + A_PtrSize * 3, "UInt")
-			
+
 			if !DllCall("Winhttp\WinHttpSetOption"
 				, "Ptr", this.Ptr   ; [in] HINTERNET hInternet
 				, "UInt", 45        ; [in] DWORD     dwOption
@@ -4178,7 +4178,7 @@ class WebSocket {
 				, "UInt", A_PtrSize ; [in] DWORD     dwBufferLength
 				, "Int") ; BOOL
 				throw Exception("WinHttpSetOption failed: " this._LastError())
-			
+
 			StatusCallback := this._StatusSyncCallback()
 			if (-1 == DllCall("Winhttp\WinHttpSetStatusCallback"
 				, "Ptr", this.Ptr       ; [in] HINTERNET               hInternet,
@@ -4187,7 +4187,7 @@ class WebSocket {
 				, "UPtr", 0             ; [in] DWORD_PTR               dwReserved
 				, "Ptr")) ; WINHTTP_STATUS_CALLBACK
 				throw Exception("WinHttpSetStatusCallback failed: " this._LastError())
-			
+
 			; Make the initial request for data to receive an asynchronous response for
 			if (ret := DllCall("Winhttp\WinHttpWebSocketReceive"
 				, "Ptr", this.Ptr        ; [in]  HINTERNET                      hWebSocket,
@@ -4198,34 +4198,34 @@ class WebSocket {
 				, "UInt")) ; DWORD
 				throw Exception("WinHttpWebSocketReceive failed: " ret)
 		}
-		
+
 		; Fire the open event
 		this._Event("Open", {timestamp:A_Now A_Msec, url: this.url})
 	}
-	
+
 	WEBSOCKET_STATUSCHANGE(wp, lp, msg, hwnd) {
 		if !lp {
 			this.readyState := 3
 			return
 		}
-		
+
 		; Grab `this` from the provided context struct
 		this := Object(NumGet(wp + A_PtrSize * 0, "Ptr"))
-		
+
 		; Don't process data when the websocket isn't ready
 		if (this.readyState != 1)
 			return
-		
+
 		; Grab the rest of the context data
 		hInternet :=            NumGet(wp + A_PtrSize * 1, "Ptr")
 		lpvStatusInformation := NumGet(wp + A_PtrSize * 2, "Ptr")
 		dwBytesTransferred :=   NumGet(lpvStatusInformation + 0, "UInt")
 		eBufferType :=          NumGet(lpvStatusInformation + 4, "UInt")
-		
+
 		; Mark the current size of the received data buffer for use as an offset
 		; for the start of any newly provided data
 		offset := this.recDataSize
-		
+
 		if (eBufferType > 3)
 		{
 			closeStatus := this.QueryCloseStatus()
@@ -4240,22 +4240,22 @@ class WebSocket {
 				if offset ; Continued from a fragment
 				{
 					VarSetCapacity(data, offset + dwBytesTransferred)
-					
+
 					; Copy data from the fragment buffer
 					DllCall("RtlMoveMemory"
 					, "Ptr", &data
 					, "Ptr", this.pRecData
 					, "UInt", this.recDataSize)
-					
+
 					; Copy data from the new data cache
 					DllCall("RtlMoveMemory"
 					, "Ptr", &data + offset
 					, "Ptr", this.pCache
 					, "UInt", dwBytesTransferred)
-					
+
 					; Clear fragment buffer
 					this.recDataSize := 0
-					
+
 					this._Event("Data", {data: &data, size: offset + dwBytesTransferred})
 				}
 				else ; No prior fragment
@@ -4266,7 +4266,7 @@ class WebSocket {
 					, "Ptr", &data
 					, "Ptr", this.pCache
 					, "UInt", dwBytesTransferred)
-					
+
 					this._Event("Data", {data: &data, size: dwBytesTransferred})
 				}
 			}
@@ -4277,18 +4277,18 @@ class WebSocket {
 					; Continued from a fragment
 					this.recDataSize += dwBytesTransferred
 					ObjSetCapacity(this, "recData", this.recDataSize)
-					
+
 					DllCall("RtlMoveMemory"
 					, "Ptr", this.pRecData + offset
 					, "Ptr", this.pCache
 					, "UInt", dwBytesTransferred)
-					
+
 					msg := StrGet(this.pRecData, "utf-8")
 					this.recDataSize := 0
 				}
 				else ; No prior fragment
 					msg := StrGet(this.pCache, dwBytesTransferred, "utf-8")
-				
+
 				this._Event("Message", {data: msg})
 			}
 			else if (eBufferType == 1 || eBufferType == 3) ; BINARY_FRAGMENT, UTF8_FRAGMENT
@@ -4308,7 +4308,7 @@ class WebSocket {
 			SetTimer, %askForMoreData%, -1
 		}
 	}
-	
+
 	askForMoreData(hInternet)
 	{
 		static ERROR_INVALID_OPERATION := 4317
@@ -4324,7 +4324,7 @@ class WebSocket {
 		if (ret && ret != ERROR_INVALID_OPERATION)
 			this._Error({code: ret})
 	}
-	
+
 	__Delete()
 	{
 		this.shutdown()
@@ -4332,7 +4332,7 @@ class WebSocket {
 		while (this.HINTERNETs.Length())
 			DllCall("Winhttp\WinHttpCloseHandle", "Ptr", this.HINTERNETs.Pop())
 	}
-	
+
 	; Default error handler
 	_Error(err)
 	{
@@ -4345,7 +4345,7 @@ class WebSocket {
 		this.readyState := 3
 		try this._Event("Close", this.EVENT_ABORTED)
 	}
-	
+
 	queryCloseStatus() {
 		usStatus := 0
 		VarSetCapacity(vReason, 123, 0)
@@ -4360,7 +4360,7 @@ class WebSocket {
 		else if (this.readyState > 1)
 			return this.EVENT_ABORTED
 	}
-	
+
 	; eBufferType BINARY_MESSAGE = 0, BINARY_FRAGMENT = 1, UTF8_MESSAGE = 2, UTF8_FRAGMENT = 3
 	sendRaw(eBufferType, pvBuffer, dwBufferLength) {
 		if (this.readyState != 1)
@@ -4373,7 +4373,7 @@ class WebSocket {
 			, "UInt")) ; DWORD
 			this._Error({code: ret})
 	}
-	
+
 	; sends a utf-8 string to the server
 	send(str)
 	{
@@ -4386,16 +4386,16 @@ class WebSocket {
 		else
 			this.sendRaw(2, 0, 0)
 	}
-	
+
 	receive()
 	{
 		if (this.async)
 			throw Exception("Used only in synchronous mode")
 		if (this.readyState != 1)
 			throw Exception("websocket is disconnected")
-		
+
 		rec := {data: "", size: 0, ptr: 0}
-		
+
 		offset := 0
 		while (!ret := DllCall("Winhttp\WinHttpWebSocketReceive"
 			, "Ptr", this.Ptr           ; [in]  HINTERNET                      hWebSocket
@@ -4448,7 +4448,7 @@ class WebSocket {
 		if (ret != 4317)
 			this._Error({code: ret})
 	}
-	
+
 	; sends a close frame to the server to close the send channel, but leaves the receive channel open.
 	shutdown() {
 		if (this.readyState != 1)
