@@ -2502,6 +2502,9 @@ GetWindowsID(){
 	if Is10()
 		return % i
 	i+=1
+	if Is11()
+		return % i
+	i+=1
 	return % i
 }
 RegExMatch_(haystack,needle){
@@ -2522,6 +2525,9 @@ Is8(){
 }
 Is10(){
 	return % RegExMatch_(A_OSVersion, "i)10\.")
+}
+Is11(){
+	return % RegExMatch_(A_OSVersion, "i)11\.")
 }
 PostXP(){
 	return % GetWindowsID() > 0
