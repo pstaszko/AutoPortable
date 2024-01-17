@@ -210,7 +210,7 @@ ShowWindows(){
 	totalMS:=watch1.peek
 	;t("Done")
 
-rate:=Round(totalMS / trueI)
+	rate:=Round(totalMS / trueI)
 	msg=
 (
 Done restoring %restored% real window%z%
@@ -896,22 +896,6 @@ MqttPub(topic, message, host="localhost"){
 		mqtt_history[topic]:=message
 	}
 }
-MQTT_WindowPublish:
-	;return
-	;msgbox hi
-	mqtt_h:=WinGetActiveHwnd()
-	WinGetTitle mqtt_t, A
-	;t(mqtt_t)
-	;mqtt_t:=RegExReplace(mqtt_t, "[^\x00-\x7F]+","")
-	MqttPub("ActiveWindow/WindowTitle", mqtt_t)
-	MqttPub("ActiveWindow/WindowHwnd", mqtt_h)
-	fqn=%mqtt_t% ahk_id %mqtt_h%
-	MqttPub("ActiveWindow/TitleAndId", fqn)
-	MqttPub("ActiveWindow/Hwnds/" mqtt_h "/title", mqtt_t)
-	;mqtt.Bonk()
-	;mqtt.TrySend("zzz " A_ScriptFullPath)
-	sleep 1
-return
 MsgboxLogged(context,msg){
 	logParams()
 	logHere(GetCallStack)
@@ -2874,10 +2858,6 @@ PSKill(exe, async=0){
 RunWait(cmd){
 	runwait %cmd%
 }
-/*
-Stubx:
-return
-*/
 KillOculus2:
 	SetTimer KillOculus2,off
 	RunWait("cmd /c net stop ovrservice")
