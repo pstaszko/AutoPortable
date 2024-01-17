@@ -1,3 +1,4 @@
+return
 #include %A_ScriptDir%\Vanilla.ahk
 #include %A_ScriptDir%\FSharp.ahk
 MakeGroupName(txt){
