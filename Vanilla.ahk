@@ -4438,3 +4438,9 @@ class WebSocket {
 		this.readyState := 3
 	}
 }
+FullBlastRestart(){
+	run C:\DEV\Releases\FSSConsoleCurrent\Current\FSSConsole.exe,,min
+	;run C:\DEV\Releases\MatrixOS\Current\MatrixOS.exe C:\DEV\Releases\MatrixApps\Current,,min
+	run C:\DEV\Releases\MatrixOSCurrent\Current\MatrixOS.exe C:\DEV\Releases\MatrixAppsCurrent\Current,,min
+	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,hide
+}
