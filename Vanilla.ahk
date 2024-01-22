@@ -3480,6 +3480,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("ControlQtoAltF4","Picker ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class ApplicationFrameWindow ahk_exe ApplicationFrameHost.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class OEcl ahk_exe MSACCESS.EXE") ;field Selector
+	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class MSPaintApp ahk_exe mspaint.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class rctrl_renwnd32") ;Outlook Email
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_group Clipmaster_SQL_Report")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_group JsonView")
