@@ -1,5 +1,44 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
+AutoRespondToDebugger(){
+	WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
+	If ErrorLevel
+		return
+	WinActivate Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe
+	IfWinActive Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe
+	{
+		if !IsCapsLock()
+		{
+			sleep 250
+			SendInput {end}{enter}
+			growl("Sent")
+			;Enter()
+		}
+		WinWaitNotActive Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,1
+		If ErrorLevel
+		{
+			growl("Timed out")
+			return
+		}
+		WinWaitActive ahk_exe devenv.exe,,1
+		If ErrorLevel
+			growl("Timed out waiting for vs")
+		else
+		{
+			;SetTitleMatchMode_RegEx()
+			SetTitleMatchMode 2
+			WinWaitActive Atomic.fs ahk_exe devenv.exe,,2
+			If not ErrorLevel
+			{
+				SendInput ^w
+				SendInput {F5}
+			}else{
+				t:=WinGetActiveTitle()
+				growl("No dice on title. Got: " t)
+			}
+		}
+	}
+}
 stp(lbl){
 	/*
 	tooltip % lbl
