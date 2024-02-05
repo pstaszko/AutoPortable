@@ -4003,8 +4003,7 @@ class WebSocket {
 	EVENT_ABORTED := { status: 1006 ; WEB_SOCKET_ABORTED_CLOSE_STATUS
 		, reason: "The connection was closed without sending or receiving a close frame." }
 
-	_LastError(Err := -1)
-	{
+	_LastError(Err := -1){
 		static module := DllCall("GetModuleHandle", "Str", "winhttp", "Ptr")
 		Err := Err < 0 ? A_LastError : Err
 		hMem := ""
@@ -4021,8 +4020,7 @@ class WebSocket {
 	}
 
 	; Internal function used to load the mcode event filter
-	_StatusSyncCallback()
-	{
+	_StatusSyncCallback(){
 		if this.pCode
 			return this.pCode
 		b64 := (A_PtrSize == 4)
@@ -4060,14 +4058,12 @@ class WebSocket {
 	}
 
 	; Internal event dispatcher for compatibility with the legacy interface
-	_Event(name, event)
-	{
+	_Event(name, event){
 		this["On" name](event)
 	}
 
 	; Reconnect
-	reconnect()
-	{
+	reconnect(){
 		this.connect()
 	}
 
@@ -4077,8 +4073,7 @@ class WebSocket {
 		}
 	}
 
-	__New(url, events := 0, async := true, headers := "")
-	{
+	__New(url, events := 0, async := true, headers := ""){
 		this.url := url
 
 		this.HINTERNETs := []
@@ -4356,8 +4351,7 @@ class WebSocket {
 		}
 	}
 
-	askForMoreData(hInternet)
-	{
+	askForMoreData(hInternet){
 		static ERROR_INVALID_OPERATION := 4317
 		; Original implementation used a while loop here, but in my experience
 		; that causes lost messages
@@ -4372,8 +4366,7 @@ class WebSocket {
 			this._Error({code: ret})
 	}
 
-	__Delete()
-	{
+	__Delete(){
 		this.shutdown()
 		; Free all active HINTERNETs
 		while (this.HINTERNETs.Length())
@@ -4381,8 +4374,7 @@ class WebSocket {
 	}
 
 	; Default error handler
-	_Error(err)
-	{
+	_Error(err){
 		if (err.code != 12030) {
 			this._Event("Error", {code: ret})
 			return
@@ -4422,8 +4414,7 @@ class WebSocket {
 	}
 
 	; sends a utf-8 string to the server
-	send(str)
-	{
+	send(str){
 		if (size := StrPut(str, "utf-8") - 1)
 		{
 			VarSetCapacity(buf, size, 0)
@@ -4434,8 +4425,7 @@ class WebSocket {
 			this.sendRaw(2, 0, 0)
 	}
 
-	receive()
-	{
+	receive(){
 		if (this.async)
 			throw Exception("Used only in synchronous mode")
 		if (this.readyState != 1)
@@ -4497,7 +4487,7 @@ class WebSocket {
 	}
 
 	; sends a close frame to the server to close the send channel, but leaves the receive channel open.
-	shutdown() {
+	shutdown(){
 		if (this.readyState != 1)
 			return
 		this.readyState := 2
