@@ -1,5 +1,8 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
+WinGetActiveID(){
+	return % WinGetID("A")
+}
 AutoRespondToDebugger(){
 	WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
 	If ErrorLevel
@@ -27,15 +30,19 @@ AutoRespondToDebugger(){
 		{
 			;SetTitleMatchMode_RegEx()
 			SetTitleMatchMode 2
+			/*
 			WinWaitActive Atomic.fs ahk_exe devenv.exe,,2
 			If not ErrorLevel
 			{
+			*/
 				SendInput ^w
 				SendInput {F5}
+			/*
 			}else{
 				t:=WinGetActiveTitle()
 				growl("No dice on title. Got: " t)
 			}
+			*/
 		}
 	}
 }
