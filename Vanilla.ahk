@@ -1,7 +1,31 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
+
+IsMaximized(){
+	global
+	simple=0
+	if simple
+	{
+		WinGet MX, MinMax, A
+		If MX
+			return 1
+		Else
+			return 0
+	} else {
+		WinGetPos winx, winy, winw, winh, A
+		if (winx=-4 and winy=-4 and winw=screenwidth+8 and winh=screenheight+28)
+			return 1
+		if ((winy=-4 or winy=(screenwidth/2)) and (winw=screenwidth or winw-8=((screenwidth)/2)))
+			return 1
+		return 0
+	}
+}
 WinGetActiveID(){
 	return % WinGetID("A")
+}
+WinGetID(spec){
+	WinGet id,id,%spec%
+	return % id
 }
 AutoRespondToDebugger(){
 	WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
