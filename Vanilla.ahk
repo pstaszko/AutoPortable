@@ -1,9 +1,9 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;return
 
-IsMaximized(){
+IsMaximized(simple=0){
 	global
-	simple=0
+	;simple=0
 	if simple
 	{
 		WinGet MX, MinMax, A
