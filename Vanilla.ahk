@@ -908,26 +908,22 @@ class WS_MQTT extends WebSocket
 		}
 	}
 
-	OnOpen(Event)
-	{
+	OnOpen(Event){
 		this.Closed := false
 	}
 
-	OnMessage(Event)
-	{
+	OnMessage(Event){
 		;RunMySendMessageLabel(Event.data)
 		MsgBox, % "Received Data: " Event.data
 		this.Close()
 	}
 
-	OnClose(Event)
-	{
+	OnClose(Event){
 		this.Closed := true
 		this.Disconnect()
 	}
 
-	OnError(Event)
-	{
+	OnError(Event){
 		MsgBox Websocket Error %A_ScriptFullPath% %event%
 	}
 
