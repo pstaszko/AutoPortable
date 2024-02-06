@@ -1,4 +1,10 @@
 ShowSSMS(){
+	WinActivate ahk_class SunAwtFrame ahk_exe datagrip64.exe
+	IfWinActive ahk_class SunAwtFrame ahk_exe datagrip64.exe
+	{
+		t("Stick with DataGrip")
+		return
+	}
 	SubmitFSharpFunction("SSMS.ActivateOrStartWithCreds")
 }
 DiffMerge_RememberGitAdds(){
