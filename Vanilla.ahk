@@ -28,7 +28,7 @@ WinGetID(spec){
 	return % id
 }
 AutoRespondToDebugger(){
-	msgbox hi
+	;msgbox hiz
 	WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
 	If ErrorLevel
 		return
