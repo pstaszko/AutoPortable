@@ -10,7 +10,7 @@ if fn{
 	}else{
 		msgbox Bad function name: %fn%
 	}
-	
+
 }else{
 	msgbox Function name with zero parameters must be passed in
 }
