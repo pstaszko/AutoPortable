@@ -2998,6 +2998,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Browsers","ahk_class Chrome_WidgetWin_1 ahk_exe brave.exe")
 	g_1_ProgramGroups("Browsers","ahk_class OperaWindowClass ahk_exe Opera.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_class Qt5152QWindowIcon ahk_exe qutebrowser.exe")
+	g_1_ProgramGroups("Browsers","ahk_exe opera.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe chrome.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe Firefox.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe iexplore.exe",,,"ahk_class 32770")
