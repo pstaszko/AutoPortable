@@ -18,7 +18,8 @@ MQTT_Sub(){
 	WinWait ahk_pid %pid%
 	DllCall("AttachConsole", "UInt", pid)
 	WshShell := ComObjCreate("Wscript.Shell")
-	exec := WshShell.Exec("mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
+	exec := WshShell.Exec("C:\Users\Paul\scoop\apps\mosquitto\current\mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
+	;exec := WshShell.Exec("mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
 	loop {
 		output := exec.StdOut.Readline()
 		WinGetClass mqtt_c, A
