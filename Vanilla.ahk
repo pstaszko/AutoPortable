@@ -3010,6 +3010,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Browsers","Log in to your PayPal account ahk_class Chrome_WidgetWin_1 ahk_exe Heroic.exe")
 	g_1_ProgramGroups("ChaosControl","Chaos Control ahk_class Qt5QWindowOwnDCIcon ahk_exe ChaosControl.exe")
 	g_1_ProgramGroups("CharDef", "#IfWinActive PepHop AI")
+	g_1_ProgramGroups("CharDef", "crushon ahk_group Browsers")
 	g_1_ProgramGroups("CharDef", "AI Character Editor")
 	g_1_ProgramGroups("CharDef", "C:\Users\Paul\Desktop\Profiles\ ahk_class Notepad++ ahk_exe notepad++.exe")
 	g_1_ProgramGroups("CharDef", "CrushOn")
