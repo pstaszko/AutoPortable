@@ -2965,7 +2965,7 @@ BlastTeamViewer(){
 GetScoopDir(appName){
 	return % "C:\Users\Paul\scoop\apps\" . appName . "\current\"
 }
-GetPerfectlyNamedScoopExeInSubDir(appName, subDir){
+GetPerfectlyNamedScoopExeInSubDirx(appName, subDir){
 	subDir:=MyRtrim(subDir,"\")
 	subDir:=MyLtrim(subDir,"\")
 	return % GetScoopDir(appName) . subDir . "\" . appName . ".exe"
