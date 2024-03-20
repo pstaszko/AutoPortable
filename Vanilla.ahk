@@ -2966,7 +2966,8 @@ GetScoopDir(appName){
 	return % "C:\Users\Paul\scoop\apps\" . appName . "\current\"
 }
 GetPerfectlyNamedScoopExeInSubDir(appName, subDir){
-	subDir:=subDir.rtrim("\").ltrim("\")
+	subDir:=MyRtrim(subDir,"\")
+	subDir:=MyLtrim(subDir,"\")
 	return % GetScoopDir(appName) . subDir . "\" . appName . ".exe"
 }
 GetPerfectlyNamedScoopExe(appName){
