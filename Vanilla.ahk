@@ -3767,6 +3767,9 @@ IsProcessRunning(ProcName){
 MyRTrim(str,OmitChars = " `t`n"){
 	return % Rtrim(str,OmitChars)
 }
+MyLTrim(str,OmitChars = " `t`n"){
+	return % ltrim(str,OmitChars)
+}
 WriteToTempFile(val,extension="txt",dir="",prefix=""){
 	tmp:=GetTempFile(extension,dir,prefix)
 	FileAppend %val%,%tmp%
