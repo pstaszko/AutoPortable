@@ -2963,11 +2963,11 @@ BlastTeamViewer(){
 	gosub("Tops_T_Tops_V") ; run teamviewer.exe
 }
 GetScoopDir(appName){
-	return % "C:\Users\Paul\scoop\apps\" . appName . "\"
+	return % "C:\Users\Paul\scoop\apps\" . appName . "\current\"
 }
 GetPerfectlyNamedScoopExeInSubDir(appName, subDir){
 	subDir:=subDir.rtrim("\").ltrim("\")
-	return % GetScoopDir(appName) . "\" . subDir . "\" . appName . ".exe"
+	return % GetScoopDir(appName) . "\" . subDir . "\current\" . appName . ".exe"
 }
 GetPerfectlyNamedScoopExe(appName){
 	return % GetScoopDir(appName) . appName . ".exe"
