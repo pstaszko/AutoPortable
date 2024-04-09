@@ -1,7 +1,7 @@
 ; #Icon: C:\Dropbox\Assets\Icons\Machemicals\scripts.ico
 #Requires AutoHotkey v1.1.34.03
 #SingleInstance force
-menu tray, icon, C:\Dropbox\Assets\Icons\Machemicals\scripts.ico
+menu tray, icon, C:\dev\autoportable\scripts.ico
 fn:=A_Args[1]
 if fn{
 	z:=func(fn)
