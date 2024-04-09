@@ -3462,6 +3462,7 @@ NewLoadGroups(){
 	g_2_AutomaticBehaviors("AltYifActive","Microsoft Visual Studio ahk_group VisualStudio","This command compares the disk version of a file to the server version")
 	g_2_AutomaticBehaviors("AltYIfActive","PowerGUI Script Editor ahk_class #32770 ahk_exe ScriptEditor.exe","has been changed outside PowerGUI Script Editor")
 	g_2_AutomaticBehaviors("AltYifActive","Source Code Control ahk_class #32770","If you do not check it out")
+	g_2_AutomaticBehaviors("AltYifActive_Fast","Keep non existing file ahk_class #32770 ahk_exe notepad++.exe")
 	g_2_AutomaticBehaviors("AltYifActive_Fast","Confirm ahk_class TBcMessageForm.UnicodeClass ahk_exe BCompare.exe")
 	g_2_AutomaticBehaviors("AltYplusHeadshotifActive","Confirm Exit - GoToMeeting ahk_class #32770")
 	g_2_AutomaticBehaviors("AutoSSMSsaverGroup","Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe","Save changes to the following items?")
