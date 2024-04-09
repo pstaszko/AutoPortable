@@ -3420,6 +3420,7 @@ NewLoadGroups(){
 	g_2_AutomaticBehaviors("ActivateIfExist","ahk_group ActivateAndEscapeIfExist")
 	g_2_AutomaticBehaviors("ActivateIfExist","ahk_group VPNFailure")
 	g_2_AutomaticBehaviors("ActivateIfExist","AHKCOMMAND:")
+	g_2_AutomaticBehaviors("ActivateIfExist_Fast","Keep non existing file ahk_class #32770 ahk_exe notepad++.exe")
 	g_2_AutomaticBehaviors("ActivateIfExist_Fast","Inconsistent Line Endings ahk_class #32770 ahk_exe Ssms.exe")
 	g_2_AutomaticBehaviors("ActivateIfExist_Slow","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","The active solution or project is controlled by a different source control plug-in than the one you have selected")
 	g_2_AutomaticBehaviors("ActivateIfExist_Slow","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","Would you like to build it?")
