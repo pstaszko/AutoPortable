@@ -13,6 +13,36 @@ return
 return
 */
 
+#IfWinActive ahk_group ConEmu
+	;Op: Sort
+	#delete::SendInput #!{del]
+	^+Del::SendInput ^{tab}#!{del}
+	^,::SendInput !#p
+	^0::ActivateConsole(1, "ForceNew")
+	^1::ActivateConsole(1, "PowerShell Core")
+	^2::ActivateConsole(2, "BackgroundPowerShell")
+	^3::ActivateConsole(3, "PWSH")
+	^4::ActivateConsole(4, "FSS")
+	^5::ActivateConsole(5, "MatrixOS")
+	^N::SendInput ^1
+	^R::SendInput !{space}vm
+	;Op: End
+	^Down::
+		Esc()
+		SendInput com{enter}
+	return
+	^Up::
+		Esc()
+		SendInput push{enter}
+	return
+	^+C::SendInput !{space}ea
+	#!K::
+		WinWait Settings ahk_class #32770 ahk_exe ConEmu64.exe,,6000
+		If not ErrorLevel
+			WinClose Settings ahk_class #32770 ahk_exe ConEmu64.exe,,6000
+		RunLocate32()
+	return
+
 #IfWinActive ahk_class Notepad++ ahk_exe Notepad++.exe
 	!^F4::PSKill(WinGetActivePID())
 	!Down::SendInput ^+{down}
