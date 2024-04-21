@@ -482,7 +482,7 @@ WinMaxFromHwnd(hwnd){
 	MaximizeFromHwnd(hwnd)
 }
 MaximizeFromHwnd(hwnd){
-	Calling("WinMaximize", "DetectHiddenWindows off", "ahk_id " hwnd)
+	;Calling("WinMaximize", "DetectHiddenWindows off", "ahk_id " hwnd)
 	DetectHiddenWindows off
 	WinMaximize ahk_id %hwnd% ;ok
 }
@@ -3020,6 +3020,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Browsers","Iron ahk_class Chrome_WidgetWin_0")
 	g_1_ProgramGroups("Browsers","Log in to your PayPal account ahk_class Chrome_WidgetWin_1 ahk_exe Heroic.exe")
 	g_1_ProgramGroups("ChaosControl","Chaos Control ahk_class Qt5QWindowOwnDCIcon ahk_exe ChaosControl.exe")
+	g_1_ProgramGroups("CharDef", "A private chat with ahk_group Browsers")
 	g_1_ProgramGroups("CharDef", "Agnaistic ahk_group Browsers")
 	g_1_ProgramGroups("CharDef", "AI Character Editor")
 	g_1_ProgramGroups("CharDef", "C:\Users\Paul\Desktop\Profiles\ ahk_class Notepad++ ahk_exe notepad++.exe")
