@@ -1439,9 +1439,6 @@ _log(context,msg,synchronous=0,IncludePath=1){
 ComputerHasMatrixBoards(){
 	return % computername = "raven"
 }
-RemvoeGhosts(){
-	RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')" > c:\temp\x.txt
-}
 HardRestartMatrixOS(){
 	if(ComputerHasMatrixBoards()){
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
