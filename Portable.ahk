@@ -1,5 +1,8 @@
 #Requires AutoHotkey v1.1.34.03
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
+RemvoeGhosts(){
+	RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')" > c:\temp\x.txt
+}
 #R::RunFlowLauncher()
 #H::OpenMainScript(True)
 /*
