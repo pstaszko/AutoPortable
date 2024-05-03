@@ -1462,7 +1462,7 @@ HardRestartMatrixOSAutomatic(){
 		URLDownloadToVar("http://red:1880/plug2/off")
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
 		PSKill("matrixos")
-		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')"
+		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')" > c:\temp\x.txt
 		URLDownloadToVar("http://red:1880/plug2/on")
 		sleep 30000
 		;RunMatrixOS(false, false)
