@@ -1451,6 +1451,9 @@ HardRestartMatrixOS(){
 	}
 }
 
+RemoveGhosts(){
+	RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')" > c:\temp\x.txt
+}
 URLDownloadToVar(url){
 	hObject:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 	hObject.Open("GET",url)
