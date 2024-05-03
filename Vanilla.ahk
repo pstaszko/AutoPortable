@@ -1439,12 +1439,15 @@ _log(context,msg,synchronous=0,IncludePath=1){
 ComputerHasMatrixBoards(){
 	return % computername = "raven"
 }
-
+RemvoeGhosts(){
+	RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')" > c:\temp\x.txt
+}
 HardRestartMatrixOS(){
 	if(ComputerHasMatrixBoards()){
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
 		PSKill("matrixos")
-		RunWait powershell -noprofile $"
+		;RunWait powershell -noprofile $"
+		RemvoeGhosts()
 		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
 		IfMsgBox Ok
 			RunMatrixOS(false, false)
@@ -1458,14 +1461,11 @@ URLDownloadToVar(url){
 	return hObject.ResponseText
 }
 HardRestartMatrixOSAutomatic(){
-	msgbox hix
 	if(ComputerHasMatrixBoards()){
-		msgbox hiy
 		URLDownloadToVar("http://red:1880/plug2/off")
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
 		PSKill("matrixos")
-		msgbox hi
-		RunWait powershell -noprofile C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName "@('lpmini')" > c:\temp\x.txt
+		RemoveGhosts()
 		URLDownloadToVar("http://red:1880/plug2/on")
 		sleep 30000
 		;RunMatrixOS(false, false)
