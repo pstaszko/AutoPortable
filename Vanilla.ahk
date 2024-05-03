@@ -1458,7 +1458,9 @@ URLDownloadToVar(url){
 	return hObject.ResponseText
 }
 HardRestartMatrixOSAutomatic(){
+	msgbox hix
 	if(ComputerHasMatrixBoards()){
+		msgbox hiy
 		URLDownloadToVar("http://red:1880/plug2/off")
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
 		PSKill("matrixos")
