@@ -1,5 +1,5 @@
 ; #Icon: C:\Dropbox\Assets\Icons\Machemicals\scripts.ico
-#Requires AutoHotkey v1.1.34.03
+#Requires AutoHotkey v1.1.37.02
 #SingleInstance force
 menu tray, icon, C:\dev\autoportable\scripts.ico
 fn:=A_Args[1]

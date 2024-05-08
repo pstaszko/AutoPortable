@@ -1,5 +1,5 @@
 #SingleInstance force
-#Requires AutoHotkey v1.1.34.03
+#Requires AutoHotkey v1.1.37.02
 SetWorkingDir %A_ScriptDir%
 LoadGlobalVars()
 NewLoadGroups()
