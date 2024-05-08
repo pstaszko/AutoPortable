@@ -2569,11 +2569,9 @@ Post8(){
 	return % GetWindowsID() > 3
 }
 Post10(){
-	msgbox % GetWindowsID()
 	return % GetWindowsID() > 4
 }
 Post11(){
-	msgbox % GetWindowsID()
 	return % GetWindowsID() > 5
 }
 ClassUnderMouse(){
@@ -4531,3 +4529,10 @@ FullBlastRestart(){
 	run C:\DEV\Releases\MatrixOSCurrent\Current\MatrixOS.exe C:\DEV\Releases\MatrixAppsCurrent\Current,,min
 	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,hide
 }
+/*
+GetWindowsID(){
+	x:=GetWindowsID_()
+	logHere(x)
+	return % x
+}
+*/
