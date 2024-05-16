@@ -3285,7 +3285,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Splashtop","ahk_exe strwindt.exe")
 	g_1_ProgramGroups("SplashtopRemote","ahk_exe strwinclt.exe")
 	g_1_ProgramGroups("Spotify","ahk_class Chrome_WidgetWin_0 ahk_exe Spotify.exe")
-	g_1_ProgramGroups("SQLManagementStudio","ahk_exe SqlWb.exe")
 	g_1_ProgramGroups("SQLManagementStudio","ahk_exe Ssms.exe")
 	g_1_ProgramGroups("SQLManagementStudio","Microsoft SQL Server Management Studio ahk_class wndclass_desked_gsk")
 	g_1_ProgramGroups("SQLManagementStudio","Microsoft SQL Server Management Studio ahk_exe Ssms.exe")
