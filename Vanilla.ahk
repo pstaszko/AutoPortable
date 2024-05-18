@@ -1114,8 +1114,8 @@ SendCommandVSLeave(cmd,prefixStar=true){
 ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 	start:=A_TickCount
 	output:=VisualStudio.RunVSCMD("ShowAllWindows")
-	if output
-		output.shout
+	;if output
+	;	output.shout
 	;return
 	Sends:=[]
 	if !SkipSolutionExplorer
