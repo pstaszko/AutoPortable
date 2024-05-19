@@ -1,7 +1,41 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
-;return
-
-IsMaximized(simple=0){
+#if
+Run(target, workingDir:="",flags:=""){
+	run %target%, %workingDir%, %flags%
+}
+FileAppendLine(Text, Filename, Encoding:="UTF-8"){
+	FileAppend(Text "`n", Filename, Encoding)
+}
+FileAppend(Text, Filename, Encoding:="UTF-8"){
+	loop 10
+	{
+		FileAppend %Text%,%Filename%,%Encoding%
+		If !ErrorLevel
+			return
+		sleep 300
+	}
+	logHere("Error appending text to " filename " error: " A_LastError)
+	g("Error appending text to " filename " error: " A_LastError)
+}
+MsgBox(text){
+	msgbox,,%text%
+}
+WinNotActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
+	return WinActive(title,text,excludeTitle,excludeText)
+}
+WinWait(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
+	winwait %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
+}
+WinWaitNotActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
+	WinWaitNotActive %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
+}
+WinWaitActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
+	WinWaitActive %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
+}
+WinClose(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
+	WinClose %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
+}
+IsMaximized(simple:=0){
 	global
 	;simple=0
 	if simple
@@ -21,20 +55,22 @@ IsMaximized(simple=0){
 	}
 }
 WinGetActiveID(){
-	return % WinGetID("A")
+	return WinGetID("A")
 }
 WinGetID(spec){
 	WinGet id,id,%spec%
-	return % id
+	return id
 }
 AutoRespondToDebugger(){
 	t("AutoRespondToDebugger")
 	;msgbox hiz
-	WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
+	;WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
+	WinWait("Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe",,10)
+
 	If ErrorLevel
 		return
-	WinActivate Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe
-	IfWinActive Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe
+	WinActivate("Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe")
+	If WinActive("Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe")
 	{
 		if !IsCapsLock()
 		{
@@ -43,13 +79,13 @@ AutoRespondToDebugger(){
 			growl("Sent")
 			;Enter()
 		}
-		WinWaitNotActive Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,1
+		WinWaitNotActive("Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe",,3)
 		If ErrorLevel
 		{
 			growl("Timed out")
 			return
 		}
-		WinWaitActive ahk_exe devenv.exe,,1
+		WinWaitActive("ahk_exe devenv.exe",,1)
 		If ErrorLevel
 			growl("Timed out waiting for vs")
 		else
@@ -89,14 +125,16 @@ stp(lbl){
 	*/
 }
 
-SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
-	IfWinActive Connect ahk_exe devenv.exe
-		IsVS=1
-	else
-		IfWinActive SQL Server Login ahk_class #32770 ahk_exe MSACCESS.EXE
-			IsVS=2
+SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
+	If WinActive("Connect ahk_exe devenv.exe")
+	{
+		IsVS:=1
+	} else {
+		If WinActive("SQL Server Login ahk_class #32770 ahk_exe MSACCESS.EXE")
+			IsVS:=2
 		else
-			IsVS=0
+			IsVS:=0
+	}
 	if IsVS = 1
 	{
 		logHere("IsVS")
@@ -159,7 +197,7 @@ SQLLogin(server,user="",password="",NoEnter=false){ ;;DB Profile
 	}
 }
 
-SSMSConnect(db,NoEnter=false){ ;;DB Profile
+SSMSConnect(db,NoEnter:=false){ ;;DB Profile
 	logParams()
 	SendInput !s
 	NoEnter:=false
@@ -185,11 +223,11 @@ SSMSConnectNoEnter(db){
 	t(db)
 	SSMSConnect(db,true)
 }
-ReloadScripts(hideScite, hideCompiler, force=0, sendkeys=1){
+ReloadScripts(hideScite, hideCompiler, force:=0, sendkeys:=1){
 	global
-	winclose AutoHotkey_%computername%.ahk ahk_class #32770 ahk_exe AutoHotkey.exe
+	winclose("AutoHotkey_%computername%.ahk ahk_class #32770 ahk_exe AutoHotkey.exe")
 	t("Reload starting")
-	IfWinActive SciTE ahk_class SciTEWindow
+	If WinActive("SciTE ahk_class SciTEWindow")
 	{
 		SendInput !bs
 		sleep 500
@@ -202,14 +240,14 @@ ReloadScripts(hideScite, hideCompiler, force=0, sendkeys=1){
 	if hideScite
 		hide()
 	if computername=lappy
-		fileappend hzi,\\blackbird\c$\temp\reload.txt
+		fileappend("hzi","\\blackbird\c$\temp\reload.txt")
 	if computername=pstaszko
 		if pstaszko_Reload_Sleep
 			sleep %pstaszko_Reload_Sleep%
 	;msgbox f %force%
 	ReloadFunction("AHKtextEditor_F2",force,hideCompiler)
 }
-ReloadFunction(source,recompile=1,hide=0){
+ReloadFunction(source,recompile:=1,hide:=0){
 	global
 	z:=join(", ",source,recompile,hide)
 	logHere(z)
@@ -234,10 +272,10 @@ ReloadFunction(source,recompile=1,hide=0){
 }
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
-	return % WinActive(title)
+	return WinActive(title)
 }
-RunFSSC(args="", startHidden=""){
-	h=
+RunFSSC(args:="", startHidden:=""){
+	h:=""
 	if startHidden
 		h:="hide"
 	p:=GetPublishedFSSConsole()
@@ -275,7 +313,7 @@ ShowWindows(){
 	x.Insert("Chrome_Hiders")
 	x.Insert("F1HideWindow")
 	x.Insert("F12HideWindow")
-	trueI=0
+	trueI:=0
 	watch1:=new StopWatch()
 	for i,v in x
 		WinShow ahk_group %v%
@@ -284,7 +322,7 @@ ShowWindows(){
 	;t("Done")
 
 	rate:=Round(totalMS / trueI)
-	msg=
+	msg:=
 (
 Done restoring %restored% real window%z%
 %totalMS% total MS
@@ -299,7 +337,7 @@ CloseMinorWindows(){
 	WinClose Library ahk_class MozillaWindowClass ahk_exe firefox.exe
 	WinClose smtp4dev ahk_exe smtp4dev.exe
 }
-CloseWindowsExplorerWindows(forceIE,level=1){
+CloseWindowsExplorerWindows(forceIE,level:=1){
 	global
 	WinGet id,id,A
 	;t:=WinGetActiveTitle()
@@ -309,7 +347,7 @@ CloseWindowsExplorerWindows(forceIE,level=1){
 
 	;logHere("id " id)
 	WinActivate ahk_id %id%
-	IfWinNotActive ahk_id %id%
+	If WinNotActive("ahk_id " id)
 	{
 		loop 10
 		{
@@ -324,7 +362,7 @@ CloseWindowsExplorerWindows(forceIE,level=1){
 		;t("hit it. was " t " is now " tt " - " exe " - now - " exee)
 	}
 }
-_CloseWindowsExplorerWindows(forceIE,level=1){
+_CloseWindowsExplorerWindows(forceIE,level:=1){
 	global
 	If NoClose
 		return
@@ -377,23 +415,23 @@ ScratchFileAdd(){
 	FormatTime RightNow
 	FileAppend , %sfPath%
 	FileAppend `n****************************************************`nPasted: %RightNow%`n%clipboard%, %sfPath%
-	IfExist % sfPath
+	If FileExist(sfPath)
 		T("Appended:`n" . SubStr(clipboard, 1, 100))
 	else
-		msgbox Scratch file was not created!
+		msgbox("Scratch file was not created!")
 }
 SpyOrSpellCheck(){
 	if(CheckModifiers("!^+")){
 		RunSpellChecker()
 	}else{
-		fancy=1
+		fancy:=1
 		if fancy{
 			WinActivate AHK Window Info ahk_class AutoHotkeyGUI ahk_exe WindowSpy.exe
 			IfWinNotActive AHK Window Info ahk_class AutoHotkeyGUI ahk_exe WindowSpy.exe
-				run %pauldir%\Window Spy\WindowSpy.exe
+				run (pauldir  "\Window Spy\WindowSpy.exe")
 		}else{
 			WinActivate Active Window Info ahk_class AutoHotkeyGUI ahk_exe AU3_Spy.exe
-			run %pauldir%\AU3_Spy.exe
+			run pauldir "\AU3_Spy.exe"
 		}
 	}
 }
@@ -417,33 +455,13 @@ RunClipMaster(){
 		ClipMaster.RunNew()
 	KeyWait c
 }
-GetModiferString(){
-	global
-	FileRead altkey,c:\temp\trash\altkey
-	FileRead shiftkey,c:\temp\trash\shiftkey
-	FileRead winkey,c:\temp\trash\winkey
-	FileRead controlkey,c:\temp\trash\controlkey
-	values=
-(
-%shiftkey%+
-%winkey%#
-%controlkey%^
-%altKey%!
-)
-	sort values, r
-	symbols=
-	loop parse, values,`n
-	{
-		t:=trim(A_LoopField)
-		if t
-			symbols:=SubStr(t,0) "`r`n" symbols
-	}
-	symbols:=RegExReplace(symbols,"[\r\n\s]")
-	x:=(-1 * StrLen(str)) + 1
-	z:=substr(symbols, x)
-	return % z
+FileRead(path){
+	f:=FileOpen(path, "r")
+	cont:=f.Read()
+	f.Close()
+	return cont
 }
-Calling(fn, arg1="", arg2=""){
+Calling(fn, arg1:="", arg2:=""){
 	announce:=false
 	if(fn = "WinMaximize") ;ok
 		announce:=true
@@ -451,7 +469,7 @@ Calling(fn, arg1="", arg2=""){
 		t("Calling " fn ", " arg1 ", " arg2)
 	}
 }
-MaxFunction(ForceSingleMonitor=0,ForceToRight=0,ForceToLeft=0){
+MaxFunction(ForceSingleMonitor:=0,ForceToRight:=0,ForceToLeft:=0){
 	global
 	;t("Max " A_ScriptFullPath)
 	WinGet hwin,ID,A
@@ -461,12 +479,12 @@ MaxFunction(ForceSingleMonitor=0,ForceToRight=0,ForceToLeft=0){
 		return false
 
 	AssertNotSciteFindWindow()
-	IfWinActive Find in Files ahk_class #32770
+	If WinActive("Find in Files ahk_class #32770")
 		ListLines
-	IfWinActive ahk_group NoMax
+	If WinActive("ahk_group NoMax")
 		return
 	;logHere("Maximize")
-	IfWinActive ahk_id %hwin%
+	If WinActive("ahk_id " hwin)
 	{
 		WinMaxFromHwnd(hwin)
 		;logHere("maximize " hwin)
@@ -504,93 +522,21 @@ GetBits(){
 	else
 		return 32
 }
-OpenMainScript(OpenOrSwitchAHK){ ;;tracze
-	Global
-	t("Opening script")
-	Hit=0
-	WinShow SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
-	WinActivate SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
-	IfWinActive SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
-		return
-	If OpenOrSwitchAHK
-	{
-		Loop %PAULDIR%\*.ahk, 1
-		{
-			Match=0
-			IfWinExist %A_LoopFileName% - SciTE
-			{
-				Match=1
-			}
-			IfWinExist %A_LoopFileName% * SciTE
-			{
-				Match=1
-			}
-			if a_loopfilename.contains("bin.")
-			{
-				match=0
-			}
-			t=
-			IfWinExist SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
-				t=SciTE4AutoHotkey
-			If Match
-			{
-				;window(A_LoopFileName)
-				WinActivate %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump
-				WinMaximize %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump ;ok
-				Hit=1
-				IfWinActive ahk_class SciTEWindow ahk_exe SCITE.EXE,,SciTE - Jump
-				{
-					Max()
-				}
-				Return
-			}
-		}
-	}
-	If not Hit
-	{
-		If OpenOrSwitchAHK
-		{
-			t("starting new ahk")
-			SciTE4AHKPath:="C:\DEV\PAUL\SciTE4AutoHotkey\SciTE.exe"
-			bits:=GetBits()
-			if (bits<>32)
-			{
-				SciTE4AHKPath.Replace("\scite\","\scite4AutoHotkey\")
-			}
-			Run %SciTE4AHKPath% %scripts%
-;			%pauldir%
-			Return
-		}
-	}
-	WinActivate Untitled ahk_class SciTEWindow
-	IfWinNotActive Untitled ahk_class SciTEWindow
-	{
-		t("run scite")
-		Run %SciTEPath%
-		WinActivate Untitled ahk_class SciTEWindow
-	}
-	WinWaitActive Untitled ahk_class SciTEWindow,,5
-	If not Errorlevel
-	{
-		if OpenOrSwitchAHK
-			Max()
-	}
-}
-RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
+RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex:=0){
 	startingTitleMatchMode:=A_TitleMatchMode
 	If Regex
 		SetTitleMatchMode("regex") ;swapped
 	Winactivate %ROSCtitle% ahk_class %class%
 	WinGetActiveTitle x
 	WinGetClass c, A
-	hit=0
+	hit:=0
 	If Regex
 	{
 		IfWinActive %ROSCtitle% ahk_class %class%
-			Hit=1
+			Hit:=1
 	} else {
 		If Instr(x,ROSCtitle) and Instr(c,Class)
-			Hit=1
+			Hit:=1
 	}
 	If Hit
 	{
@@ -598,7 +544,7 @@ RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
 		Max()
 	} else {
 		tDebug("No Hit")
-		IfWinExist %ROSCtitle% ahk_class %class%
+		If WinExist(ROSCtitle " ahk_class " class)
 			TempTooltip("1 Failed to show: " . ROSCtitle,2000)
 		else {
 			TempTooltip(ROSCtitle,1500)
@@ -625,10 +571,6 @@ RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex=0){
 	SetTitleMatchMode(startingTitleMatchMode)
 	return false
 }
-ClipClip(){
-	Clipboard=%clipboard%
-	t(clipboard)
-}
 WinHideActive(){
 	t:=WinGetActiveTitle()
 	;msgbox Aborted trying to hide %t%
@@ -644,7 +586,7 @@ WinHideActiveConfirmed(){
 }
 */
 RunFlowLauncher(){
-	run %userprofile%\scoop\apps\flow-launcher\current\Flow.Launcher.exe
+	run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
 	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
 }
 FlowSearch(search){
@@ -658,7 +600,7 @@ FlowSearch(search){
 		ClipboardHelper.SafePaste(search)
 	}
 }
-RunFailover(cmd,NoMax=0,AllowRetry=1){
+RunFailover(cmd,NoMax:=0,AllowRetry:=1){
 	If NoMax
 	{
 		Loop %cmd%
@@ -673,30 +615,30 @@ RunFailover(cmd,NoMax=0,AllowRetry=1){
 				sleep 100
 				RunFailover(cmd,NoMax,0)
 			}
-			autoYes=0
+			autoYes:=0
 			if cmd=iis
-				autoYes=1
+				autoYes:=1
 			if cmd=tsadmin
-				autoYes=1
+				autoYes:=1
 			if not AutoYes
 			{
 				msgbox 4, Prompt,Fail over for "%cmd%"?
 				IfMsgBox Yes
-					AutoYes=1
+					AutoYes:=1
 			}
 			if AutoYes
 			{
 				SendInput #r
-				WinWait Run ahk_class #32770
+				WinWait("Run ahk_class #32770")
 				IfWinNotActive Run ahk_class #32770,,WinActivate, Run ahk_class #32770
 				WinWaitActive Run ahk_class #32770
 				SendInput !o%cmd%{enter}
 			}
 		}
 	} else {
-		OutDir=
+		OutDir:=""
 		IfExist % cmd
-			SplitPath cmd,OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+			SplitPath cmd, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 		Run %cmd%,%OutDir%,UseErrorLevel max,PID
 		WinActivate ahk_pid %pid%,,3
 		If not ErrorLevel
@@ -707,7 +649,7 @@ RunFailover(cmd,NoMax=0,AllowRetry=1){
 		}
 	}
 }
-RunOrSwitch(cmdLine, ROStitle,NoMax=0,Class="",Group="",ForceSingleMonitor=0,ForceToRight=0,ForceToLeft=0,TipTitle=""){
+RunOrSwitch(cmdLine, ROStitle,NoMax:=0,Class:="",Group:="",ForceSingleMonitor:=0,ForceToRight:=0,ForceToLeft:=0,TipTitle:=""){
 	global ROSCount
 	global RunOrSwitch_Recursion_Level
 	;msgbox hi1
@@ -724,14 +666,14 @@ RunOrSwitch(cmdLine, ROStitle,NoMax=0,Class="",Group="",ForceSingleMonitor=0,For
 	{
 		If PostXP()
 		{
-			cmdLine=tsadmin.msc
+			cmdLine:="tsadmin.msc"
 		}
 		If PostVista()
-			ROStitle=Remote Desktop Services Manager
+			ROStitle:="Remote Desktop Services Manager"
 	}
-	x=
+	x:=""
 	Full:=ROStitle
-	Exclude=
+	Exclude=""
 	If Class
 		Full=%Full% ahk_Class %Class%
 	If Group
@@ -797,7 +739,7 @@ FocusFilesInExplorer(){
 	SendInput {space}
 }
 FocusFilesInExplorerx(){
-	path=
+	path:=""
 	if PostXP()
 	{
 		if Post7()
@@ -1968,7 +1910,7 @@ WinGetList(title){
 	detecthiddenwindows on
 	SetTitleMatchMode Regex
 	WinGet arr, List, %title%
-	z=
+	z:=""
 	Loop %arr%
 	{
 		element := arr%A_Index%
@@ -2161,7 +2103,7 @@ GetHWnds(winSpec,DetectHiddenWindows,wintext="",excludeSpec=""){
 GetHWndsByPID(PID,DetectHiddenWindows,wintext="",excludeSpec=""){
 	DetectHiddenWindows %DetectHiddenWindows%
 	WinGet winIDs, List, ahk_pid %pid%
-	titles=
+	titles:=""
 	Loop %winIDs%
 	{
 		title:=winids%A_Index%
@@ -2173,7 +2115,7 @@ GetHWndsByPID(PID,DetectHiddenWindows,wintext="",excludeSpec=""){
 GetTitles(winSpec){
 	WinGet process, PID, %winSpec%
 	WinGet winIDs, List, ahk_pid %process%
-	titles=
+	titles:=""
 	Loop %winIDs%
 	{
 		id := winids%A_Index%
@@ -2187,7 +2129,7 @@ GetHwndsNew(winSpec){
 	SetTitleMatchMode regex
 	WinGet process, PID, %winSpec%
 	WinGet winIDs, List, ahk_pid %process%
-	titles=
+	titles:=""
     Loop %winIDs%
 	{
 		title := winids%A_Index%
@@ -2200,7 +2142,7 @@ GetAllHwnds(){
 	SetTitleMatchMode regex
 	DetectHiddenWindows on
 	WinGet winIDs, List, \w+,,(Default IME|MSCTFIME UI|.*BroadcastEventWindow.*|CiceroUIWndFrame|DDE Server Window|MediaContextNotificationWindow)
-	titles=
+	titles:=""
     Loop %winIDs%
 	{
 		title := winids%A_Index%
@@ -2212,7 +2154,7 @@ GetAllHwnds(){
 GetPidsByWinSpec(winSpec){
 	SetTitleMatchMode regex
 	WinGet winIDs, List, %winSpec%
-	titles=
+	titles:=""
     Loop %winIDs%
 	{
 		id := winids%A_Index%
@@ -4535,3 +4477,106 @@ GetWindowsID(){
 	return % x
 }
 */
+
+GetModiferString(){
+	global
+	altkey:=FileRead("c:\temp\trash\altkey")
+	shiftkey:=FileRead("c:\temp\trash\shiftkey")
+	winkey:=FileRead("c:\temp\trash\winkey")
+	controlkey:=FileRead("c:\temp\trash\controlkey")
+	values=
+(
+%shiftkey%+
+%winkey%#
+%controlkey%^
+%altKey%!
+)
+	sort values, r
+	symbols:=""
+	loop parse, values,`n
+	{
+		t:=trim(A_LoopField)
+		if t
+			symbols:=SubStr(t,0) "`r`n" symbols
+	}
+	symbols:=RegExReplace(symbols,"[\r\n\s]")
+	x:=(-1 * StrLen(str)) + 1
+	z:=substr(symbols, x)
+	return % z
+}
+OpenMainScript(OpenOrSwitchAHK){ ;;tracze
+	Global
+	t("Opening script")
+	Hit:=0
+	WinShow SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+	WinActivate SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+	IfWinActive SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+		return
+	If OpenOrSwitchAHK
+	{
+		Loop %PAULDIR%\*.ahk, 1
+		{
+			Match=0
+			IfWinExist %A_LoopFileName% - SciTE
+			{
+				Match=1
+			}
+			IfWinExist %A_LoopFileName% * SciTE
+			{
+				Match=1
+			}
+			if a_loopfilename.contains("bin.")
+			{
+				match=0
+			}
+			t:=""
+			IfWinExist SciTE4AutoHotkey ahk_class SciTEWindow ahk_exe SCITE.EXE
+				t=SciTE4AutoHotkey
+			If Match
+			{
+				;window(A_LoopFileName)
+				WinActivate %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump
+				WinMaximize %A_LoopFileName% ahk_class SciTEWindow,,SciTE - Jump ;ok
+				Hit=1
+				IfWinActive ahk_class SciTEWindow ahk_exe SCITE.EXE,,SciTE - Jump
+				{
+					Max()
+				}
+				Return
+			}
+		}
+	}
+	If not Hit
+	{
+		If OpenOrSwitchAHK
+		{
+			t("starting new ahk")
+			SciTE4AHKPath:="C:\DEV\PAUL\SciTE4AutoHotkey\SciTE.exe"
+			bits:=GetBits()
+			if (bits<>32)
+			{
+				SciTE4AHKPath.Replace("\scite\","\scite4AutoHotkey\")
+			}
+			Run %SciTE4AHKPath% %scripts%
+;			%pauldir%
+			Return
+		}
+	}
+	WinActivate Untitled ahk_class SciTEWindow
+	IfWinNotActive Untitled ahk_class SciTEWindow
+	{
+		t("run scite")
+		Run %SciTEPath%
+		WinActivate Untitled ahk_class SciTEWindow
+	}
+	WinWaitActive Untitled ahk_class SciTEWindow,,5
+	If not Errorlevel
+	{
+		if OpenOrSwitchAHK
+			Max()
+	}
+}
+ClipClip(){
+	Clipboard=%clipboard%
+	t(clipboard)
+}
