@@ -29,8 +29,44 @@ WinWait(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
 WinWaitNotActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
 	WinWaitNotActive %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
 }
-WinWaitActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
+WinWaitActiveNative(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
 	WinWaitActive %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
+}
+WinWaitActive(titles,mode="default",timeout=0,delimiter="|",DetectHiddenText="default",Text=""){
+	startingDetectHiddenText:=A_DetectHiddenText
+	startingTitleMatchMode:=A_TitleMatchMode
+	StartTime := A_TickCount
+	if mode<>default
+		SetTitleMatchMode(mode)
+	if DetectHiddenText<>default
+		DetectHiddenText %DetectHiddenText%
+	loop
+	{
+		Loop Parse,titles,%delimiter%
+		{
+			t(a_loopfield " - " text)
+			IfWinActive %A_LoopField%,%text%
+			{
+				SetTitleMatchMode("2")
+				;wingetclass x,A
+				;msgbox matched %A_LoopField% with %x%
+				SetTitleMatchMode(startingTitleMatchMode)
+				return 1
+			}
+			sleep 50
+		}
+		if timeout
+		{
+			if (A_TickCount - StartTime > Timeout)
+			{
+				SetTitleMatchMode("2")
+				SetTitleMatchMode(startingTitleMatchMode)
+				return 0
+			}
+		}
+	}
+	SetTitleMatchMode(startingTitleMatchMode)
+	DetectHiddenText %startingDetectHiddenText%
 }
 WinClose(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
 	WinClose %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
@@ -85,7 +121,7 @@ AutoRespondToDebugger(){
 			growl("Timed out")
 			return
 		}
-		WinWaitActive("ahk_exe devenv.exe",,1)
+		WinWaitActiveNative("ahk_exe devenv.exe",,1)
 		If ErrorLevel
 			growl("Timed out waiting for vs")
 		else
