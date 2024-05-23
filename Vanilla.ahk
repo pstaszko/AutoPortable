@@ -4160,7 +4160,9 @@ class WebSocket {
 			|| !DllCall("Winhttp\WinHttpReceiveResponse", "Ptr", hRequest, "Ptr", 0)
 			|| !DllCall("Winhttp\WinHttpQueryHeaders", "Ptr", hRequest, "UInt", 19, "Ptr", 0, "WStr", status, "UInt*", 10, "Ptr", 0, "Int")
 			|| status != "101")
-			throw Exception("Invalid status: " status)
+		{
+			;throw Exception("Invalid status: " status)
+		}
 
 		; Upgrade the HTTP Request to a Websocket connection
 		if !(this.Ptr := DllCall("Winhttp\WinHttpWebSocketCompleteUpgrade", "Ptr", hRequest, "Ptr", 0))
