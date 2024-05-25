@@ -923,11 +923,11 @@ MqttPub(topic, message, host="localhost"){
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
 			;msgbox m1111 %z%
-			mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
+			mqtt := new WS_MQTT("ws://127.0.0.1:1880/ws/mqtt")
 			if(!mqtt.bonk()){
 				z:=mqtt.bonk()
 				msgbox m2 %z%
-				mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
+				mqtt := new WS_MQTT("ws://127.0.0.1:1880/ws/mqtt")
 			}
 		}
 
@@ -3962,8 +3962,8 @@ ConnectWS:
 	return
 	try
 	{
-		;ws   := new WS("ws://red:1880/ws/ahk")
-		mqtt := new WS_MQTT("ws://red:1880/ws/mqtt")
+		;ws   := new WS("ws://127.0.0.1:1880/ws/ahk")
+		mqtt := new WS_MQTT("ws://127.0.0.1:1880/ws/mqtt")
 	}
 return
 EnsureConnectedWS:
