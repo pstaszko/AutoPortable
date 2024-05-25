@@ -1441,11 +1441,11 @@ URLDownloadToVar(url){
 }
 HardRestartMatrixOSAutomatic(){
 	if(ComputerHasMatrixBoards()){
-		URLDownloadToVar("http://red:1880/plug2/off")
+		URLDownloadToVar("http://127.0.0.1:1880/plug2/off")
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
 		PSKill("matrixos")
 		RemoveGhosts()
-		URLDownloadToVar("http://red:1880/plug2/on")
+		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
 		;RunMatrixOS(false, false)
 		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
