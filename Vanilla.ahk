@@ -1,7 +1,7 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 #if
 SwitchToVisualStudio(){
-	GroupActivate ahk_group VisualStudio
+	GroupActivate VisualStudio
 }
 Run(target, workingDir:="",flags:=""){
 	run %target%, %workingDir%, %flags%
