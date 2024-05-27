@@ -2,7 +2,9 @@
 #if
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
+	at:=GetActiveTitle()
 	t("A_TitleMatchMode: " A_TitleMatchMode ", " title)
+	msgbox % at
 	return WinActive(title)
 }
 Run(target, workingDir:="",flags:=""){
