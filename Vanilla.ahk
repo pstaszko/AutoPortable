@@ -1,5 +1,10 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 #if
+WinActiveRegex(title){
+	SetTitleMatchMode Regex
+	t("A_TitleMatchMode: " A_TitleMatchMode ", " title)
+	return WinActive(title)
+}
 Run(target, workingDir:="",flags:=""){
 	run %target%, %workingDir%, %flags%
 }
@@ -305,10 +310,6 @@ ReloadFunction(source,recompile:=1,hide:=0){
 	}
 	else
 		Reload
-}
-WinActiveRegex(title){
-	SetTitleMatchMode Regex
-	return WinActive(title)
 }
 RunFSSC(args:="", startHidden:=""){
 	h:=""
