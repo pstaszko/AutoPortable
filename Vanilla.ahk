@@ -2411,6 +2411,7 @@ DoKeepass(Long){
 		k:=FirstValidPath("c:\key.key",k)
 		if k
 		{
+			msgbox % dropbox
 			full=%pathx% "%dropbox%fastball" -preselect:"%k%"
 			run %full%
 		}
