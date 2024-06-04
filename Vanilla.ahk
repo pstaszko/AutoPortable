@@ -4207,7 +4207,10 @@ class WebSocket {
 
 		; Upgrade the HTTP Request to a Websocket connection
 		if !(this.Ptr := DllCall("Winhttp\WinHttpWebSocketCompleteUpgrade", "Ptr", hRequest, "Ptr", 0))
-			throw Exception("WinHttpWebSocketCompleteUpgrade failed: " this._LastError())
+		{
+			AlertCallStack()
+			throw Exception(url " - " "WinHttpWebSocketCompleteUpgrade failed: " this._LastError())
+		}
 
 		; Close the HTTP Request, save the Websocket connection
 		DllCall("Winhttp\WinHttpCloseHandle", "Ptr", this.HINTERNETs.Pop())
