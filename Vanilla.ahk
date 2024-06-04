@@ -3777,13 +3777,7 @@ GetTempFile(extension="txt",dir="",prefix="AHK_PS_Temp_"){
 	}
 }
 GetPublishedFSSConsole(){
-<<<<<<< HEAD
-	;msgbox hi
 	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
-	;return "C:\DEV\Releases\FSSConsole\Current\FSSConsole.exe"
-=======
-	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
->>>>>>> 8caf00c53249c8ea05ef32aa937cde7b1130c30a
 }
 Scite_ToggleResultsPane(){
 	SendInput {F8}
