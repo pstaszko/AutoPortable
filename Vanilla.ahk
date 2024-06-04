@@ -3778,7 +3778,7 @@ GetTempFile(extension="txt",dir="",prefix="AHK_PS_Temp_"){
 }
 GetPublishedFSSConsole(){
 	;msgbox hi
-	return "C:\DEV\Releases\FSSConsoleCurrent\Current\FSSConsole.exe"
+	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
 	;return "C:\DEV\Releases\FSSConsole\Current\FSSConsole.exe"
 }
 Scite_ToggleResultsPane(){
@@ -4511,9 +4511,8 @@ class WebSocket {
 	}
 }
 FullBlastRestart(){
-	run C:\DEV\Releases\FSSConsoleCurrent\Current\FSSConsole.exe,,min
-	;run C:\DEV\Releases\MatrixOS\Current\MatrixOS.exe C:\DEV\Releases\MatrixApps\Current,,min
-	run C:\DEV\Releases\MatrixOSCurrent\Current\MatrixOS.exe C:\DEV\Releases\MatrixAppsCurrent\Current,,min
+	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
+	run C:\DEV\Releases\MatrixOS\Stable\MatrixOS.exe C:\DEV\Releases\MatrixAppsCurrent\Current,,min
 	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,hide
 }
 /*
