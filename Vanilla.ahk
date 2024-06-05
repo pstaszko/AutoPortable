@@ -3509,6 +3509,7 @@ NewLoadGroups(){
 	g_2_AutomaticBehaviors("NeverStraddle","Notepad ahk_class Notepad ahk_exe notepad.exe")
 	g_2_AutomaticBehaviors("NoMax","ahk_exe calc.exe")
 	g_2_AutomaticBehaviors("NoMax","ahk_exe SampleUtilityApplication.exe")
+	g_2_AutomaticBehaviors("NoMax","ahk_class OpenShell.CMenuContainer ahk_exe Explorer.EXE")
 	g_2_AutomaticBehaviors("NoMax","Connect to Server ahk_exe Ssms.exe","Re&member password")
 	g_2_AutomaticBehaviors("NoMax","Find ahk_class #32770 ahk_exe AbiWord.exe")
 	g_2_AutomaticBehaviors("NoMax","Run ahk_class #32770 ahk_exe explorer.exe")
