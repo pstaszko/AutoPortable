@@ -1,5 +1,6 @@
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 #if
+
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
 	;at:=GetActiveTitle()
