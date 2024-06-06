@@ -2960,7 +2960,6 @@ GetPerfectlyNamedScoopExe(appName){
 }
 NewLoadGroups(){
 	global
-	;msgbox hi2
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
