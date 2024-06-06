@@ -484,7 +484,7 @@ WinControlEscape(){
 RunConfigurator(){
 	WinActivate MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
 	IfWinNotActive MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
-		RunOrSwitch("C:\DEV\Releases\MyConfigurator\Stable\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
+		RunOrSwitch("C:\DEV\Releases\MyConfiguratorCurrent\Current\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
 }
 RunClipMaster(){
 	KeyWait c, T.3
@@ -1451,7 +1451,11 @@ HardRestartMatrixOSAutomatic(){
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
 		;RunMatrixOS(false, false)
-		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixApps\Stable
+		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
+		/*
+		sleep 10000
+		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
+		*/
 	}
 }
 
@@ -1479,7 +1483,7 @@ SubmitFSharpFunction(functionName,params*){
 }
 RunMatrixOS(forcePython = false, hide = false){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
-	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixApps\Stable")
+	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
 }
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
@@ -2956,7 +2960,6 @@ GetPerfectlyNamedScoopExe(appName){
 }
 NewLoadGroups(){
 	global
-
 	;msgbox hi2
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
@@ -4508,7 +4511,7 @@ class WebSocket {
 FullBlastRestart(){
 	t("FullBlastRestart " A_ScriptFullPath)
 	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
-	run C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe C:\Dev\Releases\MatrixApps\Stable\
+	run C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe C:\Dev\Releases\MatrixAppsCurrent\Stable\
 	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,min
 }
 /*
