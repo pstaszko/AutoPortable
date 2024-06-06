@@ -4510,6 +4510,7 @@ class WebSocket {
 	}
 }
 FullBlastRestart(){
+	t("FullBlastRestart")
 	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
 	run C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe
 	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,min
