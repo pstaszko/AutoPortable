@@ -1451,11 +1451,7 @@ HardRestartMatrixOSAutomatic(){
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
 		;RunMatrixOS(false, false)
-		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
-		/*
-		sleep 10000
-		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixAppsCurrent\Current
-		*/
+		run "C:\Dev\Releases\MatrixOSCurrent\Current\MatrixOS.exe" C:\Dev\Releases\MatrixApps\Stable
 	}
 }
 
@@ -1483,7 +1479,7 @@ SubmitFSharpFunction(functionName,params*){
 }
 RunMatrixOS(forcePython = false, hide = false){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
-	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
+	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixApps\Stable")
 }
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
@@ -4512,7 +4508,7 @@ class WebSocket {
 FullBlastRestart(){
 	t("FullBlastRestart " A_ScriptFullPath)
 	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
-	run C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe C:\Dev\Releases\MatrixAppsCurrent\Stable\
+	run C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe C:\Dev\Releases\MatrixApps\Stable\
 	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,min
 }
 /*
