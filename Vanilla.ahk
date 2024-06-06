@@ -4511,7 +4511,7 @@ class WebSocket {
 }
 FullBlastRestart(){
 	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
-	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,hide
+	run C:\Dev\Releases\WisdominatorConsoleCurrent\Current\WisdominatorConsole.exe,,min
 }
 /*
 GetWindowsID(){
