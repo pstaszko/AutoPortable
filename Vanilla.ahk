@@ -1683,9 +1683,7 @@ GetMultipleCreds(Title,byref Message){
 }
 GetCricketPassword(reloadQuietly=1){
 	global
-	GetCreazsql19w
-	sqlaw
-	d("WCRICred",u,cricketInMemoryPassword)
+	GetCred("WCRICred",u,cricketInMemoryPassword)
 	if cricketInMemoryPassword
 	{
 		logHere("Returning password")
