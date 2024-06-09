@@ -178,6 +178,7 @@ SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
 		else
 			IsVS:=0
 	}
+	msgbox %IsVS% a
 	if IsVS = 1
 	{
 		logHere("IsVS")
@@ -230,6 +231,7 @@ SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
 			SendInput %server%
 			SendInput !aw
 		}
+		SendInput !yo
 	}
 	if(!IsCapsLock() and !NoEnter)
 	{
@@ -1681,7 +1683,9 @@ GetMultipleCreds(Title,byref Message){
 }
 GetCricketPassword(reloadQuietly=1){
 	global
-	GetCred("WCRICred",u,cricketInMemoryPassword)
+	GetCreazsql19w
+	sqlaw
+	d("WCRICred",u,cricketInMemoryPassword)
 	if cricketInMemoryPassword
 	{
 		logHere("Returning password")
