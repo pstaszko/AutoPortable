@@ -178,7 +178,7 @@ SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
 		else
 			IsVS:=0
 	}
-	msgbox %IsVS% a
+	;msgbox %IsVS% a
 	if IsVS = 1
 	{
 		logHere("IsVS")
@@ -873,7 +873,7 @@ Enter(x=1){
 	SendInput {enter %x%}
 }
 GetReleasedEXE(name, additional=""){
-	x=C:\Dev\Releases\%name%\Current\%name%.exe %additional%
+	x=C:\Dev\Releases\%name%\Stable\%name%.exe %additional%
 	return % x
 }
 
