@@ -1430,7 +1430,7 @@ HardRestartMatrixOS(){
 		RemoveGhosts()
 		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
 		IfMsgBox Ok
-			RunMatrixOS(false, false)
+			RunMatrixOS()
 	}
 }
 
@@ -1452,7 +1452,7 @@ HardRestartMatrixOSAutomatic(){
 		RemoveGhosts()
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
-		;RunMatrixOS(false, false)
+		;RunMatrixOS()
 		run "C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe" C:\Dev\Releases\MatrixApps\Stable
 	}
 }
@@ -1479,7 +1479,7 @@ SubmitFSharpFunction(functionName,params*){
 	}
 	return resultFile
 }
-RunMatrixOS(forcePython = false, hide = false){
+RunMatrixOS(){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
 	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
 }
