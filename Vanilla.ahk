@@ -1452,6 +1452,7 @@ HardRestartMatrixOSAutomatic(){
 		RemoveGhosts()
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
+		
 		;RunMatrixOS()
 		run "C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe" C:\Dev\Releases\MatrixApps\Stable
 	}
