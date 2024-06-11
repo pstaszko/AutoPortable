@@ -1482,7 +1482,7 @@ SubmitFSharpFunction(functionName,params*){
 }
 RunMatrixOS(){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
-	SubmitFSharpFunction("MatrixOSCurrent.DesireStartOrShow", "C:\Dev\Releases\MatrixAppsCurrent\Current")
+	SubmitFSharpFunction("MatrixOS.DesireStartOrShow", "C:\Dev\Releases\MatrixApps\Stable")
 }
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
