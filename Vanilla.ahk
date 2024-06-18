@@ -925,6 +925,7 @@ MqttPub(topic, message, host="localhost"){
 	if(z <> message)
 	{
 
+
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
 			;msgbox m1111 %z%
