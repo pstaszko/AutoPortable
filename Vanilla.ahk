@@ -1,3 +1,4 @@
+/**/
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 #if
 WinActiveRegex(title){
@@ -924,6 +925,7 @@ MqttPub(topic, message, host="localhost"){
 	z:=mqtt_history[topic]
 	if(z <> message)
 	{
+
 
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
