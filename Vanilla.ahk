@@ -924,6 +924,7 @@ MqttPub(topic, message, host="localhost"){
 	z:=mqtt_history[topic]
 	if(z <> message)
 	{
+		/*
 		if(!mqtt.bonk()){
 			z:=mqtt.bonk()
 			;msgbox m1111 %z%
@@ -934,7 +935,7 @@ MqttPub(topic, message, host="localhost"){
 				mqtt := new WS_MQTT("ws://127.0.0.1:1880/ws/mqtt")
 			}
 		}
-
+		*/
 		;mqtt.TrySend(topic "|||" message)
 		
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
