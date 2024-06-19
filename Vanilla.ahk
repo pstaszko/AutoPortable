@@ -630,7 +630,8 @@ RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)
 	run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
 	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
-	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe,,5
+	t("Waiting to appear")
+	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe,,10
 	If ErrorLevel
 	{
 		t("Failed to start Flow Luancher, restarting...")
