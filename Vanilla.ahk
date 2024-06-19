@@ -637,6 +637,8 @@ RunFlowLauncher(){
 		t("Failed to start Flow Luancher, restarting...")
 		pskill("flow.launcher")
 		RunFlowLauncher()
+	}else{
+		t("")
 	}
 }
 FlowSearch(search){
