@@ -627,8 +627,15 @@ WinHideActiveConfirmed(){
 }
 */
 RunFlowLauncher(){
+	t(A_ThisFunc)
 	run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
-	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
+	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe,,5
+	If ErrorLevel
+	{
+		t("Failed to start Flow Luancher, restarting...")
+		pskill("flow.launcher")
+		RunFlowLauncher()
+	}
 }
 FlowSearch(search){
 	RunFlowLauncher()
