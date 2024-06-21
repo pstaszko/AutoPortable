@@ -1,6 +1,9 @@
 #Requires AutoHotkey v1.1.37.02
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
-#R::RunFlowLauncher()
+#R::
+	t(A_ScriptFullPath)
+	RunFlowLauncher()
+return
 #H::OpenMainScript(True)
 /*
 #.::

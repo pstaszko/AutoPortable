@@ -486,7 +486,7 @@ WinControlEscape(){
 RunConfigurator(){
 	WinActivate MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
 	IfWinNotActive MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
-		RunOrSwitch("C:\DEV\Releases\MyConfiguratorCurrent\Current\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
+		RunOrSwitch("C:\DEV\Releases\MyConfigurator\Stable\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
 }
 RunClipMaster(){
 	KeyWait c, T.3
@@ -627,8 +627,20 @@ WinHideActiveConfirmed(){
 }
 */
 RunFlowLauncher(){
+	t(A_ThisFunc " / " A_ScriptFullPath)
 	run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
 	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
+	t("Waiting to appear")
+	WinWait Flow.Launcher ahk_exe Flow.Launcher.exe,,10
+	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe
+	If ErrorLevel
+	{
+		t("Failed to start Flow Luancher, restarting...")
+		pskill("flow.launcher")
+		RunFlowLauncher()
+	}else{
+		t("")
+	}
 }
 FlowSearch(search){
 	RunFlowLauncher()
