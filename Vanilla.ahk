@@ -631,7 +631,8 @@ RunFlowLauncher(){
 	run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
 	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
 	t("Waiting to appear")
-	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe,,10
+	WinWait Flow.Launcher ahk_exe Flow.Launcher.exe,,10
+	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe
 	If ErrorLevel
 	{
 		t("Failed to start Flow Luancher, restarting...")
