@@ -486,7 +486,7 @@ WinControlEscape(){
 RunConfigurator(){
 	WinActivate MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
 	IfWinNotActive MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
-		RunOrSwitch("C:\DEV\Releases\MyConfiguratorCurrent\Stable\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
+		RunOrSwitch("C:\DEV\Releases\MyConfigurator\Stable\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
 }
 RunClipMaster(){
 	KeyWait c, T.3
