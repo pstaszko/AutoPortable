@@ -633,7 +633,6 @@ RunFlowLauncher(){
 	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
 	t("Waiting to appear")
 	WinWait Flow.Launcher ahk_exe Flow.Launcher.exe,,10
-	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe
 	If ErrorLevel
 	{
 		t("Failed to start Flow Luancher, restarting...")
@@ -642,6 +641,7 @@ RunFlowLauncher(){
 	}else{
 		t("")
 	}
+	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe
 }
 FlowSearch(search){
 	RunFlowLauncher()
