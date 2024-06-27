@@ -950,14 +950,14 @@ MqttPub(topic, message, host="localhost"){
 		}
 		*/
 		;mqtt.TrySend(topic "|||" message)
-		
+
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
 		p=c:/dev/mqtt/%topic%.md
 		p:=StrReplace(p,"/","\")
 		SplitPath p, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 		FileCreateDir %OutDir%
 		FileAppend ```````r`n%message%`r`n```````r`n, %p%
-		
+
 		mqtt_history[topic]:=message
 	}
 }
@@ -1465,7 +1465,7 @@ HardRestartMatrixOSAutomatic(){
 		RemoveGhosts()
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
-		
+
 		;RunMatrixOS()
 		run "C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe" C:\Dev\Releases\MatrixApps\Stable
 	}
@@ -3514,9 +3514,9 @@ NewLoadGroups(){
 	g_2_AutomaticBehaviors("MButton","ahk_group Minecraft")
 	g_2_AutomaticBehaviors("NeverStraddle","ahk_class #32770")
 	g_2_AutomaticBehaviors("NeverStraddle","Notepad ahk_class Notepad ahk_exe notepad.exe")
+	g_2_AutomaticBehaviors("NoMax","ahk_class OpenShell.CMenuContainer ahk_exe Explorer.EXE")
 	g_2_AutomaticBehaviors("NoMax","ahk_exe calc.exe")
 	g_2_AutomaticBehaviors("NoMax","ahk_exe SampleUtilityApplication.exe")
-	g_2_AutomaticBehaviors("NoMax","ahk_class OpenShell.CMenuContainer ahk_exe Explorer.EXE")
 	g_2_AutomaticBehaviors("NoMax","Connect to Server ahk_exe Ssms.exe","Re&member password")
 	g_2_AutomaticBehaviors("NoMax","Find ahk_class #32770 ahk_exe AbiWord.exe")
 	g_2_AutomaticBehaviors("NoMax","Run ahk_class #32770 ahk_exe explorer.exe")
