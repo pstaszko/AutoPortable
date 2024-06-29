@@ -2874,7 +2874,7 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 			t("Failed to add " GroupName " in MyGroupAdd " a_scriptfullpath)
 			;sleep 5000
 		}
-		
+
 		try
 		{
 			GroupAdd %altgrpname%,%WinTitle%,%WinText%,%Label%,%ExcludeTitle%,%ExcludeText%
