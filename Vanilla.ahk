@@ -1467,7 +1467,7 @@ HardRestartMatrixOSAutomatic(){
 		sleep 30000
 
 		;RunMatrixOS()
-		run "C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe" C:\Dev\Releases\MatrixApps\Stable
+		run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
 	}
 }
 
@@ -3104,6 +3104,9 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe cmd.exe")
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MatrixOS","Matrix OS ahk_class ConsoleWindowClass ahk_exe VsDebugConsole.exe")
+	g_1_ProgramGroups("MatrixOS","MatrixNexus ahk_class ConsoleWindowClass ahk_exe cmd.exe")
+	g_1_ProgramGroups("MatrixOS","MatrixNexus ahk_class ConsoleWindowClass ahk_exe MatrixNexus.exe")
+	g_1_ProgramGroups("MatrixOS","MatrixNexus ahk_class ConsoleWindowClass ahk_exe VsDebugConsole.exe")
 	g_1_ProgramGroups("Maxthon","ahk_class Second Life ahk_exe SecondLifeViewer.exe")
 	g_1_ProgramGroups("Maxthon","ahk_exe Maxthon.exe")
 	g_1_ProgramGroups("MButton","ahk_exe DSPGAME.exe")
@@ -3161,6 +3164,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MinorWindows","MissedNotificationWindow ahk_exe Growl.exe")
 	g_1_ProgramGroups("MinorWindows","notepadpopup.txt ahk_class SciTEWindow ahk_exe SciTE.exe")
 	g_1_ProgramGroups("MinorWindows","Paul.ini ahk_class SciTEWindow ahk_exe SCITE.EXE")
+	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixNexus.exe")
 	g_1_ProgramGroups("MinorWindows","Picker ahk_exe MatrixOS.exe")
 	g_1_ProgramGroups("MinorWindows","Print Preview ahk_class Internet Explorer_TridentDlgFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("MinorWindows","Properties ahk_class #32770 ahk_exe ProcessHacker.exe")
@@ -3559,6 +3563,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("BasicMiddleClick","BATMAN: ARKHAM")
 	g_4_KeyBehaviors("BasicMiddleClick","Dead Island")
 	g_4_KeyBehaviors("ControlQtoAltF4","ahk_group VSCode")
+	g_4_KeyBehaviors("ControlQtoAltF4","Picker ahk_exe MatrixNexus.exe")
 	g_4_KeyBehaviors("ControlQtoAltF4","Picker ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class ApplicationFrameWindow ahk_exe ApplicationFrameHost.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","ahk_class MSPaintApp ahk_exe mspaint.exe")
@@ -3569,6 +3574,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltF4","File Download ahk_class #32770")
 	g_4_KeyBehaviors("ControlWtoAltF4","Find in All Tabs ahk_exe firefox.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","Picker ahk_exe MatrixOS.exe")
+	g_4_KeyBehaviors("ControlWtoAltF4","Picker ahk_exe MatrixNexus.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","Query Designer")
 	g_4_KeyBehaviors("ControlWtoAltN","ahk_class #32770 ahk_exe MSACCESS.EXE","Do you want to save changes to the design of")
 	g_4_KeyBehaviors("ControlWtoAltN","ahk_class #32770","Do you want to save the changes made to the SQL statement and update the property?")
@@ -3627,6 +3633,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe 7+ Taskbar Tweaker.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe ets.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe FSSConsole.exe")
+	g_4_KeyBehaviors("F12HideWindow","ahk_exe MatrixNexus.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe Obsidian.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group ChaosControl")
@@ -4519,7 +4526,7 @@ class WebSocket {
 FullBlastRestart(){
 	t("FullBlastRestart " A_ScriptFullPath)
 	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
-	run C:\Dev\Releases\MatrixOS\Stable\MatrixOS.exe C:\Dev\Releases\MatrixAppsCurrent\Stable\
+	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
 	run C:\Dev\Releases\WisdominatorConsole\Stable\WisdominatorConsole.exe,,min
 }
 /*
