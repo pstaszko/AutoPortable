@@ -18,6 +18,7 @@
 		<FSharpCoreResourcesFiles Include="$(OutputPath)**\runtimes\osx\**" />
 		<FSharpCoreResourcesFiles Include="$(OutputPath)**\runtimes\tvos\**" />
 		<FSharpCoreResourcesFiles Include="$(OutputPath)**\runtimes\unix\**" />
+		<FSharpCoreResourcesFiles Include="$(OutputPath)**\runtimes\win-x86\**" />
 		<FSharpCoreResourcesFiles Include="$(OutputPath)**\runtimes\win-arm64\**" />
 		<FSharpCoreResourcesFiles Include="$(OutputPath)**\runtimes\win-arm\**" />
       <FSharpCoreResourcesDirs Include="@(FSharpCoreResourcesFiles->'\%(Directory)') " />
