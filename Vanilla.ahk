@@ -2872,7 +2872,7 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 			GroupAdd %GroupName%,%WinTitle%,%WinText%,%Label%,%ExcludeTitle%,%ExcludeText%
 		} catch e {
 			t("Failed to add " GroupName " in MyGroupAdd " a_scriptfullpath)
-			sleep 5000
+			;sleep 5000
 		}
 		
 		try
