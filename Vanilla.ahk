@@ -2867,7 +2867,13 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 		altgrpname:="altGroup_" altgrpname
 		if !altgrpname
 			AlertCallStack("mga fail 2")
-		GroupAdd %GroupName%,%WinTitle%,%WinText%,%Label%,%ExcludeTitle%,%ExcludeText%
+		try
+		{
+			GroupAdd %GroupName%,%WinTitle%,%WinText%,%Label%,%ExcludeTitle%,%ExcludeText%
+		} catch e {
+			t("Failed to add " GroupName " in MyGroupAdd " a_scriptfullpath)
+		}
+		
 		try
 		{
 			GroupAdd %altgrpname%,%WinTitle%,%WinText%,%Label%,%ExcludeTitle%,%ExcludeText%
