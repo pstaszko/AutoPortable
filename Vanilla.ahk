@@ -629,7 +629,9 @@ WinHideActiveConfirmed(){
 */
 RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)
-	run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
+	;run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
+	;SendInput !^+{F24}
+	SendInput !^#{F11}
 	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
 	t("Waiting to appear")
 	WinWait Flow.Launcher ahk_exe Flow.Launcher.exe,,10
@@ -637,6 +639,7 @@ RunFlowLauncher(){
 	{
 		t("Failed to start Flow Luancher, restarting...")
 		pskill("flow.launcher")
+		run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
 		RunFlowLauncher()
 	}else{
 		t("")
