@@ -1441,6 +1441,7 @@ ComputerHasMatrixBoards(){
 HardRestartMatrixOS(){
 	if(ComputerHasMatrixBoards()){
 		IfWinNotActive ahk_exe HoloCureLauncher.exe
+		PSKill("matrixnexus")
 		PSKill("matrixos")
 		;RunWait powershell -noprofile $"
 		RemoveGhosts()
@@ -1498,7 +1499,8 @@ SubmitFSharpFunction(functionName,params*){
 }
 RunMatrixOS(){
 	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
-	SubmitFSharpFunction("MatrixOS.DesireStartOrShow", "C:\Dev\Releases\MatrixApps\Stable")
+	;SubmitFSharpFunction("MatrixOS.DesireStartOrShow", "C:\Dev\Releases\MatrixApps\Stable")
+	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
 }
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
