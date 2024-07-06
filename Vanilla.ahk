@@ -3137,6 +3137,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Minecraft","Minecraft ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Tekkit ahk_exe javaw.exe")
 	g_1_ProgramGroups("MinecraftServer","Minecraft server ahk_class SunAwtFrame ahk_exe javaw.exe")
+	g_1_ProgramGroups("MinorWindows","Calculator ahk_class ApplicationFrameWindow ahk_exe ApplicationFrameHost.exe")
 	g_1_ProgramGroups("MinorWindows","- Appointment")
 	g_1_ProgramGroups("MinorWindows","- Meeting ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("MinorWindows","- Meeting Occurrence ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
