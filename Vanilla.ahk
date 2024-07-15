@@ -627,6 +627,9 @@ WinHideActiveConfirmed(){
 	;WinHide A
 }
 */
+#IfWinActive Settings ahk_exe Flow.Launcher.exe
+	F12::SendInput !^#{F11}
+#if
 RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)
 	;run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
