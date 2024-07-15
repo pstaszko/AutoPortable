@@ -16,6 +16,10 @@ return
 return
 */
 
+#IfWinActive ahk_class VirtualConsoleClass ahk_exe ConEmu64.exe
+	^Enter::SendInput {appskey down}{enter}{appskey up}
+	^I::SendInput ^r
+
 #IfWinActive ahk_group ConEmu
 	;Op: Sort
 	#delete::SendInput #!{del]
