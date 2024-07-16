@@ -304,7 +304,7 @@ ReloadFunction(source,recompile:=1,hide:=0){
 	if !dir
 		msgbox dir is empty!
 
-	exe:="C:\Dev\Releases\AutoHotCompiler\Current\AutoHotCompiler.exe " pauldir "load.ahk"
+	exe:="C:\Dev\Releases\AutoHotCompiler\Stable\AutoHotCompiler.exe " pauldir "load.ahk"
 
 	if recompile
 	{
@@ -1426,7 +1426,7 @@ _log(context,msg,synchronous=0,IncludePath=1){
 	}
 
 	msg=AHK, "%c% - %msg%"
-	exe=C:\dev\Releases\WriteLog\Current\writelog.exe
+	exe=C:\dev\Releases\WriteLog\Stable\writelog.exe
 	IfExist % exe
 	{
 		cmd=%exe% %msg%
@@ -1436,7 +1436,7 @@ _log(context,msg,synchronous=0,IncludePath=1){
 		else
 			run %cmd%,C:\DEV\uiauto\WriteLog\bin\Debug,%x%
 	} else
-		MsgBox missing C:\dev\Releases\WriteLog\Current\writelog.exe
+		MsgBox missing C:\dev\Releases\WriteLog\Stable\writelog.exe
 }
 ComputerHasMatrixBoards(){
 	return % computername = "raven"
