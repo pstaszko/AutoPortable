@@ -1,0 +1,3 @@
+﻿namespace AutoPortable
+module Main =
+    ()

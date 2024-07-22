@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>StarlyCode.AutoPortable</PackageId>
+    <Title>AutoPortable</Title>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <Description>
+      AutoPortable
+    </Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/pstaszko/AutoPortable.git</RepositoryUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="./" />
+    <None Include="publish.ps1" />
+    <Compile Include="Program.fs" />
+    <Content PackagePath="lib/$(TargetFramework)" Visible="false" CopyToOutputDirectory="PreserveNewest" Include="..\HotSocket_Server.exe" Link="HotSocket_Server.exe" />
+    <Content PackagePath="lib/$(TargetFramework)" Visible="false" CopyToOutputDirectory="PreserveNewest" Include="..\MQTT_Pub.exe" Link="MQTT_Pub.exe" />
+    <Content PackagePath="lib/$(TargetFramework)" Visible="false" CopyToOutputDirectory="PreserveNewest" Include="..\MQTT_Sub.exe" Link="MQTT_Sub.exe" />
+    <Content PackagePath="lib/$(TargetFramework)" Visible="false" CopyToOutputDirectory="PreserveNewest" Include="..\PortableRunner.exe" Link="PortableRunner.exe" />
+  </ItemGroup>
+</Project>

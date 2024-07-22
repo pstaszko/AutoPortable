@@ -1,8 +1,0 @@
-{
-  //"BeforeSQLAll": "truncate table tblSuperiorInvoiceRaw",
-  "FinalSQL": "",
-  "SkipScrub": "true",
-  "UseSubsidiary": "true",
-  "FirstColumn": "Customer No.",
-  "DateTimeFormat": "M/d/yyyy h:mm:ss tt"
-}
