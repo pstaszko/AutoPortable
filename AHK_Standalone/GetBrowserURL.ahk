@@ -22,7 +22,7 @@ loop 5 {
 	tooltip Starting4
 	if not errorlevel
 	{
-		Esc()
+		SendInput {esc}
 		success:=true
 		break
 	}
@@ -46,5 +46,3 @@ ret(file, text){
 	FileDelete %file%
 	FileAppend %text%, %file%
 }
-#include %A_ScriptDir%\..\Vanilla.ahk
-;#include C:\Dev\AutoPortable\Vanilla.ahk
