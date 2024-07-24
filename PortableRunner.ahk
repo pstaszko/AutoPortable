@@ -3,7 +3,6 @@
 SetWorkingDir %A_ScriptDir%
 LoadGlobalVars()
 NewLoadGroups()
-aaaa=5566
 return
 !^#U::ExitApp
 #include %A_ScriptDir%\Vanilla.ahk
