@@ -8,7 +8,7 @@
     <IsPackable>true</IsPackable>
     <PackageId>StarlyCode.AutoPortable</PackageId>
     <Title>AutoPortable</Title>
-    <VersionPrefix>0.1.8</VersionPrefix>
+    <VersionPrefix>0.1.9</VersionPrefix>
     <Description>
       AutoPortable
     </Description>
