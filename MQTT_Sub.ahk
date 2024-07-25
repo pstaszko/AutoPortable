@@ -14,11 +14,15 @@ SetTimer("EnsureConnectedWS", 1000)
 MQTT_Sub()
 MQTT_Sub(){
 	global mqtt
+	global username
 	Run %ComSpec%,, Hide, pid
 	WinWait ahk_pid %pid%
 	DllCall("AttachConsole", "UInt", pid)
 	WshShell := ComObjCreate("Wscript.Shell")
-	exec := WshShell.Exec("C:\Users\" username "\scoop\apps\mosquitto\current\mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
+	exePath:="C:\Users\" username "\scoop\apps\mosquitto\current\mosquitto_sub.exe"
+	ifnotexist %exePath%
+		msgbox Missing exe: %exePath%
+	exec := WshShell.Exec(exePath " -h localhost -t ActiveWindow/WindowHwnd")
 	;exec := WshShell.Exec("mosquitto_sub.exe -h localhost -t ActiveWindow/WindowHwnd")
 	loop {
 		output := exec.StdOut.Readline()
