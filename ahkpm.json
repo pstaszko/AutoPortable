@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/pstaszko/AutoPortable",
+  "website": "https://github.com/pstaszko/AutoPortable",
+  "license": "MIT",
+  "issueTracker": "https://github.com/pstaszko/AutoPortable/issues",
+  "include": "",
+  "author": {
+    "name": "Paul Staszko",
+    "email": "paulstaszko@gmail.com",
+    "website": ""
+  },
+  "scripts": {},
+  "dependencies": {
+    "github.com/pstaszko/AHK-Notification": "branch:master"
+  }
+}

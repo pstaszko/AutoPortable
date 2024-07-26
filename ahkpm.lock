@@ -1,0 +1,15 @@
+{
+  "lockfileVersion": "1",
+  "dependencies": {
+    "github.com/pstaszko/AHK-Notification": "branch:master"
+  },
+  "resolved": [
+    {
+      "name": "github.com/pstaszko/AHK-Notification",
+      "version": "branch:master",
+      "sha": "7dba92356f4fae4840e7028efff2c06fc4cea403",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK-Notification",
+      "dependencies": {}
+    }
+  ]
+}
