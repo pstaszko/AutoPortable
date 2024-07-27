@@ -798,6 +798,7 @@ FocusFilesInExplorer(){
 	ControlFocus DirectUIHWND2, A
 	SendInput {space}
 }
+/*
 FocusFilesInExplorerx(){
 	path:=""
 	if PostXP()
@@ -838,6 +839,7 @@ FocusFilesInExplorerx(){
 		path=path`nSendInput !d{tab}{space}
 	}
 }
+*/
 CloseStartMenuIfOpen(){
 	IfWinActive Start menu ahk_class DV2ControlHost ahk_exe explorer.exe
 	{
@@ -958,12 +960,13 @@ MqttPub(topic, message, host="localhost"){
 		;mqtt.TrySend(topic "|||" message)
 
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
+		/*
 		p=c:/dev/mqtt/%topic%.md
 		p:=StrReplace(p,"/","\")
 		SplitPath p, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 		FileCreateDir %OutDir%
 		FileAppend ```````r`n%message%`r`n```````r`n, %p%
-
+		*/
 		mqtt_history[topic]:=message
 	}
 }
@@ -2443,7 +2446,6 @@ DoKeepass(Long){
 		run %pathx% "%dropbox%fastball"
 	}
 }
-
 Hide(){
 	WinHideActive()
 }
@@ -2761,7 +2763,6 @@ TypeType(type){
 	SendInput ^v
 	SendInput : %type%){right}
 }
-
 #If
 GetFileFromVSTitle(){
 	WinGetTitle title, A
@@ -2991,7 +2992,6 @@ NewLoadGroups(){
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
-	aaa = 44
 	SetGlobalVariables()
 	if 1 ;Groups
 	{
@@ -3924,7 +3924,6 @@ RegSets(){
 SteamEXE(){
 	return % FirstValidPath("C:\Users\Paul\scoop\apps\steam\current\steam.exe", "C:\Program Files (x86)\Steam\steam.exe")
 }
-
 GetActiveExplorerPath() {
 	; https://www.autohotkey.com/boards/viewtopic.php?f=6&t=69925
 	explorerHwnd := WinActive("ahk_class CabinetWClass")
@@ -3937,7 +3936,6 @@ GetActiveExplorerPath() {
         }
     }
 }
-
 Max(msg="",depth=0){
 	if depth > 5
 		return
@@ -3974,16 +3972,6 @@ UnhideWindows:
 	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Preparing Solution...
 	WinHide Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe,Opening the file...
 return
-/*
-OnOpen(Event){
-}
-OnClose(Event){
-}
-OnError(Event){
-}
-__Delete(){
-}
-*/
 GetScriptStartupString(){
 	Process, Exist
 	scriptId := ErrorLevel
@@ -4546,14 +4534,6 @@ FullBlastRestart(){
 	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
 	run C:\Dev\Releases\WisdominatorConsole\Stable\WisdominatorConsole.exe,,min
 }
-/*
-GetWindowsID(){
-	x:=GetWindowsID_()
-	logHere(x)
-	return % x
-}
-*/
-
 GetModiferString(){
 	global
 	altkey:=FileRead("c:\temp\trash\altkey")
