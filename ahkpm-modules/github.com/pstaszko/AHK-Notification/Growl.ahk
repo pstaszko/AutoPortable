@@ -2,6 +2,9 @@ GrowlShared(message,title="",MessageType="Standard Message"){
 	if RegExMatch(message,"^[0| ]+$")
 		return
 	;notifScript=C:\Dev\Releases\AHK-Notification\Stable\Notification.ahk
+	msgbox 1 %a_scriptdir%
+	msgbox 2 %A_WorkingDir%
+	msgbox 3 %A_InitialWorkingDir%
 	notifScript=ahkpm-modules\github.com\pstaszko\AHK-Notification\AHK-Notification.exe
 	IfExist %notifScript%
 	{
