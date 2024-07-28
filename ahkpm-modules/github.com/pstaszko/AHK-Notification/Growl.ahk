@@ -1,4 +1,4 @@
-Growl(message,title="",MessageType="Standard Message"){
+GrowlShared(message,title="",MessageType="Standard Message"){
 	if RegExMatch(message,"^[0| ]+$")
 		return
 	;notifScript=C:\Dev\Releases\AHK-Notification\Stable\Notification.ahk

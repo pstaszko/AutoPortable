@@ -2230,7 +2230,6 @@ GetMousePosition(mode){
 	ret=%mode%,%x%,%y%
 	return % ret
 }
-/*
 Growl(message,title="",MessageType="Standard Message"){
 	if RegExMatch(message,"^[0| ]+$")
 		return
@@ -2250,7 +2249,7 @@ Growl(message,title="",MessageType="Standard Message"){
 		msgbox %notifScript% doesn't exist
 	}
 }
-*/
+
 g(message,title="AHK Message",MessageType="Standard Message"){
 	Growl(message,title,MessageType)
 }
