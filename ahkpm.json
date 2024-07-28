@@ -13,6 +13,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "github.com/StarlyCode/WebSocket.ahk": "branch:v1-winapi",
     "github.com/pstaszko/AHK-Notification": "branch:master"
   }
 }
