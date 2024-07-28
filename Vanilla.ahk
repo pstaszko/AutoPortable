@@ -2232,7 +2232,7 @@ GetMousePosition(mode){
 }
 Growl(message,title="",MessageType="Standard Message"){
 	xGrowl(message,title,messagetype)
-	
+	/*
 	if RegExMatch(message,"^[0| ]+$")
 		return
 	;notifScript=C:\Dev\Releases\AHK-Notification\Stable\Notification.ahk
@@ -2252,7 +2252,7 @@ Growl(message,title="",MessageType="Standard Message"){
 	}else{
 		msgbox %notifScript% doesn't exist
 	}
-	
+	*/
 }
 
 g(message,title="AHK Message",MessageType="Standard Message"){
