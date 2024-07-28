@@ -1,3 +1,4 @@
+#Include ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
 ;#include C:\Dev\AutoPortable\WebSocket.ahk\WebSocket.ahk
 ;test
 #if
@@ -2229,11 +2230,12 @@ GetMousePosition(mode){
 	ret=%mode%,%x%,%y%
 	return % ret
 }
+/*
 Growl(message,title="",MessageType="Standard Message"){
 	if RegExMatch(message,"^[0| ]+$")
 		return
 	;notifScript=C:\Dev\Releases\AHK-Notification\Stable\Notification.ahk
-	notifScript=ahkpm-modules/github.com/pstaszko/AHK-Notification/AHK-Notification-FSharp/AHK-Notification/AHK-Notification.exe
+	notifScript=ahkpm-modules\github.com\pstaszko\AHK-Notification\AHK-Notification.exe
 	IfExist %notifScript%
 	{
 		if (message or title )
@@ -2248,6 +2250,7 @@ Growl(message,title="",MessageType="Standard Message"){
 		msgbox %notifScript% doesn't exist
 	}
 }
+*/
 g(message,title="AHK Message",MessageType="Standard Message"){
 	Growl(message,title,MessageType)
 }
