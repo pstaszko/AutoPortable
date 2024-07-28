@@ -6,17 +6,17 @@
   },
   "resolved": [
     {
-      "name": "github.com/pstaszko/AHK-Notification",
-      "version": "branch:master",
-      "sha": "97194375550af007daca402dd075db31cfffd6d0",
-      "installPath": "ahkpm-modules/github.com/pstaszko/AHK-Notification",
-      "dependencies": {}
-    },
-    {
       "name": "github.com/StarlyCode/WebSocket.ahk",
       "version": "branch:v1-winapi",
       "sha": "3bb8b8d5475e516ccd2f3bf8c1d6d25d9214c124",
       "installPath": "ahkpm-modules/github.com/StarlyCode/WebSocket.ahk",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK-Notification",
+      "version": "branch:master",
+      "sha": "97194375550af007daca402dd075db31cfffd6d0",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK-Notification",
       "dependencies": {}
     }
   ]
