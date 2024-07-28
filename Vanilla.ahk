@@ -107,8 +107,6 @@ WinGetID(spec){
 }
 AutoRespondToDebugger(){
 	t("AutoRespondToDebugger")
-	;msgbox hiz
-	;WinWait Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe,,10
 	WinWait("Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe",,10)
 
 	If ErrorLevel
@@ -121,7 +119,6 @@ AutoRespondToDebugger(){
 			sleep 250
 			SendInput {end}{enter}
 			growl("Sent")
-			;Enter()
 		}
 		WinWaitNotActive("Choose Just-In-Time Debugger ahk_class #32770 ahk_exe vsjitdebugger.exe",,3)
 		If ErrorLevel
