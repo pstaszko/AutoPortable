@@ -2231,7 +2231,7 @@ GetMousePosition(mode){
 	return % ret
 }
 Growl(message,title="",MessageType="Standard Message"){
-	;xGrowl(message,title,messagetype)
+	xGrowl(message,title,messagetype)
 	
 	if RegExMatch(message,"^[0| ]+$")
 		return
