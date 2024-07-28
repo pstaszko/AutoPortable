@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/StarlyCode/WebSocket.ahk",
+  "website": "https://github.com/StarlyCode/WebSocket.ahk",
+  "license": "MIT",
+  "issueTracker": "https://github.com/StarlyCode/WebSocket.ahk/issues",
+  "include": "WebSocket.ahk",
+  "author": {
+    "name": "Paul Staszko",
+    "email": "paulstaszko@gmail.com",
+    "website": ""
+  },
+  "scripts": {},
+  "dependencies": {}
+}
