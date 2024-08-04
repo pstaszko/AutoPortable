@@ -2440,7 +2440,7 @@ DoKeepass(Long){
 		{
 			;msgbox % dropbox
 			;full=%pathx% "%dropbox%fastball" -preselect:"%k%"
-			full=%pathx% "c:\sync\fastball" -preselect:"%k%"
+			full=%pathx% "c:\dropbox\fastball" -preselect:"%k%"
 			run %full%
 		}
 		else
