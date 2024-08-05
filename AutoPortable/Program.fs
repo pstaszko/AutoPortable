@@ -1,3 +1,0 @@
-﻿namespace AutoPortable
-module Main =
-    ()
