@@ -341,8 +341,6 @@ HideWindows(){
 	}
 	; WinShow ahk_group NeverHide
 	p:=watch1.peek
-	;Growl(WindowsHidden " windows hidden`n" p " total MS`n" Round(p / WindowsHidden) " MS/window")
-	;Growl(p " total MS")
 }
 ShowWindows(){
 	DetectHiddenWindows off
@@ -367,8 +365,6 @@ Done restoring %restored% real window%z%
 %totalMS% total MS
 %rate% MS/window
 )
-	;Growl(msg)
-
 }
 CloseMinorWindows(){
 	GroupClose MinorWindows,a
@@ -1239,9 +1235,7 @@ CycleWindowOnEXE(x=0, mode=""){
 	gn:="CycleWindow_" strreplace(exe,".","_")
 	gn:=strreplace(gn,"-","_")
 	gn:=strreplace(gn," ","_")
-	;growl(gn)
 	if (gn = "CycleWindow_datagrip_exe" or gn = "CycleWindow_datagrip64_exe"){
-		;growl("hit")
 		GroupAdd %gn%,ahk_exe ssms.exe,,,ahk_group NoCycleOnEXE
 		;GroupAdd %gn%,ahk_exe Ssms.exe,,,ahk_group NoCycleOnEXE
 	}
@@ -2229,31 +2223,6 @@ GetMousePosition(mode){
 	ret=%mode%,%x%,%y%
 	return % ret
 }
-xGrowl(message,title="",MessageType="Standard Message"){
-	;xGrowl(message,title,messagetype)
-	/*
-	if RegExMatch(message,"^[0| ]+$")
-		return
-	;notifScript=C:\Dev\Releases\AHK-Notification\Stable\Notification.ahk
-	notifScript=%a_scriptdir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\AHK-Notification.ahk
-	notifScript=%a_scriptdir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\AHK-Notification.exe
-	IfExist %notifScript%
-	{
-		if (message or title )
-		{
-			title:=strreplace(title,"\","\\")
-			message:=strreplace(message,"\","\\")
-			message:=SubStr(message, 1, 100)
-			cmd=%A_AhkPath% "%notifScript%" "notificationText=%message%" "notificationTitle=%title%" "logFile=c:\temp\notification.txt" backgroundColor=4e5057 padsize=0 ignoreHover=1
-			cmd="%notifScript%" "notificationText=%message%" "notificationTitle=%title%" "logFile=c:\temp\notification.txt" backgroundColor=4e5057 padsize=0 ignoreHover=1
-			run %cmd%,,hide
-		}
-	}else{
-		msgbox %notifScript% doesn't exist
-	}
-	*/
-}
-
 g(message,title="AHK Message",MessageType="Standard Message"){
 	Growl(message,title,MessageType)
 }
@@ -2365,7 +2334,7 @@ Last Error: %A_LastError%
 		)
 		em:=e.message
 		msg=%msg%`nException Message: %em%
-		msg.g
+		growl(msg)
 	}
 }
 CopyIfDifferent(source,destination){
