@@ -1,4 +1,5 @@
 return
+;Version 0.1.0
 ;#SingleInstance force
 ;#include %A_ScriptDir%\Vanilla.ahk
 ;#include %A_ScriptDir%\FSharp.ahk
