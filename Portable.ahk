@@ -4,16 +4,6 @@
 	RunFlowLauncher()
 return
 #H::OpenMainScript(True)
-/*
-#.::
-	t("Emacs.ActivateOrStart")
-	SubmitFSharpFunction("Emacs.ActivateOrStartEmacs")
-return
-#^.::
-	t("Emacs.StartNewNoArgs")
-	SubmitFSharpFunction("Emacs.StartNewNoArgs")
-return
-*/
 
 #IfWinActive ahk_class VirtualConsoleClass ahk_exe ConEmu64.exe
 	^Enter::SendInput {appskey down}{enter}{appskey up}

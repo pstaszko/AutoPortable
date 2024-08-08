@@ -1,4 +1,6 @@
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
+;#Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\AHK_StringManipulation.ahk
+#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\StringManipulation.ahk
 ;test
 #if
 WinActiveRegex(title){
@@ -3754,12 +3756,6 @@ IsNumLock(){
 IsProcessRunning(ProcName){
 	process exist,%procname%
 	return % errorlevel
-}
-MyRTrim(str,OmitChars = " `t`n"){
-	return % Rtrim(str,OmitChars)
-}
-MyLTrim(str,OmitChars = " `t`n"){
-	return % ltrim(str,OmitChars)
 }
 WriteToTempFile(val,extension="txt",dir="",prefix=""){
 	tmp:=GetTempFile(extension,dir,prefix)

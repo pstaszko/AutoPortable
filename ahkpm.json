@@ -14,6 +14,7 @@
   "scripts": {},
   "dependencies": {
     "github.com/StarlyCode/WebSocket.ahk": "branch:v1-winapi",
-    "github.com/pstaszko/AHK-Notification": "branch:master"
+    "github.com/pstaszko/AHK-Notification": "branch:master",
+    "github.com/pstaszko/AHK_StringManipulation": "branch:main"
   }
 }
