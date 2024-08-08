@@ -1,6 +1,6 @@
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
 ;#Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\AHK_StringManipulation.ahk
-#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\StringManipulation.ahk
+;#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\StringManipulation.ahk
 ;test
 #if
 WinActiveRegex(title){
@@ -2345,6 +2345,12 @@ CopyIfDifferent(source,destination){
 	if (!dest.exists or src.sizeb<>dest.sizeb or src.ModTime<>dest.ModTime){
 		FileCopy(source,destination)
 	}
+}
+MyRTrim(str,OmitChars = " `t`n"){
+	return % Rtrim(str,OmitChars)
+}
+MyLTrim(str,OmitChars = " `t`n"){
+	return % ltrim(str,OmitChars)
 }
 MyTrim(this,OmitChars = " `t`r`n"){ ;;ext
 	return % Rtrim(ltrim(this,OmitChars),OmitChars)
