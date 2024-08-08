@@ -1,8 +1,5 @@
 return
-;Version 0.1.4
-;#SingleInstance force
-;#include %A_ScriptDir%\Vanilla.ahk
-;#include %A_ScriptDir%\FSharp.ahk
+;Version 0.1.5
 MakeGroupName(txt){
 	txt:=StrReplace(txt, ".", "_")
 	txt:=StrReplace(txt, "-", "_")
