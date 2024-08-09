@@ -22,17 +22,17 @@
       "dependencies": {}
     },
     {
+      "name": "github.com/pstaszko/AHK_Compiler",
+      "version": "branch:main",
+      "sha": "c9692294607008c95165113685bdc21b85746f5a",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Compiler",
+      "dependencies": {}
+    },
+    {
       "name": "github.com/pstaszko/AHK_StringManipulation",
       "version": "branch:main",
       "sha": "1c680afa6a0dbc445b31764d52c504ba37cfac11",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_StringManipulation",
-      "dependencies": {}
-    },
-    {
-      "name": "github.com/pstaszko/AHK_Compiler",
-      "version": "branch:main",
-      "sha": "7534d8c9f2296bc3299e0eb3fe461a32ce5a50cd",
-      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Compiler",
       "dependencies": {}
     }
   ]
