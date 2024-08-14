@@ -1435,7 +1435,11 @@ _log(context,msg,synchronous=0,IncludePath=1){
 		MsgBox missing C:\dev\Releases\WriteLog\Stable\writelog.exe
 }
 ComputerHasMatrixBoards(){
-	return % computername = "raven"
+	if computername = "raven"
+		return true
+	if computername = "rad"
+		return true
+	return false
 }
 HardRestartMatrixOS(){
 	if(ComputerHasMatrixBoards()){
