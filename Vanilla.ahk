@@ -1435,9 +1435,9 @@ _log(context,msg,synchronous=0,IncludePath=1){
 		MsgBox missing C:\dev\Releases\WriteLog\Stable\writelog.exe
 }
 ComputerHasMatrixBoards(){
-	if computername = "raven"
+	if(computername = "raven")
 		return true
-	if computername = "rad"
+	if(computername = "rad")
 		return true
 	return false
 }
