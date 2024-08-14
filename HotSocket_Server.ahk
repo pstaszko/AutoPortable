@@ -6,10 +6,10 @@ Menu Tray, Icon, Shell32.dll, 177
 filt:=A_Args[1]
 if (filt="")
 {
-	t("Startup: All")
+	;t("Startup: All")
 	filt=*
 }else{
-	t("Startup: " filt)
+	;t("Startup: " filt)
 }
 pattern = c:\temp\req\cmd\%filt%*.md
 loop Files, %pattern%
