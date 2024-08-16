@@ -1458,12 +1458,6 @@ RemoveGhosts(){
 	RunWait pwsh -noprofile -command ". C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName @('lpmini') > c:\temp\GhostsRemoved.txt"
 	run c:\temp\GhostsRemoved.txt
 }
-URLDownloadToVar(url){
-	hObject:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
-	hObject.Open("GET",url)
-	hObject.Send()
-	return hObject.ResponseText
-}
 HardRestartMatrixOSAutomatic(){
 	if(ComputerHasMatrixBoards()){
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/off")
@@ -1478,6 +1472,12 @@ HardRestartMatrixOSAutomatic(){
 	}
 }
 
+URLDownloadToVar(url){
+	hObject:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
+	hObject.Open("GET",url)
+	hObject.Send()
+	return hObject.ResponseText
+}
 SubmitFSharpFunction(functionName,params*){
 	;logHere(functionName)
 	v:=functionName
