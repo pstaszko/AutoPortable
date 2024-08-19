@@ -3442,7 +3442,6 @@ NewLoadGroups(){
 	g_2_AutomaticBehaviors("AltNifActive","Microsoft Visual Basic 2010 Express ahk_class #32770","The source control provider associated with this solution could not be found. The projects will be treated as not under source control.")
 	g_2_AutomaticBehaviors("AltNifActive","Microsoft Visual Studio ahk_group VisualStudio","The active solution or project is controlled by a different source control plug-in than the one you have selected")
 	g_2_AutomaticBehaviors("AltNifActive","Microsoft Visual Studio Express 2012 for Web ahk_class #32770 ahk_exe VWDExpress.exe","Would you like to contact this server to try to enable source control integration?")
-	g_2_AutomaticBehaviors("AltNifActive","Remote Desktop Connection ahk_class #32770","Allow the remote computer to access the following resources on my computer")
 	g_2_AutomaticBehaviors("AltNIfActive_Slow","WindowTitleMonitor ahk_class #32770 ahk_exe AutoHotkey.exe", "Could not close the previous instance of this script")
 	g_2_AutomaticBehaviors("AltNplusHeadshotifActive","ahk_class #32770","Do you want to save changes to the design of table")
 	g_2_AutomaticBehaviors("AltNplusHeadshotifActive","ahk_class #32770","Do you want to save changes to the design of view")
