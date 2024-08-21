@@ -1,5 +1,6 @@
 return
-;Version 0.1.5
+;Version 0.1.6
+#include %A_ScriptDir%\Vanilla.ahk
 MakeGroupName(txt){
 	txt:=StrReplace(txt, ".", "_")
 	txt:=StrReplace(txt, "-", "_")
