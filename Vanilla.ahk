@@ -2147,6 +2147,7 @@ MinimizeFromHwnd(hwnd){
 WinGetPositionFromHwnd(hwnd){
 	WinGetPos X, Y, Width, Height, ahk_id %hwnd%
 	ret=%X%|%Y%|%Width%|%Height%
+	msgbox %ret%
 	return %ret%
 }
 WinGetClassFromHwnd(hwnd){
