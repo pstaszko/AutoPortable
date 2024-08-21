@@ -2,7 +2,6 @@
 #Requires AutoHotkey v1.1.37.02
 #singleinstance force
 #notrayicon
-#include %A_ScriptDir%\Vanilla.ahk
 if A_Args[1]
 Menu Tray, Icon, Shell32.dll, 177
 filt:=A_Args[1]
@@ -58,3 +57,4 @@ loop
 	sleep 100
 }
 #include %A_ScriptDir%\mine.ahk
+#include %A_ScriptDir%\Vanilla.ahk
