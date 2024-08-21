@@ -2147,7 +2147,6 @@ MinimizeFromHwnd(hwnd){
 WinGetPositionFromHwnd(hwnd){
 	WinGetPos X, Y, Width, Height, ahk_id %hwnd%
 	ret=%X%|%Y%|%Width%|%Height%
-	tooltip %ret%
 	return %ret%
 }
 WinGetClassFromHwnd(hwnd){
