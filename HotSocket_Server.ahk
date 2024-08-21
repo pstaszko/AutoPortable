@@ -34,6 +34,9 @@ loop
 		fName:=""
 		FileReadLine fName, %a_LoopFilePath%, 1
 		fHandle:=func(fName)
+		if(!fHandle){
+			msgbox Failed to find function %fName%
+		}
 		argCount:=fHandle.MaxParams
 		FileReadLine x2, %a_LoopFilePath%, 2
 		FileReadLine x3, %a_LoopFilePath%, 3
