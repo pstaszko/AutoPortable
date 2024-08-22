@@ -28,7 +28,7 @@ loop
 {
 	Loop Files, %pattern%
 	{
-		tooltip %a_LoopFilePath%
+		;tooltip %a_LoopFilePath%
 		FileCreateDir c:\temp\req\cmd\done\
 		;t(a_LoopFilePath)
 		fName:=""
@@ -48,7 +48,7 @@ loop
 		;tooltip ret=%ret% res=%res% fname=%fname%
 		res:=StrReplace(a_LoopFilePath, "cmd","result")
 		FileDelete %res%
-		tooltip Writing %ret% to %res%
+		;tooltip Writing %ret% to %res%
 		FileAppend %ret%, %res%
 
 		FileDelete %a_LoopFilePath%
