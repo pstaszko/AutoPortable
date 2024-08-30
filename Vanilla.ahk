@@ -2918,9 +2918,9 @@ GoSub(name){
 PSKill(exe, async=0){
 	global
 	if async
-		Run %pauldir%\pskill.exe %exe%,,hide
+		Run pskill.exe %exe%,,hide
 	else
-		RunWait %pauldir%\pskill.exe %exe%,,hide
+		RunWait pskill.exe %exe%,,hide
 }
 RunWait(cmd){
 	runwait %cmd%
