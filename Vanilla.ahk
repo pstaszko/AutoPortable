@@ -3101,7 +3101,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("GoToCMSFolderFromTitle","IT Change Management and SDLC ahk_class MozillaWindowClass ahk_exe firefox.exe")
 	g_1_ProgramGroups("HideOnCycleEXE","CiceroUIWndFrame ahk_class CiceroUIWndFrame ahk_exe devenv.exe")
 	g_1_ProgramGroups("HideOnCycleEXE","theAwtToolkitWindow ahk_class SunAwtToolkit ahk_exe datagrip64.exe")
-	g_1_ProgramGroups("IE","ahk_group MSIE")
 	g_1_ProgramGroups("IntelliJIdea","ahk_class SunAwtFrame ahk_exe idea64.exe")
 	g_1_ProgramGroups("JIRA","JIRA ahk_group Browsers",,,"System Dashboard") ;;work
 	g_1_ProgramGroups("JsonView","JSON Viewer ahk_exe JsonView.exe")
