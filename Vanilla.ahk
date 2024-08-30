@@ -622,8 +622,25 @@ WinHideActiveConfirmed(){
 	;WinHide A
 }
 */
+
+#IfWinActive Flow.Launcher ahk_exe Flow.Launcher.exe
+	#R::SendInput #r
+	^R::SendInput #r
+	^S::
+		SendInput ^asettings
+		sleep 200
+		SendInput {enter}
+	return
+
 #IfWinActive Settings ahk_exe Flow.Launcher.exe
-	F12::SendInput !^#{F11}
+	^P::ClickAndReturn(118,261) ;Plugins
+	^S::ClickAndReturn(92,318)  ;Store
+	^+A::ClickAndReturn(155,371) ;Appearance
+	F12::SendInput !^#{F11} ;Send hotkey to set
+	
+#IfWinActive Options ahk_class #32770 ahk_exe Q-Dir_x64.exe
+	Esc::SendInput !{F4}
+
 #if
 RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)
