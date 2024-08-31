@@ -32,7 +32,7 @@
     {
       "name": "github.com/pstaszko/AHK_PSKill",
       "version": "branch:main",
-      "sha": "0863c6f2c78cc02d783223285edc3ea9665c5c9d",
+      "sha": "c9a12d667a135b7bc81a0e1f16fd82344971f348",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_PSKill",
       "dependencies": {}
     },
