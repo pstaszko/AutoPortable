@@ -4,6 +4,7 @@
     "github.com/StarlyCode/WebSocket.ahk": "branch:v1-winapi",
     "github.com/pstaszko/AHK-Notification": "branch:master",
     "github.com/pstaszko/AHK_Compiler": "branch:main",
+    "github.com/pstaszko/AHK_PSKill": "branch:main",
     "github.com/pstaszko/AHK_StringManipulation": "branch:main"
   },
   "resolved": [
@@ -26,6 +27,13 @@
       "version": "branch:main",
       "sha": "c9692294607008c95165113685bdc21b85746f5a",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Compiler",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_PSKill",
+      "version": "branch:main",
+      "sha": "0863c6f2c78cc02d783223285edc3ea9665c5c9d",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_PSKill",
       "dependencies": {}
     },
     {

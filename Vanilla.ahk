@@ -1,3 +1,4 @@
+#Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_PSKill\PSKill.ahk
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
 ;#Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\AHK_StringManipulation.ahk
 ;#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\StringManipulation.ahk
@@ -2931,13 +2932,6 @@ GoSub(name){
 		msgbox % islabel(name)
 	If Islabel(name)
 		gosub %name%
-}
-PSKill(exe, async=0){
-	global
-	if async
-		Run pskill.exe %exe%,,hide
-	else
-		RunWait pskill.exe %exe%,,hide
 }
 RunWait(cmd){
 	runwait %cmd%
