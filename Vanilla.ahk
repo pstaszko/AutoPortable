@@ -2,7 +2,6 @@
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
 ;#Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\AHK_StringManipulation.ahk
 ;#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\StringManipulation.ahk
-;test
 #if
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
@@ -152,21 +151,6 @@ AutoRespondToDebugger(){
 		}
 	}
 	sleep 3000
-}
-stp(lbl){
-	/*
-	tooltip % lbl
-	start:=GetKeyState("capslock")
-	loop
-	{
-		n := GetKeyState("capslock")
-		sleep 100
-		if (n <> start){
-			SendInput {capslock up}
-			return
-		}
-	}
-	*/
 }
 
 SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
