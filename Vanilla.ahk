@@ -2771,11 +2771,13 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 		z:=ThisWindow[WinText]
 	}
 }
+/*
 SetGlobalVariables(){
 	global SciTEPath
 	SciTEPath=%PAULDIR%\SCITE\SCITE.EXE
-	SciTEPath:=FirstValidPath("C:\Users\Paul\scoop\apps\notepadplusplus\current\notepad++.exe", psPath.Dropbox "PortableApps\Notepad++Portable\App\Notepad++\notepad++.exe", "C:\Program Files (x86)\Notepad++\notepad++.exe")
+	SciTEPath:=FirstValidPath("C:\Users\Paul\scoop\apps\notepadplusplus\current\notepad++.exe", "C:\Program Files (x86)\Notepad++\notepad++.exe")
 }
+*/
 GoSub(name){
 	if name=Joy11_Joy14
 		msgbox % islabel(name)
@@ -2785,34 +2787,7 @@ GoSub(name){
 RunWait(cmd){
 	runwait %cmd%
 }
-KillOculus2:
-	SetTimer KillOculus2,off
-	RunWait("cmd /c net stop ovrservice")
-	sleep 1000
-	PSKill("steamerrorreporter64")
-return
-Killoculus(){
-	WinClose Beat Saber
-	PSKill("steam")
-	PSKill("steamtours")
-	PSKill("vrserver")
-	PSKill("vrmonitor")
-	PSKill("vrdashboard")
-	PSKill("vrwebhelper")
-	PSKill("oculusclient")
-	SetTimer("KillOculus2",1)
-}
-RestartSteamAndOculus(){
-	/*
-	Killoculus()
-	run % SteamEXE()
-	sleep 3000
-	RunWait("cmd /c net start ovrservice")
-	run "C:\Program Files\Oculus\Support\oculus-client\OculusClient.exe"
-	WinWait Steam ahk_class vguiPopupWindow ahk_exe Steam.exe,,120 /// ie
-	WinWait Oculus ahk_class Chrome_WidgetWin_1 ahk_exe OculusClient.exe,,120 /// ie
-	*/
-}
+/*
 BlastTeamViewer(){
 	pskill("TeamViewer")
 	pskill("TeamViewer_Service")
@@ -2820,6 +2795,7 @@ BlastTeamViewer(){
 	pskill("tv_w32")
 	gosub("Tops_T_Tops_V") ; run teamviewer.exe
 }
+*/
 GetScoopDir(appName){
 	return % "C:\Users\Paul\scoop\apps\" . appName . "\current\"
 }
@@ -2836,7 +2812,7 @@ NewLoadGroups(){
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
 	;msgbox % A_ScriptFullPath
-	SetGlobalVariables()
+	;SetGlobalVariables()
 	if 1 ;Groups
 	{
 	;***************************************************************************************************************
