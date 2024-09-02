@@ -830,7 +830,7 @@ RunPS(Title,Command,noexit=0,Background="Black",Foreground="White",psPath="power
 	logHere(c)
 	RunOrSwitch(c,title,true)
 }
-/*
+
 RunPSCommand(t,cmd,window,width,left,height,top,move=false){
 	global
 	logParams()
@@ -882,7 +882,7 @@ RunPSCommandLeft(t,cmd){
 RunPSCommandRight(t,cmd){
 	RunPSCommand(t,cmd,1,960,960,1080,0)
 }
-*/
+
 SParams(args*){
 	return % Join(", ",args*)
 }
