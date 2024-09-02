@@ -171,14 +171,11 @@ SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
 		ClickAndReturn(250,311)
 		;return
 		SendInput {home}+{end}%server%{tab}
-		stp("a")
 		if User
 		{
 			SendInput {home}s
-			stp("b")
 			SendInput {tab}
 			SendInput {home}+{end}%user%
-			stp("c")
 			SendInput {tab}
 			SendInput {home}+{end}%password%
 		}else{
