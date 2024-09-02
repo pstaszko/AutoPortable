@@ -3065,7 +3065,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Office","ahk_exe ONENOTE.EXE")
 	g_1_ProgramGroups("Office","ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("Office","ahk_exe POWERPNT.EXE")
-	g_1_ProgramGroups("Office","ahk_exe Skype.EXE")
 	g_1_ProgramGroups("Office","ahk_exe VISIO.EXE")
 	g_1_ProgramGroups("Office","ahk_exe WINWORD.EXE")
 	g_1_ProgramGroups("OfficeWindowsToMaximize","Word ahk_class OpusApp ahk_exe WINWORD.EXE")
@@ -3106,7 +3105,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("SciTE","SciTE ahk_class SciTEWindow")
 	g_1_ProgramGroups("SciTE_FindOrReplaceDialog","Find ahk_class #32770 ahk_exe SCITE.EXE","","","","Files")
 	g_1_ProgramGroups("SciTE_FindOrReplaceDialog","Replace ahk_class #32770 ahk_exe SCITE.EXE")
-	g_1_ProgramGroups("Skype","Skype for Business ahk_class CommunicatorMainWindowClass ahk_exe lync.exe")
 	g_1_ProgramGroups("Slack","ahk_class Chrome_WidgetWin_1 ahk_exe slack.exe")
 	g_1_ProgramGroups("SourceGear"," DiffMerge ahk_exe sgdm.exe")
 	g_1_ProgramGroups("Splashtop","ahk_exe strwindt.exe")
@@ -3440,19 +3438,13 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("DoubleEscapeToClose","Source of: ahk_class MozillaWindowClass")
 	g_4_KeyBehaviors("DoubleEscapeToHide","Terminal server connection - Windows Internet Explorer ahk_class IEFrame ahk_exe iexplore.exe")
 	g_4_KeyBehaviors("DoubleEscapeToMinimize","KeePass ahk_exe KeePass.exe")
-	g_4_KeyBehaviors("EscapeToClose","(Local Computer) ahk_class #32770")
-	g_4_KeyBehaviors("EscapeToClose","- Original Source ahk_class HTMLSOURCEVIEW")
 	g_4_KeyBehaviors("EscapeToClose","Active Window Info ahk_exe AU3_Spy.exe")
 	g_4_KeyBehaviors("EscapeToClose","ahk_class MozillaWindowClass ahk_exe thunderbird.exe")
-	g_4_KeyBehaviors("EscapeToClose","Command ahk_exe SampleUtilityApplication.exe")
-	g_4_KeyBehaviors("EscapeToClose","Cookies ahk_class MozillaWindowClass")
 	g_4_KeyBehaviors("EscapeToClose","History Explorer")
-	g_4_KeyBehaviors("EscapeToClose","Later Response ahk_exe SCITE.EXE")
 	g_4_KeyBehaviors("EscapeToClose","Please Register ahk_class wxWindowNR ahk_exe sgdm.exe")
 	g_4_KeyBehaviors("EscapeToClose","Query Designer")
 	g_4_KeyBehaviors("EscapeToClose","Registration Information ahk_class wxWindowNR ahk_exe sgdm.exe")
 	g_4_KeyBehaviors("EscapeToClose","Version Details ahk_exe VaultGUIClient.exe")
-	g_4_KeyBehaviors("EscapeToHide","ahk_class LyncConversationWindowClass ahk_exe lync.exe")
 	g_4_KeyBehaviors("EscapeToHide","smtp4dev ahk_exe smtp4dev.exe")
 	g_4_KeyBehaviors("EscapeToMinimize","ahk_class MainWindowClassName ahk_exe ProcessHacker.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_class #32770 ahk_exe locate32.exe")
@@ -3460,7 +3452,6 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_class ConsoleWindowClass ahk_exe sh.exe") ;GIT BASH
 	g_4_KeyBehaviors("F12HideWindow","ahk_class ConsoleWindowClass ahk_exe WisdominatorConsole.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_class ProcessHacker ahk_exe ProcessHacker.exe")
-	g_4_KeyBehaviors("F12HideWindow","ahk_class tSkMainForm ahk_exe Skype.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe 7+ Taskbar Tweaker.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe ets.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe FSSConsole.exe")
@@ -3483,39 +3474,23 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_group SampleApp")
 	g_4_KeyBehaviors("F12HideWindow","ahk_Group SQLManagementStudio")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group XLite")
-	g_4_KeyBehaviors("F12HideWindow","AppLog ahk_class ConsoleWindowClass ahk_exe cmd.exe")
 	g_4_KeyBehaviors("F12HideWindow","AutoHotkey Help ahk_class HH Parent ahk_exe hh.exe")
 	g_4_KeyBehaviors("F12HideWindow","AutoTogglConsole.exe ahk_class ConsoleWindowClass ahk_exe AutoTogglConsole.exe")
-	g_4_KeyBehaviors("F12HideWindow","C:\Python\Python37\python.exe ahk_class ConsoleWindowClass ahk_exe python.exe")
-	g_4_KeyBehaviors("F12HideWindow","dev.txt")
-	g_4_KeyBehaviors("F12HideWindow","Echelon.com Mail ahk_group Maxthon")
 	g_4_KeyBehaviors("F12HideWindow","FileZilla ahk_class wxWindowNR ahk_exe FileZilla.exe")
 	g_4_KeyBehaviors("F12HideWindow","FortiClient ahk_exe FortiClient.exe")
 	g_4_KeyBehaviors("F12HideWindow","KeePass ahk_exe KeePass.exe")
-	g_4_KeyBehaviors("F12HideWindow","Locations.xlsm - Excel ahk_class XLMAIN ahk_exe EXCEL.EXE")
-	g_4_KeyBehaviors("F12HideWindow","Lync ahk_class CommunicatorMainWindowClass ahk_exe lync.exe")
-	g_4_KeyBehaviors("F12HideWindow","Malwarebytes ahk_exe mbam.exe")
-	g_4_KeyBehaviors("F12HideWindow","notes.txt - SciTE ahk_class SciTEWindow ahk_exe SciTE.exe")
 	g_4_KeyBehaviors("F12HideWindow","Outlook Web App ahk_group Browsers")
-	g_4_KeyBehaviors("F12HideWindow","ParametersToSend.xml ahk_class Notepad++ ahk_exe notepad++.exe")
-	g_4_KeyBehaviors("F12HideWindow","paulstaszko@gmail.com - Gmail - Google Chrome ahk_exe chrome.exe")
-	g_4_KeyBehaviors("F12HideWindow","plan.txt")
 	g_4_KeyBehaviors("F12HideWindow","PortableApps.com ahk_class TfrmMenu ahk_exe PortableAppsPlatform.exe")
 	g_4_KeyBehaviors("F12HideWindow","projects.drawio ahk_exe atom.exe")
 	g_4_KeyBehaviors("F12HideWindow","PS: BackgroundPowerShell ahk_group PowerShellOrPWSH_Exe")
 	g_4_KeyBehaviors("F12HideWindow","Registry Editor ahk_class RegEdit_RegEdit")
 	g_4_KeyBehaviors("F12HideWindow","Remote Desktop Connection Manager v2.2 ahk_exe RDCMan.exe")
-	g_4_KeyBehaviors("F12HideWindow","Republic Anywhere ahk_class Chrome_WidgetWin_1 ahk_exe Republic Anywhere.exe")
 	g_4_KeyBehaviors("F12HideWindow","Services (Local) ahk_class MMCMainFrame ahk_exe mmc.exe")
-	g_4_KeyBehaviors("F12HideWindow","Skype ahk_exe Skype.exe")
-	g_4_KeyBehaviors("F12HideWindow","Skype for Business ahk_class CommunicatorMainWindowClass ahk_exe lync.exe")
 	g_4_KeyBehaviors("F12HideWindow","smtp4dev ahk_exe smtp4dev.exe")
-	g_4_KeyBehaviors("F12HideWindow","SysSw figuring out meter source delta.vsdx ahk_class VISIOA ahk_exe VISIO.EXE")
 	g_4_KeyBehaviors("F12HideWindow","TeamViewer ahk_class #32770 ahk_exe TeamViewer.exe")
 	g_4_KeyBehaviors("F12HideWindow","TeamViewer ahk_class TV_ChatWindow ahk_exe TeamViewer.exe")
 	g_4_KeyBehaviors("F12HideWindow","WinEventHub ahk_class MozillaWinEventHubClass ahk_exe firefox.exe")
 	g_4_KeyBehaviors("F12HideWindow","Winperio ahk_class AutoHotkeyGUI")
-	g_4_KeyBehaviors("F12MinimizeWindow","ahk_group Skype")
 	g_4_KeyBehaviors("F12MinimizeWindow","ahk_group Slack")
 	g_4_KeyBehaviors("F12MinimizeWindow","ahk_group Spotify")
 	g_4_KeyBehaviors("F1HideWindow","ahk_class Chrome_WidgetWin_1 ahk_exe Chrome.exe",,,"Chrome App Launcher")
@@ -3622,43 +3597,6 @@ GetPublishedFSSConsole(){
 Scite_ToggleResultsPane(){
 	SendInput {F8}
 }
-ExpandSciteResultsPane(){
-	global FirstMonitor
-	SciteExpandHeight=200
-	SciteExpandHeight_Half=400
-	SciteExpandHeight_Full=900
-	SysGet, OutputVar, Monitor
-	height:=a_ScreenHeight
-	currentY:=height - 30
-	CoordMode Relative
-	MouseMove 100,100
-
-	CoordMode screen
-	MouseGetPos OutputVarX, OutputVarY
-
-	Loop
-	{
-		if iscapslock()
-			break
-		MouseMove 500, %currentY%, 0
-		currenty-=3
-		if(A_Cursor="SizeNS"){
-			if(height-currentY>45){
-				MouseClick left, %OutputVarX%,%currentY%,1,0,D
-				MouseMove %OutputVarX%,400
-				MouseClick left,%OutputVarX%,400,1,0,U
-				MouseMove %OutputVarX%,%OutputVarY%
-				t("Move")
-				break
-			}
-		}
-		if(height - currentY > 500){
-			t("No Move")
-			return
-		}
-	}
-	t("No Move")
-}
 SendInputFn(txt){
 	SendInput % txt.value
 }
@@ -3688,13 +3626,6 @@ ActivateConsole(num, title){
 }
 
 #if
-FolderCheckOpen(){
-	loop C:\Sync\DOWNLOADS\UTILITIES\MACRO\AutoHotkey\paul\*,1,1
-	{
-		msgbox why is this here? C:\Sync\DOWNLOADS\UTILITIES\MACRO\AutoHotkey\paul\*
-		run C:\Sync\DOWNLOADS\UTILITIES\MACRO\AutoHotkey\paul
-	}
-}
 AddReg(){
 	p=c:\dev\temp\RegAdded
 	IfNotExist %p%
@@ -3732,6 +3663,7 @@ RegSets(){
 SteamEXE(){
 	return % FirstValidPath("C:\Users\Paul\scoop\apps\steam\current\steam.exe", "C:\Program Files (x86)\Steam\steam.exe")
 }
+/*
 GetActiveExplorerPath() {
 	; https://www.autohotkey.com/boards/viewtopic.php?f=6&t=69925
 	explorerHwnd := WinActive("ahk_class CabinetWClass")
@@ -3744,6 +3676,7 @@ GetActiveExplorerPath() {
         }
     }
 }
+*/
 Max(msg="",depth=0){
 	if depth > 5
 		return
@@ -3757,37 +3690,12 @@ Max(msg="",depth=0){
 	d:=depth + 1
 	Max(msg, d)
 }
-/*
-HideWindows:
-	SetTitleMatchMode 2
-	;msgbox hide
-	GroupAdd vsHide, Microsoft Visual Studio ahk_exe devenv.exe
-	WinHide ahk_group vsHide
-	WinHide ahk_group SQLManagementStudio
-	WinHide ahk_group Slack
-	WinHide ahk_group AHKtextEditor
-return
-UnhideWindows:
-	GroupAdd vsHide, Microsoft Visual Studio ahk_exe devenv.exe
-	WinShow ahk_group vsHide
-	WinShow ahk_group SQLManagementStudio
-	WinShow ahk_group Slack
-	WinShow ahk_group AHKtextEditor
-	SetWinDelay 0
-	GroupAdd unhder,Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe
-	GroupAdd unhder,Microsoft Visual Studio ahk_exe devenv.exe ahk_class #32770
-	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Creating toolbox items
-	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Preparing Solution...
-	WinHide Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe,Opening the file...
-return
-*/
 GetScriptStartupString(){
 	Process, Exist
 	scriptId := ErrorLevel
 	return "Starting " A_ScriptFullPath " PID: " scriptId
 }
 ConnectWS(){
-	;AlertCallStack()
 	gosub ConnectWS
 }
 ConnectWS:
