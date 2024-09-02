@@ -1,6 +1,10 @@
 #Requires AutoHotkey v1.1.37.02
-#If
-#!K::RunLocate32()
+RunLocate32(){
+	boop:=RunOrSwitchClass(PaulDir "\Util\locate32_x64\locate32.exe","Locate","#32770")
+	WinWaitActive Locate ahk_exe locate32.exe,,4
+	If ErrorLevel
+		return
+}
 #R::
 	t(A_ScriptFullPath)
 	RunFlowLauncher()
@@ -12,6 +16,30 @@ return
 	^I::SendInput ^r
 
 #IfWinActive ahk_group ConEmu
+	ActivateConsole(num, title){
+		t("Looking for " title)
+		SetTitleMatchMode regex
+		WinActivate .+ ahk_group ConEmu
+		hit:=false
+		if !IsCapsLock(){
+			loop 5 {
+				IfWinActive % title
+				{
+					hit:=true
+					t("Found " title)
+				}
+				if !hit
+				{
+					SendInput ^{tab}
+					sleep 100
+				}
+			}
+		}
+		if !hit
+		{
+			SendInput ^%num%
+		}
+	}
 	;Op: Sort
 	#delete::SendInput #!{del]
 	^+Del::SendInput ^{tab}#!{del}

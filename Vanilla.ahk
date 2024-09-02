@@ -3584,66 +3584,8 @@ Scite_ToggleResultsPane(){
 SendInputFn(txt){
 	SendInput % txt.value
 }
-ActivateConsole(num, title){
-	t("Looking for " title)
-	SetTitleMatchMode regex
-	WinActivate .+ ahk_group ConEmu
-	hit:=false
-	if !IsCapsLock(){
-		loop 5 {
-			IfWinActive % title
-			{
-				hit:=true
-				t("Found " title)
-			}
-			if !hit
-			{
-				SendInput ^{tab}
-				sleep 100
-			}
-		}
-	}
-	if !hit
-	{
-		SendInput ^%num%
-	}
-}
 
 #if
-AddReg(){
-	p=c:\dev\temp\RegAdded
-	IfNotExist %p%
-	{
-		run REG ADD HKLM\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
-		FileAppend asd,%p%
-	}
-}
-RegSets(){
-	AddReg()
-	regModes=32,64
-	start:=A_RegView
-	loop parse, regModes,`,
-	{
-		if A_LoopField=32 /// SetRegView 32 /// else /// SetRegView 64
-
-		RegWrite REG_DWORD, HKEY_LOCAL_MACHINE, SOFTWARE\Policies\Adobe\Acrobat Reader\11.0\FeatureLockDown, bShowTaskButtonInfoBubble, 0
-		RegWrite REG_DWORD, HKEY_LOCAL_MACHINE, SOFTWARE\Policies\Adobe\Acrobat Reader\11.0\FeatureLockDown, bInfobubble, 0
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Policies\Microsoft\Windows\Explorer, DisableSearchBoxSuggestions, 1
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Policies\Microsoft\Windows\Explorer, ShowRunAsDifferentUserInStart, 1
-		;Fix Explorer Settings
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, ShowInfoTip, 0
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, HideFileExt, 0
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\ImmersiveShell\EdgeUi, DisableCharmsHint, 1
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 1
-		RegWrite REG_DWORD, HKEY_LOCAL_MACHINE, Software\Microsoft\Windows\CurrentVersion\Policies\Explorer, NoInternetOpenWith, 1
-		RegWrite REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer,ShowDriveLettersFirst,4
-		RegWrite REG_DWORD, HKEY_LOCAL_MACHINE, Software\Microsoft\Windows\CurrentVersion\Explorer,ShowDriveLettersFirst,4
-		RegWrite REG_DWORD, HKEY_LOCAL_MACHINE, SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System,EnableLUA,0
-		;z=%windir%\System32\shell32.dll,-50
-		;RegWrite REG_SZ, HKEY_LOCAL_MACHINE, SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons,29,%z%
-	}
-	SetRegView %start%
-}
 SteamEXE(){
 	return % FirstValidPath("C:\Users\Paul\scoop\apps\steam\current\steam.exe", "C:\Program Files (x86)\Steam\steam.exe")
 }
@@ -3706,7 +3648,7 @@ GetModiferString(){
 	z:=substr(symbols, x)
 	return % z
 }
-OpenMainScript(OpenOrSwitchAHK){ ;;tracze
+OpenMainScript(OpenOrSwitchAHK){
 	Global
 	t("Opening script")
 	Hit:=0
