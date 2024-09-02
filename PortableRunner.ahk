@@ -7,3 +7,4 @@ return
 !^#U::ExitApp
 #include %A_ScriptDir%\Vanilla.ahk
 #include %A_ScriptDir%\Portable.ahk
+#include %a_scriptdir%\Vanilla_Groups.ahk
