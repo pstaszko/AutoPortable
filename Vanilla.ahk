@@ -147,7 +147,6 @@ AutoRespondToDebugger(){
 	}
 	sleep 3000
 }
-
 SQLLogin(server,user:="",password:="",NoEnter:=false){ ;;DB Profile
 	If WinActive("Connect ahk_exe devenv.exe")
 	{
@@ -244,13 +243,6 @@ SSMSConnect(db,NoEnter:=false){ ;;DB Profile
 SSMSConnectNoEnter(db){
 	t(db)
 	SSMSConnect(db,true)
-}
-RunFSSC(args:="", startHidden:=""){
-	h:=""
-	if startHidden
-		h:="hide"
-	p:=GetPublishedFSSConsole()
-	run %p% %args%,,%h%
 }
 CloseMinorWindows(){
 	GroupClose MinorWindows,a
@@ -753,92 +745,6 @@ tDebug(msg,delay=-1){
 			sleep %d%
 	}
 }
-SendCommandVSLeave(cmd,prefixStar=true){
-	logContextStart(A_ThisFunc)
-	log(A_ThisFunc,cmd)
-	IfWinActive ahk_class #32770
-	{
-		g("what's going on 1?")
-	}
-	if 0
-	IfWinActive : ahk_exe devenv.exe
-		IfWinNotActive git: ahk_exe devenv.exe
-			IfWinNotActive Git: ahk_exe devenv.exe
-			{
-				msgbox what's going on 2?
-				AlertCallStack("about to pause")
-				pause
-			}
-	IfWinActive ahk_group SQLManagementStudio
-	{
-		log(A_ThisFunc,"bail")
-		return
-	}
-	log(A_ThisFunc,"Waiting 1")
-	WinWaitActive ahk_exe devenv.exe
-	log(A_ThisFunc,"Waiting 1 a")
-	IfWinActive (Code)
-	{
-		log(A_ThisFunc,"bail 2")
-		msgbox what's up here
-		AlertCallStack("odd spot in code")
-		SendInput ^r
-		return
-	}
-	loop 1
-	{
-		;SendPlay ^!+{Tab} ;command window
-		;Send ^!+{Tab} ;command window
-		log(A_ThisFunc,"ShowCommandWindow")
-		VisualStudio.ShowCommandWindow()
-		log(A_ThisFunc,"Done")
-	}
-	log(A_ThisFunc,"Waiting 2")
-	WinWaitActive ahk_exe devenv.exe
-	SendInput {home}+{end}{del}{home}+{end}{del}
-	log(A_ThisFunc,"Waiting 3")
-	WinWaitActive ahk_exe devenv.exe
-	if prefixStar
-	{
-		log(A_ThisFunc,"prefixStar")
-		SendInput *
-		SendInput %cmd%
-		sleep 500
-		SendInput {home}
-		sleep 500
-		if getkeystate("Control")
-		{
-			t("Release")
-			KeyWait control
-		}
-		SendInput {del}
-		log(A_ThisFunc,"done")
-	}
-	else
-	{
-		log(A_ThisFunc,"no prefixStar")
-		SendInput %cmd%
-		;SendPlay >%cmd%{home}
-	}
-	;sleep 100
-	log(A_ThisFunc,"Waiting 4")
-	WinWaitActive ahk_exe devenv.exe
-	IfWinActive ahk_id %ForbiddenVSWindowClass%
-	{
-		log(A_ThisFunc,"bailing 3.1")
-		AlertCallStack("Forbidden window! Supposed to be " cmd "`nForbidden: " & ForbiddenVSWindowClass)
-		Exit
-	}
-	;Sleep 100
-	m=sending enter next
-	tDebug(m)
-	log(A_ThisFunc,m)
-	SendPlay {enter}
-	m=done sending enter next
-	tDebug(m)
-	log(A_ThisFunc,m)
-	logContextStop(A_ThisFunc)
-}
 WinGetActiveHwnd(){
 	DetectHiddenWindows on
 	winget hwnd, id, A
@@ -924,6 +830,7 @@ RunPS(Title,Command,noexit=0,Background="Black",Foreground="White",psPath="power
 	logHere(c)
 	RunOrSwitch(c,title,true)
 }
+/*
 RunPSCommand(t,cmd,window,width,left,height,top,move=false){
 	global
 	logParams()
@@ -975,30 +882,7 @@ RunPSCommandLeft(t,cmd){
 RunPSCommandRight(t,cmd){
 	RunPSCommand(t,cmd,1,960,960,1080,0)
 }
-RunBackgroundPowershellNonInteractive(cmd,noisy=1){
-	if noisy
-		t("Background " cmd)
-	RunBackgroundPowershell(cmd,0)
-}
-StartBackgroundPowerShell(){
-	WinShow BackgroundPowerShell
-	IfWinActive BackgroundPowerShell
-		return
-	RunPSCommandRight("BackgroundPowerShell","MonitorBackgroundPowerShellCommands")
-}
-RestartBackgroundPowerShell(){
-	StartBackgroundPowerShell()
-	WinWaitActive BackgroundPowerShell ahk_class ConsoleWindowClass,,/// ie 5
-	winclose BackgroundPowerShell ahk_class ConsoleWindowClass
-	WinWaitClose BackgroundPowerShell ahk_class ConsoleWindowClass,,/// ie 5
-	StartBackgroundPowerShell()
-}
-ShowOrRunFSSConsole(){
-	DetectHiddenWindows	on
-	WinShow ahk_exe FSSConsole.exe
-	IfWinNotActive ahk_exe FSSConsole.exe
-		RunFSSC()
-}
+*/
 SParams(args*){
 	return % Join(", ",args*)
 }
@@ -1060,73 +944,11 @@ _log(context,msg,synchronous=0,IncludePath=1){
 	} else
 		MsgBox missing C:\dev\Releases\WriteLog\Stable\writelog.exe
 }
-ComputerHasMatrixBoards(){
-	if(computername = "raven")
-		return true
-	if(computername = "rad")
-		return true
-	return false
-}
-HardRestartMatrixOS(){
-	if(ComputerHasMatrixBoards()){
-		IfWinNotActive ahk_exe HoloCureLauncher.exe
-		PSKill("matrixnexus")
-		PSKill("matrixos")
-		;RunWait powershell -noprofile $"
-		RemoveGhosts()
-		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
-		IfMsgBox Ok
-			RunMatrixNexus()
-	}
-}
-
-RemoveGhosts(){
-	RunWait pwsh -noprofile -command ". C:\dev\PowerShell\removeGhosts.ps1 -filterByFriendlyName @('lpmini') > c:\temp\GhostsRemoved.txt"
-	run c:\temp\GhostsRemoved.txt
-}
-HardRestartMatrixOSAutomatic(){
-	if(ComputerHasMatrixBoards()){
-		URLDownloadToVar("http://127.0.0.1:1880/plug2/off")
-		IfWinNotActive ahk_exe HoloCureLauncher.exe
-		PSKill("matrixos")
-		RemoveGhosts()
-		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
-		sleep 30000
-
-		RunMatrixNexus()
-	}
-}
-
 URLDownloadToVar(url){
 	hObject:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 	hObject.Open("GET",url)
 	hObject.Send()
 	return hObject.ResponseText
-}
-SubmitFSharpFunction(functionName,params*){
-	;logHere(functionName)
-	v:=functionName
-	for key,val in params
-		v:=v "`r`n"val
-	tmpx:="m:\fss\"
-	f:=WriteToTempFile(v,"txt",tmpx)
-	resultFile:=strReplace(f,".txt",".result")
-	resultFile:=strReplace(resultFile,"\fss\","\fss\working\")
-	if(!IsProcessRunning("FSSConsole.exe"))
-	{
-		RunFSSC(tmpx " " f,true)
-		WinWait ahk_exe FSSConsole.exe,,5
-		if ErrorLevel
-		{
-			Growl("Starting FSSConsole.exe")
-			return % SubmitFSharpFunction(functionName,params*)
-		}
-		WinMinimize ahk_exe FSSConsole.exe
-	}
-	return resultFile
-}
-RunMatrixNexus(){
-	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
 }
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
@@ -1261,15 +1083,6 @@ logContextStop(context){
 	global Log4Net_Contexts
 	Log4Net_Contexts[context]=0
 }
-StartOrShowBackgroundPowerShell(){
-	WinShow BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
-	WinActivate BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
-	IfWinNotActive BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
-	{
-		t("Starting new background powershell hidden")
-		run C:\Program Files\PowerShell\7\pwsh.exe -command "$Host.UI.RawUI.WindowTitle = 'BackgroundPowerShell';MonitorBackgroundPowerShellCommands" ;,,hide
-	}
-}
 GetCred(Title,byref UserName,byref Password){
 	logHere("Get creds for " title)
 	res:=GetMultipleCreds(Title "`nPassword", Password)
@@ -1361,19 +1174,6 @@ GetModifiers(){
 }
 ConvertCricketPathToDevPath(path){
 	return % RegExReplace(path,"i)^c:\\inetpub\\Intranet(test)?","C:\dev\WesternCap\Cricket.Intranet")
-}
-CollapseSolutionExplorer(){
-	SendInput {ralt up}
-	SendInput {lalt up}
-	SendInput {alt up}
-	SendInput {rcontrol up}
-	SendInput {lcontrol up}
-	SendInput {control up}
-	keywait alt, l
-	keywait RControl, l
-	SendInput {esc 3}
-	SendInput !^l
-	SendInput ^+{NumpadMult}
 }
 ChangeOffset(delta){
 	global
@@ -1555,28 +1355,6 @@ DoubleClickTaskTray(x,y){
 	sleep 50
 	click(x, y)
 	RestoreMouse()
-}
-SingleClickTaskTray(x,y){
-	RememberMouse()
-	WinActivate ahk_class Shell_TrayWnd ahk_exe Explorer.EXE
-	coordmode mouse, relative
-	WinActivate ahk_class Shell_TrayWnd ahk_exe Explorer.EXE
-	click(x, y)
-	RestoreMouse()
-}
-TrayIconImageSearch(ImageFile){
-	coordmode pixel relative
-	WinActivate ahk_class Shell_TrayWnd
-	startX=1000
-	startY=1030
-	endX:=startX + 2000
-	endY:=startY + 100
-	imagesearch x,y,%startX%,%startY%,%endX%,%endY%,*10 %imagefile%
-	ret=%x%,%y%
-	if x
-		return %ret%
-	else
-		return
 }
 WinGetList(title){
 	detecthiddenwindows on
@@ -1894,9 +1672,6 @@ TightVNC(name){
 		}
 	} else {
 	}
-}
-AddRemovePrograms(){
-	run C:\Sync\PortableApps\RevoUninstallerPortable\App\RevoUninstaller\x64\RevoUn.exe
 }
 KeyWaitModifiersUp(){
 		keywait = Ctrl|Alt|Shift|LWin|RWin
@@ -3283,9 +3058,6 @@ GetTempFile(extension="txt",dir="",prefix="AHK_PS_Temp_"){
 		IfNotExist %file%
 			return % file
 	}
-}
-GetPublishedFSSConsole(){
-	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
 }
 Scite_ToggleResultsPane(){
 	SendInput {F8}
