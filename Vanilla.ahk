@@ -650,11 +650,6 @@ GetURLofExplorerWindow(){
 	;Match.Count.shout
 	Return % Match.Value(1)
 }
-FocusFilesInExplorer(){
-	ControlFocus DirectUIHWND3, A
-	ControlFocus DirectUIHWND2, A
-	SendInput {space}
-}
 MySplitPath(InputVar,Byref OutFileName="",Byref OutDir="",Byref OutExtension="",Byref OutNameNoExt="",Byref OutDrive="",ByRef OutFolderName=""){
 	SplitPath InputVar, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	if OutDir
@@ -693,7 +688,6 @@ OpenFolder(strPath){
 	return % UniqueID
 }
 Esc(x=1){
-	;AlertCallStack()
 	SendInput {esc %x%}
 }
 Enter(x=1){
@@ -767,8 +761,6 @@ MsgboxLogged(context,msg){
 	msgbox % msg
 }
 FileDelete(FilePattern,NoLog=0){
-	;loop %filepattern%
-	;	msgbox attempting to delete %filepattern%
 	FilePattern:=strreplace(FilePattern,"""","")
 	IfExist %FilePattern%
 	{
@@ -1246,7 +1238,7 @@ HardRestartMatrixOS(){
 		RemoveGhosts()
 		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
 		IfMsgBox Ok
-			RunMatrixOS()
+			RunMatrixNexus()
 	}
 }
 
@@ -1263,8 +1255,7 @@ HardRestartMatrixOSAutomatic(){
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")
 		sleep 30000
 
-		;RunMatrixOS()
-		run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
+		RunMatrixNexus()
 	}
 }
 
@@ -1296,20 +1287,12 @@ SubmitFSharpFunction(functionName,params*){
 	}
 	return resultFile
 }
-RunMatrixOS(){
-	;SubmitFSharpFunction("MatrixOS.DesireStartOrShowNoArgs")
-	;SubmitFSharpFunction("MatrixOS.DesireStartOrShow", "C:\Dev\Releases\MatrixApps\Stable")
+RunMatrixNexus(){
 	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
 }
 CurrentEXE(){
 	WinGet ProcessName,ProcessName
 	return ProcessName
-}
-GetCurrentEXEnoteFile(){
-	exe:=CurrentEXE()
-	d=c:\temp\trash\proc
-	x=%d%\%exe%.txt
-	return % x
 }
 EscapeName(name){
 	a:=StrReplace(name,"+","_plus_")
@@ -1318,12 +1301,6 @@ EscapeName(name){
 GetActiveTitle(){
 	WinGetActiveTitle x
 	return x
-}
-GetCommandLineParametersForPID(pid){
-    for Item in ComObjGet( "winmgmts:" ).ExecQuery("Select * from Win32_Process where processid=" pid) {
-        return % Item.Commandline
-    }
-	return % ""
 }
 logParamsAndStack(){
 }
@@ -1362,6 +1339,7 @@ _debug(context,msg,synchronous=0,IncludePath=1){
 	txt:="[AHK] " x LastContext ": " msg
 	OutputDebug % txt
 }
+/*
 _new_log(context,msg,synchronous=0,IncludePath=1){
 	global Log4Net
 	global Log4Net_Last
@@ -1430,6 +1408,7 @@ _new_log(context,msg,synchronous=0,IncludePath=1){
 	}else
 		msgbox missing %f%writelog.exe
 }
+*/
 logContextStart(context){
 	global Log4Net_Contexts
 	if !Log4Net_Contexts
