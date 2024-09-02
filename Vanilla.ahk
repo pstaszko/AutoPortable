@@ -759,7 +759,7 @@ GetReleasedEXE(name, additional=""){
 	x=C:\Dev\Releases\%name%\Stable\%name%.exe %additional%
 	return % x
 }
-
+/*
 class WS_MQTT extends WebSocket
 {
 	Bonk(){
@@ -800,6 +800,7 @@ class WS_MQTT extends WebSocket
 		;t("__Delete Fired")
 	}
 }
+*/
 /*
 MqttPub(topic, message, host="localhost"){
 	global mqtt
