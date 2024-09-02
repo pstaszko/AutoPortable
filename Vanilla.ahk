@@ -34,7 +34,7 @@ WinNotActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
 	return WinActive(title,text,excludeTitle,excludeText)
 }
 WinWait(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
-	winwait %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
+	WinWait %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
 }
 WinWaitNotActive(title,text:="",seconds:=0,excludeTitle:="",excludeText:=""){
 	WinWaitNotActive %title%,%text%,%seconds%,%excludeTitle%,%excludeText%
@@ -266,19 +266,12 @@ ReloadScripts(hideScite, hideCompiler, force:=0, sendkeys:=1){
 			SendInput ^+s
 	if hideScite
 		hide()
-	if computername=lappy
-		fileappend("hzi","\\blackbird\c$\temp\reload.txt")
-	if computername=pstaszko
-		if pstaszko_Reload_Sleep
-			sleep %pstaszko_Reload_Sleep%
-	;msgbox f %force%
 	ReloadFunction("AHKtextEditor_F2",force,hideCompiler)
 }
 ReloadFunction(source,recompile:=1,hide:=0){
 	global
 	z:=join(", ",source,recompile,hide)
 	logHere(z)
-	;AlertLog4NetConfig()
 	dir:=MyPath.framework("AutoHotCompiler\")
 	if !MyPath
 		AlertCallStack("mypath empty")
@@ -304,9 +297,7 @@ RunFSSC(args:="", startHidden:=""){
 	p:=GetPublishedFSSConsole()
 	run %p% %args%,,%h%
 }
-HideMajorWindows(){
-	WinHide Cisco WebEx Connect ahk_exe connect.exe
-}
+/*
 HideWindows(){
 	DetectHiddenWindows off
 	WinActivate ahk_class Shell_TrayWnd ahk_exe explorer.exe
@@ -350,6 +341,7 @@ Done restoring %restored% real window%z%
 %rate% MS/window
 )
 }
+*/
 CloseMinorWindows(){
 	GroupClose MinorWindows,a
 	SetTitleMatchMode("3")
@@ -391,12 +383,11 @@ _CloseWindowsExplorerWindows(forceIE,level:=1){
 	CloseMinorWindows()
 	if level=2
 	{
-		HideWindows()
+		;HideWindows()
 		CloseMinorWindows()
 		GroupClose MinorWindowsLevel2,a
 		_CloseWindowsExplorerWindows(0,1)
 		;CloseWindowsExplorerWindows(0,2) ;recursive loop
-		HideMajorWindows()
 	}
 	if forceIE
 		WinClose ahk_class IEFrame
@@ -3026,10 +3017,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Clipmaster_SQL_Report","SQL Report ahk_exe ClipMaster.vshost.exe")
 	g_1_ProgramGroups("ConEmu","ahk_exe ConEmu.exe")
 	g_1_ProgramGroups("ConEmu","ahk_exe ConEmu64.exe")
-	g_1_ProgramGroups("CopyUserAndPass","Inbox - Google Apps - pauls@wcrimail.com - Outlook ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
-	g_1_ProgramGroups("CopyUserAndPass","Mozilla Thunderbird ahk_class MozillaWindowClass ahk_exe thunderbird.exe")
-	g_1_ProgramGroups("CopyUserAndPass","New User Credentials ahk_group Browsers")
-	g_1_ProgramGroups("CopyUserAndPass","Password reset information - pauls@wcrimail.com - Western Capital Resources Inc Mail ahk_group Browsers")
 	g_1_ProgramGroups("CyberSentryComputerReadout","Cyber Sentry II ahk_exe Gui.exe")
 	g_1_ProgramGroups("DatabaseUpdateEmail","Database Update ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("DatabaseUpdateEmail","Distribution Database ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
@@ -3917,7 +3904,7 @@ Max(msg="",depth=0){
 	d:=depth + 1
 	Max(msg, d)
 }
-
+/*
 HideWindows:
 	SetTitleMatchMode 2
 	;msgbox hide
@@ -3940,6 +3927,7 @@ UnhideWindows:
 	WinHide Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe,Preparing Solution...
 	WinHide Microsoft SQL Server Management Studio ahk_class #32770 ahk_exe Ssms.exe,Opening the file...
 return
+*/
 GetScriptStartupString(){
 	Process, Exist
 	scriptId := ErrorLevel
