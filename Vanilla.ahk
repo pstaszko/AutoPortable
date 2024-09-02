@@ -800,6 +800,7 @@ class WS_MQTT extends WebSocket
 		;t("__Delete Fired")
 	}
 }
+/*
 MqttPub(topic, message, host="localhost"){
 	global mqtt
 	;fileappend MQTTPUB %A_ScriptFullPath% - pub - %topic% / %message%`r`n, c:\temp\mqtt.txt
@@ -807,31 +808,13 @@ MqttPub(topic, message, host="localhost"){
 	z:=mqtt_history[topic]
 	if(z <> message)
 	{
-		/*
-		if(!mqtt.bonk()){
-			z:=mqtt.bonk()
-			;msgbox m1111 %z%
-			mqtt := new WS_MQTT("ws://127.0.0.1:1880/ws/mqtt")
-			if(!mqtt.bonk()){
-				z:=mqtt.bonk()
-				msgbox m2 %z%
-				mqtt := new WS_MQTT("ws://127.0.0.1:1880/ws/mqtt")
-			}
-		}
-		*/
 		;mqtt.TrySend(topic "|||" message)
 
 		run mosquitto_pub.exe -r -h %host% -t "%topic%" -m "%message%", , hide
-		/*
-		p=c:/dev/mqtt/%topic%.md
-		p:=StrReplace(p,"/","\")
-		SplitPath p, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-		FileCreateDir %OutDir%
-		FileAppend ```````r`n%message%`r`n```````r`n, %p%
-		*/
 		mqtt_history[topic]:=message
 	}
 }
+*/
 MsgboxLogged(context,msg){
 	logParams()
 	logHere(GetCallStack)
@@ -3690,6 +3673,7 @@ Max(msg="",depth=0){
 	d:=depth + 1
 	Max(msg, d)
 }
+/*
 GetScriptStartupString(){
 	Process, Exist
 	scriptId := ErrorLevel
@@ -3715,6 +3699,7 @@ EnsureConnectedWS:
 		ConnectWS()
 	}
 return
+*/
 class WebSocket {
 
 	; The primary HINTERNET handle to the websocket connection
