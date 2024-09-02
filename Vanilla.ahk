@@ -455,37 +455,9 @@ RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex:=0){
 }
 WinHideActive(){
 	t:=WinGetActiveTitle()
-	;msgbox Aborted trying to hide %t%
 	t("Minimizing " t " instead of hiding")
 	WinMinimize A
-	;WinHide A
 }
-/*
-WinHideActiveConfirmed(){
-	t:=WinGetActiveTitle()
-	msgbox Aborted trying to hide %t%
-	;WinHide A
-}
-*/
-
-#IfWinActive Flow.Launcher ahk_exe Flow.Launcher.exe
-	#R::SendInput #r
-	^R::SendInput #r
-	^S::
-		SendInput ^asettings
-		sleep 200
-		SendInput {enter}
-	return
-
-#IfWinActive Settings ahk_exe Flow.Launcher.exe
-	^P::ClickAndReturn(118,261) ;Plugins
-	^S::ClickAndReturn(92,318)  ;Store
-	^+A::ClickAndReturn(155,371) ;Appearance
-	F12::SendInput !^#{F11} ;Send hotkey to set
-	
-#IfWinActive Options ahk_class #32770 ahk_exe Q-Dir_x64.exe
-	Esc::SendInput !{F4}
-
 #if
 RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)
@@ -639,10 +611,6 @@ RunOrSwitch(cmdLine, ROStitle,NoMax:=0,Class:="",Group:="",ForceSingleMonitor:=0
 	}
 	RunOrSwitch_Recursion_Level=0
 	return false
-}
-RunIfExists(filePath,mode){
-	IfExist % filePath
-		run % filePath,,%mode%
 }
 GetURLofExplorerWindow(){
 	WinGetText txt,A
@@ -871,96 +839,6 @@ SendCommandVSLeave(cmd,prefixStar=true){
 	log(A_ThisFunc,m)
 	logContextStop(A_ThisFunc)
 }
-ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
-	start:=A_TickCount
-	output:=VisualStudio.RunVSCMD("ShowAllWindows")
-	;if output
-	;	output.shout
-	;return
-	Sends:=[]
-	if !SkipSolutionExplorer
-		Sends.Insert("!^l")
-
-	Sends.Insert("!^d")
-	;Sends.Insert("{ControlDown}\t{ControlUp}")
-	Sends.Insert("!^k")
-	Sends.Insert("{F4}")
-	Sends.Insert("!^{F9}")
-	Sends.Insert("!{F8}")
-	Sends.Insert("!^i")
-	Sends.Insert("^!{F12}")
-	Sends.Insert("!^a")
-	Sends.Insert("!^k") ;;
-	Sends.Insert("!^g")
-	Sends.Insert("!^o")
-	;Sends.Insert("!^t") ;handeled with hotkey
-	;Sends.Insert("UtilitiesTests")
-	Sends.Insert("!^u")
-	Sends.Insert("!^c") ;callstack
-
-	Sends.Insert("!^x")
-	Sends.Insert("!^s")
-
-	tot:=Sends.maxindex()
-	curr:=1
-
-	;sb:=new stringbuilder()
-	SetCapsLockState off
-	SendCommandVSLeave("cls")
-	loop % sends.maxindex()
-	{
-		if iscapslock()
-		{
-			SetCapsLockState off
-			msgbox reloading
-			Reload
-		}
-		curr++
-		v:=sends[A_Index]
-		sb.AppendLine("Top of loop " v)
-		WinWaitActive ahk_exe devenv.exe
-		if v={F4}
-		{
-			sb.AppendLine("v={F4}")
-			t("Sending F4")
-		}
-		if v.contains(".")
-		{
-			sb.AppendLine("v.contains(""."")")
-			SendCommandVSLeave(v)
-		} else {
-			sb.AppendLine("NOT v.contains(""."")")
-
-			SendPlay %v%
-			Send %v%
-			SendInput %v%
-			sb.AppendLine(v)
-		}
-		x:="(" round((curr/tot)*100,0) "%) Sending " sends[A_Index]
-		t(x)
-		sb.AppendLine(x)
-		if detach
-		{
-			sb.AppendLine("With detatch if...")
-			if !GetFloatingToolWindowParent()
-			{
-				;Not detatched yet
-				sb.AppendLine("Yep, detatching")
-				SendInput !wf{esc 2}
-			}
-		}
-		sb.AppendLine("----------------------")
-	}
-	x:="(100%) - " round((A_TickCount - start)/1000,2) " seconds"
-	sb.AppendLine("----------------------")
-	sb.AppendLine(x)
-	t(x)
-	fb=c:\temp\FullBlast.txt
-	FileDelete(fb)
-	x:=sb.ToString()
-	FileAppend %x%,%fb%
-	;OpenWithSciTE(fb)
-}
 WinGetActiveHwnd(){
 	DetectHiddenWindows on
 	winget hwnd, id, A
@@ -969,18 +847,6 @@ WinGetActiveHwnd(){
 Requires(var){
 	if !var
 		AlertCallStack("Missing Value")
-}
-GetFloatingToolWindowParent(){
-	WinGetActiveTitle t
-	IfWinNotActive ahk_group VisualStudio
-		return false
-	SetTitleMatchMode("regex")
-	IfWinExist %t%.*Visual Studio ahk_group VisualStudio
-	{
-		WinGet id,id
-		return id
-	}
-	return false
 }
 lll(msg){
 	msg=[%a_now%] %msg%`r`n
