@@ -1,13 +1,8 @@
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_PSKill\PSKill.ahk
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
-;#Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\AHK_StringManipulation.ahk
-;#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_StringManipulation\StringManipulation.ahk
 #if
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
-	;at:=GetActiveTitle()
-	;t("A_TitleMatchMode: " A_TitleMatchMode ", " title)
-	;msgbox % at
 	return WinActive(title)
 }
 Run(target, workingDir:="",flags:=""){
@@ -660,55 +655,6 @@ FocusFilesInExplorer(){
 	ControlFocus DirectUIHWND2, A
 	SendInput {space}
 }
-/*
-FocusFilesInExplorerx(){
-	path:=""
-	if PostXP()
-	{
-		if Post7()
-		{
-			SendInput !d{tab 3}
-		} else {
-			path=path`nif PostXP()
-			; added the following {esc 2} on 9-10-14 for Windows 7 to skip past the metadata editor for word files
-			SendInput !d+{tab 2}{esc 2}
-			If A_OSVersion<>Win_Vista
-			{
-				path=path`nIf A_OSVersion<>Win_Vista
-				txt:=GetURLofExplorerWindow()
-				count=0
-				if txt.Startswith("\\")
-				{
-					path=path`nif txt.Startswith("\\")
-					tDebug("txt.Startswith('\\')")
-					SendInput {tab 6}
-				} else
-				{
-					tDebug("txt doesn't start with \\")
-					path=path`ntDebug("txt doesn't start with \\")
-				}
-			}
-			IfWinActive Devices and Printers ahk_class CabinetWClass ahk_exe explorer.exe
-			{
-				path=path`nIfWinActive Devices and Printers ahk_class CabinetWClass ahk_exe explorer.exe
-				SendInput {tab}
-			}
-			SendInput {space}
-			KeyWait esc
-		}
-	} else {
-		SendInput !d{tab}{space}
-		path=path`nSendInput !d{tab}{space}
-	}
-}
-*/
-CloseStartMenuIfOpen(){
-	IfWinActive Start menu ahk_class DV2ControlHost ahk_exe explorer.exe
-	{
-		WinClose Start menu ahk_class DV2ControlHost ahk_exe explorer.exe
-	} else {
-	}
-}
 MySplitPath(InputVar,Byref OutFileName="",Byref OutDir="",Byref OutExtension="",Byref OutNameNoExt="",Byref OutDrive="",ByRef OutFolderName=""){
 	SplitPath InputVar, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
 	if OutDir
@@ -726,7 +672,6 @@ OpenFolder(strPath){
 	}
 	strPath:=MyRtrim(strPath,"\") "\"
 	MySplitPath(strPath,,,,,,xx)
-	CloseStartMenuIfOpen()
 	IfNotExist %strPath%
 	{
 		msgbox OpenFolder error: %strPath% does not exist
@@ -2548,27 +2493,6 @@ ForticlientAutoDisconnecter(){
 		}
 	}
 }
-ExcelAutosize(){
-	SendInput ^a^a!hoi^{home}
-}
-ExcelDarkTheme(){
-	IfWinActive ahk_exe EXCEL.exe
-	{
-		SendInput {esc 3}
-		SendInput ^a^a
-		SendInput !hh
-		SendInput {home}{right}{enter}
-		SendInput !hfc
-		sleep 2000
-		ClickAndReturn(163,136) ;green
-		;ClickAndReturn(111,139) ;green
-		sleep 200
-		SendInput ^{home}
-	}
-}
-ExcelShowFilters(){
-	SendInput !hsf
-}
 WinGetActiveTitle(){
 	WinGetActiveTitle x
 	return % x
@@ -2590,28 +2514,12 @@ DiffMerge_ClipGitAdds(){
 	clipboard=gitoff`r`n%x%`r`ngiton`r`n
 	t("Clipped GitAdds")
 }
-TypeType(type){
-	SendInput ^+a
-	SendInput ^c
-	ClipWait
-	SendInput (
-	SendInput ^v
-	SendInput : %type%){right}
-}
 #If
 GetFileFromVSTitle(){
 	WinGetTitle title, A
 	regex=O)(?<solution>[\w\.]+)\s*(?<path>[^\(]+)(\s*\((?<mode>.*)?\))\s*(?<other>.*)\s*\|
 	RegExMatch(title, regex, obj)
 	return % obj.path
-}
-OpenCMDexe(){
-	IfExist c:\temp
-		run cmd /k cd /d c:\temp\
-	else
-		run cmd /k cd /d c:\
-	WinWaitActive cmd.exe ahk_class ConsoleWindowClass
-	winmove 0,0
 }
 DrawIOCopyStyle(){
 	SendInput ^e
@@ -2771,15 +2679,6 @@ GoSub(name){
 RunWait(cmd){
 	runwait %cmd%
 }
-/*
-BlastTeamViewer(){
-	pskill("TeamViewer")
-	pskill("TeamViewer_Service")
-	pskill("tv_x64")
-	pskill("tv_w32")
-	gosub("Tops_T_Tops_V") ; run teamviewer.exe
-}
-*/
 GetScoopDir(appName){
 	return % "C:\Users\Paul\scoop\apps\" . appName . "\current\"
 }
@@ -2793,10 +2692,6 @@ GetPerfectlyNamedScoopExe(appName){
 }
 NewLoadGroups(){
 	global
-	;msgbox % A_ScriptFullPath
-	;msgbox % A_ScriptFullPath
-	;msgbox % A_ScriptFullPath
-	;SetGlobalVariables()
 	if 1 ;Groups
 	{
 	;***************************************************************************************************************
@@ -2804,9 +2699,6 @@ NewLoadGroups(){
 	;***************************************************************************************************************
 	;Op: Distinct
 	;Op: Sort
-
-	;g_4_KeyBehaviors("AltControlF4Kill","Keep non existing file ahk_exe Notepad++.exe")
-	;msgbox % "load " A_ScriptName
 	g_1_ProgramGroups("AbortRecursiveDive","Attach to Process ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","File Modification Detected ahk_class #32770 ahk_exe devenv.exe")
 	g_1_ProgramGroups("AbortRecursiveDive","Microsoft Visual Studio ahk_class #32770 ahk_exe devenv.exe","been modified outside")
