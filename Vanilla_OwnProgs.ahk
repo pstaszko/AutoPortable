@@ -23,16 +23,6 @@ ShowOrRunFSSConsole(){
 	IfWinNotActive ahk_exe FSSConsole.exe
 		RunFSSC()
 }
-RunFSSC(args:="", startHidden:=""){
-	h:=""
-	if startHidden
-		h:="hide"
-	p:=GetPublishedFSSConsole()
-	run %p% %args%,,%h%
-}
-GetPublishedFSSConsole(){
-	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
-}
 StartOrShowBackgroundPowerShell(){
 	WinShow BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
 	WinActivate BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
@@ -41,28 +31,6 @@ StartOrShowBackgroundPowerShell(){
 		t("Starting new background powershell hidden")
 		run C:\Program Files\PowerShell\7\pwsh.exe -command "$Host.UI.RawUI.WindowTitle = 'BackgroundPowerShell';MonitorBackgroundPowerShellCommands" ;,,hide
 	}
-}
-SubmitFSharpFunction(functionName,params*){
-	;logHere(functionName)
-	v:=functionName
-	for key,val in params
-		v:=v "`r`n"val
-	tmpx:="m:\fss\"
-	f:=WriteToTempFile(v,"txt",tmpx)
-	resultFile:=strReplace(f,".txt",".result")
-	resultFile:=strReplace(resultFile,"\fss\","\fss\working\")
-	if(!IsProcessRunning("FSSConsole.exe"))
-	{
-		RunFSSC(tmpx " " f,true)
-		WinWait ahk_exe FSSConsole.exe,,5
-		if ErrorLevel
-		{
-			Growl("Starting FSSConsole.exe")
-			return % SubmitFSharpFunction(functionName,params*)
-		}
-		WinMinimize ahk_exe FSSConsole.exe
-	}
-	return resultFile
 }
 RunMatrixNexus(){
 	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe

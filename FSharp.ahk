@@ -1,3 +1,35 @@
+RunFSSC(args:="", startHidden:=""){
+	h:=""
+	if startHidden
+		h:="hide"
+	p:=GetPublishedFSSConsole()
+	run %p% %args%,,%h%
+}
+GetPublishedFSSConsole(){
+	return "C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe"
+}
+SubmitFSharpFunction(functionName,params*){
+	;logHere(functionName)
+	v:=functionName
+	for key,val in params
+		v:=v "`r`n"val
+	tmpx:="m:\fss\"
+	f:=WriteToTempFile(v,"txt",tmpx)
+	resultFile:=strReplace(f,".txt",".result")
+	resultFile:=strReplace(resultFile,"\fss\","\fss\working\")
+	if(!IsProcessRunning("FSSConsole.exe"))
+	{
+		RunFSSC(tmpx " " f,true)
+		WinWait ahk_exe FSSConsole.exe,,5
+		if ErrorLevel
+		{
+			Growl("Starting FSSConsole.exe")
+			return % SubmitFSharpFunction(functionName,params*)
+		}
+		WinMinimize ahk_exe FSSConsole.exe
+	}
+	return resultFile
+}
 ShowSSMS(){
 	WinActivate ahk_class SunAwtFrame ahk_exe datagrip64.exe
 	IfWinActive ahk_class SunAwtFrame ahk_exe datagrip64.exe
