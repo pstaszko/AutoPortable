@@ -659,34 +659,6 @@ MySplitPath(InputVar,Byref OutFileName="",Byref OutDir="",Byref OutExtension="",
 		OutFolderName:=Match.Value(1)
 	}
 }
-OpenFolder(strPath){
-	if !strPath
-	{
-		msgbox OpenFolder error: Empty strPath
-		return
-	}
-	strPath:=MyRtrim(strPath,"\") "\"
-	MySplitPath(strPath,,,,,,xx)
-	IfNotExist %strPath%
-	{
-		msgbox OpenFolder error: %strPath% does not exist
-	}
-	run explorer %strPath%
-	xx:=substr(xx,1,95)
-	IfWinNotActive %xx%
-	{
-		WinWaitActive %xx%,,3
-		if errorlevel
-		{
-			t("bailing on " xx)
-			return
-		}
-	}
-	WinGet UniqueID,ID,A
-	FocusFilesInExplorer()
-	MaxFunction(1,1)
-	return % UniqueID
-}
 Esc(x=1){
 	SendInput {esc %x%}
 }
