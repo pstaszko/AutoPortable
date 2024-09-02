@@ -250,46 +250,6 @@ SSMSConnectNoEnter(db){
 	t(db)
 	SSMSConnect(db,true)
 }
-ReloadScripts(hideScite, hideCompiler, force:=0, sendkeys:=1){
-	global
-	winclose("AutoHotkey_%computername%.ahk ahk_class #32770 ahk_exe AutoHotkey.exe")
-	t("Reload starting")
-	If WinActive("SciTE ahk_class SciTEWindow")
-	{
-		SendInput !bs
-		sleep 500
-		sleep 100
-		sleep 100
-	}
-	else
-		if sendkeys
-			SendInput ^+s
-	if hideScite
-		hide()
-	ReloadFunction("AHKtextEditor_F2",force,hideCompiler)
-}
-ReloadFunction(source,recompile:=1,hide:=0){
-	global
-	z:=join(", ",source,recompile,hide)
-	logHere(z)
-	dir:=MyPath.framework("AutoHotCompiler\")
-	if !MyPath
-		AlertCallStack("mypath empty")
-	if !dir
-		msgbox dir is empty!
-
-	exe:="C:\Dev\Releases\AutoHotCompiler\Stable\AutoHotCompiler.exe " pauldir "load.ahk"
-
-	if recompile
-	{
-		if hide
-			run %exe% -force,%dir%,min
-		else
-			run %exe% -force,%dir%
-	}
-	else
-		Reload
-}
 RunFSSC(args:="", startHidden:=""){
 	h:=""
 	if startHidden
