@@ -297,51 +297,6 @@ RunFSSC(args:="", startHidden:=""){
 	p:=GetPublishedFSSConsole()
 	run %p% %args%,,%h%
 }
-/*
-HideWindows(){
-	DetectHiddenWindows off
-	WinActivate ahk_class Shell_TrayWnd ahk_exe explorer.exe
-	WindowsHidden:=0
-	x:=Array()
-	x.Insert("Chrome_Hiders")
-	;x.Insert("F1HideWindow")
-	x.Insert("NetBeans")
-	;x.Insert("F12HideWindow")
-	watch1:=new StopWatch()
-	z:=0
-	for i,v in x
-	{
-		tDebug("Hiding " v,0)
-		WinHide ahk_group %v%
-	}
-	; WinShow ahk_group NeverHide
-	p:=watch1.peek
-}
-ShowWindows(){
-	DetectHiddenWindows off
-	t("Showing")
-	restored:=0
-	x:=Array()
-	x.Insert("Chrome_Hiders")
-	x.Insert("F1HideWindow")
-	x.Insert("F12HideWindow")
-	trueI:=0
-	watch1:=new StopWatch()
-	for i,v in x
-		WinShow ahk_group %v%
-	z:=restored = 1 ? "" : "s"
-	totalMS:=watch1.peek
-	;t("Done")
-
-	rate:=Round(totalMS / trueI)
-	msg:=
-(
-Done restoring %restored% real window%z%
-%totalMS% total MS
-%rate% MS/window
-)
-}
-*/
 CloseMinorWindows(){
 	GroupClose MinorWindows,a
 	SetTitleMatchMode("3")
@@ -351,12 +306,9 @@ CloseMinorWindows(){
 CloseWindowsExplorerWindows(forceIE,level:=1){
 	global
 	WinGet id,id,A
-	;t:=WinGetActiveTitle()
-	;exe:=CurrentEXE()
 
-	_CloseWindowsExplorerWindows(forceIE,level)
+	_CloseWindowsExplorerWindows(forceIE, level)
 
-	;logHere("id " id)
 	WinActivate ahk_id %id%
 	If WinNotActive("ahk_id " id)
 	{
@@ -367,10 +319,6 @@ CloseWindowsExplorerWindows(forceIE,level:=1){
 			IfWinActive ahk_id %id%
 				return
 		}
-	}else{
-		;tt:=WinGetActiveTitle()
-		;exee:=CurrentEXE()
-		;t("hit it. was " t " is now " tt " - " exe " - now - " exee)
 	}
 }
 _CloseWindowsExplorerWindows(forceIE,level:=1){
@@ -383,7 +331,6 @@ _CloseWindowsExplorerWindows(forceIE,level:=1){
 	CloseMinorWindows()
 	if level=2
 	{
-		;HideWindows()
 		CloseMinorWindows()
 		GroupClose MinorWindowsLevel2,a
 		_CloseWindowsExplorerWindows(0,1)
@@ -419,17 +366,6 @@ RunLocate32(){
 	If ErrorLevel
 		return
 }
-ScratchFileAdd(){
-	global
-	StringReplace sfPath, ScratchFile, "`"",,All
-	FormatTime RightNow
-	FileAppend , %sfPath%
-	FileAppend `n****************************************************`nPasted: %RightNow%`n%clipboard%, %sfPath%
-	If FileExist(sfPath)
-		T("Appended:`n" . SubStr(clipboard, 1, 100))
-	else
-		msgbox("Scratch file was not created!")
-}
 SpyOrSpellCheck(){
 	if(CheckModifiers("!^+")){
 		RunSpellChecker()
@@ -451,19 +387,6 @@ WinControlEscape(){
 	else
 		CloseWindowsExplorerWindows(0)
 	KeyWait esc
-}
-RunConfigurator(){
-	WinActivate MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
-	IfWinNotActive MyConfigurator.exe ahk_class ConsoleWindowClass ahk_exe MyConfigurator.exe
-		RunOrSwitch("C:\DEV\Releases\MyConfigurator\Stable\MyConfigurator.exe", "MyConfigurator ahk_class ConsoleWindowClass ahk_exe cmd.exe")
-}
-RunClipMaster(){
-	KeyWait c, T.3
-	If errorlevel
-		RunOrSwitch("C:\Dev\Releases\ClipMaster\Stable\ClipMaster.exe","ClipMaster")
-	else
-		ClipMaster.RunNew()
-	KeyWait c
 }
 FileRead(path){
 	f:=FileOpen(path, "r")
