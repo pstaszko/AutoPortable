@@ -360,12 +360,6 @@ CheckModifiers(str){
 	result:=SubStr(m,-1 * StrLen(str)+1) = str
 	return result
 }
-RunLocate32(){
-	boop:=RunOrSwitchClass(PaulDir "\Util\locate32_x64\locate32.exe","Locate","#32770")
-	WinWaitActive Locate ahk_exe locate32.exe,,4
-	If ErrorLevel
-		return
-}
 SpyOrSpellCheck(){
 	if(CheckModifiers("!^+")){
 		RunSpellChecker()
@@ -4486,14 +4480,8 @@ OpenMainScript(OpenOrSwitchAHK){ ;;tracze
 		If OpenOrSwitchAHK
 		{
 			t("starting new ahk")
-			SciTE4AHKPath:="C:\DEV\PAUL\SciTE4AutoHotkey\SciTE.exe"
-			bits:=GetBits()
-			if (bits<>32)
-			{
-				SciTE4AHKPath.Replace("\scite\","\scite4AutoHotkey\")
-			}
+			SciTE4AHKPath:="C:\Dev\Paul\SciTE4AutoHotkey\SciTE.exe"
 			Run %SciTE4AHKPath% %scripts%
-;			%pauldir%
 			Return
 		}
 	}
@@ -4510,8 +4498,4 @@ OpenMainScript(OpenOrSwitchAHK){ ;;tracze
 		if OpenOrSwitchAHK
 			Max()
 	}
-}
-ClipClip(){
-	Clipboard=%clipboard%
-	t(clipboard)
 }

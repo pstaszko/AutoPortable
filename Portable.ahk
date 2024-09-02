@@ -1,4 +1,6 @@
 #Requires AutoHotkey v1.1.37.02
+#If
+#!K::RunLocate32()
 #R::
 	t(A_ScriptFullPath)
 	RunFlowLauncher()
