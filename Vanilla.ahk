@@ -194,36 +194,10 @@ _CloseWindowsExplorerWindows(forceIE,level:=1){
 	WinClose Terminal Services Manager
 	WinHide Windows Task Manager
 }
-RunSpellChecker(){
-	t("Checking spelling...")
-	RunWait "C:\DEV\PAUL\spell2.vbs"
-	ret:=ErrorLevel
-	if ret=10
-		t("Updated")
-	else if ret=20
-		t("All clear")
-	else
-		throw "spell2 did not return valid exit code"
-}
 CheckModifiers(str){
 	m:=GetModiferString()
 	result:=SubStr(m,-1 * StrLen(str)+1) = str
 	return result
-}
-SpyOrSpellCheck(){
-	if(CheckModifiers("!^+")){
-		RunSpellChecker()
-	}else{
-		fancy:=1
-		if fancy{
-			WinActivate AHK Window Info ahk_class AutoHotkeyGUI ahk_exe WindowSpy.exe
-			IfWinNotActive AHK Window Info ahk_class AutoHotkeyGUI ahk_exe WindowSpy.exe
-				run (pauldir  "\Window Spy\WindowSpy.exe")
-		}else{
-			WinActivate Active Window Info ahk_class AutoHotkeyGUI ahk_exe AU3_Spy.exe
-			run pauldir "\AU3_Spy.exe"
-		}
-	}
 }
 WinControlEscape(){
 	If (A_PriorHotkey <> "Esc" or A_TimeSincePriorHotkey > 750)
