@@ -18,14 +18,14 @@
     {
       "name": "github.com/pstaszko/AHK-Notification",
       "version": "branch:master",
-      "sha": "c0a70272b5aa0b5425e72f08a5b0c443d171e566",
+      "sha": "94b3bd93ba854e45e1d33ace2d0668c807bff8ce",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK-Notification",
       "dependencies": {}
     },
     {
       "name": "github.com/pstaszko/AHK_Compiler",
       "version": "branch:main",
-      "sha": "c9692294607008c95165113685bdc21b85746f5a",
+      "sha": "afbb1608d255b051c6d4aeabd04f47c9c6305f57",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Compiler",
       "dependencies": {}
     },
