@@ -631,13 +631,8 @@ Requires(var){
 	if !var
 		AlertCallStack("Missing Value")
 }
-lll(msg){
-	msg=[%a_now%] %msg%`r`n
-	;FileAppend %msg%, c:\temp\%a_scriptname%.log
-}
 CycleWindowOnEXE(x=0, mode=""){
 	DetectHiddenWindows off
-	lll("CycleWindowOnEXE")
 	if x > 5
 		msgbox Abort deep dive in CycleWindowOnEXE
 	WinGet exe,ProcessName,A
@@ -660,17 +655,9 @@ CycleWindowOnEXE(x=0, mode=""){
 	GroupActivate %gn%, %mode%
 	IfWinActive ahk_Group HideOnCycleEXE
 	{
-		lll("true")
 		WinHide ahk_group HideOnCycleEXE
 		CycleWindowOnEXE(x+1)
-	}else{
-		lll("false")
 	}
-}
-IsGameActive(){
-	IfWinActive ahk_group Games
-		return true
-	return false
 }
 RunBackgroundPowershell(cmd,timeout=5000,tooltip=""){
 	if tooltip
@@ -875,76 +862,6 @@ _debug(context,msg,synchronous=0,IncludePath=1){
 	txt:="[AHK] " x LastContext ": " msg
 	OutputDebug % txt
 }
-/*
-_new_log(context,msg,synchronous=0,IncludePath=1){
-	global Log4Net
-	global Log4Net_Last
-	global Log4Net_ForceSynchronous
-	global Log4Net_ForceAsynchronous
-	global Log4Net_Contexts
-	last:=Log4Net_Last
-	Log4Net_Last:=A_TickCount
-	contextStart:=Log4Net_Contexts[context]
-	msg:=SubStr(msg,1,15001)
-	if(Log4Net_ForceSynchronous && Log4Net_ForceAsynchronous){
-		msgbox % "Log4Net_ForceSynchronous && Log4Net_ForceAsynchronous = true. Invalid Config. (Log4Net: " Log4Net ")"
-		return
-	}
-	if Log4Net_ForceSynchronous
-	{
-		synchronous=1
-		msg=*Sync: %msg%
-	}
-	if Log4Net_ForceAsynchronous
-	{
-		synchronous=0
-		msg=*Async: %msg%
-	}
-	if !Log4Net
-	{
-		return
-	}
-	c:=context
-	if(IncludePath){
-		SplitPath A_ScriptFullPath, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-		x:=SubStr(OutFileName . "                      ",1,25)
-		c:=x ": " context
-	}
-	elapsed:=Log4Net_Last-last
-
-	if(contextStart)
-	{
-		elapsed:=elapsed . " / " (Log4Net_Last - contextStart)
-	}
-	msg=AHK, "%c% - %msg%"
-	f=C:\dev\UIauto\Published\WriteLog\
-	exe=%f%writelog.exe
-	IfExist % exe
-	{
-		;cmd=%exe% %msg%
-		x=hide
-		if !IsProcessRunning("WriteLog.exe")
-			run %exe%,%f%,%x%
-		if 1
-		Loop
-		{
-			if IsProcessRunning("WriteLog.exe")
-				break
-			sleep 1000
-			t("Waiting")
-
-		}
-		if 0
-		URLDownloadToFile http://localhost:9997/?msg=%msg%&logger=AHK,c:\temp\xxxx.txt
-		if 0
-		if synchronous
-			RunWait %cmd%,%f%,%x%
-		else
-			run %cmd%,%f%,%x%
-	}else
-		msgbox missing %f%writelog.exe
-}
-*/
 logContextStart(context){
 	global Log4Net_Contexts
 	if !Log4Net_Contexts
@@ -1020,7 +937,6 @@ GetCricketPassword(reloadQuietly=1){
 		msgbox failed to load password
 	}
 }
-
 RunDesktopRDP(File){
 	t("RDP: " file)
 	SetTitleMatchMode regex
@@ -1114,9 +1030,6 @@ WinActivate(WinTitle, WinText="", ExcludeTitle="", ExcludeText=""){
 		return 1
 	else
 		return 0
-}
-Echo(txt){
-	return %txt%
 }
 WinActivateRegex(WinTitle, WinText="", ExcludeTitle="", ExcludeText=""){
 	SetTitleMatchMode regex
@@ -1281,15 +1194,15 @@ WinHideFromHwnd(hwnd){
 	WinHide ahk_id %hwnd%
 }
 WinMoveFromHwnd(hwnd,x,y){
-	winmove ahk_id %hwnd%,,x,y
+	WinMove ahk_id %hwnd%,,x,y
 }
 WinShowFromHwnd(hwnd){
 	DetectHiddenWindows on
-	winshow ahk_id %hwnd%
+	WinShow ahk_id %hwnd%
 }
 WinCloseFromHwnd(hwnd){
 	DetectHiddenWindows on
-	winclose ahk_id %hwnd%
+	WinClose ahk_id %hwnd%
 }
 WinActivateByExe(exe){
 	DetectHiddenWindows off
@@ -1352,20 +1265,20 @@ WinGetPIDFromHwnd(hwnd){
 }
 WinGetHwndFromPID(pid){
 	DetectHiddenWindows on
-	winget hwnd, id, ahk_pid %pid%
+	WinGet hwnd, id, ahk_pid %pid%
 	return %hwnd%
 }
 WinGetHwndFromExe(exe){
 	DetectHiddenWindows on
-	winget hwnd, id, ahk_exe %exe%
+	WinGet hwnd, id, ahk_exe %exe%
 	return %hwnd%
 }
 WinGetActivePID(){
-	winget pid, pid, A
+	WinGet pid, pid, A
 	return %pid%
 }
 WinGetExe(hwnd){
-	winget retVal,ProcessPath,ahk_id %hwnd%
+	WinGet retVal,ProcessPath,ahk_id %hwnd%
 	return % retVal
 }
 WinGetVisible(hwnd){
@@ -1397,7 +1310,7 @@ WinGetTitleFromPID(pid){
 	return % title
 }
 logMsg(script,fnc,txt){
-	fileappend ``%script% | %fnc% | %txt%```r`n, C:\Dev\Desire\log.md
+	FileAppend ``%script% | %fnc% | %txt%```r`n, C:\Dev\Desire\log.md
 }
 WinGetTitleFromHwnd(hwnd){
 	DetectHiddenWindows on
@@ -1528,11 +1441,6 @@ SetTimer(timer, interval){
 	}else{
 		;log(A_ThisFunc,"Timer not found: " ThisTimer,0)
 	}
-	;else
-		;msgbox % "Timer " timer " does not exist"
-	;log=c:\temp\timerlog-%A_ScriptName%.txt
-	;FileDelete %timerlog%
-	;FileAppend %timerlog%,%log%
 }
 TightVNC(name){
 	p:=FirstValidPath("C:\Program Files\TightVNC\tvnviewer.exe", "%userprofile%\scoop\apps\tightvnc\current\tvnviewer.exe")
@@ -1540,7 +1448,6 @@ TightVNC(name){
 		clippedName:=RegExReplace(name, ":.*")
 		t("VNC " name)
 		SetTitleMatchMode regex
-		;msgbox %clippedName% .* TightVNC Viewer
 		WinActivate .*%clippedName%.* TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe
 		IfWinNotActive .*%clippedName%.* TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe
 		{
@@ -1567,6 +1474,8 @@ IsShiftDown(){
 		return % false
 }
 WorkComputer(){
+	if computername=rad
+		return true
 	if computername=raven
 		return true
 	if computername=bmo
@@ -1869,23 +1778,6 @@ RunKeePassIfMissing(){
 	IfWinNotExist ahk_exe KeePass.exe
 		DoKeepass(1)
 }
-GetArrowBeingHeld(){
-	POV := GetKeyState("JoyPOV")  ; Get position of the POV control.
-	KeyToHoldDownPrev := KeyToHoldDown  ; Prev now holds the key that was down before (if any).
-	if (POV < 0)   ; No angle to report
-		ArrowBeingHeld := ""
-	else if (POV > 31500)               ; 315 to 360 degrees: Forward
-		ArrowBeingHeld := "Up"
-	else if POV between 0 and 4500      ; 0 to 45 degrees: Forward
-		ArrowBeingHeld := "Up"
-	else if POV between 4501 and 13500  ; 45 to 135 degrees: Right
-		ArrowBeingHeld := "Right"
-	else if POV between 13501 and 22500 ; 135 to 225 degrees: Down
-		ArrowBeingHeld := "Down"
-	else                                ; 225 to 315 degrees: Left
-		ArrowBeingHeld := "Left"
-	return % ArrowBeingHeld
-}
 SendAppsKey(){
 	KeyWait alt
 	KeyWait Ctrl
@@ -1944,6 +1836,7 @@ AssertNotSciteFindWindow(){
 			AlertCallStack("Why is this happening, maximizing this stupid window?")
 		}
 }
+/*
 ForticlientAutoDisconnecter(){
 	IfWinActive FortiClient ahk_class Chrome_WidgetWin_1 ahk_exe FortiClient.exe
 	{
@@ -1961,6 +1854,7 @@ ForticlientAutoDisconnecter(){
 		}
 	}
 }
+*/
 WinGetActiveTitle(){
 	WinGetActiveTitle x
 	return % x

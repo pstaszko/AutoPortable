@@ -826,3 +826,8 @@ NewLoadGroups(){
 	prof.Log("Done prepping groups")
 	}
 }
+IsGameActive(){
+	IfWinActive ahk_group Games
+		return true
+	return false
+}
