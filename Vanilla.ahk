@@ -269,6 +269,7 @@ LoadGlobalVars(){
 	GLOBAL kpReq:="C:\Users\Paul\AppData\Local\kp\kpreq.txt"
 	GLOBAL globalVariables:=Object()
 }
+/*
 GetBits(){
 	EnvGet progVar,ProgramFiles(x86)
 	if progVar
@@ -276,6 +277,7 @@ GetBits(){
 	else
 		return 32
 }
+*/
 RunOrSwitchClass(cmdLine, ROSCtitle,Class,Regex:=0){
 	startingTitleMatchMode:=A_TitleMatchMode
 	If Regex
@@ -331,36 +333,6 @@ WinHideActive(){
 	WinMinimize A
 }
 #if
-RunFlowLauncher(){
-	t(A_ThisFunc " / " A_ScriptFullPath)
-	;run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
-	;SendInput !^+{F24}
-	SendInput !^#{F11}
-	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
-	t("Waiting to appear")
-	WinWait Flow.Launcher ahk_exe Flow.Launcher.exe,,10
-	If ErrorLevel
-	{
-		t("Failed to start Flow Luancher, restarting...")
-		pskill("flow.launcher")
-		run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
-		RunFlowLauncher()
-	}else{
-		t("")
-	}
-	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe
-}
-FlowSearch(search){
-	RunFlowLauncher()
-	WinActivate Flow.Launcher ahk_exe Flow.Launcher.exe
-	WinWaitActive Flow.Launcher ahk_exe Flow.Launcher.exe,,10
-	If ErrorLevel
-		return
-	IfWinActive Flow.Launcher ahk_exe Flow.Launcher.exe
-	{
-		ClipboardHelper.SafePaste(search)
-	}
-}
 RunFailover(cmd,NoMax:=0,AllowRetry:=1){
 	If NoMax
 	{
@@ -662,93 +634,6 @@ CycleWindowOnEXE(x=0, mode=""){
 		CycleWindowOnEXE(x+1)
 	}
 }
-RunBackgroundPowershell(cmd,timeout=5000,tooltip=""){
-	if tooltip
-		tooltip.t
-	f:=GetTempFile("txt","c:\temp\trash\","BPS_")
-	FileAppend %cmd%,%f%
-	if !timeout
-		return
-	resp:=RegExReplace(f,"trash\\","trash\response_")
-	StartTime:=A_TickCount
-	Loop
-	{
-		IfExist % resp
-		{
-			sleep 10
-			FileRead x,%resp%
-			FileDelete %resp%
-			return % x
-		}
-		ElapsedTime := A_TickCount - StartTime
-		if(ElapsedTime > timeout){
-			throw "Failed to get response from background powershell command: %cmd%"
-			return failed
-		}
-		sleep 50
-	} while true
-	x= ;not sure why this needs to be here, but it does
-}
-RunPS(Title,Command,noexit=0,Background="Black",Foreground="White",psPath="powershell"){
-	title:="PS: " title
-	if noexit
-		ne:="-noexit"
-	c:=psPath " " ne " -command ""setcolors -back " Background " -fore " foreground ";$host.ui.RawUI.WindowTitle='" title "';cls;" command """"
-	logHere(c)
-	RunOrSwitch(c,title,true)
-}
-RunPSCommand(t,cmd,window,width,left,height,top,move=false){
-	global
-	logParams()
-	WinGet id,id
-	alreadyexists=0
-	IfExist %t%
-	{
-		alreadyexists=1
-	}
-	logHere("alreadyexists: " alreadyexists)
-	RunPS(t,cmd)
-	if(!move)
-		return
-	x="%pauldir%Third Party\multimonitortool\MultiMonitorTool.exe" /movewindow %window% Title "%t%" /WindowWidth %width% /WindowLeft %left% /windowheight %height% /windowtop %top%
-	FileDelete c:\temp\x.bat
-	FileAppend %x%,c:\temp\x.bat
-	if !alreadyexists
-	{
-		logHere("sleeping 2000")
-		sleep 2000
-	}
-	Loop 300
-	{
-		WinActivate %t%
-		IfWinActive %t%
-		{
-			logHere("Found it")
-			hit=1
-			break
-		}
-		sleep 100
-	}
-	logHere("done looking")
-	if !hit
-		msgbox failed to hit
-	WinRestore %t%
-	Run %x%
-	sleep 200
-}
-RunPSCommandTop(t,cmd){
-	RunPSCommand(t,cmd,1,1920,0,540,0)
-}
-RunPSCommandBottom(t,cmd,window=1){
-	RunPSCommand(t,cmd,window,1920,0,540,540)
-}
-RunPSCommandLeft(t,cmd){
-	RunPSCommand(t,cmd,1,960,0,1080,0)
-}
-RunPSCommandRight(t,cmd){
-	RunPSCommand(t,cmd,1,960,960,1080,0)
-}
-
 SParams(args*){
 	return % Join(", ",args*)
 }
@@ -878,67 +763,6 @@ logContextStart(context){
 logContextStop(context){
 	global Log4Net_Contexts
 	Log4Net_Contexts[context]=0
-}
-GetCred(Title,byref UserName,byref Password){
-	logHere("Get creds for " title)
-	res:=GetMultipleCreds(Title "`nPassword", Password)
-	hit=false
-	if res
-		hit=true
-	res:=GetMultipleCreds(Title "`nUserName", UserName)
-	if res
-		hit=true
-	return % hit
-}
-GetCreds_Init(Title){
-	global
-	logHere("Title: " title)
-	FileDelete %kperror%
-	FileDelete %kpResp%
-	FileDelete %kpReq%
-	FileAppend %title%,%kpReq%
-	if !IsProcessRunning("Keepass.exe")
-	{
-		DoKeepass(0)
-		msgbox Logged in?
-	}
-}
-GetMultipleCreds(Title,byref Message){
-	global
-	GetCreds_Init(title)
-	start:=a_now
-	Loop
-	{
-		sleep 10
-		IfExist %kperror%
-		{
-			FileRead x,%kperror%
-			FileDelete %kperror%
-			return %x%
-		}
-		IfExist %kpresp%
-		{
-			FileRead Message,%kpResp%
-			return
-		}
-		if (a_now-start>2)
-			return "Timed out getting creds for " title " loc 2"
-	}
-}
-GetCricketPassword(reloadQuietly=1){
-	global
-	GetCred("WCRICred",u,cricketInMemoryPassword)
-	if cricketInMemoryPassword
-	{
-		logHere("Returning password")
-		return % cricketInMemoryPassword
-	}
-	logHere("Failed to load password, reloading")
-	if reloadQuietly {
-		reload
-	}else{
-		msgbox failed to load password
-	}
 }
 RunDesktopRDP(File){
 	t("RDP: " file)
@@ -1769,6 +1593,7 @@ ShowExplorer(){
 		else
 			t("send #e")
 }
+/*
 StrSplitFug(ByRef text, delimiter := "", omitChars := ""){
 	; Using ByRef for performance (you can pass non-variables too)
 	ret := []
@@ -1776,29 +1601,14 @@ StrSplitFug(ByRef text, delimiter := "", omitChars := ""){
 		ret.Insert(A_LoopField)
 	return ret
 }
-RunKeePassIfMissing(){
-	DetectHiddenWindows on
-	IfWinNotExist ahk_exe KeePass.exe
-		DoKeepass(1)
-}
+*/
 SendAppsKey(){
 	KeyWait alt
 	KeyWait Ctrl
 	KeyWait shift
 	SendInput {AppsKey}
 }
-ScrollWheelLeft(){
-	; Scroll to the left
-	MouseGetPos,,,id, fcontrol,1
-	Loop 8 ; <-- Increase for faster scrolling
-		SendMessage, 0x114, 0, 0, %fcontrol%, ahk_id %id% ; 0x114 is WM_HSCROLL and the 0 after it is SB_LINERIGHT.
-}
-ScrollWheelRight(){
-	;Scroll to the right
-	MouseGetPos,,,id, fcontrol,1
-	Loop 8 ; <-- Increase for faster scrolling
-		SendMessage, 0x114, 1, 0, %fcontrol%, ahk_id %id% ;  0x114 is WM_HSCROLL and the 1 after it is SB_LINELEFT.
-}
+/*
 MakeLessTransparent(){
 	WinGet, t, Transparent, A
 	WinSet, Transparent, % t+10, A
@@ -1810,6 +1620,7 @@ MakeMoreTransparent(){
 	WinSet, Transparent, % t-10, A
 	return
 }
+*/
 IsDesktop(){
 	IfWinActive Program Manager ahk_class Progman ahk_exe explorer.exe
 		return true

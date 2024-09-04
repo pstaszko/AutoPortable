@@ -1,22 +1,3 @@
-
-RunBackgroundPowershellNonInteractive(cmd,noisy=1){
-	if noisy
-		t("Background " cmd)
-	RunBackgroundPowershell(cmd,0)
-}
-StartBackgroundPowerShell(){
-	WinShow BackgroundPowerShell
-	IfWinActive BackgroundPowerShell
-		return
-	RunPSCommandRight("BackgroundPowerShell","MonitorBackgroundPowerShellCommands")
-}
-RestartBackgroundPowerShell(){
-	StartBackgroundPowerShell()
-	WinWaitActive BackgroundPowerShell ahk_class ConsoleWindowClass,,/// ie 5
-	winclose BackgroundPowerShell ahk_class ConsoleWindowClass
-	WinWaitClose BackgroundPowerShell ahk_class ConsoleWindowClass,,/// ie 5
-	StartBackgroundPowerShell()
-}
 ShowOrRunFSSConsole(){
 	DetectHiddenWindows	on
 	WinShow ahk_exe FSSConsole.exe
