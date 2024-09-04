@@ -1886,26 +1886,6 @@ GetFileFromVSTitle(){
 	RegExMatch(title, regex, obj)
 	return % obj.path
 }
-DrawIOCopyStyle(){
-	SendInput ^e
-	sleep 200
-	SendInput ^a
-	sleep 200
-	SendInput ^c
-	sleep 200
-	Esc()
-}
-DrawIOPasteStyle(){
-	SendInput ^e
-	sleep 200
-	SendInput ^a
-	sleep 200
-	SendInput ^v
-	sleep 200
-	SendInput {tab 2}
-	sleep 200
-	Enter()
-}
 AlertCallStack(reason="No specified reason", depth = 10, printLines = 1){
 	msgbox % reason "`n" GetCallStack(depth, printLines)
 }
