@@ -2,7 +2,6 @@
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
 #if
 Standard_SendInput(txt){
-	msgbox hi: %txt%
 	SendInput %txt%
 }
 WinActiveRegex(title){
