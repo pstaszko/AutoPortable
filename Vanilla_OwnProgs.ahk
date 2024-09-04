@@ -51,3 +51,9 @@ HardRestartMatrixOSAutomatic(){
 		RunMatrixNexus()
 	}
 }
+FullBlastRestart(){
+	t("FullBlastRestart " A_ScriptFullPath)
+	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
+	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
+	run C:\Dev\Releases\WisdominatorConsole\Stable\WisdominatorConsole.exe,,min
+}

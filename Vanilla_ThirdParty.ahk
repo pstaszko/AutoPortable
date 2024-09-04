@@ -28,3 +28,17 @@ FlowSearch(search){
 		ClipboardHelper.SafePaste(search)
 	}
 }
+TightVNC(name){
+	p:=FirstValidPath("C:\Program Files\TightVNC\tvnviewer.exe", "%userprofile%\scoop\apps\tightvnc\current\tvnviewer.exe")
+	if(name){
+		clippedName:=RegExReplace(name, ":.*")
+		t("VNC " name)
+		SetTitleMatchMode regex
+		WinActivate .*%clippedName%.* TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe
+		IfWinNotActive .*%clippedName%.* TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe
+		{
+			run %p% %name%
+		}
+	} else {
+	}
+}

@@ -11,20 +11,6 @@ WinActiveRegex(title){
 Run(target, workingDir:="",flags:=""){
 	run %target%, %workingDir%, %flags%
 }
-FileAppendLine(Text, Filename, Encoding:="UTF-8"){
-	FileAppend(Text "`n", Filename, Encoding)
-}
-FileAppend(Text, Filename, Encoding:="UTF-8"){
-	loop 10
-	{
-		FileAppend %Text%,%Filename%,%Encoding%
-		If !ErrorLevel
-			return
-		sleep 300
-	}
-	logHere("Error appending text to " filename " error: " A_LastError)
-	g("Error appending text to " filename " error: " A_LastError)
-}
 MsgBox(text){
 	msgbox,,%text%
 }
@@ -197,23 +183,12 @@ _CloseWindowsExplorerWindows(forceIE,level:=1){
 	WinClose Terminal Services Manager
 	WinHide Windows Task Manager
 }
-CheckModifiers(str){
-	m:=GetModiferString()
-	result:=SubStr(m,-1 * StrLen(str)+1) = str
-	return result
-}
 WinControlEscape(){
 	If (A_PriorHotkey <> "Esc" or A_TimeSincePriorHotkey > 750)
 		CloseWindowsExplorerWindows(0,2)
 	else
 		CloseWindowsExplorerWindows(0)
 	KeyWait esc
-}
-FileRead(path){
-	f:=FileOpen(path, "r")
-	cont:=f.Read()
-	f.Close()
-	return cont
 }
 Calling(fn, arg1:="", arg2:=""){
 	announce:=false
@@ -543,28 +518,6 @@ MsgboxLogged(context,msg){
 	logParams()
 	logHere(GetCallStack)
 	msgbox % msg
-}
-FileDelete(FilePattern,NoLog=0){
-	FilePattern:=strreplace(FilePattern,"""","")
-	IfExist %FilePattern%
-	{
-		if !NoLog
-			log(A_ThisFunc,FilePattern " exists")
-		FileSetAttrib -R, %FilePattern%
-		FileDelete %FilePattern%
-		If ErrorLevel
-		{
-			e:=ErrorLevel
-			x=Error level %e% attempting to delete %filepattern%
-			MsgboxLogged(A_ThisFunc,x)
-		}
-	} else {
-		if !NoLog
-		{
-			log(A_ThisFunc,FilePattern " doesn't exist")
-			logParamsAndStack()
-		}
-	}
 }
 shout(this,title=""){
 	_shout(this,title)
@@ -930,14 +883,14 @@ ClickAndReturn(x,y,cnt=1,mode="ul",TitleX="",shift=false){
 		SendInput {shift up}
 }
 Click(x, y){
-	coordmode mouse, relative
+	CoordMode mouse, relative
 	click %x%, %y%
 }
 RightClickHere(){
 	click right
 }
 RightClick(x, y){
-	coordmode mouse, relative
+	CoordMode mouse, relative
 	click right, %x%, %y%
 }
 ImageSearch(X1, Y1, X2, Y2, ImageFile){
@@ -951,7 +904,7 @@ ImageSearch(X1, Y1, X2, Y2, ImageFile){
 RememberMouse(){
 	global screen_mouse_x
 	global screen_mouse_y
-	coordmode mouse, screen
+	CoordMode mouse, screen
 	mousegetpos x,y
 	screen_mouse_x=%x%
 	screen_mouse_y=%y%
@@ -959,13 +912,13 @@ RememberMouse(){
 RestoreMouse(){
 	global screen_mouse_x
 	global screen_mouse_y
-	coordmode mouse, screen
-	mousemove %screen_mouse_x%, %screen_mouse_y%
+	CoordMode mouse, screen
+	MouseMove %screen_mouse_x%, %screen_mouse_y%
 }
 DoubleClickTaskTray(x,y){
 	RememberMouse()
 	WinActivate ahk_class Shell_TrayWnd ahk_exe Explorer.EXE
-	coordmode mouse, relative
+	CoordMode mouse, relative
 	WinActivate ahk_class Shell_TrayWnd ahk_exe Explorer.EXE
 	click(x, y)
 	sleep 50
@@ -1136,15 +1089,17 @@ WinGetTitleFromPID(pid){
 		title:=""
 	return % title
 }
+/*
 logMsg(script,fnc,txt){
 	FileAppend ``%script% | %fnc% | %txt%```r`n, C:\Dev\Desire\log.md
 }
+*/
 WinGetTitleFromHwnd(hwnd){
 	DetectHiddenWindows on
 	WinGetTitle title, ahk_id %hwnd%
 	if !title
 		title:=""
-	logMsg(A_ScriptFullPath, a_thisfunc, hwnd " " title)
+	;logMsg(A_ScriptFullPath, a_thisfunc, hwnd " " title)
 	return % title
 }
 MinimizeFromHwnd(hwnd){
@@ -1267,20 +1222,6 @@ SetTimer(timer, interval){
 		SetTimer %ThisTimer%,%interval%
 	}else{
 		;log(A_ThisFunc,"Timer not found: " ThisTimer,0)
-	}
-}
-TightVNC(name){
-	p:=FirstValidPath("C:\Program Files\TightVNC\tvnviewer.exe", "%userprofile%\scoop\apps\tightvnc\current\tvnviewer.exe")
-	if(name){
-		clippedName:=RegExReplace(name, ":.*")
-		t("VNC " name)
-		SetTitleMatchMode regex
-		WinActivate .*%clippedName%.* TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe
-		IfWinNotActive .*%clippedName%.* TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe
-		{
-			run %p% %name%
-		}
-	} else {
 	}
 }
 KeyWaitModifiersUp(){
@@ -1691,12 +1632,14 @@ DiffMerge_ClipGitAdds(){
 	t("Clipped GitAdds")
 }
 #If
+/*
 GetFileFromVSTitle(){
 	WinGetTitle title, A
 	regex=O)(?<solution>[\w\.]+)\s*(?<path>[^\(]+)(\s*\((?<mode>.*)?\))\s*(?<other>.*)\s*\|
 	RegExMatch(title, regex, obj)
 	return % obj.path
 }
+*/
 AlertCallStack(reason="No specified reason", depth = 10, printLines = 1){
 	msgbox % reason "`n" GetCallStack(depth, printLines)
 }
@@ -1735,24 +1678,11 @@ SetGlobalVariables(){
 }
 */
 GoSub(name){
-	if name=Joy11_Joy14
-		msgbox % islabel(name)
 	If Islabel(name)
 		gosub %name%
 }
 RunWait(cmd){
 	runwait %cmd%
-}
-GetScoopDir(appName){
-	return % "C:\Users\Paul\scoop\apps\" . appName . "\current\"
-}
-GetPerfectlyNamedScoopExeInSubDir(appName, subDir){
-	subDir:=MyRtrim(subDir,"\")
-	subDir:=MyLtrim(subDir,"\")
-	return % GetScoopDir(appName) . subDir . "\" . appName . ".exe"
-}
-GetPerfectlyNamedScoopExe(appName){
-	return % GetScoopDir(appName) . appName . ".exe"
 }
 IsScrollLock(){
 	if GetKeyState("ScrollLock", "T")
@@ -1795,16 +1725,8 @@ GetTempFile(extension="txt",dir="",prefix="AHK_PS_Temp_"){
 			return % file
 	}
 }
-Scite_ToggleResultsPane(){
-	SendInput {F8}
-}
 SendInputFn(txt){
 	SendInput % txt.value
-}
-
-#if
-SteamEXE(){
-	return % FirstValidPath("C:\Users\Paul\scoop\apps\steam\current\steam.exe", "C:\Program Files (x86)\Steam\steam.exe")
 }
 /*
 GetActiveExplorerPath() {
@@ -1832,38 +1754,6 @@ Max(msg="",depth=0){
 		ListLines
 	d:=depth + 1
 	Max(msg, d)
-}
-FullBlastRestart(){
-	t("FullBlastRestart " A_ScriptFullPath)
-	run C:\DEV\Releases\FSSConsole\Stable\FSSConsole.exe,,min
-	run C:\Dev\Releases\MatrixNexus\Stable\MatrixNexus.exe
-	run C:\Dev\Releases\WisdominatorConsole\Stable\WisdominatorConsole.exe,,min
-}
-GetModiferString(){
-	global
-	altkey:=FileRead("c:\temp\trash\altkey")
-	shiftkey:=FileRead("c:\temp\trash\shiftkey")
-	winkey:=FileRead("c:\temp\trash\winkey")
-	controlkey:=FileRead("c:\temp\trash\controlkey")
-	values=
-(
-%shiftkey%+
-%winkey%#
-%controlkey%^
-%altKey%!
-)
-	sort values, r
-	symbols:=""
-	loop parse, values,`n
-	{
-		t:=trim(A_LoopField)
-		if t
-			symbols:=SubStr(t,0) "`r`n" symbols
-	}
-	symbols:=RegExReplace(symbols,"[\r\n\s]")
-	x:=(-1 * StrLen(str)) + 1
-	z:=substr(symbols, x)
-	return % z
 }
 OpenMainScript(OpenOrSwitchAHK){
 	Global
