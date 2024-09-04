@@ -1,6 +1,9 @@
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_PSKill\PSKill.ahk
 #Include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK-Notification\Growl.ahk
 #if
+Standard_SendInput(txt){
+	SendInput %txt%
+}
 WinActiveRegex(title){
 	SetTitleMatchMode Regex
 	return WinActive(title)
