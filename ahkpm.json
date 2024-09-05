@@ -12,5 +12,14 @@
     "website": ""
   },
   "scripts": {},
-  "dependencies": {}
+  "dependencies": {
+    "github.com/StarlyCode/WebSocket.ahk": "branch:v1-winapi",
+    "github.com/pstaszko/AHK-Notification": "branch:master",
+    "github.com/pstaszko/AHK_Compiler": "branch:main",
+    "github.com/pstaszko/AHK_Diagnostics": "branch:main",
+    "github.com/pstaszko/AHK_PSKill": "branch:main",
+    "github.com/pstaszko/AHK_StringManipulation": "branch:main",
+    "github.com/pstaszko/AHK_Vanilla": "branch:main",
+    "github.com/pstaszko/AHK_Vanilla_FileSystem": "branch:main"
+  }
 }

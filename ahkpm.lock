@@ -1,5 +1,96 @@
 {
   "lockfileVersion": "1",
-  "dependencies": {},
-  "resolved": []
+  "dependencies": {
+    "github.com/StarlyCode/WebSocket.ahk": "branch:v1-winapi",
+    "github.com/pstaszko/AHK-Notification": "branch:master",
+    "github.com/pstaszko/AHK_Compiler": "branch:main",
+    "github.com/pstaszko/AHK_Diagnostics": "branch:main",
+    "github.com/pstaszko/AHK_PSKill": "branch:main",
+    "github.com/pstaszko/AHK_StringManipulation": "branch:main",
+    "github.com/pstaszko/AHK_Vanilla": "branch:main",
+    "github.com/pstaszko/AHK_Vanilla_FileSystem": "branch:main"
+  },
+  "resolved": [
+    {
+      "name": "github.com/StarlyCode/WebSocket.ahk",
+      "version": "branch:v1-winapi",
+      "sha": "3bb8b8d5475e516ccd2f3bf8c1d6d25d9214c124",
+      "installPath": "ahkpm-modules/github.com/StarlyCode/WebSocket.ahk",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK-Notification",
+      "version": "branch:master",
+      "sha": "94b3bd93ba854e45e1d33ace2d0668c807bff8ce",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK-Notification",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_Compiler",
+      "version": "branch:main",
+      "sha": "afbb1608d255b051c6d4aeabd04f47c9c6305f57",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Compiler",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_Diagnostics",
+      "version": "branch:main",
+      "sha": "a959da445890529cc8fe890be09fa836be93627a",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Diagnostics",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_PSKill",
+      "version": "branch:main",
+      "sha": "c9a12d667a135b7bc81a0e1f16fd82344971f348",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_PSKill",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_StringManipulation",
+      "version": "branch:main",
+      "sha": "1c680afa6a0dbc445b31764d52c504ba37cfac11",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_StringManipulation",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_Vanilla",
+      "version": "branch:main",
+      "sha": "5cecb191c24c9fb107bd8892e2d86905ebbe59c7",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla",
+      "dependencies": {
+        "github.com/pstaszko/AHK-Notification": "branch:master",
+        "github.com/pstaszko/AHK_StringManipulation": "branch:main",
+        "github.com/pstaszko/AHK_Vanilla_FileSystem": "branch:main"
+      }
+    },
+    {
+      "name": "github.com/pstaszko/AHK-Notification",
+      "version": "branch:master",
+      "sha": "94b3bd93ba854e45e1d33ace2d0668c807bff8ce",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK-Notification",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_StringManipulation",
+      "version": "branch:main",
+      "sha": "1c680afa6a0dbc445b31764d52c504ba37cfac11",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK_StringManipulation",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
+      "version": "branch:main",
+      "sha": "547fb3f9967795f1c76c62b8682da98715a5d400",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
+      "version": "branch:main",
+      "sha": "547fb3f9967795f1c76c62b8682da98715a5d400",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
+      "dependencies": {}
+    }
+  ]
 }
