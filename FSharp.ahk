@@ -1,3 +1,4 @@
+#include %a_scriptdir%\ahkpm-modules\github.com\pstaszko\AHK_Diagnostics\Vanilla_Diagnostics.ahk
 RunFSSC(args:="", startHidden:=""){
 	h:=""
 	if startHidden
