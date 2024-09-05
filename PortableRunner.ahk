@@ -5,7 +5,7 @@ LoadGlobalVars()
 NewLoadGroups()
 return
 !^#U::ExitApp
-#include %A_ScriptDir%\Vanilla.ahk
+#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_Vanilla\Vanilla.ahk
 #include %A_ScriptDir%\Portable.ahk
 #include %a_scriptdir%\Vanilla_ThirdParty.ahk
 #include %a_scriptdir%\Vanilla_Groups.ahk

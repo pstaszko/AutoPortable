@@ -57,4 +57,4 @@ loop
 	sleep 100
 }
 #include %A_ScriptDir%\mine.ahk
-#include %A_ScriptDir%\Vanilla.ahk
+#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_Vanilla\Vanilla.ahk

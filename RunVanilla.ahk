@@ -15,4 +15,4 @@ if fn{
 	msgbox Function name with zero parameters must be passed in
 }
 exitapp
-#include C:\Dev\AutoPortable\Vanilla.ahk
+#include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_Vanilla\Vanilla.ahk
