@@ -40,8 +40,3 @@ FileDelete(FilePattern,NoLog=0){
 		}
 	}
 }
-MsgboxLogged(context,msg){
-	logParams()
-	logHere(GetCallStack)
-	msgbox % msg
-}
