@@ -33,6 +33,13 @@
       "dependencies": {}
     },
     {
+      "name": "github.com/pstaszko/AHK_Diagnostics",
+      "version": "branch:main",
+      "sha": "91dd219a86d79fd0fcfe9388e9fb4754d24f1d20",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Diagnostics",
+      "dependencies": {}
+    },
+    {
       "name": "github.com/pstaszko/AHK_PSKill",
       "version": "branch:main",
       "sha": "c9a12d667a135b7bc81a0e1f16fd82344971f348",
@@ -74,22 +81,15 @@
     {
       "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
       "version": "branch:main",
-      "sha": "c53e4aa7c09b95b91c0213fbacce7d6a8a807b27",
+      "sha": "25ba6aa85aeae5bef9de78f602f779bd6ad4c3da",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
       "dependencies": {}
     },
     {
       "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
       "version": "branch:main",
-      "sha": "c53e4aa7c09b95b91c0213fbacce7d6a8a807b27",
+      "sha": "25ba6aa85aeae5bef9de78f602f779bd6ad4c3da",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
-      "dependencies": {}
-    },
-    {
-      "name": "github.com/pstaszko/AHK_Diagnostics",
-      "version": "branch:main",
-      "sha": "91dd219a86d79fd0fcfe9388e9fb4754d24f1d20",
-      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Diagnostics",
       "dependencies": {}
     }
   ]
