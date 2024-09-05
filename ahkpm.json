@@ -18,6 +18,7 @@
     "github.com/pstaszko/AHK_Compiler": "branch:main",
     "github.com/pstaszko/AHK_Diagnostics": "branch:main",
     "github.com/pstaszko/AHK_PSKill": "branch:main",
-    "github.com/pstaszko/AHK_StringManipulation": "branch:main"
+    "github.com/pstaszko/AHK_StringManipulation": "branch:main",
+    "github.com/pstaszko/AHK_Vanilla_FileSystem": "branch:main"
   }
 }
