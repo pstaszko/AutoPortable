@@ -6,7 +6,8 @@
     "github.com/pstaszko/AHK_Compiler": "branch:main",
     "github.com/pstaszko/AHK_PSKill": "branch:main",
     "github.com/pstaszko/AHK_StringManipulation": "branch:main",
-    "github.com/pstaszko/AHK_Vanilla": "branch:main"
+    "github.com/pstaszko/AHK_Vanilla": "branch:main",
+    "github.com/pstaszko/AHK_Vanilla_FileSystem": "branch:main"
   },
   "resolved": [
     {
@@ -74,6 +75,13 @@
       "version": "branch:main",
       "sha": "c53e4aa7c09b95b91c0213fbacce7d6a8a807b27",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
+      "dependencies": {}
+    },
+    {
+      "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
+      "version": "branch:main",
+      "sha": "c53e4aa7c09b95b91c0213fbacce7d6a8a807b27",
+      "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
       "dependencies": {}
     }
   ]
