@@ -56,7 +56,7 @@
     {
       "name": "github.com/pstaszko/AHK_Vanilla",
       "version": "branch:main",
-      "sha": "f5e60daef8571a83290581a3d45864b9a0bd9e98",
+      "sha": "13195caaf6bd9138ea23285818991e23654019f9",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla",
       "dependencies": {
         "github.com/pstaszko/AHK-Notification": "branch:master",
