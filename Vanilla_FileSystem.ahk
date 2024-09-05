@@ -1,3 +1,4 @@
+#include %a_scriptdir%\ahkpm-modules\github.com\pstaszko\AHK_Diagnostics\Vanilla_Diagnostics.ahk
 FileAppendLine(Text, Filename, Encoding:="UTF-8"){
 	FileAppend(Text "`n", Filename, Encoding)
 }

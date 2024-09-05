@@ -35,7 +35,7 @@
     {
       "name": "github.com/pstaszko/AHK_Diagnostics",
       "version": "branch:main",
-      "sha": "91dd219a86d79fd0fcfe9388e9fb4754d24f1d20",
+      "sha": "a959da445890529cc8fe890be09fa836be93627a",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Diagnostics",
       "dependencies": {}
     },
@@ -56,7 +56,7 @@
     {
       "name": "github.com/pstaszko/AHK_Vanilla",
       "version": "branch:main",
-      "sha": "13195caaf6bd9138ea23285818991e23654019f9",
+      "sha": "996d2d34ce4093889d920a321f7ba89f531e5a8c",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla",
       "dependencies": {
         "github.com/pstaszko/AHK-Notification": "branch:master",
