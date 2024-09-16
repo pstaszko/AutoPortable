@@ -10,6 +10,7 @@ RunFlowLauncher(){
 	{
 		t("Failed to start Flow Luancher, restarting...")
 		pskill("flow.launcher")
+		sleep 1000
 		run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
 		RunFlowLauncher()
 	}else{
