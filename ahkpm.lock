@@ -35,7 +35,7 @@
     {
       "name": "github.com/pstaszko/AHK_Diagnostics",
       "version": "branch:main",
-      "sha": "a959da445890529cc8fe890be09fa836be93627a",
+      "sha": "f1930a881f701a6374a731a37c28943fcf0781de",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Diagnostics",
       "dependencies": {}
     },
@@ -49,14 +49,14 @@
     {
       "name": "github.com/pstaszko/AHK_StringManipulation",
       "version": "branch:main",
-      "sha": "1c680afa6a0dbc445b31764d52c504ba37cfac11",
+      "sha": "6c2bd1971ffb92b8656130256e1ead5fa460b646",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_StringManipulation",
       "dependencies": {}
     },
     {
       "name": "github.com/pstaszko/AHK_Vanilla",
       "version": "branch:main",
-      "sha": "5cecb191c24c9fb107bd8892e2d86905ebbe59c7",
+      "sha": "c1663df409f50eed09e2644953be15c6a6f7c38e",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla",
       "dependencies": {
         "github.com/pstaszko/AHK-Notification": "branch:master",
@@ -74,7 +74,7 @@
     {
       "name": "github.com/pstaszko/AHK_StringManipulation",
       "version": "branch:main",
-      "sha": "1c680afa6a0dbc445b31764d52c504ba37cfac11",
+      "sha": "6c2bd1971ffb92b8656130256e1ead5fa460b646",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK_StringManipulation",
       "dependencies": {}
     },
