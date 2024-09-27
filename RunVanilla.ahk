@@ -16,3 +16,5 @@ if fn{
 }
 exitapp
 #include %A_ScriptDir%\ahkpm-modules\github.com\pstaszko\AHK_Vanilla\Vanilla.ahk
+#include %A_ScriptDir%\Vanilla_OwnProgs.ahk
+#include %A_ScriptDir%\FSharp.ahk
