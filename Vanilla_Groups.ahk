@@ -227,7 +227,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MicrosoftSignInWindow","Sign in to your ahk_exe devenv.exe")
 	g_1_ProgramGroups("Minecraft","Create ahk_class GLFW30 ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","FTB Ultimate ahk_class SunAwtFrame ahk_exe javaw.exe")
-	g_1_ProgramGroups("Minecraft","Minecraft 1 ahk_class GLFW30 ahk_exe javaw.exe")
+	g_1_ProgramGroups("Minecraft","Minecraft ahk_class GLFW30 ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Minecraft 1 ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Minecraft ahk_exe javaw.exe")
 	g_1_ProgramGroups("Minecraft","Tekkit ahk_exe javaw.exe")
