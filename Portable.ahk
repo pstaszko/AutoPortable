@@ -5,7 +5,7 @@ RunLocate32(){
 	If ErrorLevel
 		return
 }
-#R::
+^#R::
 	t(A_ScriptFullPath)
 	RunFlowLauncher()
 return
