@@ -236,6 +236,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MinorWindows","- Meeting ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("MinorWindows","- Meeting Occurrence ahk_class rctrl_renwnd32 ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups("MinorWindows","- Mozilla Thunderbird ahk_class MozillaWindowClass ahk_exe thunderbird.exe")
+	g_1_ProgramGroups("MinorWindows","ahk_class Shell_Dialog ahk_exe emlviewer.exe")
 	g_1_ProgramGroups("MinorWindows","- SciTE - Jump ahk_class SciTEWindow ahk_exe SCITE.EXE")
 	g_1_ProgramGroups("MinorWindows",".formatted.xml ahk_exe foxe.exe")
 	g_1_ProgramGroups("MinorWindows","Active Directory Users and Computers")
