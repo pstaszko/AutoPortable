@@ -242,6 +242,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MinorWindows","Active Directory Users and Computers")
 	g_1_ProgramGroups("MinorWindows","Active Window Info ahk_class AutoHotkeyGUI ahk_exe AU3_Spy.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_class #32770 ahk_exe AutoHotkey.exe")
+	g_1_ProgramGroups("MinorWindows","WinMerge ahk_class WinMergeWindowClassW ahk_exe Winmergeu.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_class CabinetWClass")
 	g_1_ProgramGroups("MinorWindows","ahk_class ConsoleWindowClass ahk_exe chromedriver.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_class ConsoleWindowClass ahk_exe IEDriverServer.exe")
