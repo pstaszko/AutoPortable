@@ -402,7 +402,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("SystemInformer","ahk_class MainWindowClassName ahk_exe SystemInformer.exe")
 	g_1_ProgramGroups("TeamViewer","TeamViewer ahk_class #32770")
 	g_1_ProgramGroups("TightVNC","TightVNC Viewer ahk_class TvnWindowClass ahk_exe tvnviewer.exe")
-	g_1_ProgramGroups("TypeSQLLogins","Connect ahk_exe devenv.exe","","","|") ;;DB Profile
+	;g_1_ProgramGroups("TypeSQLLogins","Connect ahk_exe devenv.exe","","","|") ;;DB Profile
 	g_1_ProgramGroups("TypeSQLLogins","Connect to ahk_exe profiler.exe","","","|") ;;DB Profile
 	g_1_ProgramGroups("TypeSQLLogins","Connect to ahk_exe ssms.exe","","","|") ;;DB Profile
 	g_1_ProgramGroups("TypeSQLLogins","SQL Server Login ahk_class #32770 ahk_exe MSACCESS.EXE")
