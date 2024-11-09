@@ -30,6 +30,7 @@ HardRestartMatrixOS(){
 		PSKill("matrixos")
 		;RunWait powershell -noprofile $"
 		RemoveGhosts()
+		WinWaitActive GhostsRemoved,,3
 		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
 		IfMsgBox Ok
 			RunMatrixNexus()
