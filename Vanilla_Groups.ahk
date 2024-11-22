@@ -456,6 +456,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups_End("DotnetIDE","ahk_group VisualStudio")
 	g_1_ProgramGroups_End("FirefoxDevTools", "Developer Tools ahk_group Firefox")
 	g_1_ProgramGroups_End("GmailLoginScreen","Accounts ahk_class NUIDialog ahk_exe OUTLOOK.EXE")
+	g_1_ProgramGroups_End("GmailLoginScreen","YouTube Music ahk_class Chrome_WidgetWin_1 ahk_exe YouTube Music.exe")
 	g_1_ProgramGroups_End("GmailLoginScreen","ahk_group Rambox")
 	g_1_ProgramGroups_End("GmailLoginScreen","ChatGPT ahk_class Window Class ahk_exe ChatGPT.exe")
 	g_1_ProgramGroups_End("GmailLoginScreen","Gmail ahk_group Browsers")
