@@ -177,6 +177,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("FullScreenRDP","azsql19")
 	g_1_ProgramGroups("FullScreenRDP","Cricket")
 	g_1_ProgramGroups("FullScreenRDP","imacros")
+	g_1_ProgramGroups("Games","shapez 2 ahk_class UnityWndClass")
 	g_1_ProgramGroups("Games","ahk_exe DSPGAME.exe")
 	g_1_ProgramGroups("Games","ahk_exe FarCryNewDawn.exe")
 	g_1_ProgramGroups("Games","ahk_exe HoloCure.exe")
