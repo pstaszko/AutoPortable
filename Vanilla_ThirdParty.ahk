@@ -1,3 +1,6 @@
+Vanilla_ThirdParty_GetScoopDir(appName){
+	return % UserProfile "\scoop\apps\" . appName . "\current\"
+}
 RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)
 	;run(userprofile "\scoop\apps\flow-launcher\current\Flow.Launcher.exe")
@@ -11,7 +14,8 @@ RunFlowLauncher(){
 		t("Failed to start Flow Luancher, restarting...")
 		pskill("flow.launcher")
 		sleep 1000
-		run(userprofile "\AppData\Local\FlowLauncher\Flow.Launcher.exe")
+		run(Vanilla_ThirdParty_GetScoopDir("FlowLauncher") "Flow.Launcher.exe")
+		;run(userprofile "\AppData\Local\FlowLauncher\Flow.Launcher.exe")
 		RunFlowLauncher()
 	}else{
 		t("")
