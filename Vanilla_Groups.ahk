@@ -724,6 +724,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("EscapeToClose","Active Window Info ahk_exe AU3_Spy.exe")
 	g_4_KeyBehaviors("EscapeToClose","ahk_class MozillaWindowClass ahk_exe thunderbird.exe")
 	g_4_KeyBehaviors("EscapeToClose","History Explorer")
+	g_4_KeyBehaviors("EscapeToClose","FortiToken Windows ahk_class ApplicationFrameWindow ahk_exe ApplicationFrameHost.exe") ;work
 	g_4_KeyBehaviors("EscapeToClose","Please Register ahk_class wxWindowNR ahk_exe sgdm.exe")
 	g_4_KeyBehaviors("EscapeToClose","Query Designer")
 	g_4_KeyBehaviors("EscapeToClose","Registration Information ahk_class wxWindowNR ahk_exe sgdm.exe")
