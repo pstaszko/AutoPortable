@@ -370,6 +370,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("PowerShellEditor","ahk_group PowerGUI")
 	g_1_ProgramGroups("PowerShellEditor","PowerShell ahk_group VisualStudio")
 	g_1_ProgramGroups("PowershellTerminal","Administrator: Windows PowerShell ahk_class CASCADIA_HOSTING_WINDOW_CLASS ahk_exe WindowsTerminal.exe")
+	g_1_ProgramGroups("PowershellTerminal","Wave ahk_class Chrome_WidgetWin_1 ahk_exe Wave.exe")
 	g_1_ProgramGroups("PowershellTerminal","ahk_class VirtualConsoleClass ahk_exe ConEmu64.exe")
 	g_1_ProgramGroups("PowershellTerminal","Windows Terminal ahk_class CASCADIA_HOSTING_WINDOW_CLASS ahk_exe WindowsTerminal.exe")
 	g_1_ProgramGroups("ProcessHacker","Process Hacker ahk_class MainWindowClassName ahk_exe ProcessHacker.exe")
