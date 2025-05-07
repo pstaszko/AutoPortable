@@ -673,6 +673,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe NewColossus_x64vk.exe")
 	g_4_KeyBehaviors("BasicMiddleClick","ahk_group RemoteDesktop")
 	g_4_KeyBehaviors("BasicMiddleClick","BATMAN: ARKHAM")
+	g_4_KeyBehaviors("BasicMiddleClick","ahk_exe DeadIsland-Win64-Shipping.exe")
 	g_4_KeyBehaviors("BasicMiddleClick","Dead Island")
 	g_4_KeyBehaviors("ControlQtoAltF4","ahk_exe paintdotnet.exe")
 	g_4_KeyBehaviors("ControlQtoAltF4","ahk_group VSCode")
