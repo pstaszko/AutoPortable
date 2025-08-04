@@ -737,7 +737,6 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe ets.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe FSSConsole.exe")
 	g_4_KeyBehaviors("F12HideWindow","FortiToken ahk_class ApplicationFrameWindow ahk_exe ApplicationFrameHost.exe")
-	g_4_KeyBehaviors("F12HideWindow","ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe Obsidian.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group ChaosControl")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group Chrome_ConnectWise")
