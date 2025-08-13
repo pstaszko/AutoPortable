@@ -109,6 +109,13 @@ MySysGet(n){
 		return
 	}
 }
+Mine_IsWinActiveRegex(WinTitle, WinText="", ExcludeTitle="", ExcludeText=""){
+	SetTitleMatchMode regex
+	IfWinActive %WinTitle%, %WinText%, %ExcludeTitle%, %ExcludeText%
+		return 1
+	else
+		return 0
+}
 GetMonitorPrimary(){
 	SysGet OutputVar, MonitorPrimary
 	return % OutputVar
