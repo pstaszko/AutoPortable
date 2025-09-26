@@ -752,7 +752,6 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_group PowerGUI")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group PowerShellAll")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group SampleApp")
-	g_4_KeyBehaviors("F12HideWindow","ahk_Group SQLManagementStudio")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group XLite")
 	g_4_KeyBehaviors("F12HideWindow","AutoHotkey Help ahk_class HH Parent ahk_exe hh.exe")
 	g_4_KeyBehaviors("F12HideWindow","AutoTogglConsole.exe ahk_class ConsoleWindowClass ahk_exe AutoTogglConsole.exe")
