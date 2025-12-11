@@ -48,6 +48,7 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 	SetCapsLockState off
 	SendCommandVSLeave("cls")
 	SendCommandVSLeave("Debug.DiagnosticTools.Show")
+	SendInput {enter} ;shouldn't have to send an enter, but I seem to to get the previous .show to happen
 	loop % sends.maxindex()
 	{
 		if iscapslock()
@@ -123,15 +124,6 @@ SendCommandVSLeave(cmd,prefixStar=true){
 	{
 		g("what's going on 1?")
 	}
-	if 0
-	IfWinActive : ahk_exe devenv.exe
-		IfWinNotActive git: ahk_exe devenv.exe
-			IfWinNotActive Git: ahk_exe devenv.exe
-			{
-				msgbox what's going on 2?
-				AlertCallStack("about to pause")
-				pause
-			}
 	IfWinActive ahk_group SQLManagementStudio
 	{
 		log(A_ThisFunc,"bail")
