@@ -47,6 +47,7 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 	;sb:=new stringbuilder()
 	SetCapsLockState off
 	SendCommandVSLeave("cls")
+	SendCommandVSLeave("Debug.DiagnosticTools.Show")
 	loop % sends.maxindex()
 	{
 		if iscapslock()
@@ -99,7 +100,7 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 	FileDelete(fb)
 	x:=sb.ToString()
 	FileAppend %x%,%fb%
-	SendCommandVSLeave("Debug.DiagnosticTools.Show")
+	
 	;OpenWithSciTE(fb)
 }
 
