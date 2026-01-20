@@ -467,6 +467,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups_End("GmailLoginScreen","Google Calendar - Sign in ahk_group Browsers")
 	g_1_ProgramGroups_End("GmailLoginScreen","Google Play ahk_group Browsers")
 	g_1_ProgramGroups_End("GmailLoginScreen","Sign in - Google Accounts ahk_group Browsers")
+	g_1_ProgramGroups_End("GmailLoginScreen","Welcome ahk_group Browsers")
 	g_1_ProgramGroups_End("GmailLoginScreen","YouTube ahk_group Browsers")
 	g_1_ProgramGroups_End("GmailLoginScreen","YouTube Music ahk_class Chrome_WidgetWin_1 ahk_exe YouTube Music.exe")
 	g_1_ProgramGroups_End("GoogleSheets","Google Sheets ahk_group Browsers")
