@@ -732,6 +732,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_class #32770 ahk_exe locate32.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_class Chrome_WidgetWin_1 ahk_exe Chrome.exe",,,"Chrome App Launcher")
 	g_4_KeyBehaviors("F12HideWindow","ahk_class ConsoleWindowClass ahk_exe sh.exe") ;GIT BASH
+	g_4_KeyBehaviors("F12HideWindow","ahk_exe MouseJiggler.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_class ConsoleWindowClass ahk_exe WisdominatorConsole.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_class ProcessHacker ahk_exe ProcessHacker.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe 7+ Taskbar Tweaker.exe")
