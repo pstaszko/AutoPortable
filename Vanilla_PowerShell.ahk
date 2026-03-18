@@ -18,7 +18,7 @@ RestartBackgroundPowerShell(){
 }
 RunBackgroundPowershell(cmd,timeout=5000,tooltip=""){
 	if tooltip
-		tooltip.t
+		t(tooltip)
 	f:=GetTempFile("txt","c:\temp\trash\","BPS_")
 	FileAppend %cmd%,%f%
 	if !timeout
