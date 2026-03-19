@@ -63,7 +63,7 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 			sb.AppendLine("v={F4}")
 			t("Sending F4")
 		}
-		if v.contains(".")
+		if Contains(".",v)
 		{
 			sb.AppendLine("v.contains(""."")")
 			SendCommandVSLeave(v)

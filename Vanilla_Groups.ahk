@@ -37,12 +37,12 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 	{
 		GroupName:=A_LoopField
 		altTitle:=WinTitle
-		altTitle.Replace(" ","")
-		altTitle.Replace("-","")
-		altTitle.Replace("(","")
-		altTitle.Replace(".","")
-		altTitle.Replace("&","")
-		altTitle.Replace(")","")
+		Replace(altTitle," ","")
+		Replace(altTitle,"-","")
+		Replace(altTitle,"(","")
+		Replace(altTitle,".","")
+		Replace(altTitle,"&","")
+		Replace(altTitle,")","")
 		altgrpname:=GroupName altTitle
 		altgrpname:="altGroup_" altgrpname
 		if !altgrpname
@@ -458,7 +458,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups_End("DotnetIDE","ahk_group Rider")
 	g_1_ProgramGroups_End("DotnetIDE","ahk_group VisualStudio")
 	g_1_ProgramGroups_End("FirefoxDevTools", "Developer Tools ahk_group Firefox")
-	g_1_ProgramGroups_End("GmailLoginScreen","Hi Paul — ahk_group Browsers")
+	g_1_ProgramGroups_End("GmailLoginScreen","Hi Paul â€” ahk_group Browsers")
 	g_1_ProgramGroups_End("GmailLoginScreen","Accounts ahk_class NUIDialog ahk_exe OUTLOOK.EXE")
 	g_1_ProgramGroups_End("GmailLoginScreen","ahk_exe youtube-music-desktop-app.exe")
 	g_1_ProgramGroups_End("GmailLoginScreen","ahk_group Rambox")
