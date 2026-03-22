@@ -9,3 +9,4 @@ return
 #include %A_ScriptDir%\Portable.ahk
 #include %a_scriptdir%\Vanilla_ThirdParty.ahk
 #include %a_scriptdir%\Vanilla_Groups.ahk
+#include %a_scriptdir%\ahkpm-modules\github.com\pstaszko\AHK_PSKill\PSKill.ahk

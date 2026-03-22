@@ -27,6 +27,10 @@ g_3_OneOffProgramGroups(GroupName, WinTitle, WinText="", Label="", ExcludeTitle=
 g_3_OneOffProgramGroupsEnd(GroupName, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeText=""){
 	MyGroupAdd(GroupName, WinTitle, WinText, Label, ExcludeTitle, ExcludeText)
 }
+Vanilla_Groups_Replace(byRef self,needle,replaceText){
+	StringReplace self,self,%needle%,%replaceText%,1
+	return self
+}
 MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeText=""){
 	global
 	if (GroupNames="")
@@ -37,12 +41,12 @@ MyGroupAdd(GroupNames, WinTitle, WinText="", Label="", ExcludeTitle="", ExcludeT
 	{
 		GroupName:=A_LoopField
 		altTitle:=WinTitle
-		Replace(altTitle," ","")
-		Replace(altTitle,"-","")
-		Replace(altTitle,"(","")
-		Replace(altTitle,".","")
-		Replace(altTitle,"&","")
-		Replace(altTitle,")","")
+		Vanilla_Groups_Replace(altTitle," ","")
+		Vanilla_Groups_Replace(altTitle,"-","")
+		Vanilla_Groups_Replace(altTitle,"(","")
+		Vanilla_Groups_Replace(altTitle,".","")
+		Vanilla_Groups_Replace(altTitle,"&","")
+		Vanilla_Groups_Replace(altTitle,")","")
 		altgrpname:=GroupName altTitle
 		altgrpname:="altGroup_" altgrpname
 		if !altgrpname
