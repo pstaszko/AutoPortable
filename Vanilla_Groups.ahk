@@ -120,7 +120,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Browsers","ahk_exe chrome.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe Firefox.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe iexplore.exe",,,"ahk_class 32770")
-	g_1_ProgramGroups("Browsers","ahk_exe Maxthon.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe opera.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","ahk_exe Safari.exe",,,"ahk_class 32770")
 	g_1_ProgramGroups("Browsers","Firefox ahk_Group Firefox",,,"ahk_class 32770")
@@ -217,8 +216,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MatrixOS","MatrixNexus ahk_class ConsoleWindowClass ahk_exe cmd.exe")
 	g_1_ProgramGroups("MatrixOS","MatrixNexus ahk_class ConsoleWindowClass ahk_exe MatrixNexus.exe")
 	g_1_ProgramGroups("MatrixOS","MatrixNexus ahk_class ConsoleWindowClass ahk_exe VsDebugConsole.exe")
-	g_1_ProgramGroups("Maxthon","ahk_class Second Life ahk_exe SecondLifeViewer.exe")
-	g_1_ProgramGroups("Maxthon","ahk_exe Maxthon.exe")
 	g_1_ProgramGroups("MButton","ahk_exe DSPGAME.exe")
 	g_1_ProgramGroups("MButton","ahk_exe farcry5.exe")
 	g_1_ProgramGroups("MButton","ahk_exe NMS.exe") ;no man's sky
