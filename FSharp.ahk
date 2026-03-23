@@ -33,7 +33,7 @@ SubmitFSharpFunction(functionName,params*){
 }
 ShowSSMS(){
 	WinActivate ahk_class SunAwtFrame ahk_exe datagrip64.exe
-	IfWinActive ahk_class SunAwtFrame ahk_exe datagrip64.exe
+	if WinActive("ahk_class SunAwtFrame ahk_exe datagrip64.exe")
 	{
 		t("Stick with DataGrip")
 		return
@@ -47,7 +47,7 @@ DiffMerge_ClearGitAdds(){
 	SubmitFSharpFunction("DiffMerge.ForgetAdds")
 }
 DiffMerge_PasteFromFile(){
-	IfWinNotActive ahk_group ConEmu
+	if !WinActive("ahk_group ConEmu")
 		RunFSharp("ConEmu.DesireStartOrShowNoArgs")
 	DiffMerge_ClipGitAdds()
 	SendInput {esc 3}
@@ -58,7 +58,7 @@ RunFSharp(functionName,params*){
 	start:=A_TickCount
 	loop
 	{
-		IfExist %resultFile%
+		if FileExist(resultFile)
 		{
 			FileRead result,%resultFile%
 			if result

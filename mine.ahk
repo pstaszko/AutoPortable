@@ -20,7 +20,7 @@ WinShowExe(exe){
 }
 IsWindowActive(spec){
 	SetTitleMatchMode 2
-	IfWinActive %spec%
+	if WinActive(spec)
 		return "true"
 	else
 		return "false"
@@ -29,7 +29,7 @@ IsWindowActiveRegex(spec){
 	SetTitleMatchMode 2
 	SetTitleMatchMode fast
 	SetTitleMatchMode regex
-	IfWinActive %spec%
+	if WinActive(spec)
 		return "true"
 	else
 		return "false"
@@ -38,14 +38,14 @@ BasicWinWaitActive(spec, winText, timeout, excludeTitle, excludeText){
 	WinWaitActive %spec%, %winText%, %timeout%, %excludeTitle%, %excludeText%
 	;if ErrorLevel
 	;	return "false"
-	IfWinActive %spec%, %winText%, %excludeTitle%, %excludeText%
+	if WinActive(spec, winText, excludeTitle, excludeText)
 		return "true"
 	else
 		return "false"
 }
 BasicWinWaitActive2(spec, timeout){
 	WinWaitActive %spec%,, %timeout%
-	IfWinActive %spec%
+	if WinActive(spec)
 		return "true"
 	else
 		return "false"
@@ -54,7 +54,7 @@ BasicWinWait(spec, timeout){
 	DetectHiddenWindows On
 	SetTitleMatchMode 2
 	WinWait %spec%,, %timeout%
-	IfWinExist %spec%
+	if WinExist(spec)
 		return "true"
 	else
 		return "false"
@@ -63,7 +63,7 @@ BasicWinWaitRegex(spec, timeout){
 	DetectHiddenWindows On
 	SetTitleMatchMode regex
 	WinWait %spec%,, %timeout%
-	IfWinExist %spec%
+	if WinExist(spec)
 		return "true"
 	else
 		return "false"
@@ -72,7 +72,7 @@ BasicWinWaitActiveRegex(spec, timeout){
 	DetectHiddenWindows On
 	SetTitleMatchMode regex
 	WinWaitActive %spec%,, %timeout%
-	IfWinActive %spec%
+	if WinActive(spec)
 		return "true"
 	else
 		return "false"
@@ -111,7 +111,7 @@ MySysGet(n){
 }
 Mine_IsWinActiveRegex(WinTitle, WinText="", ExcludeTitle="", ExcludeText=""){
 	SetTitleMatchMode regex
-	IfWinActive %WinTitle%, %WinText%, %ExcludeTitle%, %ExcludeText%
+	if WinActive(WinTitle, WinText, ExcludeTitle, ExcludeText)
 		return 1
 	else
 		return 0
@@ -133,25 +133,25 @@ IniWrite(Filename, Section, Key, Value){
 	IniWrite %Value%, %Filename%, %Section%, %Key%
 }
 IfWinActiveFn(spec){
-	IfWinActive %spec%
+	if WinActive(spec)
 		return true
 	else
 		return false
 }
 IfWinNotActiveFn(spec){
-	IfWinNotActive %spec%
+	if !WinActive(spec)
 		return true
 	else
 		return false
 }
 IfWinExistFn(spec){
-	IfWinExist %spec%
+	if WinExist(spec)
 		return true
 	else
 		return false
 }
 IfWinNotExistFn(spec){
-	IfWinNotExist %spec%
+	if !WinExist(spec)
 		return true
 	else
 		return false

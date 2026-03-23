@@ -23,7 +23,7 @@ return
 		hit:=false
 		if !IsCapsLock(){
 			loop 5 {
-				IfWinActive % title
+				if WinActive(title)
 				{
 					hit:=true
 					t("Found " title)

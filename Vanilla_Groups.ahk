@@ -833,7 +833,7 @@ NewLoadGroups(){
 	}
 }
 IsGameActive(){
-	IfWinActive ahk_group Games
+	if WinActive("ahk_group Games")
 		return true
 	return false
 }

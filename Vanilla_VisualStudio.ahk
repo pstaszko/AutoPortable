@@ -104,10 +104,10 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 
 GetFloatingToolWindowParent(){
 	WinGetActiveTitle t
-	IfWinNotActive ahk_group VisualStudio
+	if !WinActive("ahk_group VisualStudio")
 		return false
 	SetTitleMatchMode("regex")
-	IfWinExist %t%.*Visual Studio ahk_group VisualStudio
+	if WinExist(t . ".*Visual Studio ahk_group VisualStudio")
 	{
 		WinGet id,id
 		return id
@@ -117,11 +117,11 @@ GetFloatingToolWindowParent(){
 SendCommandVSLeave(cmd,prefixStar=true){
 	logContextStart(A_ThisFunc)
 	log(A_ThisFunc,cmd)
-	IfWinActive ahk_class #32770
+	if WinActive("ahk_class #32770")
 	{
 		g("what's going on 1?")
 	}
-	IfWinActive ahk_group SQLManagementStudio
+	if WinActive("ahk_group SQLManagementStudio")
 	{
 		log(A_ThisFunc,"bail")
 		return
@@ -129,7 +129,7 @@ SendCommandVSLeave(cmd,prefixStar=true){
 	log(A_ThisFunc,"Waiting 1")
 	WinWaitActive ahk_exe devenv.exe
 	log(A_ThisFunc,"Waiting 1 a")
-	IfWinActive (Code)
+	if WinActive("(Code)")
 	{
 		log(A_ThisFunc,"bail 2")
 		msgbox what's up here
@@ -175,7 +175,7 @@ SendCommandVSLeave(cmd,prefixStar=true){
 	;sleep 100
 	log(A_ThisFunc,"Waiting 4")
 	WinWaitActive ahk_exe devenv.exe
-	IfWinActive ahk_id %ForbiddenVSWindowClass%
+	if WinActive("ahk_id " . ForbiddenVSWindowClass)
 	{
 		log(A_ThisFunc,"bailing 3.1")
 		AlertCallStack("Forbidden window! Supposed to be " cmd "`nForbidden: " & ForbiddenVSWindowClass)

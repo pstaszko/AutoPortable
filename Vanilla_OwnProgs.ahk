@@ -1,13 +1,13 @@
 ShowOrRunFSSConsole(){
 	DetectHiddenWindows	on
 	WinShow ahk_exe FSSConsole.exe
-	IfWinNotActive ahk_exe FSSConsole.exe
+	if !WinActive("ahk_exe FSSConsole.exe")
 		RunFSSC()
 }
 StartOrShowBackgroundPowerShell(){
 	WinShow BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
 	WinActivate BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
-	IfWinNotActive BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
+	if !WinActive("BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe")
 	{
 		t("Starting new background powershell hidden")
 		run C:\Program Files\PowerShell\7\pwsh.exe -command "$Host.UI.RawUI.WindowTitle = 'BackgroundPowerShell';MonitorBackgroundPowerShellCommands" ;,,hide
@@ -25,7 +25,7 @@ ComputerHasMatrixBoards(){
 }
 HardRestartMatrixOS(){
 	if(ComputerHasMatrixBoards()){
-		IfWinNotActive ahk_exe HoloCureLauncher.exe
+		if !WinActive("ahk_exe HoloCureLauncher.exe")
 		PSKill("matrixnexus")
 		PSKill("matrixos")
 		;RunWait powershell -noprofile $"
@@ -43,7 +43,7 @@ RemoveGhosts(){
 HardRestartMatrixOSAutomatic(){
 	if(ComputerHasMatrixBoards()){
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/off")
-		IfWinNotActive ahk_exe HoloCureLauncher.exe
+		if !WinActive("ahk_exe HoloCureLauncher.exe")
 		PSKill("matrixos")
 		RemoveGhosts()
 		URLDownloadToVar("http://127.0.0.1:1880/plug2/on")

@@ -21,7 +21,7 @@ FileRead(path){
 }
 FileDelete(FilePattern,NoLog=0){
 	FilePattern:=strreplace(FilePattern,"""","")
-	IfExist %FilePattern%
+	if FileExist(FilePattern)
 	{
 		if !NoLog
 			log(A_ThisFunc,FilePattern " exists")

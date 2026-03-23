@@ -5,7 +5,7 @@ RunBackgroundPowershellNonInteractive(cmd,noisy=1){
 }
 StartBackgroundPowerShell(){
 	WinShow BackgroundPowerShell
-	IfWinActive BackgroundPowerShell
+	if WinActive("BackgroundPowerShell")
 		return
 	RunPSCommandRight("BackgroundPowerShell","MonitorBackgroundPowerShellCommands")
 }
@@ -27,7 +27,7 @@ RunBackgroundPowershell(cmd,timeout=5000,tooltip=""){
 	StartTime:=A_TickCount
 	Loop
 	{
-		IfExist % resp
+		if FileExist(resp)
 		{
 			sleep 10
 			FileRead x,%resp%
@@ -56,7 +56,7 @@ RunPSCommand(t,cmd,window,width,left,height,top,move=false){
 	logParams()
 	WinGet id,id
 	alreadyexists=0
-	IfExist %t%
+	if FileExist(t)
 	{
 		alreadyexists=1
 	}
@@ -75,7 +75,7 @@ RunPSCommand(t,cmd,window,width,left,height,top,move=false){
 	Loop 300
 	{
 		WinActivate %t%
-		IfWinActive %t%
+		if WinActive(t)
 		{
 			logHere("Found it")
 			hit=1
