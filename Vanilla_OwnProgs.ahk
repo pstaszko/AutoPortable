@@ -4,6 +4,13 @@ ShowOrRunFSSConsole(){
 	if !WinActive("ahk_exe FSSConsole.exe")
 		RunFSSC()
 }
+MessageBoxCompat(Text, Title:="", Flags:=0){
+	return DllCall("User32\\MessageBox", "Ptr", 0, "Str", Text, "Str", Title, "UInt", Flags, "Int")
+}
+ConfirmOkCancel(Text, Title:=""){
+	; MB_OKCANCEL = 0x1, IDOK = 1
+	return MessageBoxCompat(Text, Title, 0x1) = 1
+}
 StartOrShowBackgroundPowerShell(){
 	WinShow BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
 	WinActivate BackgroundPowerShell ahk_class ConsoleWindowClass ahk_exe pwsh.exe
@@ -31,8 +38,7 @@ HardRestartMatrixOS(){
 		;RunWait powershell -noprofile $"
 		RemoveGhosts()
 		WinWaitActive GhostsRemoved,,3
-		msgbox 1, Board Reset, Have Matrix Boards been power cycled?
-		IfMsgBox Ok
+		if ConfirmOkCancel("Have Matrix Boards been power cycled?", "Board Reset")
 			RunMatrixNexus()
 	}
 }
