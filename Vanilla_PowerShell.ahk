@@ -32,7 +32,7 @@ RunBackgroundPowershell(cmd,timeout=5000,tooltip=""){
 			sleep 10
 			FileRead x,%resp%
 			FileDelete %resp%
-			return % x
+			return x
 		}
 		ElapsedTime := A_TickCount - StartTime
 		if(ElapsedTime > timeout){

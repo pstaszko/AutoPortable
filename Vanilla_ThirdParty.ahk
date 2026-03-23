@@ -1,5 +1,5 @@
 Vanilla_ThirdParty_GetScoopDir(appName){
-	return % UserProfile "\scoop\apps\" . appName . "\current\"
+	return UserProfile "\scoop\apps\" . appName . "\current\"
 }
 RunFlowLauncher(){
 	t(A_ThisFunc " / " A_ScriptFullPath)

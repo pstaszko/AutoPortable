@@ -79,16 +79,16 @@ BasicWinWaitActiveRegex(spec, timeout){
 }
 GetMonitorWorkArea(n){
 	SysGet OutputVar, MonitorWorkArea, %n%
-	return % OutputVar
+	return OutputVar
 }
 GetMonitor(num){
 	SysGet, Monitor, Monitor, %num%
 	x=%MonitorLeft%,%MonitorTop%,%MonitorRight%,%MonitorBottom%
-	return % x
+	return x
 }
 GetMonitorCount(){
 	SysGet OutputVar, MonitorCount
-	return % OutputVar
+	return OutputVar
 }
 TempTooltipSync(TTTtitle){
 	global
@@ -101,10 +101,10 @@ MySysGet(n){
 	{
 	case 79:
 		SysGet OutputVar, 79
-		return % OutputVar
+		return OutputVar
 	case 78:
 		SysGet OutputVar, 78
-		return % OutputVar
+		return OutputVar
 	default:
 		return
 	}
@@ -118,7 +118,7 @@ Mine_IsWinActiveRegex(WinTitle, WinText="", ExcludeTitle="", ExcludeText=""){
 }
 GetMonitorPrimary(){
 	SysGet OutputVar, MonitorPrimary
-	return % OutputVar
+	return OutputVar
 }
 IniRead(Filename, Section, Key, Default){
 	IniRead OutputVar, %Filename%, %Section%, %Key%, %Default%
@@ -127,34 +127,34 @@ IniRead(Filename, Section, Key, Default){
 GetActiveWindowText(){
 	DetectHiddenText on
 	WinGetText t, A
-	return % t
+	return t
 }
 IniWrite(Filename, Section, Key, Value){
 	IniWrite %Value%, %Filename%, %Section%, %Key%
 }
 IfWinActiveFn(spec){
 	IfWinActive %spec%
-		return % true
+		return true
 	else
-		return % false
+		return false
 }
 IfWinNotActiveFn(spec){
 	IfWinNotActive %spec%
-		return % true
+		return true
 	else
-		return % false
+		return false
 }
 IfWinExistFn(spec){
 	IfWinExist %spec%
-		return % true
+		return true
 	else
-		return % false
+		return false
 }
 IfWinNotExistFn(spec){
 	IfWinNotExist %spec%
-		return % true
+		return true
 	else
-		return % false
+		return false
 }
 GetClipboard(){
 	t=%clipboard%

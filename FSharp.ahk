@@ -25,7 +25,7 @@ SubmitFSharpFunction(functionName,params*){
 		if ErrorLevel
 		{
 			Growl("Starting FSSConsole.exe")
-			return % SubmitFSharpFunction(functionName,params*)
+			return SubmitFSharpFunction(functionName,params*)
 		}
 		WinMinimize ahk_exe FSSConsole.exe
 	}
@@ -66,10 +66,10 @@ RunFSharp(functionName,params*){
 				FileDelete %resultFile%
 				arr:=StrSplit(result,"`r`n")
 				mi:=arr.MaxIndex()
-				if(mi = 1)
-					return % arr[1]
+				if (mi = 1)
+					return arr[1]
 				else
-					return % arr
+					return arr
 			}
 		}
 		if(A_TickCount-start > 2000)
@@ -85,7 +85,7 @@ RunFSharpLabel(lbl,synchronous=0){
 	fnc=RunLabel
 	if synchronous
 		fnc=%fnc%Synchronous
-	return % RunFSharp(fnc, lbl)
+	return RunFSharp(fnc, lbl)
 }
 RunFSharpMethodOnActiveWindow(method){
 	SubmitFSharpFunction("RunMethodOnActiveWindow", method, params*)

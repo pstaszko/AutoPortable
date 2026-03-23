@@ -98,7 +98,7 @@ return
 	F8::SendInput {F2} ;Next bookmark
 	GetFileFromTitleNPP(){
 		WinGetTitle t, A
-		return % RegExReplace(t, " - Notepad\+\+")
+		return RegExReplace(t, " - Notepad\+\+")
 	}
 	RunFileFromNPP(){
 		run % GetFileFromTitleNPP()
