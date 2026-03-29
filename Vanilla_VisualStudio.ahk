@@ -98,7 +98,7 @@ ShowAllWindowsInVS(detach=0,SkipSolutionExplorer=0){
 	FileDelete(fb)
 	x:=sb.ToString()
 	FileAppend %x%,%fb%
-	
+
 	;OpenWithSciTE(fb)
 }
 
