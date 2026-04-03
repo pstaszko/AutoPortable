@@ -1,3 +1,4 @@
+#include %a_scriptdir%\ahkpm-modules\github.com\pstaszko\AHK_PSKill\PSKill.ahk
 ShowOrRunFSSConsole(){
 	DetectHiddenWindows	on
 	WinShow ahk_exe FSSConsole.exe
