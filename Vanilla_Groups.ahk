@@ -689,6 +689,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("ControlWtoAltF4","Picker ahk_exe MatrixOS.exe")
 	g_4_KeyBehaviors("ControlWtoAltF4","Query Designer")
 	g_4_KeyBehaviors("ControlWtoAltN","ahk_class #32770 ahk_exe MSACCESS.EXE","Do you want to save changes to the design of")
+	g_4_KeyBehaviors("ControlWtoAltN","Save changes to the following items ahk_exe SSMS.exe")
 	g_4_KeyBehaviors("ControlWtoAltN","ahk_class #32770","Do you want to save the changes made to the SQL statement and update the property?")
 	g_4_KeyBehaviors("ControlWtoAltN","LINQPad ahk_class #32770 ahk_group LINQPad","Save Query")
 	g_4_KeyBehaviors("ControlWtoAltN","Microsoft Access ahk_class #32770","Do you want to save changes to the design of")
