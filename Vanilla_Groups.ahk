@@ -335,12 +335,6 @@ NewLoadGroups(){
 	g_1_ProgramGroups("NoMansSky","ahk_exe NMS.exe") ;no man's sky
 	;g_1_ProgramGroups("NoMaximizeOffset","ahk_class CabinetWClass")
 	g_1_ProgramGroups("NoMinimizer","ahk_class Shell_TrayWnd")
-	/*
-	g_1_ProgramGroups("NoResearch","ahk_exe excel.exe")
-	g_1_ProgramGroups("NoResearch","ahk_exe onenote.exe")
-	g_1_ProgramGroups("NoResearch","ahk_exe outlook.exe")
-	g_1_ProgramGroups("NoResearch","ahk_exe winword.exe")
-	*/
 	g_1_ProgramGroups("NPP","ahk_exe notepad++.exe")
 	g_1_ProgramGroups("Obsidian","ahk_exe obsidian.exe")
 	g_1_ProgramGroups("Office","ahk_exe EXCEL.EXE")
