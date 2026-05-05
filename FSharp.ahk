@@ -38,6 +38,7 @@ ShowSSMS(){
 		t("Stick with DataGrip")
 		return
 	}
+	WinWaitActive Microsoft SQL Server Management Studio ahk_exe SSMS.exe
 	SubmitFSharpFunction("SSMS.ActivateOrStartWithCreds")
 }
 DiffMerge_RememberGitAdds(){
