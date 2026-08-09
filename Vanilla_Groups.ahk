@@ -784,7 +784,7 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F1ToMaximize","Queued`","brought to you by SitePen`")
 	g_4_KeyBehaviors("F1ToMaximize","SourceGear Vault Standard")
 	g_4_KeyBehaviors("FileSaveDialog","Enter name of file to save ahk_class #32770 ahk_exe firefox.exe")
-	g_4_KeyBehaviors("FixControlBackspace","ahk_exe EXCEL.EXE")
+	;g_4_KeyBehaviors("FixControlBackspace","ahk_exe EXCEL.EXE")
 	g_4_KeyBehaviors("FixControlBackspace","ahk_exe ONENOTE.EXE")
 	g_4_KeyBehaviors("FixControlBackspace","ahk_exe OUTLOOK.EXE")
 	g_4_KeyBehaviors("FixControlBackspace","ahk_exe soffice.bin")
