@@ -735,7 +735,6 @@ NewLoadGroups(){
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe ets.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe FSSConsole.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_exe MouseJiggler.exe")
-	g_4_KeyBehaviors("F12HideWindow","ahk_exe Obsidian.exe")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group ChaosControl")
 	g_4_KeyBehaviors("F12HideWindow","ahk_group Chrome_ConnectWise")
 	g_4_KeyBehaviors("F12HideWindow","ahk_Group Chrome_Hiders")
