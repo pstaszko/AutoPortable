@@ -56,7 +56,7 @@
     {
       "name": "github.com/pstaszko/AHK_Vanilla",
       "version": "branch:main",
-      "sha": "7d05552ca7b6207075c079b662e351c3fedb1d6f",
+      "sha": "1f2e348833e5ae7d7cf53e6ce57db399fd9c6d21",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla",
       "dependencies": {
         "github.com/pstaszko/AHK-Notification": "branch:master",
@@ -81,14 +81,14 @@
     {
       "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
       "version": "branch:main",
-      "sha": "42412479a71069454c009c447613f0e16c1d72f7",
+      "sha": "87041cf015e671ea55c626090fa92630a86773a1",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla/ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
       "dependencies": {}
     },
     {
       "name": "github.com/pstaszko/AHK_Vanilla_FileSystem",
       "version": "branch:main",
-      "sha": "42412479a71069454c009c447613f0e16c1d72f7",
+      "sha": "87041cf015e671ea55c626090fa92630a86773a1",
       "installPath": "ahkpm-modules/github.com/pstaszko/AHK_Vanilla_FileSystem",
       "dependencies": {}
     }
