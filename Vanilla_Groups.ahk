@@ -258,6 +258,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("MinorWindows","ahk_exe Probe.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_exe pushbullet_client.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_exe SnippingTool.exe")
+	g_1_ProgramGroups("MinorWindows","ahk_exe mpc-be64.exe")
 	g_1_ProgramGroups("MinorWindows","ahk_exe xnview.exe")
 	g_1_ProgramGroups("MinorWindows","AHK_PS_Temp_ahk_class IEFrame ahk_exe iexplore.exe")
 	g_1_ProgramGroups("MinorWindows","AHKparserResults.txt - SciTE ahk_class SciTEWindow")
