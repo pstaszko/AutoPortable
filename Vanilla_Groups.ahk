@@ -184,6 +184,7 @@ NewLoadGroups(){
 	g_1_ProgramGroups("Games","ahk_exe DSPGAME.exe")
 	g_1_ProgramGroups("Games","ahk_exe FarCryNewDawn.exe")
 	g_1_ProgramGroups("Games","ahk_exe HoloCure.exe")
+	g_1_ProgramGroups("Games","ahk_exe Mars First Logistics.exe")
 	g_1_ProgramGroups("Games","ahk_exe NMS.exe") ;no man's sky
 	g_1_ProgramGroups("Games","ahk_exe StarWarsSquadrons.exe")
 	g_1_ProgramGroups("Games","ahk_exe theHunterCotW_F.exe")
